@@ -1,0 +1,8 @@
+config/database.yml
+log/
+log/*
+*.swp
+*.swo
+*~
+tmp/
+tmp/*
