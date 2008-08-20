@@ -6,3 +6,13 @@ log/*
 *~
 tmp/
 tmp/*
+.dotest
+.dotest/**/*
+.DS_Store
+coverage
+coverage/**/*
+db/data/legacy/log/*
+log/*
+log/*.log
+public/stylesheets/scaffold.css
+tmp/**/*
