@@ -8,11 +8,11 @@ development:
   socket: /var/run/mysqld/mysqld.sock
 
 test:
-  :database: ansuz_test
-  :adapter: mysql
-  :username: root
-  :host: localhost
-  :socket: /var/run/mysqld/mysqld.sock
+  database: ansuz_test
+  adapter: mysql
+  username: root
+  host: localhost
+  socket: /var/run/mysqld/mysqld.sock
 
 production:
   <<: *defaults
