@@ -1,3 +1,4 @@
+# Linux example follows:
 development:
   adapter: mysql
   database: ansuz_development
@@ -17,3 +18,23 @@ test:
 production:
   <<: *defaults
   database: ansuz_production
+
+# OS X example follows:
+development:
+  database: ansuz_development
+  adapter: mysql
+  username: root
+  password:
+  host: localhost
+  encoding: utf8
+
+test:
+  database: ansuz_test
+  adapter: mysql
+  username: root
+  password:
+  host: localhost
+  encoding: utf8
+
+production:
+  <<: *defaults

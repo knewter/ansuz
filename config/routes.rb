@@ -36,6 +36,11 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
+  # map.resource :admin, :controller => 'admin_pages'
+  map.connect 'admin/account/:action/:id', :controller => 'account'
+  map.connect 'admin/:action/:id', :controller => 'page_admin'
+  map.connect '*path', :controller => 'page', :action => 'indexer'
+  # stock rails routes
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
