@@ -12,6 +12,7 @@ class Page < ActiveRecord::Base
     end
   end
 
+  # TODO: Convert to named_scope
   def self_and_siblings
     Page.find(:all, :conditions => ["parent_id = ?", self.parent_id], :order => 'page_order')
   end
@@ -67,6 +68,9 @@ class Page < ActiveRecord::Base
   # page/0 should return nil (out of bound)
   # page/n where n > pages should return nil (out of bound)
   #
+  # TODO: Possible bug:
+  #  - @split_pages is cached, so if you change the body again and then call
+  #    split_page!, the code looks like it will ignore the cache
   def split_page!(page_number = 1)
     if self.page_type == 'page'
       self[:page_body] = self.body
@@ -112,7 +116,8 @@ class Page < ActiveRecord::Base
 
   protected
   def check_page_type
-    self.page_type = ((@split_pages = self.body.split(/\{pagebreak\}/i)).length > 1) ? "multipage": "page" 
+    self.page_type = "page" and return if self.body.blank? || (@split_pages = self.body.split(/\{pagebreak\}/i)).length == 1 
+    self.page_type = "multipage"
   end
 
   def check_page_order

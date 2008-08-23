@@ -1,0 +1,70 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+home:
+  id: 1
+  name: home
+  title: Home
+  full_title: Home Page
+  published: 1
+  linked: 1
+
+second_level:
+  id: 2
+  name: second
+  title: Second Level
+  parent_id: 1
+  published: 1
+  linked: 1
+  
+third_level:
+  id: 3
+  name: third
+  title: Third Level
+  parent_id: 2
+  published: 1
+  linked: 1
+  
+fourth_level:
+  id: 9
+  name: fourth
+  title: Fourth Level
+  parent_id: 3
+  published: 1
+  linked: 1
+  
+unpublished:
+  id: 4
+  name: unpublished
+  title: Unpublished
+  parent_id: 2
+  published: 0
+  linked: 0
+
+swap_test:
+  id: 5
+  name: swap_test
+  title: Swap Test
+  parent_id: 1
+  
+swap_test1:
+  id: 6
+  name: swap1
+  title: Swap Test 1
+  parent_id: 5
+  page_order: 1
+
+swap_test2:
+  id: 7
+  name: swap2
+  title: Swap Test 2
+  parent_id: 5
+  page_order: 3
+
+swap_test3:
+  id: 8
+  name: swap3
+  title: Swap Test 3
+  parent_id: 5
+  page_order: 4
+  
+  
+  
