@@ -1,0 +1,22 @@
+---
+# This is a sample database file for the ActiveRecord ORM
+:development: &defaults
+  :adapter: mysql
+  :database: ansuz_development
+  :username: root
+  :password: 
+  :host: localhost
+  #:socket: /tmp/mysql.sock
+  :socket: /var/run/mysqld/mysqld.sock
+
+:test:
+  #<<: *defaults
+  :database: ansuz_test
+  :adapter: mysql
+  :username: root
+  :host: localhost
+  :socket: /var/run/mysqld/mysqld.sock
+
+:production:
+  <<: *defaults
+  :database: ansuz_production
