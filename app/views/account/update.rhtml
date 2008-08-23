@@ -1,0 +1,17 @@
+<% if flash[:notice] -%>
+<div id="message"><%= flash[:notice] %></div>
+<% end -%>
+<%= error_messages_for :user %>
+<% remote_form_for(:user, @user, :url => { :action => 'update' }, :update => 'main') do |f| -%>
+
+<p><label for="password">New Password</label><br/>
+<%= f.password_field :password %></p>
+
+<p><label for="password_confirmation">Confirm Password</label><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<p><label for="email">Email</label><br/>
+<%= f.text_field :email %></p>
+
+<p><%= submit_tag 'Update' %></p>
+<% end -%>

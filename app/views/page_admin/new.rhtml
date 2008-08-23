@@ -1,0 +1,13 @@
+<h1 style="text-align:center;">Create a New Page</h1>
+<%= form_remote_tag :url => { :action => 'create'} ,
+	:update => 'main',
+	:complete => remote_function( 
+	:update => "item#{@page.parent_id}",
+	:url => { :action => 'manage_tree', :parent_id => @page.parent_id, :tree_post_id => @postId } ),
+	:html => { 'name' => 'page_form' } %>
+	<%= hidden_field 'page', 'parent_id' %>
+	<%= hidden_field 'page', 'page_order' %>
+	<%= render :partial => 'form' %>
+	<%= submit_tag 'Create', :class => 'submit' %>
+<%= end_form_tag %>
+

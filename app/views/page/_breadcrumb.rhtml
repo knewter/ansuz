@@ -1,0 +1,7 @@
+<% url = ""
+  @breadcrumb.each do |crumb|   # Itterate through breadcrumb, from root to parent of current 
+    url = (url!="")? url+crumb.name+"/" : url = "/" # Create URLs for Breadcrumb sequentially
+%>
+<%= link_to crumb.title, ((url=='/')? '/' + @root.name + '/' : url ) %> &gt; <% # Code for generating links and '>' seperators
+  end   # End breadcrumb itteration
+%><b><%= (@pageNum!=nil)? link_to(@page.title, './') + " &gt; page " + @pageNum.to_s : @page.title %></b>  <%# Print the current page without a link and end the div %>

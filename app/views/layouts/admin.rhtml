@@ -1,0 +1,33 @@
+<!-- Put IE into quirks mode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
+	<head>
+		<title>Isshen CMS: Admin</title>
+		<%= stylesheet_link_merged :admin %>
+		<%= javascript_include_merged :admin %>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />		
+	</head>
+	<body>
+		<div class="wrap">
+ 		<div id="header">Isshen CMS: Admin&nbsp;&nbsp;&nbsp;Copyright &copy; 2006-2007 Isshen, LLC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ Currently Editing: <b><%= current_database %></b> ]</div> <!-- end #header -->
+
+      		<div id="sidebar">
+			<div class="sitetree" id="sitetree">
+				<%= render :partial => "menu/main" %>
+			</div> <!-- end .sitetree and #sitetree -->
+		</div>
+
+		<div id="main" class="main">
+			<% if flash[:message] -%>
+				<div id="message"><%= flash[:message] %></div>
+				<% end -%>
+				<%= @content_for_layout %>
+		</div><!-- end #main and .main -->
+		</div> <!-- end #content -->
+		  <div id="footer"></div> <!-- end #footer -->
+		</div> <!-- end #wrap -->
+	</body>
+</html>

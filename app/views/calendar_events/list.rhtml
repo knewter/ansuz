@@ -1,0 +1,33 @@
+<h1>Listing Events</h1>
+
+<%= link_to_remote '<< Previous page |', :update => 'main', :url => { :page => @calendar_event_page.current.previous } if @calendar_event_page.current.previous %>
+<%= link_to_remote 'Next page >>', :update => 'main', :url => { :page => @calendar_event_page.current.next } if @calendar_event_page.current.next %> 
+<%= link_to_remote 'New event', :update => 'main', :url => { :action => 'new' } %>
+
+<table style="width: 95%">
+  <tr>
+    <th align=left>Start Time</th>
+    <th align=left>Name</th>
+    <th align=left>Description</th>
+    <th align=left>Tag</th>
+    <th></th>
+  </tr>
+  
+<% for event in @calendar_event %>
+  <tr>
+  <td align=left valign=top><%=h event.date.strftime("%Y-%m-%d %H:%M") %></td>
+  <td align=left valign=top><%=link_to_remote event.name, :update => 'main', :url => { :action => 'edit', :id => event } %></td>
+  <td align=left valign=top><%=h(truncate(event.description, 20)) %></td>
+    <td valign=top><% unless event.calendar_tag.nil? then %>
+      <%= link_to_remote event.calendar_tag.name, :update => 'main', :url => { :action => 'list_by_tag', :calendar_tag => event.calendar_tag }  %> 
+    <% end -%></td>
+  <td align=left valign=top><%= link_to_remote '[x]', :update => 'main', :url =>  { :action => 'destroy', :id => event }, :confirm => 'Are you sure?' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to_remote '<< Previous page', :update => 'main', :url => { :page => @calendar_event_page.current.previous } if @calendar_event_page.current.previous %>
+<%= link_to_remote 'Next page >>', :update => 'main', :url => { :page => @calendar_event_page.current.next } if @calendar_event_page.current.next %> 
+<%= link_to_remote 'New Event', :update => 'main', :url => { :action => 'new' } %>
+
+

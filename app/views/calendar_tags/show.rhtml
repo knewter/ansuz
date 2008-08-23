@@ -1,0 +1,8 @@
+<h1>&nbsp;</h1><% for column in CalendarTag.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @calendar_tag.send(column.name) %>
+</p>
+<% end %>
+
+<%= link_to_remote 'Edit', :update => 'main', :url => { :action => 'edit', :id => @calendar_tag } %> |
+<%= link_to_remote 'Back', :update => 'main', :url => { :action => 'list' } %>

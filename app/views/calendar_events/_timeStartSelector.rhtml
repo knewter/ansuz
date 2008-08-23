@@ -1,0 +1,14 @@
+<select id="calendar_events_start_time_id" name="calendar_events[start_time_id]" onchange="newTime(this.options[this.selectedIndex].value, 'start')">
+  <OPTGROUP LABEL="Start time"><%
+  @calendar_times.each do |time| %>
+  <option value="<%= time.id %>"<%=
+    ' selected="selected"' if (@calendar_events != nil )? @calendar_events.start_time_id == time.id : @new_time.id == time.id
+    %>><%=
+    time.time_of_day.strftime("%I:%M %p")
+    %></option><% end %>
+  <option disabled>-------------------</option>
+  <option value="-1">New Time</option>
+  </OPTGROUP>
+</select>
+
+<%= (@calendar_times.length == 0)? javascript_tag ( "window.onload=newTime(-1, 'start');") : "" %>

@@ -1,0 +1,21 @@
+<!-- Put IE into quirks mode -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" />
+<head>
+	<meta http-equiv="content-type" content="text/xhtml+xml; charset=UTF-8" />
+	<meta name="description" content="DESCRIPTION HERE" />
+	<meta name="keywords" content="KEYWORDS HERE" />
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+	<title>PAGE TITLE: <%= @page.title if @page%></title>
+	<%= stylesheet_link_merged :base %>
+</head>
+<body>
+	<div id="header"></div><!-- end div header -->
+	<div id="navigation"><%= render :partial => "page/flatTopNav"%></div>
+	<div id="breadcrumb"><%= render :partial => "page/breadcrumb" if @page!=@root %></div>
+	<div id="content"><%= @content_for_layout %></div> 
+	<div id="flatChildNav"><%= render :partial => "page/flatChildNav" %></div>
+	<div id="footer"><%= (render :partial => "page/footer") %></div>
+</body>
+</html>

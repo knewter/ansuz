@@ -1,0 +1,8 @@
+<% if @page.display_title %>
+  <h1><%= @page.full_title %></h1>
+<% end %>
+<%= @page.page_body %>
+
+<br/><br/>
+<div id="page_controls"><%= page_controls(@page) %></div>
+

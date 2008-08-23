@@ -1,0 +1,6 @@
+<h3>Calendar Admin</h3>
+<UL>
+  <LI><%= link_to_remote "Calendar Events", :update => "main", :url => { :controller => "calendar_events", :action => "list" } %></LI>
+  <LI><%= link_to_remote "Event Types", :update => "main", :url => { :controller => "calendar_tags", :action => "list" } %></LI>
+</UL>
+[ <%= link_to_remote "< Back", :update => "sitetree", :url => { :action => "menu", :id => "main" } %> ]

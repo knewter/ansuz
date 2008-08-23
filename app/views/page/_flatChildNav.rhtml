@@ -1,0 +1,6 @@
+<ul><% # Open DIV and UL containing the sub pages of the current page
+    @page.children.each do |page| # Ittereate through the sub-pages
+      %><li><a href='<%= page.name %>/'><%= page.title %></a></li><% # LI and link for each sub-page
+    end  # End itteration
+%></ul><%# Close out UL and DIV %>
+

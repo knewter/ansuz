@@ -1,0 +1,6 @@
+<h1>Manage Pages</h1>
+<ul class="tree-open" ><li class="normal" id="item<%= manage_tree.id.to_s %>">
+<%= render_tree manage_tree, :is_first => true, :is_last => true, :can_delete => false, :initialize => initialize %>
+        </li></ul>
+[ <%= link_to_remote "<< Back", :update => "sitetree", :url => { :action => "menu" } %> ]
+<script>refresh_visibility();</script>
