@@ -1,6 +1,14 @@
 class PageAdminController < ApplicationController
   include PageAdminHelper
   before_filter :login_required
+  before_filter :load_page, :only => [:edit, :update, :destroy, :shift_order]
+
+  protected
+  def load_page
+    @page = Page.find params[:id] 
+  end
+
+  public
 	
   def index 
     @index_page = Page.root
@@ -8,11 +16,9 @@ class PageAdminController < ApplicationController
   end
 
   def edit
-    @page = Page.find params[:id] 
   end 
 
   def update
-    @page = Page.find(params[:id])
     if @page.update_attributes(params[:page])
       flash.now[:message] = 'Page Updated Successfully'
       @preview_url = @page.ancestor_path + @page.name
@@ -44,13 +50,12 @@ class PageAdminController < ApplicationController
   end
 
  def destroy
-   page = Page.find(params[:id])
-   params[:parent_id] = page.parent_id # Capture parent before destroying
-   page.children.each do |sub|
+   params[:parent_id] = @page.parent_id # Capture parent before destroying
+   @page.children.each do |sub|
      sub.parent_id = 0
      sub.save
    end
-   page.destroy
+   @page.destroy
    manage_tree
  end
 
@@ -65,9 +70,8 @@ class PageAdminController < ApplicationController
 
   # Most of this code should go into Page model instead.
   def shift_order
-    page = Page.find params[:id]
-    page.swap! params[:shift].to_i if page and params[:shift]
-    params[:parent_id] = page.parent_id
+    @page.swap! params[:shift].to_i if @page and params[:shift]
+    params[:parent_id] = @page.parent_id
     manage_tree
     #rescue
     # render_text "An Error has occured!" # Add something more graceful later
@@ -89,5 +93,4 @@ class PageAdminController < ApplicationController
         :initialize => false )
     end
   end
-
 end

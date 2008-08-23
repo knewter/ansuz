@@ -1,5 +1,13 @@
 class CalendarTagsController < ApplicationController
 	before_filter :login_required
+  before_filter :load_calendar_tag, :only => [:show, :edit, :update, :destroy]
+
+  protected
+  def load_calendar_tag
+    @calendar_tag = CalendarTag.find(params[:id])
+  end
+
+  public
 
   def index
     list
@@ -11,7 +19,6 @@ class CalendarTagsController < ApplicationController
   end
 
   def show
-    @calendar_tag = CalendarTag.find(params[:id])
   end
 
   def new
@@ -29,11 +36,9 @@ class CalendarTagsController < ApplicationController
   end
 
   def edit
-    @calendar_tag = CalendarTag.find(params[:id])
   end
 
   def update
-    @calendar_tag = CalendarTag.find(params[:id])
     if @calendar_tag.update_attributes(params[:calendar_tag])
       flash[:notice] = 'CalendarTag was successfully updated.'
       redirect_to :action => 'show', :id => @calendar_tag
@@ -43,7 +48,7 @@ class CalendarTagsController < ApplicationController
   end
 
   def destroy
-    CalendarTag.find(params[:id]).destroy
+    @calendar_tag.destroy
     redirect_to :action => 'list'
   end
 end

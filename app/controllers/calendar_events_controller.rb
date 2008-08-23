@@ -1,5 +1,13 @@
 class CalendarEventsController < ApplicationController
 	before_filter :login_required
+  before_filter :load_calendar_event, :only => [:show, :edit, :update, :destroy]
+
+  protected
+  def load_calendar_event
+    @calendar_event = CalendarEvent.find(params[:id])
+  end
+
+  public
 
   def index
     list
@@ -18,7 +26,6 @@ class CalendarEventsController < ApplicationController
   end
 
   def show
-    @calendar_event = CalendarEvent.find(params[:id])
   end
 
   def new
@@ -57,11 +64,9 @@ class CalendarEventsController < ApplicationController
 
   def edit
     @calendar_tags = CalendarTag.find_all
-    @calendar_event = CalendarEvent.find(params[:id])
   end
 
   def update
-    @calendar_event = CalendarEvent.find(params[:id])
     if @calendar_event.update_attributes(params[:calendar_event])
       flash[:notice] = 'CalendarEvent was successfully updated.'
       redirect_to :action => 'show', :id => @calendar_event
@@ -71,7 +76,7 @@ class CalendarEventsController < ApplicationController
   end
 
   def destroy
-    CalendarEvent.find(params[:id]).destroy
+    @calendar_event.destroy
     redirect_to :action => 'list'
   end
 end
