@@ -26,14 +26,15 @@
           <div class="sitetree" id="sitetree">
             <%= render :partial => "menu/main" %>
           </div> <!-- end .sitetree and #sitetree -->
-        </div>
+        </div>  <!-- end #sidebar -->
         <div id="main" class="main">
           <% if flash[:message] -%>
-            <div id="message"><%= flash[:message] %></div>
+            <div id="message"><%= flash[:message] %></div> <!-- end .message -->
           <% end -%>
-          <%= @content_for_layout %>
+          <div id="content">
+            <%= @content_for_layout %>
+          </div> <!-- end #content -->
         </div><!-- end #main and .main -->
-      </div> <!-- end #content -->
       <div id="footer"></div> <!-- end #footer -->
     </div> <!-- end #wrap -->
   </body>

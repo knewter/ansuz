@@ -1,9 +1,11 @@
 <h1><%= flash[:message] %></h1>
 <div style="border: 3px solid #000">
-<iframe src="<%= @preview_url %>" width="800px" height="600px" scrolling="yes">
-</iframe>
-<div style="text-align: center">[ <%= link_to_remote('Edit Again', {
-			:update => 'main',
-			:url => { :action => 'edit', :id => @page_id,} }
-			) %> ] [ <a href="<%= @preview_url %>">Full Screen</a> ] </div>
+  <iframe src="<%= @preview_url %>" width="800px" height="600px" scrolling="yes"></iframe>
+    <div style="text-align: center">
+      [ <%= link_to_remote('Edit Again', {
+    			:update => 'main',
+    			:url => { :action => 'edit', :id => @page_id,} }
+    			) %> ] 
+    			[ <a href="<%= @preview_url %>">Full Screen</a> ]
+    </div>
 </div>
