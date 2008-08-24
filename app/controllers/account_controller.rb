@@ -1,5 +1,5 @@
 class AccountController < ApplicationController
-  layout 'login'
+  layout 'admin'
 
   # say something nice, you goof!  something sweet.
   def index

@@ -1,7 +1,10 @@
-<h2>Admin</h2>
-<ul>
-  <li><%= link_to_remote "Manage Pages", :update => "sitetree", :url => { :controller => 'page_admin', :action => "manage_tree" } %></li>
-  <li><%= link_to_remote 'Account Settings', :update => 'main', :url => { :controller => 'account', :action => 'update' } %></li>
-  <li><%= link_to "Logout", :controller => 'account', :action => 'logout' %></li>
-</ul>
-
+<% if logged_in? %>
+  <div class="sitetree" id="sitetree">
+    <h2>Admin</h2>
+    <ul>
+      <li><%= link_to_remote "Manage Pages", :update => "sitetree", :url => { :controller => 'page_admin', :action => "manage_tree" } %></li>
+      <li><%= link_to_remote 'Account Settings', :update => 'main', :url => { :controller => 'account', :action => 'update' } %></li>
+      <li><%= link_to "Logout", :controller => 'account', :action => 'logout' %></li>
+    </ul>
+  </div>
+<% end %>
