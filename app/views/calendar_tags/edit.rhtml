@@ -1,9 +1,0 @@
-<h1>Editing event types</h1>
-
-<%= form_remote_tag :update => 'main', :url => { :action => 'update', :id => @calendar_tag } %>
-  <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
-<%= end_form_tag %>
-
-<%= link_to_remote 'Show', :update => 'main', :url => { :action => 'show', :id => @calendar_tag } %> |
-<%= link_to_remote 'Back', :update => 'main', :url => { :action => 'list' } %>
