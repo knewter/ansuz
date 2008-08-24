@@ -15,11 +15,7 @@ Ansuz will be licensed initially via GPLv2.
  3. create databases: rake db:create:all
  4. run migrations: rake db:migrate
  5. run tests: rake spec
- 6. start console: script/console
- 7. create a new user: u = User.new :login => ‘admin’, :email => ‘admin@example.com’, :password => ‘admin’, :password_confirmation => ‘admin’
- 8. save the user: u.save
- 9. check the user exists: User.last
-10. exist console: exit
-11. start server: script/server -p 3000
-12. goto: http://localhost:3000/admin
-13. login with admin/admin
+ 6. create a new user (do not use this in production): rake utils:create_admin
+ 7. start server: script/server -p 3000
+ 8. goto: http://localhost:3000/admin
+ 9. login with admin/admin
