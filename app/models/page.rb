@@ -1,3 +1,24 @@
+# == Schema Information
+# Schema version: 2
+#
+# Table name: pages
+#
+#  id            :integer(11)     not null, primary key
+#  name          :string(255)
+#  title         :string(255)
+#  full_title    :string(255)
+#  body          :text
+#  created_at    :datetime
+#  updated_at    :datetime
+#  page_order    :integer(11)     default(0)
+#  parent_id     :integer(11)
+#  page_type     :string(255)     default("page")
+#  display_title :boolean(1)      default(TRUE)
+#  published     :boolean(1)      default(TRUE)
+#  linked        :boolean(1)      default(TRUE)
+#  show_sub_menu :boolean(1)
+#
+
 class Page < ActiveRecord::Base
   acts_as_tree :order => 'page_order'
   before_save :check_page_type, :check_page_order
