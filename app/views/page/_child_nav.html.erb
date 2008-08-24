@@ -1,0 +1,10 @@
+<% if @page.show_sub_menu %>
+  <div id="flatChildNav">
+    <h4>Child Pages:</h4>
+    <ul>
+      <% @page.children.each do |page| %>
+        <li><a href='<%= page.name %>/'><%= page.title %></a></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

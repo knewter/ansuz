@@ -1,28 +1,29 @@
 <!-- Generated Using Ansuz CMS -->
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" id="bodybg">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <title>Ansuz CMS: <%= @page.title if @page%></title>
+    <title>Ansuz CMS: <%= @page.title if @page -%></title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta name="description" content="Ansuz Content Management System" />
   	<meta name="keywords" content="Ansuz Content Management System" />
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
     <link rel="icon"          href="favicon.ico" type="image/vnd.microsoft.icon" />
-    <%= stylesheet_link_tag 'yui-reset-fonts' %>
-	  <%= stylesheet_link_tag 'base' %>
-	  <%= stylesheet_link_tag 'sprite' %>
-    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag 'yui-reset-fonts' -%>
+	  <%= stylesheet_link_tag 'base' -%>
+	  <%= stylesheet_link_tag 'sprite' -%>
+    <%= javascript_include_tag :defaults -%>
     <!--[if lt IE 7.]><%= javascript_include_tag 'pngfix.js' %><![endif]-->
   </head>
   <body>
-  	<div id="header"></div><!-- end div header -->
-  	<div id="navigation"><%= render :partial => "page/flatTopNav"%></div>
-  	<div id="breadcrumb"><%= render :partial => "page/breadcrumb" if @page!=@root %></div>
-  	<div id="content"><%= @content_for_layout %></div> 
-  	<div id="flatChildNav"><%= render :partial => "page/flatChildNav" %></div>
-  	<div id="footer"><%= (render :partial => "page/footer") %></div>
+  	<h1 id="header"><span>Ansuz CMS</span></h1>
+  	<div id="content">
+  	  <%= render :partial => "page/breadcrumb" if @page!=@root -%>
+  	  <%= @content_for_layout -%>
+  	  <%= render :partial => "page/child_nav" if !@page.children.empty? -%>
+  	</div> 
+  	<%= render :partial => "page/top_nav" -%>
+	  <%= render :partial => "page/footer" -%>
   </body>
 </html>

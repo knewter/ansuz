@@ -1,9 +1,0 @@
-<ul>
-  <% @topNav.each do |page| 
-    isActive = (page==@breadcrumb[1]||(@breadcrumb.length==1 && page==@page)) 
-    url = "/"+page.name+"/" %> 
-      <li <%= "id=\"active\"" if isActive -%> >
-        <a href='<%= url %>'><%= page.title -%></a>
-      </li> 
-  <% end %> 
-</ul>
