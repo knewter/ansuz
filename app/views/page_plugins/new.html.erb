@@ -1,0 +1,6 @@
+<h1>New PagePlugin</h1>
+<% form_for @page_plugin do |f| -%>
+  <%= hidden_field_tag(:page_id, params[:page_id]) -%>
+  <%= f.select(:module_type, Ansuz::PluginManagerInstance.plugins.map(&:to_s)) -%>
+  <%= submit_tag("Add Plugin") -%>
+<% end -%>

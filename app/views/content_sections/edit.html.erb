@@ -1,0 +1,6 @@
+<h1>Editing Content Section</h1>
+<% form_for :content_section, :url => content_section_path(@content_section), :html => { :method => :put } do |f| -%>
+  <%= f.text_field(:name) -%><br />
+  <%= f.text_area(:contents) -%><br />
+  <%= submit_tag("Update Content Section") -%>
+<% end -%>

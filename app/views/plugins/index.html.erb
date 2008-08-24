@@ -1,0 +1,6 @@
+<h1>Installed Plugins</h1>
+<ul>
+  <% Ansuz::PluginManagerInstance.plugins.each do |plugin| -%>
+    <li><%= plugin.to_s -%></li>
+  <% end -%>
+</ul>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  page_id: 1
+  module_type: MyString
+  module_id: 
+
+two:
+  page_id: 1
+  module_type: MyString
+  module_id: 

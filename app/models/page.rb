@@ -20,9 +20,10 @@
 #
 
 class Page < ActiveRecord::Base
-  acts_as_tree :order => 'page_order'
-  before_save :check_page_type, :check_page_order
+  acts_as_tree   :order => 'page_order'
+  before_save    :check_page_type, :check_page_order
   attr_protected :page_number, :pages 
+  has_many       :page_plugins
 
   def full_title
     full_title = read_attribute('full_title') 

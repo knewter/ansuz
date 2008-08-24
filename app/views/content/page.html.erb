@@ -1,4 +1,8 @@
 <% if @page.display_title %>
   <h2><%= @page.full_title %></h2>
 <% end %>
-<%= @page.page_body %>
+<% if @page.page_plugins.any? -%>
+  <% @page.page_plugins.each do |plugin| -%>
+    <%= render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
+  <% end -%>
+<% end -%>

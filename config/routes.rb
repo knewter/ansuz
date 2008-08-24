@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :page_plugins
+  map.resources :content_sections
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -39,8 +41,9 @@ ActionController::Routing::Routes.draw do |map|
   # map.resource :admin, :controller => 'admin_pages'
   map.connect 'admin/account/:action/:id', :controller => 'account'
   map.connect 'admin/:action/:id', :controller => 'page_admin'
-  map.connect '*path', :controller => 'page', :action => 'indexer'
   # stock rails routes
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  # Ansuz route
+  map.connect '*path', :controller => 'page', :action => 'indexer'
 end
