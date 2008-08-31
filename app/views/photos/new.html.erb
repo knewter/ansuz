@@ -1,0 +1,7 @@
+<h2>New Photo</h2>
+<% form_for :photo, :url => photo_album_photos_path(@photo_album), :html => { :multipart => true } do |f| -%>
+  Title: <%= f.text_field(:title) -%><br />
+  Caption: <%= f.text_area(:caption) -%><br />
+  File: <%= f.file_field(:photo_album_photo_image) -%><br />
+  <%= submit_tag -%>
+<% end -%>

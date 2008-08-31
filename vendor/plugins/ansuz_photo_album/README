@@ -1,0 +1,17 @@
+AnsuzPhotoAlbum
+===============
+
+This is a photo album module for Ansuz Content Management System.
+
+Dependencies
+============
+paperclip (http://www.thoughtbot.com/projects/paperclip)
+
+
+Example
+=======
+
+Example goes here.
+
+
+Copyright (c) 2008 Josh Adams, Isotope 11, Inc, released under the MIT license

@@ -1,5 +1,5 @@
 class ContentSectionsController < ApplicationController
-  before_filter :load_content_section, :only => [:show, :edit, :update, :destroy]
+  before_filter :load_content_section, :only => [:show, :edit, :update]
   protected
   def load_content_section
     @content_section = Ansuz::JAdams::ContentSection.find(params[:id])

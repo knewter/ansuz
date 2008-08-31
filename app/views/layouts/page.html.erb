@@ -13,7 +13,8 @@
     <%= stylesheet_link_tag 'yui-reset-fonts' -%>
 	  <%= stylesheet_link_tag 'base' -%>
 	  <%= stylesheet_link_tag 'sprite' -%>
-    <%= javascript_include_tag :defaults -%>
+	  <%= stylesheet_link_tag 'lightbox' -%>
+    <%= javascript_include_tag :defaults, 'effects', 'builder', 'lightbox' -%>
     <!--[if lt IE 7.]><%= javascript_include_tag 'pngfix.js' %><![endif]-->
   </head>
   <body>
