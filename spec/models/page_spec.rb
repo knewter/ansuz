@@ -5,19 +5,19 @@ describe Page do
 
   describe '#ancestor_path' do
     it "should return / for the home page" do
-      Page.find_by_name('home').ancestor_path.should eql('/')
+      Page.find_by_name('home').ancestor_path.should eql('/pages/')
     end
 
     it "should return / for the second level page" do
-      Page.find_by_name('second').ancestor_path.should eql('/')
+      Page.find_by_name('second').ancestor_path.should eql('/pages/')
     end
     
     it "should return /second/ for the third level page" do
-      Page.find_by_name('third').ancestor_path.should eql('/second/')
+      Page.find_by_name('third').ancestor_path.should eql('/pages/second/')
     end
 
     it "should return /second/third/ for the fourth level page" do
-      Page.find_by_name('fourth').ancestor_path.should eql('/second/third/')
+      Page.find_by_name('fourth').ancestor_path.should eql('/pages/second/third/')
     end
 
   end

@@ -69,8 +69,8 @@ class Page < ActiveRecord::Base
   def ancestor_path
     path = self.ancestors.reverse
     path.delete_at 0
-    return "/" unless path.length > 0
-    "/" + path.collect(&:name).join('/') + "/"
+    return "/pages/" unless path.length > 0
+    "/pages/" + path.collect(&:name).join('/') + "/"
   end
 
   # Returns page_body from cache
