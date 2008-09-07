@@ -5,7 +5,8 @@ html {
   /* background-image: url(/images/background-blue-squares-2.png); */
   /* background-image: url(/images/background-blue-squares-3.png); */
   /* background-image: url(/images/background-blue-squares-4.png); */
-  background-image: url(/images/background-blue-squares-5.png);
+  /* background-image: url(/images/background-blue-squares-5.png); */
+  background-image: url(/images/background-blue-squares-6.png);
   background-repeat: repeat-x;
 }
 body{
@@ -21,8 +22,9 @@ body{
 #header h1{
   font-size: 200%;
   color: #fff;
-  background-color: #333;
-  padding: 10px;
+  background-color: #000;
+  padding: 10px 0;
+  width: 200px;
 }
 #header h1 span.logo{
   padding-left: 20px;
