@@ -15,6 +15,16 @@ body{
 #header h1{
   font-size: 200%;
   color: #fff;
+  background-color: #333;
+  padding: 10px;
+}
+#header h1 span.logo{
+  padding-left: 20px;
+  background-image: url(/images/ansuz_logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #111;
+  margin-right: 10px;
 }
 #navigation{
   width: 200px;
@@ -31,14 +41,17 @@ body{
   display: block;
   text-decoration: none;
 }
-#navigation li.active a{
+#navigation li.active a,
+#navigation li.active a:hover {
   background-color: #0084ff;
   color: white;
+  cursor: default;
 }
 #navigation li a:hover {
   color: white;
   border-left: 4px solid #0084ff;
   padding-left: 6px;
+  background-color: #222;
 }
 div#breadcrumb{
  background-color: #222;
