@@ -97,7 +97,8 @@ RailsRuby /usr/bin/ruby1.8
   task :config_vhost do
     vhost_config =<<-EOF
 <VirtualHost *:80>
-ServerName  ansuz.homelinux.net
+ServerName  ansuzcms.com
+ServerName  www.ansuzcms.com
 DocumentRoot #{deploy_to}/current/public
   <Directory "#{deploy_to}/current/public">
     Options FollowSymLinks
