@@ -1,4 +1,5 @@
 class ContentSectionsController < ApplicationController
+  layout 'admin'
   before_filter :load_content_section, :only => [:show, :edit, :update]
   protected
   def load_content_section
