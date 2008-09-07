@@ -1,6 +1,11 @@
 html {
   background:#000;
   color: #ddd;
+  /* background-image: url(/images/background-blue-squares.png); */
+  /* background-image: url(/images/background-blue-squares-2.png); */
+  /* background-image: url(/images/background-blue-squares-3.png); */
+  background-image: url(/images/background-blue-squares-4.png);
+  background-repeat: repeat-x;
 }
 body{
   font-family: "Gill Sans","Franklin Gothic Medium","Lucida Grande",Arial,Helvetica;
