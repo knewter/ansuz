@@ -34,3 +34,20 @@ html {background:#fff;}
 div.clear{
   clear: both;
 }
+h2{
+  font-size: 175%;
+  color: #933;
+}
+h3{
+  font-size: 150%;
+  color: #933;
+}
+p{
+  margin-bottom: 10px;
+}
+ol{
+  margin-left: 20px;
+}
+ol li{
+  list-style-type: decimal;
+}
