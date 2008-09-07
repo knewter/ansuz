@@ -29,11 +29,18 @@ body{
 }
 #header .credits{
   display: block;
-  background-color: #000a17;
+  background-color: #c2c655;
+  color: #111;
   position: absolute;
   top: 0;
   left: 500px;
-  padding: 10px;
+  padding: 4px 10px 10px 10px;
+  line-height: 1.4em;
+}
+#header .credits a{
+  background-color: #868a1f;
+  padding: 2px;
+  color: white;
 }
 #header h1 span.logo{
   padding-left: 20px;
