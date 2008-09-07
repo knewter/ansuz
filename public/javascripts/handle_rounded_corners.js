@@ -1,0 +1,1 @@
+Nifty('div.module');
