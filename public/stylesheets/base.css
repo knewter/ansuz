@@ -1,10 +1,20 @@
-html {background:#fff;}
+html {
+  background:#000;
+  color: #ddd;
+}
+body{
+  font-family: "Gill Sans","Franklin Gothic Medium","Lucida Grande",Arial,Helvetica;
+}
 #main{
   width: 800px;
   margin: 0 auto;
 }
 #header{
-  height: 100px;
+  margin-bottom: 10px;
+}
+#header h1{
+  font-size: 200%;
+  color: #fff;
 }
 #navigation{
   width: 200px;
@@ -16,19 +26,35 @@ html {background:#fff;}
 }
 #navigation li a{
   padding: 5px 10px;
-  background-color: #993333;
-  color: #ffffff;
+  background-color: #111;
+  color: #ccc;
   display: block;
   text-decoration: none;
 }
-#navigation li.active a, #navigation li a:hover {
-  background-color: #edded6;
-  color: #aa301c;
+#navigation li.active a{
+  background-color: #0084ff;
+  color: white;
+}
+#navigation li a:hover {
+  color: white;
+  border-left: 4px solid #0084ff;
+  padding-left: 6px;
+}
+div#breadcrumb{
+ background-color: #222;
+ margin: -10px -10px 5px -10px;
+ padding: 10px;
 }
 #content{
   width: 570px;
-  background-color: #ddd;
+  background-color: #333;
   float: left;
+  padding: 10px;
+}
+#footer{
+  margin-top: 10px;
+  background-color: #111;
+  color: #aaa;
   padding: 10px;
 }
 div.clear{
@@ -36,11 +62,13 @@ div.clear{
 }
 h2{
   font-size: 175%;
-  color: #933;
+  color: #0084ff;
 }
 h3{
-  font-size: 150%;
-  color: #933;
+  font-size: 120%;
+  color: #0084ff;
+  background-color: #111;
+  padding: 6px 10px;
 }
 p{
   margin-bottom: 10px;
@@ -50,4 +78,12 @@ ol{
 }
 ol li{
   list-style-type: decimal;
+}
+.module{
+  background-color: #333;
+  color: #ccc;
+  padding: 10px;
+}
+a{
+  color: #0084FF;
 }
