@@ -1,1 +1,36 @@
 html {background:#fff;}
+#main{
+  width: 800px;
+  margin: 0 auto;
+}
+#header{
+  height: 100px;
+}
+#navigation{
+  width: 200px;
+  float: left;
+  margin: 0 10px 0 0;
+}
+#navigation h3{
+  display: none;
+}
+#navigation li a{
+  padding: 5px 10px;
+  background-color: #993333;
+  color: #ffffff;
+  display: block;
+  text-decoration: none;
+}
+#navigation li.active a, #navigation li a:hover {
+  background-color: #edded6;
+  color: #aa301c;
+}
+#content{
+  width: 570px;
+  background-color: #ddd;
+  float: left;
+  padding: 10px;
+}
+div.clear{
+  clear: both;
+}

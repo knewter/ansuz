@@ -3,7 +3,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <title>Ansuz CMS: <%= @page.title if @page -%></title>
+    <title>Ansuz - <%= @page.title if @page -%></title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta name="description" content="Ansuz Content Management System" />
@@ -18,13 +18,20 @@
     <!--[if lt IE 7.]><%= javascript_include_tag 'pngfix.js' %><![endif]-->
   </head>
   <body>
-  	<h1 id="header"><span>Ansuz CMS</span></h1>
-  	<div id="content">
-  	  <%= render :partial => "page/breadcrumb" if @page!=@root -%>
-  	  <%= @content_for_layout -%>
-  	  <%= render :partial => "page/child_nav" if !@page.children.empty? -%>
-  	</div> 
-  	<%= render :partial => "page/top_nav" -%>
-	  <%= render :partial => "page/footer" -%>
+    <div id='wrapper'>
+      <div id="main">
+        <div id='header'>
+          <h1><span>Ansuz CMS</span></h1>
+        </div>
+        <%= render :partial => "page/top_nav" -%>
+        <div id='content'>
+          <%= render :partial => "page/breadcrumb" if @page!=@root -%>
+          <%= @content_for_layout -%>
+          <%= render :partial => "page/child_nav" if !@page.children.empty? -%>
+        </div>
+        <div class='clear'></div>
+        <%= render :partial => "page/footer" -%>
+      </div> 
+    </div>
   </body>
 </html>

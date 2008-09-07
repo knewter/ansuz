@@ -1,10 +1,10 @@
 <div id="navigation">
-<h3>Navigation:</h3>
+  <h3>Navigation:</h3>
   <ul>
     <% @topNav.each do |page| 
-      isActive = (page==@breadcrumb[1]||(@breadcrumb.length==1 && page==@page)) 
-      url = "/"+page.name+"/" %> 
-        <li <%= "id=\"active\"" if isActive -%> >
+      isActive = (page == @breadcrumb[1] || page == @page)
+      url = "/pages/" + page.name + "/" %> 
+        <li <%= "class=\"active\"" if isActive -%>>
           <a href='<%= url %>'><%= page.title -%></a>
         </li> 
     <% end %> 

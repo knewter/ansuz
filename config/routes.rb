@@ -12,4 +12,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id.:format'
   # Ansuz route
   map.connect 'pages/*path', :controller => 'page', :action => 'indexer'
+  map.connect '', :controller => 'page', :action => 'indexer', :path => ''
 end
