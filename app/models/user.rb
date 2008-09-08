@@ -16,6 +16,8 @@
 
 require 'digest/sha1'
 class User < ActiveRecord::Base
+  include SavageBeast::UserInit
+
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
@@ -33,6 +35,15 @@ class User < ActiveRecord::Base
   def self.authenticate(login, password)
     u = find_by_login(login) # need to get the salt
     u && u.authenticated?(password) ? u : nil
+  end
+
+  def display_name
+    login
+  end
+
+  # TODO: We should implement a rough version of this method
+  def currently_online
+    false
   end
 
   # Encrypts some data with the salt.

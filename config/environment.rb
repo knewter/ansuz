@@ -10,6 +10,9 @@ RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+# engines
+require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
+
 require 'ansuz'
 # Initialize the Ansuz Plugin Manager instance
 Ansuz::PluginManagerInstance = Ansuz::PluginManager.new

@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :page_plugins
+  map.from_plugin :savage_beast
 
   # These routes need to be provided by the plugins via engines
   map.resources :content_sections

@@ -80,6 +80,24 @@ module VersionFu
     def find_version(number)
       versions.find :first, :conditions=>{:version=>number}
     end
+
+    def load_version(version)
+      new = self.find_version(version)
+      if new.nil?
+        return false
+      end
+     self.attributes = self.versioned_colums.inject({}){|group, name| group[name] = new.read_attribute(name); group}
+
+    end
+
+    def load_version!(version)
+      self.load_version(version)
+      self.save
+    end
+
+    def load_version?(version)
+      !self.find_version(version).nil?
+    end
     
     def check_for_new_version
       instatiate_revision if create_new_version?
