@@ -1,6 +1,8 @@
 class PhotoAlbumsController < ApplicationController
   before_filter :load_photo_album, :only => [:show, :update]
   before_filter :load_photos,      :only => [:show]
+  layout 'admin'
+  
   protected
   def load_photo_album
     @photo_album = Ansuz::JAdams::PhotoAlbum.find(params[:id])

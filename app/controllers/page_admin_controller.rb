@@ -2,6 +2,7 @@ class PageAdminController < ApplicationController
   include PageAdminHelper
   before_filter :login_required
   before_filter :load_page, :only => [:edit, :update, :destroy, :shift_order]
+  layout 'admin'
 
   protected
   def load_page
@@ -9,12 +10,15 @@ class PageAdminController < ApplicationController
   end
 
   public
-	
-  def index 
-    @index_page = Page.root
-    render :layout => 'admin'
-  end
 
+	def index
+    @page_hierarchy = Page.all
+    respond_to do |format|
+      format.html # index.rhtml
+      format.xml  { render :xml => @marketing.to_xml }
+    end
+  end
+	
   def edit
   end 
 
