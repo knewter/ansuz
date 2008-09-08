@@ -17,7 +17,6 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
   include SavageBeast::UserInit
-
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 

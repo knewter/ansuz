@@ -8,6 +8,9 @@ By combing the CMSes of Isshen Solutions and Isotope 11, we plan to create
 a best-of-breed technology suitable for production use on a myriad of sites. 
 Ansuz will be licensed initially via GPLv2.
 
+== Gem Dependencies
+- mislav-will_paginate
+
 == Quick Start
 
  1. clone from github: git clone git://github.com/knewter/ansuz.git
