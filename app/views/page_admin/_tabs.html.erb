@@ -1,0 +1,10 @@
+<% if logged_in? %>
+  <div id="hd">
+    <ul>
+      <li><%= create_tab('Manage Pages', 'page_admin', 'manage_tree') %></li>
+      <li><%= create_tab('List Plugins', 'plugins_path', 'index') %></li>
+      <li><%= create_tab('Account Settings', 'account', 'update') %></li>
+      <li><%= create_tab('Logout', 'account', 'logout') %></li>
+    </ul>
+  </div>
+<% end %>

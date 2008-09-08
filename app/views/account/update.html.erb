@@ -2,7 +2,7 @@
 <div id="message"><%= flash[:notice] %></div>
 <% end -%>
 <%= error_messages_for :user %>
-<% remote_form_for(:user, @user, :url => { :action => 'update' }, :update => 'main') do |f| -%>
+<% form_for :user, @user, :url => { :action => 'update' } do |f| -%>
 
 <p><label for="password">New Password</label><br/>
 <%= f.password_field :password %></p>

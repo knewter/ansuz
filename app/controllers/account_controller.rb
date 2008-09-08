@@ -25,7 +25,7 @@ class AccountController < ApplicationController
     #@user = User.find(params[:user])
     @user = self.current_user
     unless request.post? and params[:user] and params[:user][:password]
-			render :template => 'account/update', :layout => false
+			render :template => 'account/update'
 			return
     end
     #auth = User.authenticate(@user.login, params[:user][:password])
