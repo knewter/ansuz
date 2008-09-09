@@ -1,4 +1,6 @@
 class ContentSectionsController < ApplicationController
+  unloadable # This is required if you subclass a controller provided by the base rails app
+
   layout 'admin'
   before_filter :load_content_section, :only => [:show, :edit, :update]
   protected

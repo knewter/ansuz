@@ -1,7 +1,6 @@
-Ansuz::JAdams::PhotoAlbumPhoto
-Ansuz::JAdams::PhotoAlbumPhoto
-
 class PhotosController < ApplicationController
+  unloadable # This is required if you subclass a controller provided by the base rails app
+
   before_filter :load_photo_album
   before_filter :load_new_photo, :only => [:new, :create]
   protected
