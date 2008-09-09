@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   before_filter :login_from_cookie
+  helper :all
 
   def set_layout_variables
     @root = Page.root
