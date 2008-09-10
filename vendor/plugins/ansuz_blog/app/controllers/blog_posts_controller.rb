@@ -1,4 +1,4 @@
-class BlogPostsController < ApplicationController
+class BlogPostsController < Admin::BaseController
   unloadable # This is required if you subclass a controller provided by the base rails app
 
   layout 'admin'

@@ -1,10 +1,11 @@
 class Ansuz
   class PluginManager
-    attr_accessor :plugins, :plugin_nav
+    attr_accessor :plugins, :plugin_nav, :admin_plugin_nav
 
     def initialize
       @plugins = []
       @plugin_nav = []
+      @admin_plugin_nav = []
     end
 
     # A plugin can call register_plugin(ClassName) to add itself to the plugins array
@@ -16,6 +17,12 @@ class Ansuz
     # user-facing navigation menu
     def register_plugin_nav title, link
       self.plugin_nav << [title, link]
+    end
+
+    # A plugin can call register_admin_plugin_nav(title, link) to add itself to the
+    # admin-facing navigation menu
+    def register_admin_plugin_nav title, link
+      self.admin_plugin_nav << [title, link]
     end
   end
 end
