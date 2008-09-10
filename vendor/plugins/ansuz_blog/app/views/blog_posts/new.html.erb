@@ -1,0 +1,5 @@
+<h2>New Blog Post</h2>
+<% form_for :blog_post, :url => blog_posts_path do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } -%>
+  <%= submit_tag("Create Post") -%>
+<% end -%>

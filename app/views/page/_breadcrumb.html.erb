@@ -4,5 +4,7 @@
       url = (url!="")? url+crumb.name+"/" : url = "/" %>
   <%= link_to crumb.title, ((url=='/')? '/' + @root.name + '/' : url ) %> &gt; 
   <% end %>
-  <b><%= (@pageNum!=nil)? link_to(@page.title, './') + " &gt; page " + @pageNum.to_s : @page.title %></b>
+  <% if @page -%>
+    <b><%= (@pageNum!=nil)? link_to(@page.title, './') + " &gt; page " + @pageNum.to_s : @page.title %></b>
+  <% end -%>
 </div>

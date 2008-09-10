@@ -1,12 +1,13 @@
 <div id="navigation">
   <h3>Navigation:</h3>
-  <ul>
+  <ul id='top-nav'>
     <% @topNav.each do |page| 
-      isActive = (page == @breadcrumb[1] || page == @page)
+      isActive = @breadcrumb && (page == @breadcrumb[1] || page == @page)
       url = "/pages/" + page.name + "/" %> 
         <li <%= "class=\"active\"" if isActive -%>>
           <a href='<%= url %>'><%= page.title -%></a>
         </li> 
     <% end %> 
   </ul>
+  <%= render :partial => "page_plugins/plugins_nav" -%>
 </div>

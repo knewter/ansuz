@@ -1,0 +1,10 @@
+<div class='blog_post'>
+  <h2><%=h @blog_post.title -%></h2>
+  <ul class='toolbar'>
+    <li><%= link_to "Edit Blog Post", edit_blog_post_path(@blog_post) -%></li>
+    <li><%= link_to "All Blog Posts", blog_posts_path -%></li>
+  </ul>
+  <div class='contents'>
+    <%= @blog_post.contents -%>
+  </div>
+</div>
