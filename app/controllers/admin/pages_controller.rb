@@ -1,27 +1,23 @@
-class PageAdminController < ApplicationController
-  before_filter :load_admin_plugin_nav # This needs to happen in an Admin::BaseController
+class Admin::PagesController < Admin::BaseController
   include PageAdminHelper
   before_filter :login_required
+  before_filter :load_new_page, :only => [:new, :create]
   before_filter :load_page, :only => [:edit, :update, :destroy, :shift_order]
-  layout 'admin'
 
   protected
   def load_page
     @page = Page.find params[:id] 
   end
 
-  def load_admin_plugin_nav
-    # The plugin nav comes across as an array of arrays like [text, url]
-    @admin_plugin_nav = Ansuz::PluginManagerInstance.admin_plugin_nav
+  def load_new_page
+    @page = Page.new(params[:page])
   end
 
   public
-
 	def index
     @page_hierarchy = Page.all
     respond_to do |format|
       format.html # index.rhtml
-      format.xml  { render :xml => @marketing.to_xml }
     end
   end
 	
@@ -33,27 +29,25 @@ class PageAdminController < ApplicationController
       flash.now[:message] = 'Page Updated Successfully'
       @preview_url = @page.ancestor_path + @page.name
       @page_id = @page.id
-      render :template => 'page_admin/preview'
+      render :template => 'preview'
     else
       render :action => 'edit'
     end
   end
 
   def new
-    @page = Page.new
     @page.linked, @page.published = true, true
     @page.parent_id = params[:parent_id] if params[:parent_id]
     @page.page_order = params[:page_order] if params[:page_order]
   end 
  
   def create
-    @page = Page.new(params[:page])
     @page.name = @page.name.gsub(' ', '_')
     if @page.save
       flash.now[:message] = 'Page Added Successfully'
       @preview_url = @page.ancestor_path + @page.name
       @page_id = @page.id
-      render 'page_admin/preview', "<h1>Page Added Successfully</h1>"
+      render 'preview', "<h1>Page Added Successfully</h1>"
     else
       render :action => 'new'
     end
@@ -72,7 +66,7 @@ class PageAdminController < ApplicationController
  def menu
    # @admin = admin?
    if params[:id]
-     render :partial => "menu/"+params[:id]
+     render :partial => "menu/" + params[:id]
    else
      render :partial => "menu/main"
    end
