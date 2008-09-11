@@ -40,7 +40,7 @@ function notice_growl_template()
 		};	
 }
 
-// Trigger a growl alert. Call one of the above template methods if you want to 
+// Trigger a growl alert. Call one of the above template methods before this guy if you want to style it
 function notify(message, title)
 {
 	jQuery.growl(title || 'Notice', message || '');
@@ -50,7 +50,7 @@ function notify(message, title)
 
 jQuery(document).ready(function()
 {
-	// Prevent the default growl settings from being overwritten. OH NOES A GLOBAL
+	// Prevent the default growl settings from being overwritten.
 	$default_growl_settings = jQuery.growl.settings;
 	
 	var jq = jQuery.noConflict();	
