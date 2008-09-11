@@ -22,11 +22,11 @@ body{
   margin-bottom: 10px;
 }
 #header h1{
-  font-size: 131%;
+  font-size: 260%;
   color: #fff;
   background-color: #000;
   padding: 10px 0;
-  width: 200px;
+  width: 260px;
 }
 #header .credits{
   display: block;
