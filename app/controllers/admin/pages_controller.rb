@@ -29,7 +29,7 @@ class Admin::PagesController < Admin::BaseController
       flash.now[:message] = 'Page Updated Successfully'
       @preview_url = @page.ancestor_path + @page.name
       @page_id = @page.id
-      render :template => 'preview'
+      render :action => 'preview'
     else
       render :action => 'edit'
     end
