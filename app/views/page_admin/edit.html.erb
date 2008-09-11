@@ -11,9 +11,10 @@
 <% end -%>
 
 <h2>Plugins on this page</h2>
-<ul class='page_plugins'>
+<ul id="page_plugins" class='page_plugins'>
   <% @page.page_plugins.each do |plugin| -%>
-    <li><%= link_to(plugin.module_type, edit_page_plugin_path(plugin.id)) -%></li>
+    <li><%= link_to(plugin.module_type, plugin.module.edit_path, :class => 'edit_page_plugin') -%></li>
   <% end -%>
 </ul>
 <%= link_to "Add Plugin", new_page_plugin_path(:page_id => @page.id) -%>
+<div id="modal" class="jqmWindow"></div>

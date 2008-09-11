@@ -12,15 +12,18 @@ class ContentSectionsController < ApplicationController
   end
 
   def edit
+    render :partial => 'edit', :layout => false
   end
 
   def update
     if @content_section.update_attributes(params[:content_section])
-      flash[:notice] = "Content Section has been updated."
-      redirect_to content_section_path(@content_section)
+      render :update do |page|
+        page << "notify('Content Section has been updated'); jQuery('#modal').jqmHide();"
+      end
     else
-      flash.now[:error] = "There was a problem updating the ContentSection.  Please try again."
-      render :action => 'edit'
+      render :update do |page|
+        page << "notify('An error occurred updating the content section'); jQuery('#modal').jqmHide();"
+      end
     end
   end
 end
