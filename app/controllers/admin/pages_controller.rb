@@ -44,10 +44,19 @@ class Admin::PagesController < Admin::BaseController
   def create
     @page.name = @page.name.gsub(' ', '_')
     if @page.save
-      flash.now[:message] = 'Page Added Successfully'
+      message = 'Page Added Successfully'
       @preview_url = @page.ancestor_path + @page.name
       @page_id = @page.id
-      render 'preview', "<h1>Page Added Successfully</h1>"
+      respond_to do |format|
+        format.html{ 
+          flash[:notice] = message
+          redirect_to admin_pages_path
+        }
+        format.js{
+          flash.now[:message] = message
+          render 'preview', "<h1>Page Added Successfully</h1>"
+        }
+      end
     else
       render :action => 'new'
     end
@@ -59,8 +68,15 @@ class Admin::PagesController < Admin::BaseController
      sub.parent_id = 0
      sub.save
    end
+   page_name = @page.name
    @page.destroy
-   manage_tree
+   respond_to do |format|
+     format.html{
+       flash[:notice] = "Page: #{page_name} was deleted"
+       redirect_to admin_pages_path
+     }
+     format.js{ manage_tree }
+   end
  end
 
  def menu
@@ -76,9 +92,10 @@ class Admin::PagesController < Admin::BaseController
   def shift_order
     @page.swap! params[:shift].to_i if @page and params[:shift]
     params[:parent_id] = @page.parent_id
-    manage_tree
-    #rescue
-    # render_text "An Error has occured!" # Add something more graceful later
+    respond_to do |format|
+      format.html{ redirect_to admin_pages_path }
+      format.js{ manage_tree }
+    end
   end
  
   def manage_tree

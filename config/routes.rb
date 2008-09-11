@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
   map.namespace :admin do |admin|
-    admin.resources :pages
+    admin.resources :pages, :member => [:shift_order]
     admin.resources :page_plugins
     admin.resources :plugins
     admin.resource  :account

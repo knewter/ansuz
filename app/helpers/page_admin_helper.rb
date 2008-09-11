@@ -77,14 +77,12 @@ module PageAdminHelper
       acts_as_tree_set.collect do |item|
         next if item.parent_id && init
         ret << '<li>'
-        ret += yield item
-        ret << ' (page controls partial)'
+        ret << yield(item)
+        ret << render(:partial => 'page_controls', :locals => { :page => item })
         ret << tree_ul(item.children, false, &block) if item.children.size > 0
         ret << '</li>'
       end
       ret << '</ul>'
     end
   end
-  
-  
 end
