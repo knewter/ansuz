@@ -83,6 +83,18 @@ jQuery(document).ready(function()
 		return false
 	});
 	
+	// Make ESC close modal windows
+	jq(document).keypress(function(e)
+	{
+		if( e.which === 0 )
+		{
+			var windows = jq('#modal, .jqmWindow');
+			if( windows )
+			{
+				windows.jqmHide(); // doesn't seem to work with the iframe > textarea thing focused. meh
+			}
+		}
+	})
 });
 
 
