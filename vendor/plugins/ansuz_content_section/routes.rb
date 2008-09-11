@@ -1,3 +1,3 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :wiki_sections
+  map.resources :content_sections
 end
