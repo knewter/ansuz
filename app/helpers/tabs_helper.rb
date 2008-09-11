@@ -1,6 +1,6 @@
 module TabsHelper
-  def create_tab(tab_name, tab_controller, tab_action)
-    link_to_unless_current("#{tab_name}", {:controller => "#{tab_controller}", :action => "#{tab_action}"}) do
+  def create_tab(tab_name, url)
+    link_to_unless_current(tab_name, url) do
       output = '<span>'
       output << tab_name
       output << '</span>'

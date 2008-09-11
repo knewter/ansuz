@@ -16,5 +16,5 @@
     <li><%= link_to(plugin.module_type, plugin.module.edit_path, :class => 'edit_page_plugin') -%></li>
   <% end -%>
 </ul>
-<%= link_to "Add Plugin", new_page_plugin_path(:page_id => @page.id) -%>
+<%= link_to "Add Plugin", new_admin_page_plugin_path(:page_id => @page.id) -%>
 <div id="modal" class="jqmWindow"></div>

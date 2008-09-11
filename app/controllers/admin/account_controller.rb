@@ -1,5 +1,5 @@
-class AccountController < ApplicationController
-  layout 'admin'
+class Admin::AccountController < Admin::BaseController
+  skip_filter :login_required, :only => [:login]
 
   # say something nice, you goof!  something sweet.
   def index
@@ -16,7 +16,7 @@ class AccountController < ApplicationController
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
       flash[:message] = "Logged in successfully"
-      redirect_back_or_default(:controller => 'page_admin', :action => 'index')
+      redirect_back_or_default(admin_pages_path)
     end
     flash.now[:message] = 'Invalid username and password.'
   end
@@ -37,11 +37,11 @@ class AccountController < ApplicationController
 		
     flash[:notice] = "Your login information has been updated."
 		@user.password = @user.password_confirmation = '' # Blank out passwords
-		render :template => 'account/update', :layout => false
+		render :template => 'admin/account/update', :layout => false
   rescue ActiveRecord::RecordInvalid
 		# Blank out password and password confirmation
 		@user.password = @user.password_confirmation = '';
-    render :template => 'account/update', :layout => false
+    render :template => 'admin/account/update', :layout => false
   end
 
 #  def signup
@@ -60,6 +60,6 @@ class AccountController < ApplicationController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "You have been logged out."
-    redirect_back_or_default(:controller => 'account', :action => 'login')
+    redirect_back_or_default(login_admin_account_path)
   end
 end

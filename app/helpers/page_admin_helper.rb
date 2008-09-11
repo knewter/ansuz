@@ -9,10 +9,11 @@ module PageAdminHelper
 		post_id = page.parent_id.to_s
     output = []
 		output << link_to_remote(page.title, {
-			:update => 'main',
-		  :url => { :action => 'edit', :id => page.id, :tree_post_id => post_id},},
-			:class => "tree_title"
-			) + " "
+          :update => 'main',
+          :url => edit_admin_page_path(page)
+        },
+        :class => "tree_title"
+      ) + " "
 			
     output << link_to_remote( "dn",  
 			{	:update => "item#{post_id}", 

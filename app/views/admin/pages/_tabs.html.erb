@@ -1,11 +1,11 @@
 <% if logged_in? %>
   <div id="hd">
     <ul>
-      <li><%= create_tab('Manage Pages', 'page_admin', '') %></li>
-      <li><%= create_tab('List Plugins', 'plugins', '') %></li>
-      <li><%= create_tab('Account Settings', 'account', 'update') %></li>
-      <li><%= create_tab('Logout', 'account', 'logout') %></li>
+      <li><%= create_tab('Manage Pages', '/admin/pages') %></li>
+      <li><%= create_tab('List Plugins', '/admin/plugins') %></li>
+      <li><%= create_tab('Account Settings', '/admin/account/update') %></li>
+      <li><%= create_tab('Logout', '/admin/account/logout') %></li>
     </ul>
-    <%= render :partial => "page_plugins/admin_plugins_nav" -%>
+    <%= render :partial => "admin/page_plugins/admin_plugins_nav" -%>
   </div>
 <% end %>

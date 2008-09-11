@@ -1,8 +1,7 @@
-class PagePluginsController < ApplicationController
+class Admin::PagePluginsController < Admin::BaseController
   before_filter :load_page, :only => [:new, :create]
   before_filter :load_new_page_plugin, :only => [:new, :create]
   before_filter :load_page_plugin, :only => [:edit]
-  layout 'admin'
 
   protected
   def load_page
