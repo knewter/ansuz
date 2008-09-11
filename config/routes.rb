@@ -1,11 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.from_plugin :savage_beast
+  map.from_plugin :ansuz_content_section
+  map.from_plugin :ansuz_photo_album
+  map.from_plugin :ansuz_blog
   map.resources :page_plugins
   map.resources :users
-
-  # These routes need to be provided by the plugins via engines
-  map.resources :content_sections
-  map.resources :photo_albums, :has_many => [:photos]
 
   map.connect 'admin/account/:action/:id', :controller => 'account'
   map.connect 'admin/:action/:id', :controller => 'page_admin'

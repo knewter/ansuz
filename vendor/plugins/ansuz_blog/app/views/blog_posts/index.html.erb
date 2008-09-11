@@ -1,0 +1,25 @@
+<h2>Blog Posts</h2>
+<%= link_to "New Blog Post", new_blog_post_path -%>
+<table class='subdued'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blog_posts.each do |blog_post| -%>
+      <tr class='<%= cycle('odd', 'even') -%>'>
+        <td><%=h blog_post.title -%></td>
+        <td><%= blog_post.created_at.to_s(:db) -%></td>
+        <td>
+          <ul class='admin_actions'>
+            <li><%= link_to "Edit", edit_blog_post_path(blog_post) -%></li>
+            <li><%= link_to "Delete", blog_post_path(blog_post), :method => :delete, :confirm => "Are you sure you want to delete this blog post?" -%></li>
+          </ul>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

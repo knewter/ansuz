@@ -1,4 +1,5 @@
 class PageAdminController < ApplicationController
+  before_filter :load_admin_plugin_nav # This needs to happen in an Admin::BaseController
   include PageAdminHelper
   before_filter :login_required
   before_filter :load_page, :only => [:edit, :update, :destroy, :shift_order]
@@ -7,6 +8,11 @@ class PageAdminController < ApplicationController
   protected
   def load_page
     @page = Page.find params[:id] 
+  end
+
+  def load_admin_plugin_nav
+    # The plugin nav comes across as an array of arrays like [text, url]
+    @admin_plugin_nav = Ansuz::PluginManagerInstance.admin_plugin_nav
   end
 
   public

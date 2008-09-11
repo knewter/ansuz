@@ -34,9 +34,9 @@
         </div>
         <%= render :partial => "page/top_nav" -%>
         <div id='content'>
-          <%= render :partial => "page/breadcrumb" if @page!=@root -%>
+          <%= render :partial => "page/breadcrumb" if (@page && (@page != @root)) -%>
           <%= @content_for_layout -%>
-          <%= render :partial => "page/child_nav" if !@page.children.empty? -%>
+          <%= render :partial => "page/child_nav" if (@page && (!@page.children.empty?)) -%>
         </div>
         <div class='clear'></div>
         <%= render :partial => "page/footer" -%>
