@@ -14,18 +14,20 @@ Ansuz will be licensed initially via GPLv2.
 == Quick Start
 
  1. clone from github: git clone git://github.com/knewter/ansuz.git
- 2. create database config in config/database.yml (see config/database.yml.example if you need help)
- 3. create databases: rake db:create:all
- 4. run migrations: rake db:migrate
- 5. run tests: rake spec
- 6. create a new user (do not use this in production): rake utils:create_admin
- 7. start server: script/server -p 3000
- 8. goto: http://localhost:3000/admin
- 9. login with admin/admin
+ 2. install gems: rake gems:install
+ 3. create database config in config/database.yml (see config/database.yml.example if you need help)
+ 4. create databases: rake db:create:all
+ 5. run migrations: rake db:migrate
+ 6. run plugin migrations: rake db:migrate:plugins 
+ 7. run tests: rake spec
+ 8. create a new user (do not use this in production): rake utils:create_admin
+ 9. start server: script/server -p 3000
+ 10. goto: http://localhost:3000/admin
+ 11. login with admin/admin
 
 == This software is GPLv2
 
- Copyright (C) 2008 Josh Adams, Isotope 11, Inc. and Adam Dill, Isshen Solutions, Inc.
+ Copyright (C) 2008 Josh Adams and James Cook, Isotope 11, Inc. and Adam Dill, Isshen Solutions, Inc.
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -44,6 +46,7 @@ Ansuz will be licensed initially via GPLv2.
  For help, feel free to contact the authors at:
 
  josh at isotope11.com
+ james at isotope11.com
  adam at isshen.com
 
  = Physical Address 
