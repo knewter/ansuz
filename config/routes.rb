@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :plugins
     admin.resource  :account
     admin.connect 'account/:action/:id', :controller => 'account'
+    admin.resource  :site_settings
   end
   map.connect '/admin', :controller => 'admin/pages'
 

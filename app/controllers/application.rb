@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
+  include SiteSettingsHelper
   before_filter :login_from_cookie, :setup_plugin_nav, :set_layout_variables
   helper :all
+  theme  :get_theme_setting
 
   def set_layout_variables
     @root = Page.root

@@ -1,0 +1,46 @@
+<!-- Generated Using Ansuz CMS -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Ansuz - <%= @page.title if @page -%> - with themes!</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta name="description" content="Ansuz Content Management System" />
+  	<meta name="keywords" content="Ansuz Content Management System" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="icon"          href="favicon.ico" type="image/vnd.microsoft.icon" />
+    <%= stylesheet_link_tag 'yui-reset-fonts' -%>
+	  <%= theme_stylesheet_link_tag 'base' -%>
+	  <%= stylesheet_link_tag 'sprite' -%>
+	  <%= stylesheet_link_tag 'lightbox' -%>
+    <%= javascript_include_tag :defaults, 'effects', 'builder', 'lightbox', 'niftycube', 'handle_rounded_corners', 'jquery', 'jqModal', 'jquery.growl.js', 'ansuz/growls' -%>
+    <!--[if lt IE 7.]><%= javascript_include_tag 'pngfix.js' %><![endif]-->
+  </head>
+  <body>
+    <div id='wrapper'>
+      <div id="main">
+        <div id='header'>
+          <h1>
+            <span class='logo'></span>
+            <span>Ansuz CMS</span>
+          </h1>
+          <span class='credits'>
+            An open source CMS co-developed by: 
+            <a href="http://www.isotope11.com">Isotope Eleven</a>, 
+            <a href="http://www.isshen.com">Isshen</a>, and 
+            <a href="http://github.com/knewter/ansuz/tree/master">you</a>. 
+          </span>
+        </div>
+        <%= render :partial => "page/top_nav" -%>
+        <div id='content'>
+          <%= render :partial => "page/breadcrumb" if (@page && (@page != @root)) -%>
+          <%= @content_for_layout -%>
+          <%= render :partial => "page/child_nav" if (@page && (!@page.children.empty?)) -%>
+        </div>
+        <div class='clear'></div>
+        <%= render :partial => "page/footer" -%>
+      </div> 
+    </div>
+  </body>
+</html>
