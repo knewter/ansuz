@@ -14,8 +14,8 @@ Ansuz will be licensed initially via GPLv2.
 == Quick Start
 
  1. clone from github: git clone git://github.com/knewter/ansuz.git
- 2. install gems: rake gems:install
- 3. create database config in config/database.yml (see config/database.yml.example if you need help)
+ 2. create database config in config/database.yml (see config/database.yml.example if you need help)
+ 3. install gems: rake gems:install
  4. create databases: rake db:create:all
  5. run migrations: rake db:migrate
  6. run plugin migrations: rake db:migrate:plugins 
@@ -24,6 +24,8 @@ Ansuz will be licensed initially via GPLv2.
  9. start server: script/server -p 3000
  10. goto: http://localhost:3000/admin
  11. login with admin/admin
+
+ NOTE: SQLite has problems with ansuz, please don't use it for now.
 
 == This software is GPLv2
 
