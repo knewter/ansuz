@@ -53,29 +53,23 @@ jQuery(document).ready(function()
 	jq('a.edit_page_plugin', jq('#page_plugins')).click(function()
 	{
 		var modal = jq('#modal');
-		if(modal.html() == "")
-		{
-			jq.ajax({
-				type: 'GET',
-				url: jq(this).attr('href'),
-				complete: function(transport)
-				{
-					modal.jqm({overlay: 50});
+		jq.ajax({
+			type: 'GET',
+			url: jq(this).attr('href'),
+			complete: function(transport)
+			{
+				modal.jqm({overlay: 50});
 
-					jq('a.jqmClose').click(function(){
-						jq(this).jqmHide();
-						return false;
-					});
-					
-					modal.jqmHide();				
-					modal.html(transport.responseText)
-					modal.jqmShow();
-				}
-			});
-		} else {
-			// Don't load it again
-			modal.jqmShow();
-		}
+				jq('a.jqmClose').click(function(){
+					jq(this).jqmHide();
+					return false;
+				});
+				
+				modal.jqmHide();				
+				modal.html(transport.responseText)
+				modal.jqmShow();
+			}
+		});
 		return false
 	});
 	
