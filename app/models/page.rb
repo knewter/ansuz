@@ -63,7 +63,7 @@ class Page < ActiveRecord::Base
   end
 
   def publishable_children
-    self.children.find :all, :conditions => "published = true AND linked = true"
+    self.children.find :all, :conditions => ["published = ? AND linked = ?", true, true]
   end
 
   def ancestor_path
