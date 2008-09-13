@@ -1,4 +1,4 @@
-class PhotoAlbumsController < ApplicationController
+class PhotoAlbumsController < Admin::BaseController
   unloadable # This is required if you subclass a controller provided by the base rails app
 
   before_filter :load_photo_album, :only => [:show, :update]
@@ -15,6 +15,7 @@ class PhotoAlbumsController < ApplicationController
   end
   public
   def show
+    render :layout => false
   end
 
   def update

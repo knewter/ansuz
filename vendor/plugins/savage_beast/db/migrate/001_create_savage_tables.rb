@@ -55,8 +55,8 @@ class CreateSavageTables < ActiveRecord::Migration
 	  add_index "topics", ["forum_id", "sticky", "replied_at"], :name => "index_topics_on_sticky_and_replied_at"
 	  add_index "topics", ["forum_id", "replied_at"], :name => "index_topics_on_forum_id_and_replied_at"	
 	  
-		add_column :users, :posts_count, :integer, :default => 0
-    add_column :users, :last_seen_at, :datetime
+		#add_column :users, :posts_count, :integer, :default => 0
+    #add_column :users, :last_seen_at, :datetime
   end
 
   def self.down
@@ -69,5 +69,4 @@ class CreateSavageTables < ActiveRecord::Migration
     drop_table :moderatorships
     drop_table :forums    
   end
-  
 end

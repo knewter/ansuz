@@ -1,5 +1,7 @@
 <h2>Blog Posts</h2>
-<%= link_to "New Blog Post", new_blog_post_path -%>
+<% content_for :sidebar do -%>
+  <%= link_to "New Blog Post", new_blog_post_path -%>
+<% end -%>
 <table class='subdued'>
   <thead>
     <tr>

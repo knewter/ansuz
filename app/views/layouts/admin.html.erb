@@ -8,12 +8,10 @@
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta name="description" content="Ansuz Content Management System" />
   	<meta name="keywords" content="Ansuz Content Management System" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
-    <link rel="icon"          href="favicon.ico" type="image/vnd.microsoft.icon" />
     <%= stylesheet_link_tag 'reset-fonts-grids' %>
 	  <%= stylesheet_link_tag 'sprite' %>
-	  <%= stylesheet_link_tag 'base' %>
     <%= stylesheet_link_tag 'admin' %>
+    <%= stylesheet_link_tag 'jqmodal' %>
     <%= javascript_include_tag :defaults, 'jquery', 'jqModal', 'jquery.growl.js', 'ansuz/growls' %>
     <%= javascript_include_tag 'show_and_hide' %>
     <%= javascript_include_tag 'fckeditor/fckeditor' %>
@@ -23,11 +21,16 @@
     <div id='header'>
       <h1>
         <span class='logo'></span>
-        <span>Ansuz CMS: Admin [ Currently Editing: <b><%= current_database %></b> ]</span>
+        <span>Ansuz CMS: Admin</span>
       </h1>
     </div>
+    <div id='toolbar'>
+      <%= render :partial => "/admin/tabs" %>
+    </div>
+    <div id='sidebar'>
+      <%= yield :sidebar -%>
+    </div>
     <div id="doc2" class="yui-t7">
-      <%= render :partial => "/admin/pages/tabs" %>
       <div id="bd">
         <div class="yui-g">
           <%# TODO: I need to use the helper I use to print all flash messages here, way more stylable / useful -ja -%>
@@ -37,7 +40,9 @@
           <%= @content_for_layout %>
         </div>
       </div>
-      <div id="ft">Add a Plugin</div>
+      <div id="ft">
+        [ Currently Editing: <b><%= current_database %></b> ]
+      </div>
     </div>
   </body>
 </html>
