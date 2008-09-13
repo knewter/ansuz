@@ -1,11 +1,12 @@
 <% if logged_in? %>
   <div id="hd">
-    <ul>
+    <%= render :partial => "admin/page_plugins/admin_plugins_nav" -%>
+    <ul id='base-links'>
       <li><%= create_tab('Manage Pages', '/admin/pages') %></li>
       <li><%= create_tab('List Plugins', '/admin/plugins') %></li>
       <li><%= create_tab('Account Settings', '/admin/account/update') %></li>
       <li><%= create_tab('Logout', '/admin/account/logout') %></li>
     </ul>
-    <%= render :partial => "admin/page_plugins/admin_plugins_nav" -%>
+    <div class='clear'></div>
   </div>
 <% end %>

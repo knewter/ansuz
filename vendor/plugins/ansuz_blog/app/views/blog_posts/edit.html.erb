@@ -1,5 +1,8 @@
 <h2>Edit Blog Post</h2>
+<% content_for :sidebar do -%>
+  <%= link_to "All Blog Posts", blog_posts_path -%>
+<% end -%>
 <% form_for :blog_post, :url => blog_post_path(@blog_post), :html => { :method => :put } do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } -%>
-  <%= submit_tag("Create Post") -%>
+  <%= submit_tag("Update Post") -%> or <%= link_to "Cancel", blog_posts_path -%>
 <% end -%>

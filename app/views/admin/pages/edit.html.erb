@@ -1,21 +1,33 @@
-<h1>Edit Page</h1>
-<% form_remote_tag :url => admin_page_path(@page),
-	:update => 'main',
-  :method => :put,
-	:complete => remote_function(
-		:update => "item#{@page.parent_id}",
-		:url => { :action => 'manage_tree', :parent_id => @page.parent_id, :tree_post_id => @post_id },
-		:complete => 'refresh_visibility()'),
-	:html => { 'name' => 'page_form' } do -%>
-	<%= render :partial => 'form' %>
-	<%= submit_tag 'Update', :class => 'submit' -%>
+<% content_for :sidebar do -%>
+  <% form_remote_tag :url => admin_page_path(@page),
+    :update => 'main',
+    :method => :put,
+    :complete => remote_function(
+      :update => "item#{@page.parent_id}",
+      :url => { :action => 'manage_tree', :parent_id => @page.parent_id, :tree_post_id => @post_id },
+      :complete => 'refresh_visibility()'),
+    :html => { 'name' => 'page_form' } do -%>
+    <%= render :partial => 'form' %>
+    <%= submit_tag 'Update', :class => 'submit' -%>
+  <% end -%>
 <% end -%>
 
-<h2>Plugins on this page</h2>
-<ul id="page_plugins" class='page_plugins'>
-  <% @page.page_plugins.each do |plugin| -%>
-    <li><%= link_to(plugin.module_type, plugin.module.edit_path, :class => 'edit_page_plugin') -%></li>
-  <% end -%>
-</ul>
-<%= link_to "Add Plugin", new_admin_page_plugin_path(:page_id => @page.id) -%>
+<% content_for :sidebar do -%>
+  <h2>Plugins on this page</h2>
+  <ul id="page_plugins" class='page_plugins'>
+    <% @page.page_plugins.each do |plugin| -%>
+      <li><%= link_to(plugin.module_type, plugin.module.edit_path, :class => 'edit_page_plugin') -%></li>
+    <% end -%>
+  </ul>
+  <%= link_to "Add Plugin", new_admin_page_plugin_path(:page_id => @page.id) -%>
+<% end -%>
 <div id="modal" class="jqmWindow"></div>
+
+<% if @page.display_title %>
+  <h2><%= @page.full_title %></h2>
+<% end %>
+<% if @page.page_plugins.any? -%>
+  <% @page.page_plugins.each do |plugin| -%>
+    <%= render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
+  <% end -%>
+<% end -%>
