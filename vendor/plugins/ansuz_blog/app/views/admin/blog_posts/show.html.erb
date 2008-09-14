@@ -1,9 +1,17 @@
-<div class='blog_post'>
-  <h2><%=h @blog_post.title -%></h2>
+<%= title @blog_post.title -%>
+<% content_for :sidebar do -%>
   <ul class='toolbar'>
     <li><%= link_to "Edit Blog Post", edit_admin_blog_post_path(@blog_post) -%></li>
     <li><%= link_to "All Blog Posts", admin_blog_posts_path -%></li>
   </ul>
+  <h2>Tagged With</h2>
+  <ul>
+    <% @blog_post.tags.each do |tag| -%>
+      <%= link_to_tag  tag, :url => :admin_tag_path -%>
+    <% end -%>
+  </ul>
+<% end -%>
+<div class='blog_post'>
   <div class='contents'>
     <%= @blog_post.contents -%>
   </div>

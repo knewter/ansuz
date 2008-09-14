@@ -1,3 +1,7 @@
+<% content_for :sidebar do -%>
+  <h2>Tags</h2>
+  <%= tag_cloud -%>
+<% end -%>
 <% @blog_posts.each do |blog_post| -%>
   <div class='blog_post'>
     <h2><%=h blog_post.title -%></h2>

@@ -17,6 +17,9 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
   include SavageBeast::UserInit
+  # acts_as_taggable_redux support
+  acts_as_tagger
+
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 

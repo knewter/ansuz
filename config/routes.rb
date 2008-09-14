@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_user_manager
 
   map.resources :users
+  map.resources :tags
   map.namespace :admin do |admin|
     admin.resources :pages, :member => [:shift_order]
     admin.resources :page_plugins
@@ -13,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resource  :account
     admin.connect 'account/:action/:id', :controller => 'account'
     admin.resource  :site_settings
+    admin.resources :tags
   end
   map.connect '/admin', :controller => 'admin/pages'
 

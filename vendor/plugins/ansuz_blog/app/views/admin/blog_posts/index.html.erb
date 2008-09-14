@@ -1,6 +1,8 @@
 <%= title "Blog Posts" -%>
 <% content_for :sidebar do -%>
   <%= link_to "New Blog Post", new_admin_blog_post_path -%>
+  <h2>Tag Cloud</h2>
+  <%= tag_cloud :url => :admin_tag_path -%>
 <% end -%>
 <table class='subdued'>
   <thead>
@@ -13,7 +15,7 @@
   <tbody>
     <% @blog_posts.each do |blog_post| -%>
       <tr class='<%= cycle('odd', 'even') -%>'>
-        <td><%=h blog_post.title -%></td>
+        <td><%= link_to h(blog_post.title), admin_blog_post_path(blog_post) -%></td>
         <td><%= blog_post.created_at.to_s(:db) -%></td>
         <td>
           <ul class='admin_actions'>

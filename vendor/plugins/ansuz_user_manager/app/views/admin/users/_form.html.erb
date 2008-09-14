@@ -5,4 +5,4 @@ Password: <%= f.password_field :password -%><br />
 Password Confirmation: <%= f.password_field :password_confirmation -%><br />
 Email: <%= f.text_field :email -%><br />
 Admin? <%= f.check_box(:admin) -%><br />
-<%= submit_tag submit_text -%>
+<%= submit_tag submit_text -%> or <%= link_to "Cancel", admin_users_path -%>

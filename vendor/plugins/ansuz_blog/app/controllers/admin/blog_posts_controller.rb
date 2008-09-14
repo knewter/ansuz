@@ -1,4 +1,4 @@
-class BlogPostsController < Admin::BaseController
+class Admin::BlogPostsController < Admin::BaseController
   unloadable # This is required if you subclass a controller provided by the base rails app
 
   layout 'admin'
@@ -25,7 +25,7 @@ class BlogPostsController < Admin::BaseController
   def create
     if @blog_post.save
       flash[:notice] = "Blog Post was created successfully."
-      redirect_to blog_posts_path
+      redirect_to admin_blog_posts_path
     else
       flash.now[:error] = "There was a problem creating the blog post."
       render :action => 'new'
@@ -41,7 +41,7 @@ class BlogPostsController < Admin::BaseController
   def update
     if @blog_post.update_attributes(params[:blog_post])
       flash[:notice] = "Blog Post has been updated."
-      redirect_to blog_post_path(@blog_post)
+      redirect_to admin_blog_post_path(@blog_post)
     else
       flash.now[:error] = "There was a problem updating the Blog Post.  Please try again."
       render :action => 'edit'
@@ -51,6 +51,6 @@ class BlogPostsController < Admin::BaseController
   def destroy
     @blog_post.destroy
     flash[:notice] = "Blog post was deleted."
-    redirect_to blog_posts_path
+    redirect_to admin_blog_posts_path
   end
 end

@@ -32,7 +32,10 @@
             <a href="http://github.com/knewter/ansuz/tree/master">you</a>. 
           </span>
         </div>
-        <%= render :partial => "page/top_nav" -%>
+        <div id='sidebar'>
+          <%= render :partial => "page/top_nav" -%>
+          <%= yield :sidebar -%>
+        </div>
         <div id='content'>
           <%= render :partial => "page/breadcrumb" if (@page && (@page != @root)) -%>
           <%= @content_for_layout -%>

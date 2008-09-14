@@ -1,0 +1,4 @@
+<%= title "Showing Tag: #{@tag}" -%>
+<% @tag.tagged.each do |tagged_item| -%>
+  <%= link_to_tagged_item tagged_item -%>
+<% end -%>
