@@ -1,18 +1,36 @@
 class Admin::UsersController < Admin::BaseController
-  before_filter :get_users, :only => [:index]
-  before_filter :get_user,  :only => [:edit, :destroy]
+  before_filter :load_users, :only => [:index]
+  before_filter :load_user,  :only => [:show, :edit, :update, :destroy]
+  before_filter :load_new_user, :only => [:new, :create]
 
   protected
-  def get_users
+  def load_users
     @users = User.find(:all)
   end
 
-  def get_user
+  def load_user
     @user = User.find(params[:id])
+  end
+
+  def load_new_user
+    @user = User.new(params[:user])
   end
 
   public
   def index
+  end
+
+  def new
+  end
+
+  def create
+    if @user.save
+      flash[:notice] = "User was created successfully."
+      redirect_to admin_users_path
+    else
+      flash.now[:error] = "There was a problem creating this user."
+      render :action => "new"
+    end
   end
 
   def show

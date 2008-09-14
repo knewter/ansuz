@@ -1,0 +1,16 @@
+div.flash{
+ padding: 10px;
+ border-bottom: 2px solid;
+}
+div.flash.notice{
+  border-color: #aad2a9;
+ background-color: #d6ffd5;
+}
+div.flash.warning{
+ border-color: #ead3d3;
+ background-color: #fbe4e4;
+}
+div.flash.error{
+ background-color: #faeb9e;
+ border-color: #d5a23e;
+}

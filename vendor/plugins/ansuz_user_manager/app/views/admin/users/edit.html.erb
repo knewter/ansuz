@@ -1,5 +1,4 @@
 <%= title "Edit User: #{@user.to_s}" -%>
 <% form_for [:admin, @user] do |f| -%>
-  admin? <%= f.check_box(:admin) -%><br />
-  <%= submit_tag "Update User" -%>
+  <%= render :partial => 'form', :locals => { :f => f, :submit_text => "Update User" } -%>
 <% end -%>

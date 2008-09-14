@@ -1,4 +1,7 @@
 <%= title "Users" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "Add User", new_admin_user_path -%>
+<% end -%>
 <table class='subdued'>
   <thead>
     <tr>

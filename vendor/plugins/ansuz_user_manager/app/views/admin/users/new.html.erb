@@ -1,0 +1,7 @@
+<%= title "New User" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "All Users", admin_users_path -%>
+<% end -%>
+<% form_for [:admin, @user] do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } -%>
+<% end -%>
