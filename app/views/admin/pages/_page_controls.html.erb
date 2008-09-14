@@ -1,6 +1,9 @@
-<span class='page_controls'>
-  <%= link_to 'dn', shift_order_admin_page_path(:id => page.id, :shift => 1) -%>
-  <%= link_to 'up', shift_order_admin_page_path(:id => page.id, :shift => -1) -%>
-  <%= link_to("X", admin_page_path(page), :method => :delete, :confirm => 'Are you sure?  This will delete this page permanently and all sub-pages will be orphaned!') -%>
-  <%= link_to("Add", new_admin_page_path(:parent_id => page.id)) -%>
-</span>
+<div class='page_controls'>
+  <ul>
+    <li><%= link_to 'dn', shift_order_admin_page_path(:id => page.id, :shift => 1) -%></li>
+    <li><%= link_to 'up', shift_order_admin_page_path(:id => page.id, :shift => -1) -%></li>
+    <li><%= link_to("X", admin_page_path(page), :method => :delete, :confirm => 'Are you sure?  This will delete this page permanently and all sub-pages will be orphaned!') -%></li>
+    <li><%= link_to("Add", new_admin_page_path(:parent_id => page.id)) -%></li>
+  </ul>
+  <div class='clear'></div>
+</div>

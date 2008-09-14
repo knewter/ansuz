@@ -1,8 +1,8 @@
-<h2>Edit Blog Post</h2>
+<%= title "Edit Blog Post: #{@blog_post}" -%>
 <% content_for :sidebar do -%>
-  <%= link_to "All Blog Posts", blog_posts_path -%>
+  <%= link_to "All Blog Posts", admin_blog_posts_path -%>
 <% end -%>
-<% form_for :blog_post, :url => blog_post_path(@blog_post), :html => { :method => :put } do |f| -%>
+<% form_for :blog_post, :url => admin_blog_post_path(@blog_post), :html => { :method => :put } do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } -%>
-  <%= submit_tag("Update Post") -%> or <%= link_to "Cancel", blog_posts_path -%>
+  <%= submit_tag("Update Post") -%> or <%= link_to "Cancel", admin_blog_posts_path -%>
 <% end -%>

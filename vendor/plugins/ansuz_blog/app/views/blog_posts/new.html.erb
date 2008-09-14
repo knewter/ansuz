@@ -1,8 +1,8 @@
 <h2>New Blog Post</h2>
 <% content_for :sidebar do -%>
-  <%= link_to "All Blog Posts", blog_posts_path -%>
+  <%= link_to "All Blog Posts", admin_blog_posts_path -%>
 <% end -%>
-<% form_for :blog_post, :url => blog_posts_path do |f| -%>
+<% form_for :blog_post, :url => admin_blog_posts_path do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } -%>
-  <%= submit_tag("Create Post") -%> or <%= link_to "Cancel", blog_posts_path -%>
+  <%= submit_tag("Create Post") -%> or <%= link_to "Cancel", admin_blog_posts_path -%>
 <% end -%>

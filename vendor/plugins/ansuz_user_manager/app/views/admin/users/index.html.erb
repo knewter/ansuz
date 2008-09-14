@@ -1,0 +1,22 @@
+<%= title "Users" -%>
+<table class='subdued'>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| -%>
+      <tr class='<%= cycle('odd', 'even') -%>'>
+        <td><%= link_to user.login, edit_admin_user_path(user) -%></td>
+        <td><%= mail_to user.email -%></td>
+        <td>
+          <%= link_to "Edit", edit_admin_user_path(user) -%> | 
+          <%= link_to "Delete", admin_user_path(user), :method => :delete, :confirm => "Are you sure you want to delete this user?" -%>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

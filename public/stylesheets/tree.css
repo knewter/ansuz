@@ -1,0 +1,20 @@
+/* Index tree */
+#tree ul {
+  padding-left:20px;
+}
+#tree ul li .page_controls{
+  display: block;
+  float: right;
+}
+#tree ul li .page_controls{
+}
+#tree ul li .page_controls li{
+  list-style-type: none;
+  float: left;
+}
+#tree ul li .page_controls a{
+  margin-right: 10px;
+}
+#tree ul li .page_controls a:hover {
+  background-color: #eee;
+}

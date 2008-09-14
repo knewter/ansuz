@@ -1,4 +1,4 @@
-<h1>Edit Site Settings</h1>
+<%= title "Edit Site Settings" -%>
 <% form_tag 'update' do -%>
   <% fields_for @settings do |f| -%>
     <%= f.select(:user_theme_name, @themes) -%>

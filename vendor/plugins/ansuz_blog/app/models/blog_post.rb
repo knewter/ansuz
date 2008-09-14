@@ -10,6 +10,10 @@ class Ansuz
       def self.view_partial
         "/blog_posts/blog_post"
       end
+
+      def to_s
+        title
+      end
     end
   end
 end

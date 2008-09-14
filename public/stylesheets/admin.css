@@ -86,15 +86,14 @@ body{
 
 #bd h1{
   font-size: 180%;
+  background-color: #ddd;
+  padding: 4px 10px;
+  margin-bottom: 10px;
 }
 #bd h2{
   font-size: 140%;
 }
 
-/* Index tree */
-#tree ul {
-  padding-left:20px;
-}
 
 label.title_label{
   display: block;

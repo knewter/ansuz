@@ -136,6 +136,10 @@ class Page < ActiveRecord::Base
     result['last_page_order'].to_i
   end
 
+  def to_s
+    name
+  end
+
   protected
   def check_page_type
     self.page_type = "page" and return if self.body.blank? || (@split_pages = self.body.split(/\{pagebreak\}/i)).length == 1 

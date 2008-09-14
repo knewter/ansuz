@@ -1,3 +1,4 @@
+<%= title "Manage Pages" -%>
 <div id="tree">
   <%= tree_ul(@page_hierarchy) {|item| link_to h(item.name), edit_admin_page_path(item) } %>
 </div>

@@ -1,0 +1,178 @@
+form.subdued,
+div.subdued{
+ background-color: #eee;
+ padding: 10px;
+ border: 1px solid #aaa;
+}
+table.subdued{
+ width: 100%;
+}
+table.subdued thead th{
+ background-color: #333;
+ color: white;
+ font-weight: normal;
+ padding: 4px;
+ border-color: #555;
+ border-width: 0 0 4px 0;
+ border-style: solid;
+}
+div.form form table.subdued td{
+ vertical-align: top;
+}
+
+table.subdued		{
+		margin: 0;
+		padding: 0;
+		font: normal 0.9em tahoma, arial, sans-serif;
+		line-height: 1.4em;
+		border-collapse: collapse;
+		color: #333;
+		background: #F0F0F0;
+    margin-bottom: 10px;
+		}
+		
+
+
+table.subdued caption	{
+		margin: 0;
+		height: 32px;
+		padding: 0;
+		color: #4F6480;
+		line-height: 2em;
+		text-align: left;
+		font: bold 150% georgia, serif;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		}
+		
+thead		{
+		color: #fff;
+		background: #5E7796;
+		}
+		
+thead tr th	{
+		padding: 4px 8px 4px 8px;
+    border-color: transparent #ACA883 #767359 #ACA883;
+    border-width: 0 1px 4px 1px;
+    border-style: solid;
+		}
+
+hr{
+  border: 0;
+  color: #767359;
+  background-color: #aca883;
+  height: 1px;
+}
+
+		
+thead th	{
+		}
+
+tfoot		{
+		background: #fff;
+		}
+		
+tfoot tr td, tfoot tr th, tbody tr td	{
+		padding: 4px;
+		}
+		
+tbody tr:hover,
+tbody tr:hover td{
+		background: #fff;
+		}
+
+tbody tr td{
+  border-right: 1px dashed #ccc;
+  border-left: 1px dashed #ccc;
+}
+
+tbody tr	{
+		border-style: solid;
+    border-color:  #ACA883;
+    border-width: 1px 0 1px 0;
+		background: #eee;
+		}
+
+tbody th	{
+ background-color: #767359;
+ color: white;
+ font-weight: normal;
+ padding: 4px;
+ border-color: #767359;
+ border-width: 0 4px 0 0;
+ border-style: solid;
+		}
+		
+tbody td	{
+		background: #eee;
+		}
+
+tbody tr.odd td		{
+		background: #ddd;
+		color: #4F6480;
+		}
+		
+
+		
+tbody tr.odd:hover,
+tbody tr.odd:hover td{
+		background: #fff;
+		}
+		
+
+		
+tbody tr th a:link		{
+		font: bold 0.9em tahoma, arial, sans-serif;
+		color: #5E7796;
+		text-decoration: underline;
+		
+		}
+		
+tbody tr th a:visited		{
+		font: bold 0.9em tahoma, arial, sans-serif;
+		color: #5E7796;
+		text-decoration: none;
+		
+		}
+		
+tbody tr th a:hover		{
+		font: bold 0.9em tahoma, arial, sans-serif;
+		color: #5E7796;
+		text-decoration: none;
+		
+		}
+		
+tbody tr th a:active		{
+		font: bold 0.9em tahoma, arial, sans-serif;
+		color: #5E7796;
+		text-decoration: line-through;
+		}
+		
+tbody td a:link		{
+		font: normal 0.9em tahoma, arial, sans-serif;
+		color: #0084ff;
+		text-decoration: underline;
+		}
+		
+tbody td a:visited		{
+		font: normal 0.9em tahoma, arial, sans-serif;
+		color: #0084ff;
+		text-decoration: none;
+		}
+		
+tbody td a:hover		{
+		font: normal 0.9em tahoma, arial, sans-serif;
+		color: #0084ff;
+		text-decoration: none;
+		}
+		
+tbody td a:active		{
+		font: normal 0.9em tahoma, arial, sans-serif;
+		color: #0084ff;
+		text-decoration: underline;
+		}
+tbody tr.selected td,
+tbody tr.selected:hover td{
+  background-color: #2580A2;
+  color: white;
+}
