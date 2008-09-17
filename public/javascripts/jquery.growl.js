@@ -58,13 +58,13 @@ jQuery.growl.version = "1.0.0-b2";
 function create(rebuild) {
 	var instance = document.getElementById('growlDock');
 	if(!instance || rebuild) {
-	  instance = $(jQuery.growl.settings.dockTemplate).attr('id', 'growlDock').addClass('growl');
+	  instance = jQuery(jQuery.growl.settings.dockTemplate).attr('id', 'growlDock').addClass('growl');
 	  if(jQuery.growl.settings.defaultStylesheet) {
 	    $('head').append('<link rel="stylesheet" type="text/css" href="' + jQuery.growl.settings.defaultStylesheet + '" />');
 	  }
 	  
 	} else {
-	  instance = $(instance);
+	  instance = jQuery(instance);
 	}
 	jQuery('body').append(instance.css(jQuery.growl.settings.dockCss));
 	return instance;
@@ -80,13 +80,13 @@ function r(text, expr, val) {
 function notify(title,message,image,priority) {
 	var instance = create();
 	var html = jQuery.growl.settings.noticeTemplate;
-	if(typeof(html) == 'object') html = $(html).html();
+	if(typeof(html) == 'object') html = jQuery(html).html();
 	html = r(html, /%message%/, (message?message:''));
 	html = r(html, /%title%/, (title?title:''));
 	html = r(html, /%image%/, (image?image:jQuery.growl.settings.defaultImage));
 	html = r(html, /%priority%/, (priority?priority:'normal'));
 
-	var notice = $(html)
+	var notice = jQuery(html)
 		.hide()
 		.css(jQuery.growl.settings.noticeCss)
 		.fadeIn(jQuery.growl.settings.notice);;
@@ -134,7 +134,7 @@ jQuery.growl.settings = {
 	defaultImage: 'growl.jpg',
 	defaultStylesheet: null,
 	noticeElement: function(el) {
-		jQuery.growl.settings.noticeTemplate = $(el);
+		jQuery.growl.settings.noticeTemplate = jQuery(el);
 	}
 };
 })(jQuery);
