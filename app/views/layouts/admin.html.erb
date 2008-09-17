@@ -16,7 +16,10 @@
     <%= stylesheet_link_tag 'jqmodal' %>
     <%= stylesheet_link_tag 'flashes' %>
     <%= stylesheet_link_tag 'acts_as_taggable_stylesheet' %>
-    <%= javascript_include_tag :defaults, 'jquery', 'jqModal', 'jquery.growl.js', 'ansuz/growls' %>
+    <%= javascript_include_tag :defaults -%>
+    <%= javascript_include_tag 'jquery' -%>
+    <%= javascript_tag "jQuery.noConflict();" -%>
+    <%= javascript_include_tag 'jqModal', 'jquery.growl.js', 'ansuz/growls' %>
     <%= javascript_include_tag 'show_and_hide' %>
     <%= javascript_include_tag 'fckeditor/fckeditor' %>
     <!--[if lt IE 7.]><%= javascript_include_tag 'pngfix.js' %><![endif]-->

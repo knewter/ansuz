@@ -1,7 +1,7 @@
 <div style="float:right; width: 100px; text-align: right"><a href="#" class="jqmClose">X</a></div>
 <h1>Editing Content Section</h1>
-<% remote_form_for :content_section, @content_section, :url => content_section_path(@content_section), :html => { :method => :put } do |f| -%>
+<% remote_form_for :content_section, @content_section, :url => content_section_path(@content_section), :html => { :method => :put }, :before => fckeditor_before_js(:content_section, :contents) do |f| -%>
   <%= f.text_field(:name) -%><br />
-  <%= fckeditor_textarea(:content_section, :contents, :toolbarSet => 'Simple', :width => '100%', :height => '400px') -%><br />
+  <%= fckeditor_textarea(:content_section, :contents, :toolbarSet => 'Simple', :width => '100%', :height => '400px', :ajax => true) -%><br />
   <%= submit_tag("Update Content Section", :id => 'close_modal_and_flash') -%>
 <% end -%>
