@@ -50,7 +50,7 @@ on the page, such as TopRight (the default) or TopLeft, perhaps even in a
 smaller area with "overflow: scroll" enabled?
 */
 
-(function($) {
+(function(jQuery) {
 
 jQuery.growl = function(title,message,image,priority) { notify(title,message,image,priority); }
 jQuery.growl.version = "1.0.0-b2";
@@ -66,7 +66,7 @@ function create(rebuild) {
 	} else {
 	  instance = $(instance);
 	}
-	$('body').append(instance.css(jQuery.growl.settings.dockCss));
+	jQuery('body').append(instance.css(jQuery.growl.settings.dockCss));
 	return instance;
 };
   

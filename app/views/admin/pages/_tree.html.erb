@@ -1,12 +1,13 @@
 <% post_id = tree.id.to_s #+ '_' + tree.page_order.to_s # id is unique, so ...
    children = tree.children 
 %>
+	<a href="#" class="css_button" onClick="toggle_visibility('ul_item<%= post_id %>')">+</a>
+
 	<%= link_for_tree(tree, 
 		:is_first => is_first, 
 		:is_last => is_last, 
 		:new_at => (children.length + 1),
 		:can_delete => can_delete )%>
-	<a href="#" class="css_button" onClick="toggle_visibility('ul_item<%= post_id %>')">+</a>
 	<ul id="ul_item<%= post_id %>" class="tree-closed" style="display: block">
 <% children.each do |child| %>
  	<li class="normal" id="item<%= child.id.to_s %>">
