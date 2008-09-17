@@ -47,42 +47,42 @@ function notify(message, title)
 jQuery(document).ready(function()
 {
 	// Prevent the default growl settings from being overwritten.
-	$default_growl_settings = jQuery.growl.settings;
+	 $default_growl_settings = jQuery.growl.settings;
 	
-	var jq = jQuery.noConflict();	
-	jq('a.edit_page_plugin', jq('#page_plugins')).click(function()
-	{
-		var modal = jq('#modal');
-		jq.ajax({
-			type: 'GET',
-			url: jq(this).attr('href'),
-			complete: function(transport)
-			{
-				modal.jqm({overlay: 50});
-
-				jq('a.jqmClose').click(function(){
-					jq(this).jqmHide();
-					return false;
-				});
-				
-				modal.jqmHide();				
-				modal.html(transport.responseText)
-				modal.jqmShow();
-			}
-		});
-		return false
-	});
-	
-	// Make ESC close modal windows
-	jq(document).keypress(function(e)
-	{
-		if( e.which === 0 )
-		{
-			var windows = jq('#modal, .jqmWindow');
-			if( windows )
-			{
-				windows.jqmHide(); // doesn't seem to work with the iframe > textarea thing focused. meh
-			}
-		}
-	})
+	// var jq = jQuery.noConflict();	
+	// jq('a.edit_page_plugin', jq('#page_plugins')).click(function()
+	// {
+	// 	var modal = jq('#modal');
+	// 	jq.ajax({
+	// 		type: 'GET',
+	// 		url: jq(this).attr('href'),
+	// 		complete: function(transport)
+	// 		{
+	// 			modal.jqm({overlay: 50});
+	// 
+	// 			jq('a.jqmClose').click(function(){
+	// 				jq(this).jqmHide();
+	// 				return false;
+	// 			});
+	// 			
+	// 			modal.jqmHide();				
+	// 			modal.html(transport.responseText)
+	// 			modal.jqmShow();
+	// 		}
+	// 	});
+	// 	return false
+	// });
+	// 
+	// // Make ESC close modal windows
+	// jq(document).keypress(function(e)
+	// {
+	// 	if( e.which === 0 )
+	// 	{
+	// 		var windows = jq('#modal, .jqmWindow');
+	// 		if( windows )
+	// 		{
+	// 			windows.jqmHide(); // doesn't seem to work with the iframe > textarea thing focused. meh
+	// 		}
+	// 	}
+	// })
 });
