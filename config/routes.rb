@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :savage_beast
   map.from_plugin :ansuz_content_section
   map.from_plugin :ansuz_user_manager
+  map.from_plugin :ansuz_menu_system
 
   map.resources :users
   map.resources :tags

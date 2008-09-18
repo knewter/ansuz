@@ -1,0 +1,8 @@
+<%= title "Edit Menu Entry: #{@menu_entry}" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "All Menu Entries", admin_menu_entries_path -%>
+<% end -%>
+<% form_for :menu_entry, :url => admin_menu_entry_path(@menu_entry), :html => { :method => :put } do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } -%>
+  <%= submit_tag("Update Menu Entry") -%> or <%= link_to "Cancel", admin_menu_entries_path -%>
+<% end -%>

@@ -7,11 +7,11 @@ class Ansuz
       has_many :photos, :class_name => "Ansuz::JAdams::PhotoAlbumPhoto", :dependent => :destroy
 
       def edit_path
-        "/photo_albums/#{id}"
+        "/admin/photo_albums/#{id}"
       end
 
       def self.view_partial
-        "/photo_albums/photo_album"
+        "/admin/photo_albums/photo_album"
       end
     end
   end

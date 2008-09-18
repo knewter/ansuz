@@ -41,7 +41,7 @@ class Admin::MenuEntriesController < Admin::BaseController
   def update
     if @menu_entry.update_attributes(params[:menu_entry])
       flash[:notice] = "Menu Entry has been updated."
-      redirect_to admin_menu_entry_path(@menu_entry)
+      redirect_to admin_menu_entries_path
     else
       flash.now[:error] = "There was a problem updating the Menu Entry.  Please try again."
       render :action => 'edit'

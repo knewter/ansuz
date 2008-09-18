@@ -1,0 +1,27 @@
+<%= title "Menu Entries" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "New Menu Entry", new_admin_menu_entry_path -%>
+<% end -%>
+<table class='subdued'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @menu_entries.each do |menu_entry| -%>
+      <tr class='<%= cycle('odd', 'even') -%>'>
+        <td><%= link_to h(menu_entry.name), admin_menu_entry_path(menu_entry) -%></td>
+        <td><%= menu_entry.link -%></td>
+        <td>
+          <ul class='admin_actions'>
+            <li><%= link_to "Edit", edit_admin_menu_entry_path(menu_entry) -%></li>
+            <li><%= link_to "Delete", admin_menu_entry_path(menu_entry), :method => :delete, :confirm => "Are you sure you want to delete this menu entry?" -%></li>
+          </ul>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

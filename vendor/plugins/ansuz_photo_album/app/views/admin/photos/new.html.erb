@@ -1,0 +1,5 @@
+<%= title "New Photo" -%>
+<% form_for :photo, :url => admin_photo_album_photos_path(@photo_album), :html => { :multipart => true } do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } -%>
+  <%= submit_tag "Add photo" -%> or <%= link_to "Cancel", admin_photo_album_path(@photo_album) -%>
+<% end -%>

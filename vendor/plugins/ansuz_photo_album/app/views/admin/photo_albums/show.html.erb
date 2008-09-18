@@ -1,0 +1,10 @@
+<%= title "Photo Album" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "Add Photo", new_admin_photo_album_photo_path(@photo_album) -%>
+<% end -%>
+<h3>Photos</h3>
+<ul class='photos'>
+  <% @photos.each do |photo| -%>
+    <li><%= link_to image_tag(photo.photo_album_photo_image.url(:thumb)), edit_admin_photo_album_photo_path(@photo_album, photo) -%></li>
+  <% end -%>
+</ul>
