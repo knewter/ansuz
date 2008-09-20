@@ -25,40 +25,40 @@ home:
   name: home
   title: Home
   full_title: Home Page
-  published: 1
-  linked: 1
+  published: true
+  linked: true
 
 second_level:
   id: 2
   name: second
   title: Second Level
   parent_id: 1
-  published: 1
-  linked: 1
+  published: true
+  linked: true
   
 third_level:
   id: 3
   name: third
   title: Third Level
   parent_id: 2
-  published: 1
-  linked: 1
+  published: true
+  linked: true
   
 fourth_level:
   id: 9
   name: fourth
   title: Fourth Level
   parent_id: 3
-  published: 1
-  linked: 1
+  published: true
+  linked: true
   
 unpublished:
   id: 4
   name: unpublished
   title: Unpublished
   parent_id: 2
-  published: 0
-  linked: 0
+  published: false
+  linked: false
 
 swap_test:
   id: 5
