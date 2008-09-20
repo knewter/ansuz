@@ -2,6 +2,7 @@ require 'fileutils'
 require 'tmpdir'
 
 class FckeditorController < ActionController::Base
+  before_filter :login_required
   UPLOADED = "/uploads"
   UPLOADED_ROOT = RAILS_ROOT + "/public" + UPLOADED
   MIME_TYPES = [
