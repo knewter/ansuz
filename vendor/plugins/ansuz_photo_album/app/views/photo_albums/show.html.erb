@@ -1,8 +1,0 @@
-<h2>Photo Album</h2>
-<h3>Photos</h3>
-<ul class='photos'>
-  <% @photos.each do |photo| -%>
-    <li><%= link_to photo.photo_album_photo_image_file_name, edit_photo_album_photo_path(@photo_album, photo) -%></li>
-  <% end -%>
-</ul>
-<%= link_to "Add Photo", new_photo_album_photo_path(@photo_album) -%>
