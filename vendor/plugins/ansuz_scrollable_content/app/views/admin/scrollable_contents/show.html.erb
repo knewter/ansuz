@@ -1,0 +1,15 @@
+<%= title "Scrollable Content" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "Add Section", new_admin_scrollable_content_scrollable_content_section_path(@scrollable_content) -%>
+<% end -%>
+<h3>Sections</h3>
+<ul class='sections'>
+  <% @scrollable_content_sections.each do |section| -%>
+    <li>
+      <h4><%= section.title -%></h4>
+      <div>
+        <%= section.contents -%>
+      </div>
+    </li>
+  <% end -%>
+</ul>

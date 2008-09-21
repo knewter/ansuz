@@ -1,0 +1,96 @@
+/* items */
+div.items {
+  height:180px;   
+  float:left;
+  width:470px;
+  background-color:#efefef;
+  border:1px solid #ddd;
+}
+  
+div.items div {
+  width:470px;  
+}
+
+div.scrollable div {    
+  float:left;
+}
+
+div.scrollable h2 {
+  margin-top:15px;    
+}
+
+div.scrollable p {
+  margin-right:15px;
+  color:#444;
+  font-size:11px;
+}
+
+/* next / prev buttons */
+a.prev, a.next {
+  display:block;
+  width:30px;
+  height:30px;
+  float:left;
+  background-repeat:no-repeat;  
+  margin-top:70px;
+}
+
+a.prev {
+  background:url(/images/tools/button-left.gif);
+  margin-right:10px;
+}
+
+a.prev:hover {
+  background:url(/images/tools/button-left-over.gif);    
+}
+
+a.next {
+  background:url(/images/tools/button-right.gif);
+  margin-left:10px;
+}
+
+a.next:hover {
+  background:url(/images/tools/button-right-over.gif);   
+}
+
+
+/* tabs */ 
+ul.navi { 
+  margin:20px 0 0 0 ;
+  padding:0px;
+  border-bottom:1px solid #d2d2d2;
+  height:1.7em;
+  position:relative;
+  top:10px;
+  left:39px;
+  width:470px;
+  
+}
+
+ul.navi li {
+  background:url(/images/tools/tab-left.gif) left top no-repeat;
+  padding-left:4px;
+  float:left;
+  margin:0;
+  list-style-type:none;
+  cursor: pointer;
+}
+
+ul.navi a {
+  background:url(/images/tools/tab-right.gif) right top no-repeat;
+  padding:3px 12px;
+  border-bottom:1px solid #D2D2D2;
+  text-decoration:none;
+  display:block;
+  color:#333;
+  font-size:13px;
+}
+
+ul.navi li.active a, ul.navi a:hover {
+  background-position:100% -150px;
+  border-bottom:1px solid #fff;
+}
+
+ul.navi li.active {
+  background-position:0 -150px; 
+}
