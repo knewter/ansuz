@@ -19,3 +19,4 @@ public/stylesheets/scaffold.css
 tmp/**/*
 public/photo_album_photo_images/
 public/photo_album_photo_images/*
+public/uploads/*/*
