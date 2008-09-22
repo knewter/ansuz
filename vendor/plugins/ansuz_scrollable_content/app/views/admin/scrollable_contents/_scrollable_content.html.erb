@@ -2,10 +2,9 @@
 <div class="scrollable"> 
   <!-- TABS whose onClick handler is auto-generated  --> 
   <ul class="navi"> 
-    <li><a>First video</a></li> 
-    <li><a>Second video</a></li> 
-    <li><a>Third video</a></li> 
-    <li><a>Fourth video</a></li> 
+    <% plugin_module.scrollable_content_sections.each do |section| -%>
+      <li><a><%= section.title -%></a></li> 
+    <% end -%>
   </ul> 
   <br clear="all"/> 
    
@@ -14,45 +13,12 @@
 
   <!-- list of scrollable items. only first one is shown --> 
   <div class="items"> 
-    <!-- first item (any HTML would go) --> 
-    <div> 
-      <h2>First video</h2> 
-       
-      <p> 
-        Sed ut magna. Duis condimentum purus non nisi.  
-        Praesent justo. Suspendisse urna mi, malesuada  
-        vitae, molestie ut, sodales eu, sem. 
-      </p>         
-    </div> 
-    <div> 
-      <h2>First video</h2> 
-       
-      <p> 
-        Sed ut magna. Duis condimentum purus non nisi.  
-        Praesent justo. Suspendisse urna mi, malesuada  
-        vitae, molestie ut, sodales eu, sem. 
-      </p>         
-    </div> 
-    <div> 
-      <h2>First video</h2> 
-       
-      <p> 
-        Sed ut magna. Duis condimentum purus non nisi.  
-        Praesent justo. Suspendisse urna mi, malesuada  
-        vitae, molestie ut, sodales eu, sem. 
-      </p>         
-    </div> 
-    <div> 
-      <h2>First video</h2> 
-       
-      <p> 
-        Sed ut magna. Duis condimentum purus non nisi.  
-        Praesent justo. Suspendisse urna mi, malesuada  
-        vitae, molestie ut, sodales eu, sem. 
-      </p>         
-    </div> 
-    <!-- ... rest of the items would go here ... --> 
-  </div> 
+    <% plugin_module.scrollable_content_sections.each do |section| -%>
+      <div>
+        <%= section.contents -%>
+      </div>
+    <% end -%>
+  </div>
    
   <!-- link that scrolls one step forward --> 
   <a class="next"></a> 

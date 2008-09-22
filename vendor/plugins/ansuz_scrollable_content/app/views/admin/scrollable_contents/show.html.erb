@@ -10,6 +10,7 @@
       <div>
         <%= section.contents -%>
       </div>
+      <%= link_to "Edit Section", edit_admin_scrollable_content_scrollable_content_section_path(section.scrollable_content, section) -%>
     </li>
   <% end -%>
 </ul>
