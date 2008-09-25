@@ -19,15 +19,20 @@ role :web, "192.168.1.88"
 role :db,  "192.168.1.88", :primary => true
 
 task :sym_database_yml do
-  run "ln -s #{deploy_to}/current/config/database.yml.production #{deploy_to}/current/config/database.yml"
+  run "ln -s #{current_release}/config/database.yml.production #{current_release}/config/database.yml"
 end
 task :sym_files do
-  run "ln -s #{deploy_to}/shared/attached_files #{deploy_to}/current/public/attached_files"
+  run "ln -s #{deploy_to}/shared/attached_files #{current_release}/public/attached_files"
+  run "ln -s #{deploy_to}/shared/photo_album_photo_images #{current_release}/public/photo_album_photo_images"
+end
+task :run_plugin_migrations do
+  run "cd #{current_release}; export RAILS_ENV=production; rake db:migrate:plugins"
 end
 
-task :after_deploy do
+after "deploy:finalize_update" do
   sym_database_yml
   sym_files
+  run_plugin_migrations
 end
 
 namespace :host do
