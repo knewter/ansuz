@@ -1,0 +1,28 @@
+<%= title "Ansuz Themes" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "New Ansuz Theme", new_admin_ansuz_theme_path -%><br />
+  <%= link_to "Themes Feed",     ansuz_themes_path(:format => 'xml') -%>
+<% end -%>
+<table class='subdued'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Repository URL</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ansuz_themes.each do |ansuz_theme| -%>
+      <tr class='<%= cycle('odd', 'even') -%>'>
+        <td><%= link_to h(ansuz_theme.name), admin_ansuz_theme_path(ansuz_theme) -%></td>
+        <td><%= ansuz_theme.repository_url -%></td>
+        <td>
+          <ul class='admin_actions'>
+            <li><%= link_to "Edit", edit_admin_ansuz_theme_path(ansuz_theme) -%></li>
+            <li><%= link_to "Delete", admin_ansuz_theme_path(ansuz_theme), :method => :delete, :confirm => "Are you sure you want to delete this ansuz theme?" -%></li>
+          </ul>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
