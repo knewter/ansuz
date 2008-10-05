@@ -1,0 +1,14 @@
+<% @menu_menu_entries.each do |menu_entry| 
+     if menu_entry.link == 'special'
+       case menu_entry.name
+       when 'pages' -%>
+         <%= render :partial => 'shared/top_nav' -%>
+     <%
+       end
+     else
+       isActive = (menu_entry.link =~ /#{request.request_uri}/) -%>
+      <li <%= "class=\"active\"" if isActive -%>>
+        <a href='<%= menu_entry.link %>'><%= menu_entry.name -%></a>
+      </li> 
+  <% end %> 
+<% end %> 

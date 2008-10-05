@@ -1,6 +1,10 @@
 <div id="navigation">
   <h3>Navigation:</h3>
   <ul id='top-nav'>
+    <%= render :partial => 'shared/menu' -%>
+  </ul>
+  <!--
+  <ul id='top-nav2'>
     <% @topNav.each do |page| 
       isActive = @breadcrumb && (page == @breadcrumb[1] || page == @page)
       url = "/pages/" + page.name + "/" %> 
@@ -9,5 +13,6 @@
         </li> 
     <% end %> 
   </ul>
+  -->
   <%= render :partial => "/admin/page_plugins/plugins_nav" -%>
 </div>

@@ -2,7 +2,7 @@ class Admin::MenuEntriesController < Admin::BaseController
   unloadable # This is required if you subclass a controller provided by the base rails app
 
   layout 'admin'
-  before_filter :load_menu_entry,     :only => [:show, :edit, :update]
+  before_filter :load_menu_entry,     :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_menu_entry, :only => [:new, :create]
   before_filter :load_menu_entries,   :only => [:index]
 
