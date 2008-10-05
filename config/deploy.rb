@@ -14,9 +14,9 @@ set :repository, "git@github.com:knewter/ansuz.git"
 # via the :deploy_to variable:
 set :deploy_to, "/home/deploy/#{application}"
 
-role :app, "192.168.1.88"
-role :web, "192.168.1.88"
-role :db,  "192.168.1.88", :primary => true
+role :app, "209.20.72.204"
+role :web, "209.20.72.204"
+role :db,  "209.20.72.204", :primary => true
 
 task :sym_database_yml do
   run "ln -s #{current_release}/config/database.yml.production #{current_release}/config/database.yml"

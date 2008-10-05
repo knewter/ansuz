@@ -1,14 +1,8 @@
 <%= title "Edit Site Settings" -%>
-<% form_tag 'update' do -%>
-  <% fields_for @settings do |f| -%>
-    <%= f.select(:user_theme_name, @themes) -%>
-    <%= submit_tag 'Update' -%>
-  <% end -%>
-<% end -%>
 <ul class='grid'>
   <% @themes.each do |theme| -%>
     <li class='item'>
-      <%= link_to "<img src='#{fetch_theme_preview_admin_site_settings_path(:id => theme)}' />", choose_theme_admin_site_settings_path(:theme => theme) -%>
+      <%= link_to "<img src='#{fetch_theme_preview_admin_site_settings_path(:id => theme)}' alt='#{theme}' />", choose_theme_admin_site_settings_path(:theme => theme) -%>
       <%= link_to theme, choose_theme_admin_site_settings_path(:theme => theme) -%>
     </li>
   <% end -%>

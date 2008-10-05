@@ -2,7 +2,7 @@ require 'open-uri'
 class Ansuz
   class JAdams
     class AnsuzThemesListing
-      REPOSITORY = "http://localhost:3001/ansuz_themes.xml"
+      REPOSITORY = "http://ansuzcms.com/ansuz_themes.xml"
 
       # Returns an array of theme arrays.  A theme array 
       # looks like [name, repository_url]

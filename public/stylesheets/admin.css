@@ -108,6 +108,14 @@ ul.grid{
 ul.grid li.item{
   display: block;
   float: left;
-  width: 200px;
+  width: 214px;
   margin-right: 10px;
+}
+
+ul.grid li.item img{
+  border: 10px solid #ddd;
+}
+
+ul.grid li.item img:hover {
+  border: 10px solid #bbb;
 }

@@ -20,3 +20,4 @@ tmp/**/*
 public/photo_album_photo_images/
 public/photo_album_photo_images/*
 public/uploads/*/*
+themes/*
