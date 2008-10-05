@@ -1,7 +1,8 @@
 <%= title "Edit Site Settings" -%>
 <ul class='grid'>
   <% @themes.each do |theme| -%>
-    <li class='item'>
+    <% klass = (theme == @settings.user_theme_name) ? 'active' : 'inactive' -%>
+    <li class='item <%= klass -%>'>
       <%= link_to "<img src='#{fetch_theme_preview_admin_site_settings_path(:id => theme)}' alt='#{theme}' />", choose_theme_admin_site_settings_path(:theme => theme) -%>
       <%= link_to theme, choose_theme_admin_site_settings_path(:theme => theme) -%>
     </li>

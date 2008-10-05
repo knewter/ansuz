@@ -24,6 +24,7 @@ end
 task :sym_files do
   run "ln -s #{deploy_to}/shared/attached_files #{current_release}/public/attached_files"
   run "ln -s #{deploy_to}/shared/photo_album_photo_images #{current_release}/public/photo_album_photo_images"
+  run "ln -s #{deploy_to}/shared/themes #{current_release}/themes"
 end
 task :run_plugin_migrations do
   run "cd #{current_release}; export RAILS_ENV=production; rake db:migrate:plugins"

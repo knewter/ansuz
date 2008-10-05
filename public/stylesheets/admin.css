@@ -119,3 +119,6 @@ ul.grid li.item img{
 ul.grid li.item img:hover {
   border: 10px solid #bbb;
 }
+ul.grid li.item.active img {
+  border-color: #0084FF;
+}
