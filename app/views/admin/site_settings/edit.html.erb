@@ -5,3 +5,13 @@
     <%= submit_tag 'Update' -%>
   <% end -%>
 <% end -%>
+<ul class='grid'>
+  <% @themes.each do |theme| -%>
+    <li class='item'>
+      <%= link_to "<img src='#{fetch_theme_preview_admin_site_settings_path(:id => theme)}' />", choose_theme_admin_site_settings_path(:theme => theme) -%>
+      <%= link_to theme, choose_theme_admin_site_settings_path(:theme => theme) -%>
+    </li>
+  <% end -%>
+  <li class='clear'></li>
+</ul>
+<div class='clear'></div>

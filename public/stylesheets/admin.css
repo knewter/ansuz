@@ -90,13 +90,24 @@ body{
   padding: 4px 10px;
   margin-bottom: 10px;
 }
+
 #bd h2{
   font-size: 140%;
 }
-
 
 label.title_label{
   display: block;
 }
 
-div.clear{ clear: both; }
+.clear{ clear: both; }
+
+ul.grid{
+  display: block;
+}
+
+ul.grid li.item{
+  display: block;
+  float: left;
+  width: 200px;
+  margin-right: 10px;
+}

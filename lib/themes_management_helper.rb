@@ -4,6 +4,14 @@ module ThemesManagementHelper
   end
 
   def themes_dir
-    Dir.new("#{RAILS_ROOT}/themes")
+    Dir.new(themes_root)
+  end
+
+  def theme_preview_image_for theme
+    "#{themes_root}/#{theme}/preview.png"
+  end
+  
+  def themes_root
+    "#{RAILS_ROOT}/themes"
   end
 end
