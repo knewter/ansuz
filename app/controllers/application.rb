@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     @menu_menu_entries = Ansuz::JAdams::MenuEntry.root_entries
     if @menu_menu_entries.empty?
       # Set up a default menu if there isn't one
-      MenuEntry.create(:name => 'pages', :link => 'special')
+      Ansuz::JAdams::MenuEntry.create(:name => 'pages', :link => 'special')
     end
   end
 
