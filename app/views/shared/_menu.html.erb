@@ -6,7 +6,7 @@
      <%
        end
      else
-       isActive = (menu_entry.link =~ /#{request.request_uri}/) -%>
+       isActive = (menu_entry.link =~ /#{request.request_uri}/) && !request.request_uri == '/' -%>
       <li <%= "class=\"active\"" if isActive -%>>
         <a href='<%= menu_entry.link %>'><%= menu_entry.name -%></a>
       </li> 

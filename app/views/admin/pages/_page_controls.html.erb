@@ -1,7 +1,7 @@
 <div class='page_controls'>
   <ul>
-    <li class="direction up"><%= link_to '&uarr;', shift_order_admin_page_path(:id => page.id, :shift => 1), {:style => "text-decoration:none"} -%></li>
-    <li class="direction down"><%= link_to '&darr;', shift_order_admin_page_path(:id => page.id, :shift => -1), {:style => "text-decoration:none"} -%></li>
+    <li class="direction up"><%= link_to '&uarr;', shift_order_admin_page_path(:id => page.id, :shift => -1), {:style => "text-decoration:none"} -%></li>
+    <li class="direction down"><%= link_to '&darr;', shift_order_admin_page_path(:id => page.id, :shift => 1), {:style => "text-decoration:none"} -%></li>
     <li><%= link_to("X", admin_page_path(page), :method => :delete, :confirm => 'Are you sure?  This will delete this page permanently and all sub-pages will be orphaned!') -%></li>
     <li><%= link_to("Add", new_admin_page_path(:parent_id => page.id)) -%></li>
   </ul>

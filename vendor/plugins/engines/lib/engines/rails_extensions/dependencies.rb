@@ -109,7 +109,7 @@ module Engines::RailsExtensions::Dependencies
         # implementations
         Engines.plugins.each do |plugin|
           plugin_file_name = File.expand_path(File.join(plugin.directory, 'app', "#{file_type}s", base_name))
-          Engines.logger.debug("checking plugin '#{plugin.name}' for '#{base_name}'")
+          #Engines.logger.debug("checking plugin '#{plugin.name}' for '#{base_name}'")
           if File.file?("#{plugin_file_name}.rb")
             Engines.logger.debug("==> loading from plugin '#{plugin.name}'")
             file_loaded = true if require_or_load_without_engine_additions(plugin_file_name, const_path)

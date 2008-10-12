@@ -1,8 +1,8 @@
 <div id="breadcrumb">
   <% url = ""
     @breadcrumb.each do |crumb| 
-      url = (url!="")? url+crumb.name+"/" : url = "/" %>
-  <%= link_to crumb.title, ((url=='/')? '/' + @root.name + '/' : url ) %> &gt; 
+      url = (url != "") ? url + crumb.name + "/" : url = "/" %>
+  <%= link_to crumb.title, ((url=='/')? '/pages/' + @root.name + '/' : url ) %> &gt; 
   <% end %>
   <% if @page -%>
     <b><%= (@pageNum!=nil)? link_to(@page.title, './') + " &gt; page " + @pageNum.to_s : @page.title %></b>

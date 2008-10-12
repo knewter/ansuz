@@ -122,3 +122,6 @@ ul.grid li.item img:hover {
 ul.grid li.item.active img {
   border-color: #0084FF;
 }
+#tree li li:hover {
+  background-color: #eee;
+}
