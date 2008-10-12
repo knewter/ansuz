@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_menu_system
   map.from_plugin :ansuz_theme_repository
   map.from_plugin :ansuz_theme_installer
+  map.from_plugin :ansuz_scrollable_content
 
   map.resources :users
   map.resources :tags

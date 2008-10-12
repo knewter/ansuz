@@ -2,13 +2,11 @@
 div.items {
   height:180px;   
   float:left;
-  width:470px;
   background-color:#efefef;
   border:1px solid #ddd;
 }
   
 div.items div {
-  width:470px;  
 }
 
 div.scrollable div {    
