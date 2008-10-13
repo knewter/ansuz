@@ -1,7 +1,12 @@
-<% @topNav.each do |page| 
+<% entries.each do |page| 
   isActive = @breadcrumb && (page == @breadcrumb[1] || page == @page)
   url = "/pages/" + page.name + "/" %> 
     <li <%= "class=\"active\"" if isActive -%>>
       <a href='<%= url %>'><%= page.title -%></a>
+      <% if page.linked_children.any? && page.parent_id -%>
+        <ul>
+          <%= render :partial => 'shared/top_nav', :locals => { :entries => page.linked_children } -%>
+        </ul>
+      <% end -%>
     </li> 
 <% end %> 

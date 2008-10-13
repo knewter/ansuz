@@ -2,7 +2,7 @@
      if menu_entry.link == 'special'
        case menu_entry.name
        when 'pages' -%>
-         <%= render :partial => 'shared/top_nav' -%>
+         <%= render :partial => 'shared/top_nav', :locals => { :entries => @topNav } -%>
      <%
        end
      else

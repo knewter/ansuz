@@ -25,6 +25,10 @@ class Page < ActiveRecord::Base
   attr_protected :page_number, :pages 
   has_many       :page_plugins
 
+  def linked_children
+    children.select{|x| x.linked? }
+  end
+
   def full_title
     full_title = read_attribute('full_title') 
     if full_title.nil? or full_title.size == 0
