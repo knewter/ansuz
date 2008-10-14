@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
   protected
   def load_blog_posts
-    @blog_posts = Ansuz::JAdams::BlogPost.find(:all)
+    @blog_posts = Ansuz::JAdams::BlogPost.find(:all, :order => 'created_at DESC')
   end
 
   def load_blog_post
