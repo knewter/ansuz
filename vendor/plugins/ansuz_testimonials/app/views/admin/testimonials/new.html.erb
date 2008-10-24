@@ -1,0 +1,8 @@
+<%= title "New Testimonial" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "All Testimonials", admin_testimonials_path -%>
+<% end -%>
+<% form_for :testimonial, :url => admin_testimonials_path do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } -%>
+  <%= submit_tag("Create Testimonial") -%> or <%= link_to "Cancel", admin_testimonials_path -%>
+<% end -%>

@@ -2,6 +2,7 @@ class Ansuz
   class JAdams
     class BlogPost < ActiveRecord::Base
       acts_as_taggable
+      belongs_to :author, :class => "User", :foreign_key => 'created_by'
       has_many :blog_comments, :class_name => "Ansuz::JAdams::BlogComment", :order => "created_at DESC"
 
       def edit_path
