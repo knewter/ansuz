@@ -1,0 +1,9 @@
+<div id='testimonials'>
+  <%= render :partial => 'testimonials/testimonial', :collection => testimonials -%>
+</div>
+<script type='text/javascript'>
+  jQuery('#testimonials').cycle({
+        fx: 'fade',
+        pause: 1
+      });
+</script>
