@@ -1,4 +1,9 @@
 <%= title "Choose a Theme" -%>
+<% content_for :sidebar do -%>
+  <div class='note'>
+    Just click on a theme to set it as the active theme for the site.  The currently-selected theme is highlighted.  If you want to install more themes, and the ansuz_theme_installer plugin is installed, you should be able to just <a href='/admin/ansuz_theme_installers'>click this link</a>.  We need a way for plugins to insert text into other plugins (rather, a standard way).  That way I could only add the link if it were installed, or add a link to install it if it weren't.
+  </div>
+<% end -%>
 <ul class='grid'>
   <% @themes.each do |theme| -%>
     <% klass = (theme == @settings.user_theme_name) ? 'active' : 'inactive' -%>

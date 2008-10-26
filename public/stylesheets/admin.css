@@ -35,14 +35,22 @@ body{
 }
 
 #sidebar{
-  float: right;
+  float: left;
   width: 25%;
   background-color: #ddd;
   text-align: left;
 }
 
+#sidebar h2{
+  background-color: #bbb;
+  padding: 4px;
+  margin: 4px 0;
+}
+
 #doc2{
-  width: 100%;
+  width: 71%;
+  float: left;
+  margin-right: 10px;
 }
 
 /* Tabs */
@@ -85,7 +93,6 @@ body{
 #bd {
   background:white;
   padding:5px;
-  width: 71%;
   margin-left: 10px;
   border-width: 0 2px 2px 0px;
   border-style: solid;

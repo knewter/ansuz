@@ -30,9 +30,9 @@ class Ansuz
       register_admin_menu_entry "Add-ons", title, link
     end
 
-    def register_admin_menu_entry top_level_menu_name, text, link
+    def register_admin_menu_entry top_level_menu_name, text, link, options={}
       raise "There was an attempt to add a link to the admin menu with a non-existent top level menu entry as parent." unless ADMIN_MENU_TOP_LEVEL_ENTRIES.include?(top_level_menu_name)
-      self.admin_menu[top_level_menu_name] << [text, link]
+      self.admin_menu[top_level_menu_name] << [text, link, options]
     end
 
     private

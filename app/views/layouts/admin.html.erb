@@ -36,9 +36,6 @@
       <%= render :partial => "/admin/tabs" %>
     </div>
     <div id='content'>
-      <div id='sidebar'>
-        <%= yield :sidebar -%>
-      </div>
       <div id="doc2" class="yui-t7">
         <div id="bd">
           <div class="yui-g">
@@ -52,6 +49,9 @@
         <div id="ft">
           [ Currently Editing: <b><%= current_database %></b> ]
         </div>
+      </div>
+      <div id='sidebar'>
+        <%= yield :sidebar -%>
       </div>
     </div>
   </body>

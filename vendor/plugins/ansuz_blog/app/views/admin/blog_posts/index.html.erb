@@ -1,6 +1,9 @@
 <%= title "Blog Posts" -%>
 <% content_for :sidebar do -%>
   <%= link_to "New Blog Post", new_admin_blog_post_path -%>
+  <div class='note'>
+    The blog plugin is largely unfinished, although it technically kind of sort of works.  There's lots of work to be done yet, but it's going to be done I assure you.
+  </div>
   <h2>Tag Cloud</h2>
   <%= tag_cloud :url => :admin_tag_path -%>
 <% end -%>
