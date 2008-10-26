@@ -151,6 +151,11 @@ ul.grid li.item.active img {
   position: relative;
   width: 150px;
   z-index: 100;
+  margin-right: 20px;
+}
+
+#admin-menu li:hover span{
+  background: #006bcf;
 }
 
 #admin-menu li span, #admin-menu li a{
