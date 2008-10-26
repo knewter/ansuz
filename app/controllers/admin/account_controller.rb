@@ -60,6 +60,6 @@ class Admin::AccountController < Admin::BaseController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "You have been logged out."
-    redirect_back_or_default(login_admin_account_path)
+    redirect_back_or_default("admin/account/login")
   end
 end

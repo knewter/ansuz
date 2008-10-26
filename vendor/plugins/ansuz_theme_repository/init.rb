@@ -1,3 +1,3 @@
 # Include hook code here
 require 'ansuz_theme'
-Ansuz::PluginManagerInstance.register_admin_plugin_nav('Theme Repository', '/admin/ansuz_themes')
+Ansuz::PluginManagerInstance.register_admin_menu_entry('Ansuz', "Administer this ansuz installation's Theme Repository", '/admin/ansuz_themes')

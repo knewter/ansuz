@@ -4,10 +4,16 @@ module TestimonialsHelper
   end
 
   def show_testimonials
-    testimonials = []
-    10.times do
-      testimonials << Ansuz::JAdams::Testimonial.random
+    if testimonials_exist?
+      testimonials = []
+      10.times do
+        testimonials << Ansuz::JAdams::Testimonial.random
+      end
+      render :partial => 'testimonials/fadelist', :locals => { :testimonials => testimonials }
     end
-    render :partial => 'testimonials/fadelist', :locals => { :testimonials => testimonials }
+  end
+
+  def testimonials_exist?
+    Ansuz::JAdams::Testimonial.count > 0
   end
 end
