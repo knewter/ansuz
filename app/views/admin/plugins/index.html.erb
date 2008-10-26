@@ -1,4 +1,9 @@
-<%= title "Installed Plugins" -%>
+<%= title "Installed Page Plugins" -%>
+<% content_for :sidebar do -%>
+  <div class='note'>
+    This is actually a list of the installed page plugins, as I've foolishly not provided a way to register a plugin with the system (Ansuz::PluginManagerInstance.register_plugin is actually used to register a page plugin)
+  </div>
+<% end -%>
 <table class='subdued'>
   <thead>
     <tr>

@@ -1,7 +1,7 @@
 <%= title "Ansuz Themes" -%>
 <% content_for :sidebar do -%>
-  <%= link_to "New Ansuz Theme", new_admin_ansuz_theme_path -%><br />
-  <%= link_to "Themes Feed",     ansuz_themes_path(:format => 'xml') -%>
+  <%= link_to "New Ansuz Theme", new_admin_ansuz_theme_path, :class => 'button icon add' -%><br />
+  <%= link_to "Themes Feed",     ansuz_themes_path(:format => 'xml'), :class => 'button icon rss' -%>
   <div class='note'>
     An Ansuz Theme consists of a name and a public git repository url (a private repository would work if you set up the appropriate ssh keys, etc.).  Right now, it's impossible to install a theme (see <a href="http://ansuz.lighthouseapp.com/projects/15780-ansuz/tickets/6-right-now-a-theme-cannot-be-updated">this ticket</a> if you feel like fixing it!)
   </div>

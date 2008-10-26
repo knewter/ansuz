@@ -1,6 +1,6 @@
 <%= title "Edit Ansuz Theme: #{@ansuz_theme}" -%>
 <% content_for :sidebar do -%>
-  <%= link_to "All Ansuz Themes", admin_ansuz_themes_path -%>
+  <%= link_to "All Ansuz Themes", admin_ansuz_themes_path, :class => 'button icon back' -%>
 <% end -%>
 <% form_for :ansuz_theme, :url => admin_ansuz_theme_path(@ansuz_theme), :html => { :method => :put } do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } -%>

@@ -1,6 +1,6 @@
 <%= title "New Menu Entry" -%>
 <% content_for :sidebar do -%>
-  <%= link_to "All Menu Entries", admin_menu_entries_path -%>
+  <%= link_to "All Menu Entries", admin_menu_entries_path, :class => 'button icon back' -%>
 <% end -%>
 <% form_for :menu_entry, :url => admin_menu_entries_path do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } -%>

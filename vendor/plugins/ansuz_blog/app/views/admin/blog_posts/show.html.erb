@@ -1,8 +1,8 @@
 <%= title @blog_post.title -%>
 <% content_for :sidebar do -%>
   <ul class='toolbar'>
-    <li><%= link_to "Edit Blog Post", edit_admin_blog_post_path(@blog_post) -%></li>
-    <li><%= link_to "All Blog Posts", admin_blog_posts_path -%></li>
+    <li><%= link_to "Edit Blog Post", edit_admin_blog_post_path(@blog_post), :class => 'button icon edit' -%></li>
+    <li><%= link_to "All Blog Posts", admin_blog_posts_path, :class => 'button icon back' -%></li>
   </ul>
   <h2>Tagged With</h2>
   <ul>

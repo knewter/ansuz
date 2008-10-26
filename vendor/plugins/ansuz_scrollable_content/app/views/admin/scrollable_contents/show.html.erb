@@ -1,6 +1,6 @@
 <%= title "Scrollable Content" -%>
 <% content_for :sidebar do -%>
-  <%= link_to "Add Section", new_admin_scrollable_content_scrollable_content_section_path(@scrollable_content) -%>
+  <%= link_to "Add Section", new_admin_scrollable_content_scrollable_content_section_path(@scrollable_content), :class => 'button icon add' -%>
 <% end -%>
 <h3>Sections</h3>
 <ul class='sections'>

@@ -1,6 +1,9 @@
 <%= title "Testimonials" -%>
 <% content_for :sidebar do -%>
-  <%= link_to "New Testimonial", new_admin_testimonial_path -%><br />
+  <%= link_to "New Testimonial", new_admin_testimonial_path, :class => 'button icon add' -%>
+  <div class='note'>
+    This plugin provides a helper method, "show_testimonials", which will provide a soft-fading transition between randomly-selected testimonials each time it's run (granted the appropriate styles are provided.  See the ansuz_theme_isotope11 theme for an example.)
+  </div>
 <% end -%>
 <table class='subdued'>
   <thead>

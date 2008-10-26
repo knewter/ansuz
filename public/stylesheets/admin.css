@@ -174,3 +174,46 @@ ul.grid li.item.active img {
 
 #admin-menu li ul li{
 }
+
+.note{
+  margin: 10px 0;
+  background-color: #ccc;
+  padding: 10px;
+}
+
+#sidebar > .note:first-child {
+  margin-top: 0;
+}
+
+a.button{
+  padding: 10px;
+  background-color: #ccc;
+  color: black;
+  text-decoration: none;
+  width: 200px;
+  display: block;
+}
+a.button:hover {
+  background-color: #bbb !important;
+}
+a.button.icon{
+  padding-left: 30px;
+  width: 180px;
+  background-repeat: no-repeat;
+  background-position: 5px 10px;
+}
+a.button.icon.add{
+  background-image: url(/images/famfamfam_icons/add.png)
+}
+a.button.icon.remove{
+  background-image: url(/images/famfamfam_icons/delete.png)
+}
+a.button.icon.back{
+  background-image: url(/images/famfamfam_icons/arrow_left.png)
+}
+a.button.icon.edit{
+  background-image: url(/images/famfamfam_icons/pencil.png)
+}
+a.button.icon.rss{
+  background-image: url(/images/famfamfam_icons/rss.png)
+}
