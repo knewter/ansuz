@@ -4,4 +4,6 @@ The API is currently a mess, full of poorly named things.  This will change, and
 
 1) register_plugin(klass) will register a page plugin by its main container class.  This will enable a user to add your page plugin to a page.
 2) register_plugin_nav( title, link ) will register a link for the user-facing nav menu
-3) register_admin_plugin_nav( title, link ) will register a link for the admin-facing nav menu.  This is how you add bits to the admin interface for managing your plugin.
+3) register_admin_menu_entry( section, title, link ) will register a link for the admin-facing nav menu in a given section.  This is how you add bits to the admin interface for managing your plugin.
+3) add_top_level_menu_entry( name ) will register a link for the admin-facing nav menu in a given section.  This is how you add bits to the admin interface for managing your plugin.
+4) add_page_type(name, array_of_plugin_names_as_strings) will register a new page type for the add page button in manage pages.

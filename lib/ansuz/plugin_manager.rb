@@ -1,13 +1,16 @@
 class Ansuz
   class PluginManager
-    attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu
-    ADMIN_MENU_TOP_LEVEL_ENTRIES = ["Pages", "Add-ons", "Ansuz"]
+    attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types
+    ADMIN_MENU_TOP_LEVEL_ENTRIES = ["Content", "Add-ons", "Ansuz"]
 
     def initialize
       @plugins = []
       @plugin_nav = []
       @admin_plugin_nav = []
-      @admin_menu = setup_admin_menu
+      @admin_menu = {}
+      @admin_menu_top_level_entries = ADMIN_MENU_TOP_LEVEL_ENTRIES.clone
+      @page_types = []
+      setup_admin_menu
     end
 
     # A plugin can call register_plugin(ClassName) to add itself to the plugins array
@@ -31,18 +34,24 @@ class Ansuz
     end
 
     def register_admin_menu_entry top_level_menu_name, text, link, options={}
-      raise "There was an attempt to add a link to the admin menu with a non-existent top level menu entry as parent." unless ADMIN_MENU_TOP_LEVEL_ENTRIES.include?(top_level_menu_name)
+      raise "There was an attempt to add a link to the admin menu with a non-existent top level menu entry as parent." unless admin_menu_top_level_entries.include?(top_level_menu_name)
       self.admin_menu[top_level_menu_name] << [text, link, options]
     end
 
-    private
+    def add_top_level_menu_entry name
+      @admin_menu_top_level_entries << name unless @admin_menu_top_level_entries.include?(name)
+      @admin_menu[name] = []
+    end
+
     # The admin menu is just a hash with an array for sub menus for now.
     def setup_admin_menu
-      hsh = {}
       ADMIN_MENU_TOP_LEVEL_ENTRIES.each do |menu_entry|
-        hsh[menu_entry] = []
+        add_top_level_menu_entry menu_entry
       end
-      hsh
+    end
+
+    def register_page_type name, modules=[]
+      @page_types << [name, modules]
     end
   end
 end

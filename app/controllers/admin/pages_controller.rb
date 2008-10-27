@@ -44,13 +44,14 @@ class Admin::PagesController < Admin::BaseController
   def create
     @page.name = @page.name.gsub(' ', '_')
     if @page.save
+      attach_page_plugins
       message = 'Page Added Successfully'
       @preview_url = @page.ancestor_path + @page.name
       @page_id = @page.id
       respond_to do |format|
         format.html{ 
           flash[:notice] = message
-          redirect_to admin_pages_path
+          redirect_to admin_page_path(@page)
         }
         format.js{
           flash.now[:message] = message
@@ -113,5 +114,14 @@ class Admin::PagesController < Admin::BaseController
         :can_delete => true,
         :initialize => false )
     end
+  end
+
+  protected
+  def attach_page_plugins
+    @page.reload
+    params[:page_plugins].each do |page_plugin|
+      plug = @page.page_plugins.build(:module_type => page_plugin)
+    end
+    @page.save
   end
 end

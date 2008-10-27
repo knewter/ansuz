@@ -222,3 +222,29 @@ a.button.icon.edit{
 a.button.icon.rss{
   background-image: url(/images/famfamfam_icons/rss.png)
 }
+#tree ul li .page_controls ul.dropdown li{
+  float: none;
+}
+
+.clickMenu div.outerbox{
+  font-size: 100%;
+}
+
+.clickMenu li.main{
+  font-size: 85%;
+}
+
+.clickMenu li.main:hover {
+  background-color: #ddd !important;
+}
+
+.clickMenu li.main li{
+  min-width: 120px !important;
+}
+
+.clickMenu li.main ul.innerBox li:hover, .clickMenu li.main ul.innerBox li:hover a {
+  background-color: #ccc !important;
+}
+.clickMenu li.main ul.innerBox li a:hover {
+  cursor: pointer;
+}
