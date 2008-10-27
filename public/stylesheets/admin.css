@@ -7,6 +7,10 @@ body{
   background-color: #ddd;
 }
 
+#wrapper{
+  position: relative;
+}
+
 #header {
   width:100%;
   text-align: left;
@@ -244,6 +248,10 @@ a.button.icon.rss{
 
 .clickMenu li.main ul.innerBox li:hover, .clickMenu li.main ul.innerBox li:hover a {
   background-color: #ccc !important;
+}
+.clickMenu li.main ul.innerBox li a{
+  display: block;
+  width: 150px;
 }
 .clickMenu li.main ul.innerBox li a:hover {
   cursor: pointer;
