@@ -51,7 +51,7 @@ class Admin::PagesController < Admin::BaseController
       respond_to do |format|
         format.html{ 
           flash[:notice] = message
-          redirect_to admin_page_path(@page)
+          redirect_to edit_admin_page_path(@page)
         }
         format.js{
           flash.now[:message] = message
@@ -118,10 +118,12 @@ class Admin::PagesController < Admin::BaseController
 
   protected
   def attach_page_plugins
-    @page.reload
-    params[:page_plugins].each do |page_plugin|
-      plug = @page.page_plugins.build(:module_type => page_plugin)
+    if params[:page_plugins]
+      @page.reload
+      params[:page_plugins].each do |page_plugin|
+        plug = @page.page_plugins.build(:module_type => page_plugin)
+      end
+      @page.save
     end
-    @page.save
   end
 end

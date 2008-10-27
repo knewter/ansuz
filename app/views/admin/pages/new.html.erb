@@ -3,8 +3,10 @@
 	<%= hidden_field 'page', 'parent_id' %>
 	<%= hidden_field 'page', 'page_order' %>
 	<%= render :partial => 'form' %>
-  <% params[:page_plugins].each do |page_plugin| -%>
-    <%= hidden_field_tag "page_plugins[]", page_plugin -%>
+  <% if params[:page_plugins] -%>
+    <% params[:page_plugins].each do |page_plugin| -%>
+      <%= hidden_field_tag "page_plugins[]", page_plugin -%>
+    <% end -%>
   <% end -%>
 	<%= submit_tag 'Create', :class => 'submit' %>
 <% end -%>
