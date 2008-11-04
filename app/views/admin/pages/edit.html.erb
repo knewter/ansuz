@@ -28,12 +28,28 @@
 <% if @page.display_title %>
   <h2><%= @page.full_title %></h2>
 <% end %>
-<% if @page.page_plugins.any? -%>
-  <% @page.page_plugins.each do |plugin| -%>
-    <% if plugin.module_class.respond_to?(:admin_partial) -%>
-      <%= render :partial => plugin.module_class.admin_partial, :locals => { :plugin_module => plugin.module } -%>
-    <% else -%>
-      <%= render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
+
+<div id='page-plugins-tabs'>
+  <ul>
+    <% @page.page_plugins.each do |plugin| -%>
+      <li><%= link_to(content_tag(:span, plugin.pretty_module_type), "#page-plugin-#{plugin.id}", :class => 'edit_page_plugin') -%></li>
+    <% end -%>
+    <li><%= link_to content_tag(:span, "Add Plugin"), new_admin_page_plugin_path(:page_id => @page.id) -%></li>
+  </ul>
+  <div class='clear'></div>
+  <% if @page.page_plugins.any? -%>
+    <% @page.page_plugins.each do |plugin| -%>
+      <div id='page-plugin-<%= plugin.id -%>'>
+        <% if plugin.module_class.respond_to?(:admin_partial) -%>
+          <%= render :partial => plugin.module_class.admin_partial, :locals => { :plugin_module => plugin.module } -%>
+        <% else -%>
+          <%= render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
+        <% end -%>
+      </div>
     <% end -%>
   <% end -%>
-<% end -%>
+</div>
+
+<script type='text/javascript'>
+  jQuery('#page-plugins-tabs').tabs();
+</script>

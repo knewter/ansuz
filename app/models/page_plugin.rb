@@ -21,4 +21,8 @@ class PagePlugin < ActiveRecord::Base
     self.module_id = the_module.id
     self.save
   end
+
+  def pretty_module_type
+    module_type.to_s.split("::").last rescue nil
+  end
 end

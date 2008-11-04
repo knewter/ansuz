@@ -103,6 +103,7 @@ body{
   border-width: 0 2px 2px 0px;
   border-style: solid;
   border-color: #aaa;
+  min-height: 400px;
 }
 
 #bd h1{
@@ -266,3 +267,5 @@ a.button.icon.rss{
 .clickMenu li.main ul.innerBox li a:hover {
   cursor: pointer;
 }
+
+.ui-tabs-hide{ display: none; }
