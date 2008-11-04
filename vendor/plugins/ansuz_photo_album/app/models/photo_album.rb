@@ -11,6 +11,10 @@ class Ansuz
       end
 
       def self.view_partial
+        "/photo_albums/photo_album"
+      end
+
+      def self.admin_partial
         "/admin/photo_albums/photo_album"
       end
     end

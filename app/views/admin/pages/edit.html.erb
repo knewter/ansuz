@@ -1,4 +1,5 @@
 <%= title "Edit Page: #{@page}" -%>
+
 <% content_for :sidebar do -%>
   <% form_remote_tag :url => admin_page_path(@page),
     :update => 'main',
@@ -11,9 +12,7 @@
     <%= render :partial => 'form' %>
     <%= submit_tag 'Update', :class => 'submit' -%>
   <% end -%>
-<% end -%>
 
-<% content_for :sidebar do -%>
   <h2>Plugins on this page</h2>
   <ul id="page_plugins" class='page_plugins'>
     <% @page.page_plugins.each do |plugin| -%>
@@ -31,6 +30,10 @@
 <% end %>
 <% if @page.page_plugins.any? -%>
   <% @page.page_plugins.each do |plugin| -%>
-    <%= render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
+    <% if plugin.module_class.respond_to?(:admin_partial) -%>
+      <%= render :partial => plugin.module_class.admin_partial, :locals => { :plugin_module => plugin.module } -%>
+    <% else -%>
+      <%= render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
+    <% end -%>
   <% end -%>
 <% end -%>

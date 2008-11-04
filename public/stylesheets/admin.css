@@ -28,8 +28,8 @@ body{
   background-color: #ddd;
   text-align: left;
   position: absolute;
-  top: 60px;
-  height: 23px;
+  top: 0;
+  height: 20px;
   left: 0;
   width: 100%;
 }
@@ -60,6 +60,8 @@ body{
 /* Tabs */
 #hd {
   width:100%;
+  height: 20px;
+  background: #bbb;
 }
 
 #hd ul {
@@ -232,6 +234,14 @@ a.button.icon.rss{
 
 .clickMenu div.outerbox{
   font-size: 100%;
+}
+
+.clickMenu li{
+  padding: 0 2px !important;
+}
+
+.clickMenu li a{
+  margin-right: 0 !important;
 }
 
 .clickMenu li.main{

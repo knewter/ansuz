@@ -1,11 +1,1 @@
-<ul class='photos'>
-  <% plugin_module.photos.each do |photo| -%>
-    <li>
-      <%= link_to image_tag(photo.photo_album_photo_image.url(:thumb)),
-                  photo.photo_album_photo_image.url(:large), 
-                  :rel   => "lightbox[#{plugin_module.id}]",
-                  :title => "<h2>#{photo.title}</h2>#{photo.caption}"
-      -%>
-    </li>
-  <% end -%>
-</ul>
+foo
