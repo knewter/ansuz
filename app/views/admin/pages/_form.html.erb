@@ -1,24 +1,19 @@
 <%= error_messages_for 'page' %>
 <!--[form:page]-->
 <div id="cms_form" style="display:block;">
-	<label for="page_name" class="title_label">Name (URL):</label>
-	<%= text_field 'page', 'name', 'onKeyUp' => "document.getElementById('name_preview').innerHTML = this.value.replace(/ /g, '_')" %>
-	<span><b><%= @page.ancestor_path %><span id=name_preview><%= @page.name %></span></b></span><br/>
-	<label for="page_title" class="title_label">Title:&nbsp;</label>
-	<%= text_field 'page', 'title'  %><br />
-	<label for="page_full_title" class="title_label">Full Title:&nbsp;</label>
-	<%= text_field 'page', 'full_title' %><br/><br/>
+  <%= form_heading "Name (URL)", text_field('page', 'name', 'onKeyUp' => "document.getElementById('name_preview').innerHTML = this.value.replace(/ /g, '_')") %>
+	<span class='path'><b><%= @page.ancestor_path %><span id=name_preview><%= @page.name %></span></b></span><br/>
+  <%= form_heading "Title", text_field('page', 'title') %>
+  <%= form_heading "Full Title", text_field('page', 'full_title') %>
 	<div class=advanced_options>
-	<a class="advanced_options" href="#" onClick="document.getElementById('advance_display_options').style.display = 'block'"><strong>Advanced Options</strong></a>
-	<div id="advance_display_options">
-		<label for="page_display_title" class="advanced_options">Displayed on page</label> 
-		<select id="page_display_title" name="page[display_title]"><%= options_for_select [true, false], @page.display_title %></select><br/>
-		<label for="page_show_sub_menu" class="advanced_options">Display Sub-menu</label> 
-		<select id="page_show_sub_menu" name="page[show_sub_menu]"><%= options_for_select [true, false], @page.show_sub_menu %></select><br/>
-		<label for="page_published" class="advanced_options">Published</label>
-		<select id="page_published" name="page[published]"><%= options_for_select [true, false], @page.published %></select><br/>
-		<label for="page_linked" class="advanced_options">Linked</label>
-		<select id="page_linked" name="page[linked]"><%= options_for_select [true, false], @page.linked %></select><br /><br />
-	</div></a><!-- end Advanced Options --></div><br/>
+  <% toggle_content_box "Advanced Options" do %>
+    <table class='form-table'>
+      <%= form_row '<label for="page_display_title" class="advanced_options">Displayed on page</label>', '<select id="page_display_title" name="page[display_title]">' + options_for_select([true, false], @page.display_title) + '</select>' %>
+      <%= form_row '<label for="page_show_sub_menu" class="advanced_options">Display Sub-menu</label> ', '<select id="page_show_sub_menu" name="page[show_sub_menu]">' + options_for_select([true, false], @page.show_sub_menu) + '</select>' %>
+      <%= form_row '<label for="page_published" class="advanced_options">Published</label>', '<select id="page_published" name="page[published]">' + options_for_select([true, false], @page.published) + '</select>' %>
+      <%= form_row '<label for="page_linked" class="advanced_options">Linked</label>', '<select id="page_linked" name="page[linked]">' + options_for_select([true, false], @page.linked) + '</select>' %>
+    </table>
+    <br />
+  <% end %>
 </div><!-- end float left-->
 <!--[eoform:page]-->

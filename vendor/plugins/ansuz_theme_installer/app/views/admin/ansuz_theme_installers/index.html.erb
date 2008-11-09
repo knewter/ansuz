@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <% @themes.each do |theme| -%>
-      <tr>
+      <tr class="<%= cycle('odd', 'even') %>">
         <td><%= link_to(theme[0], install_admin_ansuz_theme_installers_path(:repository_url => theme[1])) -%></td>
       </tr>
     <% end -%>

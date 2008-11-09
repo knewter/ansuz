@@ -73,7 +73,7 @@ h3{
 }
 
 #sidebar input.text{
-  width: 50%;
+  width: 96%;
 }
 
 #doc2{
@@ -204,6 +204,7 @@ ul.grid li.item.active img {
   display: none;
   padding: 0;
   margin: 0;
+  opacity: .9;
 }
 
 #admin-menu li:hover ul{
@@ -224,6 +225,10 @@ ul.grid li.item.active img {
 
 #sidebar > .note:first-child {
   margin-top: 0;
+}
+
+#sidebar .form-table th, #sidebar .form-table td{
+  border-bottom: 0;
 }
 
 a.button{
@@ -366,3 +371,15 @@ input, textarea{
 .blog-post-form input.title{
   width: 98%;
 }
+.toggle-content-box{
+  margin-bottom: 10px;
+}
+a.toggle-link{
+  padding: 4px;
+  display: block;
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+}
+a.toggle-link:hover {
+  background-color: #444;
