@@ -1,0 +1,35 @@
+#doc2{
+  width: 300px;
+  min-width: 300px;
+  margin: 0 auto;
+  float: none;
+  height: auto;
+  min-height: auto;
+}
+#bd{
+  height: 200px;
+  min-height: 200px;
+}
+input.text{
+  font-size: 1.5em;
+  width: 240px;
+}
+div.login{
+  padding: 1em;
+}
+div.login input.button{
+  float: right;
+}
+div.login label{
+  font-size: 1.2em;
+  color: #555;
+}
+h1#logo{
+  background: transparent url(/images/ansuz_logo.png) no-repeat 0 10px;
+  padding-left: 10px;
+  width: 200px;
+  height: 80px;
+  margin: 0 auto;
+  font-size: 2.5em;
+  color: #333;
+}

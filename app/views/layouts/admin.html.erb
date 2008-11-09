@@ -38,10 +38,6 @@
         <div id="doc2" class="yui-t7">
           <div id="bd">
             <div class="yui-g">
-              <%# TODO: I need to use the helper I use to print all flash messages here, way more stylable / useful -ja -%>
-              <% if flash[:message] -%>
-                <div id="message"><%= flash[:message] %></div> <!-- end .message -->
-              <% end -%>
               <%= @content_for_layout %>
             </div>
           </div>

@@ -269,3 +269,21 @@ a.button.icon.rss{
 }
 
 .ui-tabs-hide{ display: none; }
+
+input.text{
+  font-size: 1.5em;
+  padding: 4px;
+  margin-bottom: 1em;
+}
+
+input.button{
+  background-color: #ccc;
+  border: 1px solid #aaa;
+  font-size: 1.2em;
+  padding: 4px;
+}
+
+input.button:hover {
+  background-color: #bbb;
+  cursor: pointer;
+}

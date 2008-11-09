@@ -1,0 +1,47 @@
+<!-- Generated Using Ansuz CMS -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title><%= title_for "Ansuz CMS: Admin" -%></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta name="description" content="Ansuz Content Management System" />
+  	<meta name="keywords" content="Ansuz Content Management System" />
+    <%= stylesheet_link_tag 'reset-fonts-grids' %>
+	  <%= stylesheet_link_tag 'sprite' %>
+    <%= stylesheet_link_tag 'admin' %>
+    <%= stylesheet_link_tag 'mini' %>
+    <%= stylesheet_link_tag 'tables' %>
+    <%= stylesheet_link_tag 'tree' %>
+    <%= stylesheet_link_tag 'flashes' %>
+    <%= stylesheet_link_tag 'acts_as_taggable_stylesheet' %>
+    <%= stylesheet_link_tag 'clickmenu' %>
+    <%= stylesheet_link_tag 'ui.tabs.css' %>
+    <%= javascript_include_tag :defaults -%>
+    <%= javascript_include_tag 'jquery' -%>
+    <%= javascript_tag "jQuery.noConflict();" -%>
+    <%= javascript_include_tag 'jquery.growl.js', 'ansuz/growls' %>
+    <%= javascript_include_tag 'jquery-ui-personalized-1.6rc2.min.js' %>
+    <%= javascript_include_tag 'show_and_hide' %>
+    <%= javascript_include_tag 'fckeditor/fckeditor' %>
+    <%= javascript_include_tag 'ansuz/tree' %>
+    <%= javascript_include_tag 'jquery.clickmenu.pack.js' %>
+    <!--[if lt IE 7.]><%= javascript_include_tag 'pngfix.js' %><![endif]-->
+  </head>
+  <body class='mini'>
+    <%= display_standard_flashes -%>
+    <div id='wrapper'>
+      <div id='content'>
+        <h1 id='logo'><span></span>Ansuz CMS</h1>
+        <div id="doc2" class="yui-t7">
+          <div id="bd">
+            <div class="yui-g">
+              <%= @content_for_layout %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

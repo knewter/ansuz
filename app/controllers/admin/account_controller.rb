@@ -8,17 +8,20 @@ class Admin::AccountController < Admin::BaseController
   end
 
   def login
-    return unless request.post?
-    self.current_user = User.authenticate(params[:login], params[:password])
-    if logged_in?
-      if params[:remember_me] == "1"
-        self.current_user.remember_me
-        cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
+    if request.post?
+      self.current_user = User.authenticate(params[:login], params[:password])
+      if logged_in?
+        if params[:remember_me] == "1"
+          self.current_user.remember_me
+          cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
+        end
+        flash[:message] = "Logged in successfully"
+        redirect_back_or_default(admin_pages_path)
       end
-      flash[:message] = "Logged in successfully"
-      redirect_back_or_default(admin_pages_path)
+      flash.now[:message] = 'Invalid username and password.'
+    else
+      render :layout => 'mini'
     end
-    flash.now[:message] = 'Invalid username and password.'
   end
 
   def update
@@ -60,6 +63,6 @@ class Admin::AccountController < Admin::BaseController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "You have been logged out."
-    redirect_back_or_default("admin/account/login")
+    redirect_back_or_default("/admin/account/login")
   end
 end
