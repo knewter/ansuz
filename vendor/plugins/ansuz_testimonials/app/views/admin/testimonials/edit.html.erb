@@ -1,8 +1,9 @@
-<%= title "Edit Ansuz Theme: #{@ansuz_theme}" -%>
+<%= title "Edit Testimonial: #{@testimonial}" -%>
 <% content_for :sidebar do -%>
-  <%= link_to "All Ansuz Themes", admin_ansuz_themes_path, :class => 'button icon back' -%>
+  <%= link_to "All Testimonials", admin_testimonials_path, :class => 'button icon back' -%>
 <% end -%>
-<% form_for :ansuz_theme, :url => admin_ansuz_theme_path(@ansuz_theme), :html => { :method => :put } do |f| -%>
+
+<% form_for :testimonial, :url => admin_testimonial_path(@testimonial), :html => { :method => :put } do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } -%>
-  <%= submit_tag("Update Ansuz Theme") -%> or <%= link_to "Cancel", admin_ansuz_themes_path -%>
+  <%= submit_tag("Update Testimonial") -%> or <%= link_to "Cancel", admin_testimonials_path -%>
 <% end -%>

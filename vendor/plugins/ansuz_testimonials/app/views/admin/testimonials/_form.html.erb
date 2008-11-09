@@ -1,2 +1,5 @@
-Content: <%= f.text_area(:content) -%><br />
-Attributed To: <%= f.text_field(:attributed_to) -%><br />
+<table class='form-table'>
+  <%= form_row "Content", f.text_area(:content) -%>
+  <%= form_row "Attributed To", f.text_field(:attributed_to) -%>
+</table>
+<br />

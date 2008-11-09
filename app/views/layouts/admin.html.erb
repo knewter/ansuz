@@ -31,8 +31,8 @@
     <!--[if lt IE 7.]><%= javascript_include_tag 'pngfix.js' %><![endif]-->
   </head>
   <body>
-    <%= display_site_title %>
     <%= display_standard_flashes -%>
+    <%= display_site_title %>
     <div id='wrapper'>
       <div id='toolbar'>
         <%= render :partial => "/admin/tabs" %>
@@ -46,6 +46,9 @@
           </div>
           <div id="ft">
             [ Currently Editing: <b><%= current_database %></b> ]
+            <div class='credits'>
+              Powered by <%= link_to "Ansuz CMS", "http://www.ansuzcms.com" %>
+            </div>
           </div>
         </div>
         <div id='sidebar'>
