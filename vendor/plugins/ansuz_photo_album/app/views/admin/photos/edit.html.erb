@@ -1,4 +1,8 @@
 <%= title "Edit Photo" -%>
+<% content_for :sidebar do %>
+  <%= link_to "Back to Photo Album", admin_photo_album_path(@photo.photo_album), :class => 'button icon back' %>
+  <%= link_to "Delete this Photo", admin_photo_album_photo_path(@photo.photo_album, @photo), :method => :delete, :confirm => "Are you sure you want to delete this photo?", :class => 'button icon remove' %>
+<% end %>
 <% form_for :photo, :url => admin_photo_album_photo_path(@photo.photo_album, @photo), :html => { :multipart => true, :method => :put } do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } -%>
   <%= submit_tag "Update photo" -%> or <%= link_to "Cancel", admin_photo_album_photo_path(@photo_album, @photo) -%>

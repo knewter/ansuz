@@ -42,4 +42,14 @@ class Admin::PhotosController < Admin::BaseController
       render :action => "edit"
     end
   end
+
+  def destroy
+    if @photo.destroy
+      flash[:notice] = "Photo was deleted."
+      redirect_to admin_photo_album_path(@photo_album)
+    else
+      flash[:error] = "There was a problem deleting the photo."
+      redirect_to admin_photo_album_photo_path(@photo_album, @photo)
+    end
+  end
 end

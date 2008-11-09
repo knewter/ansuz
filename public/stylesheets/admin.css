@@ -7,11 +7,14 @@ body{
   background-color: #ddd;
 }
 
+h1, h2, h3, h4, h5, h6{
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
 h1{
   text-align: left;
   font-size: 200%;
   padding: 10px;
-  font-family: Georgia,"Times New Roman",Times,serif;
 }
 
 h1 a.button2{
@@ -19,6 +22,10 @@ h1 a.button2{
   position: relative;
   left: 20px;
   top: -3px;
+}
+
+h3{
+  font-size: 130%;
 }
 
 #wrapper{
@@ -312,7 +319,7 @@ li.main ul.innerBox li:hover, .clickMenu li.main ul.innerBox li:hover a {
 .ui-tabs-hide{ display: none; }
 
 
-input.text{
+input.text, textarea{
   font-size: 1.5em;
   padding: 4px;
   margin-bottom: 1em;

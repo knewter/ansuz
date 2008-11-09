@@ -1,6 +1,9 @@
 <table class='form-table'>
   <%= form_row "Title", f.text_field(:title) -%>
   <%= form_row "Caption", f.text_area(:caption) -%>
+  <% unless @photo.new_record? %>
+    <%= form_row "Image", image_tag(@photo.photo_album_photo_image.url(:medium)) %>
+  <% end %>
   <%= form_row "File", f.file_field(:photo_album_photo_image) -%>
 </table>
 <br />
