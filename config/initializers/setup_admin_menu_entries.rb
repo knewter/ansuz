@@ -3,6 +3,5 @@ Ansuz::PluginManagerInstance.register_admin_menu_entry "Content", 'Manage Pages'
 Ansuz::PluginManagerInstance.register_admin_menu_entry "Ansuz", 'Site Settings', '/admin/site_settings'
 Ansuz::PluginManagerInstance.register_admin_menu_entry "Ansuz", 'List Plugins',  '/admin/plugins'
 Ansuz::PluginManagerInstance.register_admin_menu_entry "Ansuz", 'Logout', '/admin/account/logout'
-Ansuz::PluginManagerInstance.register_admin_menu_entry "Ansuz", 'Visit Site', '/'
 
 Ansuz::PluginManagerInstance.register_page_type("Custom Page")
