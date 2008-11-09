@@ -1,0 +1,56 @@
+table.tree{
+  width: 100%;
+}
+table.tree thead th{
+  background-color: #444;
+  color: white;
+  font-weight: bold;
+  border: 0;
+}
+table.tree thead th.actions{
+  width: 120px;
+}
+table.tree tbody tr.level-0 td.item{
+  padding-left: .5em !important;
+}
+table.tree tbody tr.level-1 td.item{
+  padding-left: 1.5em !important;
+}
+table.tree tbody tr.level-2 td.item{
+  padding-left: 2.5em !important;
+}
+table.tree tbody tr.level-3 td.item{
+  padding-left: 3.5em !important;
+}
+table.tree tbody tr.level-4 td.item{
+  padding-left: 4.5em !important;
+}
+table.tree tr{
+  height: 30px;
+  min-height: 30px;
+}
+table.tree td{
+  padding: 0 4px;
+}
+table.tree td.item a{
+  font-weight: bold;
+}
+table.tree td.page-controls .page_controls{
+  display: none;
+}
+table.tree tr:hover td.page-controls .page_controls{
+  display: block;
+  float: right;
+}
+table.tree td.page-controls .page_controls{
+}
+table.tree td.page-controls .page_controls li{
+  list-style-type: none;
+  float: left;
+}
+table.tree td.page-controls .page_controls a{
+  margin-right: 10px;
+}
+table.tree td.page-controls .page_controls a:hover {
+  background-color: #eee;
+}

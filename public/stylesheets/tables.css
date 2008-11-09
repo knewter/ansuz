@@ -12,9 +12,7 @@ table.subdued thead th{
  color: white;
  font-weight: normal;
  padding: 4px;
- border-color: #555;
- border-width: 0 0 4px 0;
- border-style: solid;
+ border: 0;
 }
 div.form form table.subdued td{
  vertical-align: top;
@@ -52,9 +50,7 @@ thead		{
 		
 thead tr th	{
 		padding: 4px 8px 4px 8px;
-    border-color: transparent #ACA883 #767359 #ACA883;
-    border-width: 0 1px 4px 1px;
-    border-style: solid;
+    border: 0;
 		}
 
 hr{
@@ -76,20 +72,10 @@ tfoot tr td, tfoot tr th, tbody tr td	{
 		padding: 4px;
 		}
 		
-tbody tr:hover,
-tbody tr:hover td{
-		background: #fff;
-		}
-
-tbody tr td{
-  border-right: 1px dashed #ccc;
-  border-left: 1px dashed #ccc;
-}
-
 tbody tr	{
 		border-style: solid;
-    border-color:  #ACA883;
-    border-width: 1px 0 1px 0;
+    border-color: #bbb;
+    border-width: 0 0 1px 0;
 		background: #eee;
 		}
 
@@ -104,22 +90,12 @@ tbody th	{
 		}
 		
 tbody td	{
-		background: #eee;
+		background: #fff;
 		}
 
 tbody tr.odd td		{
-		background: #ddd;
-		color: #4F6480;
+		background: #eee;
 		}
-		
-
-		
-tbody tr.odd:hover,
-tbody tr.odd:hover td{
-		background: #fff;
-		}
-		
-
 		
 tbody tr th a:link		{
 		font: bold 0.9em tahoma, arial, sans-serif;

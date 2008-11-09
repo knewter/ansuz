@@ -4,6 +4,6 @@
     Pages are a central component of ansuz, as they provide the structure onto which the page plugin system latches, as well as providing nice hierarchical urls for your content.
   </div>
 <% end -%>
-<div id="tree">
-  <%= tree_ul(@page_hierarchy) {|item| link_to h(item.name), edit_admin_page_path(item) } %>
+<div id='tree2'>
+  <%= tree_table(@page_hierarchy) {|item| link_to h(item.name), edit_admin_page_path(item) } %>
 </div>

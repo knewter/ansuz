@@ -5,13 +5,14 @@
     <li class="direction down"><%= link_to '&darr;', shift_order_admin_page_path(:id => page.id, :shift => 1), {:style => "text-decoration:none"} -%></li>
     <li><%= link_to("X", admin_page_path(page), :method => :delete, :confirm => 'Are you sure?  This will delete this page permanently and all sub-pages will be orphaned!') -%></li>
     <li>
-    <ul id='dropdown-<%= id -%>' class='dropdown'>
+      <ul id='dropdown-<%= id -%>' class='dropdown'>
         <li>
-          Add
+          Add Page
           <ul>
             <% Ansuz::PluginManagerInstance.page_types.each do |name, modules| -%>
               <li><%= link_to("Add #{name}", new_admin_page_path(:parent_id => page.id, :page_plugins => modules)) -%></li>
             <% end -%>
+            <li class='clear'></li>
           </ul>
         </li>
       </ul>

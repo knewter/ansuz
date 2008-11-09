@@ -35,7 +35,7 @@ body{
 }
 
 #content{
-  margin-top: 35px;
+  padding-top: 55px;
 }
 
 #sidebar{
@@ -49,6 +49,10 @@ body{
   background-color: #bbb;
   padding: 4px;
   margin: 4px 0;
+}
+
+#sidebar input.text{
+  width: 50%;
 }
 
 #doc2{
@@ -107,10 +111,11 @@ body{
 }
 
 #bd h1{
-  font-size: 180%;
+  font-size: 160%;
   background-color: #ddd;
   padding: 4px 10px;
   margin-bottom: 10px;
+  color: #444;
 }
 
 #bd h2{
@@ -121,7 +126,7 @@ label.title_label{
   display: block;
 }
 
-.clear{ clear: both; }
+.clear{ clear: both; float: none !important; }
 
 ul.grid{
   display: block;
@@ -233,12 +238,14 @@ a.button.icon.rss{
   float: none;
 }
 
-.clickMenu div.outerbox{
+/* Dropdown menu stuff for 'add page' */
+
+div.outerbox{
   font-size: 100%;
 }
 
-.clickMenu li{
-  padding: 0 2px !important;
+div.cmDiv{
+  border: 0;
 }
 
 .clickMenu li a{
@@ -247,18 +254,33 @@ a.button.icon.rss{
 
 .clickMenu li.main{
   font-size: 85%;
+  padding: 4px;
+  background-color: #555;
+  color: white;
+  border: 0;
+}
+
+.clickMenu ul{
+  border: 0;
+  background-color: #777;
 }
 
 .clickMenu li.main:hover {
-  background-color: #ddd !important;
+  background-color: #444;
+  cursor: pointer;
 }
 
 .clickMenu li.main li{
   min-width: 120px !important;
+  padding: 4px;
 }
 
-.clickMenu li.main ul.innerBox li:hover, .clickMenu li.main ul.innerBox li:hover a {
-  background-color: #ccc !important;
+.clickMenu li.main li a{
+  color: white;
+}
+
+li.main ul.innerBox li:hover, .clickMenu li.main ul.innerBox li:hover a {
+  background-color: #666;
 }
 .clickMenu li.main ul.innerBox li a{
   display: block;
@@ -268,7 +290,10 @@ a.button.icon.rss{
   cursor: pointer;
 }
 
+/* End Dropdown menu stuff for 'add page' */
+
 .ui-tabs-hide{ display: none; }
+
 
 input.text{
   font-size: 1.5em;
@@ -286,4 +311,24 @@ input.button{
 input.button:hover {
   background-color: #bbb;
   cursor: pointer;
+}
+li.clear{
+  height: 0 !important;
+  padding: 0 !important;
+}
+
+#page-plugins-tabs li.top{
+  position: relative;
+}
+#page-plugins-tabs li.top a.delete{
+  position: absolute;
+  right: 0;
+  top: -10px;
+  cursor: pointer;
+}
+#page-plugins-tabs li.top a.delete:hover {
+  background-color: #bbb;
+}
+#advance_display_options{
+  display: none;
 }

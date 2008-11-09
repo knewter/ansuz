@@ -50,7 +50,6 @@ div.cmDiv
 .clickMenu li.main
 {
 	float: left;
-	padding: 0 10px;
 	background-color: #eee;
 	//height: 20px; /* for ie */
 }

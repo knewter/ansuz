@@ -85,4 +85,34 @@ module PageAdminHelper
       ret << '</ul>'
     end
   end
+
+  def tree_table(acts_as_tree_set, init=true, level=0, &block)
+    if acts_as_tree_set.size > 0
+      ret =  '<table class=\'tree\'>'
+      ret << '  <thead>'
+      ret << '    <tr>'
+      ret << '      <th>Title</th>'
+      ret << '      <th class=\'actions\'>Actions</th>'
+      ret << '    </tr>'
+      ret << '  </thead>'
+      ret << '  <tbody>'
+      acts_as_tree_set.collect do |item|
+        next if item.parent_id && init
+        ret << tree_row(item, level, &block)
+      end
+      ret << '  </tbody>'
+      ret << '</table>'
+    end
+  end
+
+  def tree_row item, level=0, &block
+    ret  = "<tr class='level-#{level} #{cycle("odd", "even")}'>"
+    ret << '  <td class="item">' + yield(item) + '</td>'
+    ret << '  <td class="page-controls">' + render(:partial => 'page_controls', :locals => { :page => item }) + '</td>'
+    ret << '</tr>'
+    item.children.each do |child|
+      ret << tree_row(child, level+1, &block)
+    end
+    ret
+  end
 end
