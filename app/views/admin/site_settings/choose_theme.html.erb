@@ -1,0 +1,20 @@
+<%= title "Choose a Theme" -%>
+<% content_for :sidebar do -%>
+  <% if Admin::AnsuzThemesController -%>
+    <%= link_to "Install more themes", '/admin/ansuz_theme_installers', :class => 'button icon add' -%>
+  <% end -%>
+  <div class='note'>
+    Just click on a theme to set it as the active theme for the site.  The currently-selected theme is highlighted.
+  </div>
+<% end -%>
+<ul class='grid'>
+  <% @themes.each do |theme| -%>
+    <% klass = (theme == @settings.user_theme_name) ? 'active' : 'inactive' -%>
+    <li class='item <%= klass -%>'>
+      <%= link_to "<img src='#{fetch_theme_preview_admin_site_settings_path(:id => theme)}' alt='#{theme}' />", choose_theme_admin_site_settings_path(:theme => theme) -%>
+      <%= link_to theme, choose_theme_admin_site_settings_path(:theme => theme) -%>
+    </li>
+  <% end -%>
+  <li class='clear'></li>
+</ul>
+<div class='clear'></div>

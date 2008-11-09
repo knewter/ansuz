@@ -1,20 +1,15 @@
-<%= title "Choose a Theme" -%>
+<%= title "Edit Site Settings" -%>
 <% content_for :sidebar do -%>
-  <% if Admin::AnsuzThemesController -%>
-    <%= link_to "Install more themes", '/admin/ansuz_theme_installers', :class => 'button icon add' -%>
-  <% end -%>
+  <%= link_to "View Site Settings", admin_site_settings_path, :class => 'button icon back' %>
   <div class='note'>
-    Just click on a theme to set it as the active theme for the site.  The currently-selected theme is highlighted.
+    These are general settings for your site.
   </div>
 <% end -%>
-<ul class='grid'>
-  <% @themes.each do |theme| -%>
-    <% klass = (theme == @settings.user_theme_name) ? 'active' : 'inactive' -%>
-    <li class='item <%= klass -%>'>
-      <%= link_to "<img src='#{fetch_theme_preview_admin_site_settings_path(:id => theme)}' alt='#{theme}' />", choose_theme_admin_site_settings_path(:theme => theme) -%>
-      <%= link_to theme, choose_theme_admin_site_settings_path(:theme => theme) -%>
-    </li>
-  <% end -%>
-  <li class='clear'></li>
-</ul>
-<div class='clear'></div>
+
+<% form_for @settings, :url => admin_site_settings_path do |f| %>
+  <table class='form-table'>
+    <%= form_row "Site Title", f.text_field(:site_title) %>
+  </table>
+  <br />
+  <%= submit_tag "Update Site Settings" %> or <%= link_to "Cancel", admin_site_settings_path %>
+<% end %>

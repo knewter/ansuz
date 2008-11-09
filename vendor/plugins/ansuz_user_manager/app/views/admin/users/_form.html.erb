@@ -1,8 +1,11 @@
 <% submit_text = "Create User" unless local_assigns.include?(:submit_text) -%>
 <%= error_messages_for :user -%>
-Login: <%= f.text_field :login -%><br />
-Password: <%= f.password_field :password -%><br />
-Password Confirmation: <%= f.password_field :password_confirmation -%><br />
-Email: <%= f.text_field :email -%><br />
-Admin? <%= f.check_box(:admin) -%><br />
+<table class='form-table'>
+  <%= form_row "Login", f.text_field(:login) %>
+  <%= form_row "Password", f.password_field(:password) %>
+  <%= form_row "Confirm Password", f.password_field(:password_confirmation) %>
+  <%= form_row "Email", f.text_field(:email) %>
+  <%= form_row "Admin?", f.check_box(:admin) %>
+</table>
+<br />
 <%= submit_tag submit_text -%> or <%= link_to "Cancel", admin_users_path -%>

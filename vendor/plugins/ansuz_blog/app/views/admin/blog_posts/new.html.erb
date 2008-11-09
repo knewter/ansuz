@@ -2,7 +2,7 @@
 <% content_for :sidebar do -%>
   <%= link_to "All Blog Posts", admin_blog_posts_path, :class => 'button icon back' -%>
 <% end -%>
-<% form_for :blog_post, :url => admin_blog_posts_path do |f| -%>
+<% form_for :blog_post, :url => admin_blog_posts_path, :html => { :class => 'blog-post-form' } do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } -%>
   <%= submit_tag("Create Post") -%> or <%= link_to "Cancel", admin_blog_posts_path -%>
 <% end -%>

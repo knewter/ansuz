@@ -34,14 +34,18 @@ class Admin::SiteSettingsController < Admin::BaseController
   end
 
   def choose_theme
-    if @themes.include?(params[:theme])
-      @settings.user_theme_name = params[:theme]
-      @settings.save
-      flash[:notice] = "The theme has been changed to #{params[:theme]}"
-      redirect_to :action => 'edit'
+    if params[:theme]
+      if @themes.include?(params[:theme])
+        @settings.user_theme_name = params[:theme]
+        @settings.save
+        flash[:notice] = "The theme has been changed to #{params[:theme]}"
+        redirect_to :action => 'edit'
+      else
+        flash.now[:error] = "The theme selected doesn't seem to be installed.  This is an error."
+        render :action => 'edit'
+      end
     else
-      flash.now[:error] = "The theme selected doesn't seem to be installed.  This is an error."
-      render :action => 'edit'
+      # Render the listing to choose from
     end
   end
 end

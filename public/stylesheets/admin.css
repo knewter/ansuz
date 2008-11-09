@@ -7,6 +7,12 @@ body{
   background-color: #ddd;
 }
 
+h1{
+  text-align: left;
+  font-size: 200%;
+  padding: 10px;
+}
+
 #wrapper{
   position: relative;
 }
@@ -331,4 +337,12 @@ li.clear{
 }
 #advance_display_options{
   display: none;
+}
+input, textarea{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bbb;
+}
+.blog-post-form input.title{
+  width: 98%;
 }

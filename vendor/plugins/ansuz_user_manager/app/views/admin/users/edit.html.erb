@@ -1,4 +1,8 @@
 <%= title "Edit User: #{@user.to_s}" -%>
+<% content_for :sidebar do %>
+  <%= link_to "All Users", admin_users_path, :class => 'button icon back' %>
+<% end %>
+
 <% form_for [:admin, @user] do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f, :submit_text => "Update User" } -%>
 <% end -%>

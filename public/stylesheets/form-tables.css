@@ -1,0 +1,171 @@
+/* Tables used on comment.php and option/setting pages */
+
+.form-table {
+  border-collapse: collapse;
+  margin-top: 1em;
+  width: 100%;
+  margin-bottom: -8px;
+}
+
+.form-table td {
+  margin-bottom: 9px;
+  padding: 10px;
+  line-height: 20px;
+  border-bottom-width: 8px;
+  border-bottom-style: solid;
+  font-size: 11px;
+}
+
+.form-table th {
+  vertical-align: top;
+  text-align: left;
+  padding: 10px;
+  width: 150px;
+  border-bottom-width: 8px;
+  border-bottom-style: solid;
+}
+
+.form-table th.th-full {
+  width: auto;
+}
+
+.form-table input, .form-table textarea {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.form-table div.color-option {
+  display: block;
+  clear: both;
+}
+
+.form-table input.tog {
+  margin-top: 2px;
+  margin-right: 2px;
+  float: left;
+}
+
+.form-table table.color-palette {
+  vertical-align: bottom;
+  float: left;
+  margin: -3px 3px 8px;
+}
+
+.form-table .color-palette td {
+  border-bottom: none;
+  border: 1px solid #fff;
+  font-size: 1px;
+  line-height: 1px;
+}
+
+#profile-page .form-table textarea {
+  width: 500px;
+  margin-bottom: 6px;
+}
+
+#profile-page .form-table input[type=text] {
+  width: 300px;
+}
+
+#pass-strength-result {
+  width: 197px;
+  float: left;
+  margin-right: 5px;
+  border: 1px solid #ccc !important;
+}
+
+#profile-page .form-table #rich_editing {
+  margin-right: 5px
+}
+
+.form-table .pre {
+  padding: 8px;
+  margin: 0;
+}
+
+.pre {
+  /* http://www.longren.org/2006/09/27/wrapping-text-inside-pre-tags/ */
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+table.form-table td .updated {
+  font-size: 13px;
+}
+
+/* Profile/User */
+#profpic {
+  background-color: #EAF3FA;
+}
+
+/* Feedback */
+
+#feedbacklink {
+  color: #999;
+  background-color: #464646;
+}
+
+#feedbacklink:hover {
+  color: #fff;
+}
+
+#new-feedback {
+  border-bottom: 7px solid #E4F2FD;
+}
+
+/* Blog Switcher */
+
+#dashmenu #all-my-blogs-tab a.current {
+  background-color: #CFE1EF;
+  color: #222;
+}
+
+#dashmenu #all-my-blogs-tab a.current:hover {
+  color: #000;
+}
+
+#all-my-blogs {
+  background-color: #CFE1EF;
+  color: #222;
+}
+
+#all-my-blogs .button {
+  background-color: #464646;
+  border-color: #464646;
+  color: #fff;
+}
+
+#all-my-blogs .button:hover {
+  color: #CEE1EF;
+}
+
+#all-my-blogs a {
+  color: #222;
+}
+
+#all-my-blogs a:hover, #all-my-blogs a:active  {
+  color: #000;
+}
+
+.form-table tr, .form-table tr th, .form-table tr td {
+  background-color: #eee !important;
+  color: black;
+  border-right: 0;
+}
+.form-table input, .form-table textarea {
+  border-color: #c6d9e9 !important;
+}
+
+.form-table td, .form-table th {
+  border-bottom-color: #fff !important;
+}
+
+.form-heading h3{
+  background-color: #eee;
+  font-size: 14px;
+  padding: 7px;
+  margin: 0 0 10px;
+}

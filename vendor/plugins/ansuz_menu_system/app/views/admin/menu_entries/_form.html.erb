@@ -1,2 +1,5 @@
-Name: <%= f.text_field(:name) -%><br />
-Link: <%= f.text_field(:link) -%><br />
+<table class='form-table'>
+  <%= form_row "Name", f.text_field(:name) -%>
+  <%= form_row "Link", f.text_field(:link) -%>
+</table>
+<br />

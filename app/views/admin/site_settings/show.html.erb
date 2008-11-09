@@ -1,5 +1,9 @@
 <%= title "Site Settings" -%>
 <% content_for :sidebar do -%>
-  <%= link_to 'Edit Settings', edit_admin_site_settings_path -%>
+  <%= link_to 'Edit Settings', edit_admin_site_settings_path, :class => 'button icon edit' -%>
+  <%= link_to 'Choose a different theme', choose_theme_admin_site_settings_path, :class => 'button' -%>
 <% end -%>
-User Theme: <%= @settings.get_theme_setting -%>
+<table class='form-table'>
+  <%= form_row "Site Title", @settings.site_title -%>
+  <%= form_row "User Theme", @settings.get_theme_setting + " " + link_to("(change)", choose_theme_admin_site_settings_path) -%>
+</table>
