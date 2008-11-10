@@ -1,6 +1,8 @@
 <%= title "Edit Page: #{@page}" -%>
 
 <% content_for :sidebar do -%>
+  <%= link_to "Manage Pages", admin_pages_path, :class => 'button icon back' %>
+  <br />
   <% form_remote_tag :url => admin_page_path(@page),
     :update => 'main',
     :method => :put,

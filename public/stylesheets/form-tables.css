@@ -156,7 +156,7 @@ table.form-table td .updated {
   border-right: 0;
 }
 .form-table input, .form-table textarea {
-  border-color: #c6d9e9 !important;
+  border-color: #999 !important;
 }
 
 .form-table td, .form-table th {

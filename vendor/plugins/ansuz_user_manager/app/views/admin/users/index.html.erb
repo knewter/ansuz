@@ -2,7 +2,7 @@
 <% content_for :sidebar do -%>
   <%= link_to "Add User", new_admin_user_path, :class => 'button icon add' -%>
   <div class='note'>
-    Right now the only users that exist are able to log in to the admin section.  Soon we'll need site-users, and the Access Control Layer will need to be built.  I intend this to be role-based, and built around the authorization plugin because of its fine granularity. I would want to be able to allow a plugin to programatically manage access to a page, etc.
+    Right now the only users that exist are able to log in to the admin section.  Soon we'll need site-users, and <%= link_to "the Access Control Layer will need to be built.", "http://ansuz.lighthouseapp.com/projects/15780-ansuz/tickets/9-build-the-access-control-layer" %>  I intend this to be role-based, and built around the authorization plugin because of its fine granularity. I would want to be able to allow a plugin to programatically manage access to a page, etc.
   </div>
 <% end -%>
 <table class='subdued'>
