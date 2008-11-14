@@ -168,7 +168,7 @@ class Page < ActiveRecord::Base
     self.page_order = self.last_page + 1
   end
 
-  def create_page_metadata
+  def ensure_page_metadata
     unless self.page_metadata
       self.page_metadata = PageMetadata.new
     end

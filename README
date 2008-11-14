@@ -6,7 +6,7 @@ out of the box than any other Rails CMS we’re aware of.
 
 By combining the CMSes of Isshen Solutions and Isotope 11, we plan to create 
 a best-of-breed technology suitable for production use on a myriad of sites. 
-Ansuz will be licensed initially via GPLv2.
+Ansuz is licensed via the BSD license.
 
 == Gem Dependencies
 - mislav-will_paginate
@@ -28,7 +28,7 @@ Ansuz will be licensed initially via GPLv2.
 
  NOTE: SQLite has problems with ansuz, please don't use it for now.
 
-== This software is GPLv2
+== This software is BSD licensed
 
  Copyright (C) 2008 Josh Adams and James Cook, Isotope 11, Inc. and Adam Dill, Isshen Solutions, Inc.
 
