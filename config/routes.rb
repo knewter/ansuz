@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :tags
   map.namespace :admin do |admin|
-    admin.resources :pages, :member => [:shift_order]
+    admin.resources :pages, :member => [:shift_order], :has_one => [:page_metadata]
     admin.resources :page_plugins
     admin.resources :plugins
     admin.resource  :account

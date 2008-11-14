@@ -21,9 +21,13 @@
 
 class Page < ActiveRecord::Base
   acts_as_tree   :order => 'page_order'
-  before_save    :check_page_type, :check_page_order
   attr_protected :page_number, :pages 
+
   has_many       :page_plugins
+  has_one        :page_metadata
+
+  before_save    :check_page_type, :check_page_order
+  before_save    :ensure_page_metadata
 
   def linked_children
     children.select{|x| x.linked? }
@@ -162,6 +166,12 @@ class Page < ActiveRecord::Base
     duplicate = Page.find(:first, :conditions => conditions)
     return true if duplicate.nil?
     self.page_order = self.last_page + 1
+  end
+
+  def create_page_metadata
+    unless self.page_metadata
+      self.page_metadata = PageMetadata.new
+    end
   end
 
 end
