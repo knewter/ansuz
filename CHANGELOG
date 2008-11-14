@@ -1,0 +1,4 @@
+11/13/2008
+----------
+- Added PageMetadata, a singleton to store metadata about a page.
+- Tagged and push version 0.0.3
