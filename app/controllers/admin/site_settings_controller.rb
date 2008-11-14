@@ -39,10 +39,10 @@ class Admin::SiteSettingsController < Admin::BaseController
         @settings.user_theme_name = params[:theme]
         @settings.save
         flash[:notice] = "The theme has been changed to #{params[:theme]}"
-        redirect_to :action => 'edit'
+        redirect_to :action => 'choose_theme'
       else
         flash.now[:error] = "The theme selected doesn't seem to be installed.  This is an error."
-        render :action => 'edit'
+        render :action => 'choose_theme'
       end
     else
       # Render the listing to choose from
