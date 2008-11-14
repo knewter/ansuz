@@ -1,7 +1,7 @@
 <%= title "Edit Metadata for page: #{@page}" %>
 
 <% content_for :sidebar do %>
-  <%= link_to "Back to Page", admin_page_path(@page), :class => 'button icon back' %>
+  <%= link_to "Back to Page", edit_admin_page_path(@page), :class => 'button icon back' %>
 <% end %>
 
 <% form_for [:admin, :page, @page_metadata] do |f| %>
