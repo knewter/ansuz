@@ -4,7 +4,8 @@
       <%= link_to image_tag(photo.photo_album_photo_image.url(:thumb)),
                   photo.photo_album_photo_image.url(:large), 
                   :rel   => "lightbox[#{plugin_module.id}]",
-                  :title => "<h2>#{photo.title}</h2>#{photo.caption}"
+                  :title => "<h2>#{photo.title}</h2>#{photo.caption}",
+                  :class => 'lightbox'
       -%>
     </li>
   <% end -%>
