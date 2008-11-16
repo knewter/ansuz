@@ -29,6 +29,9 @@ class Page < ActiveRecord::Base
   before_save    :check_page_type, :check_page_order
   before_save    :ensure_page_metadata
 
+  # authorization plugin
+  acts_as_authorizable
+
   def linked_children
     children.select{|x| x.linked? }
   end

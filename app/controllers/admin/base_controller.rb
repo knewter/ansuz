@@ -1,7 +1,10 @@
 class Admin::BaseController < ApplicationController
+  layout 'admin'
+
   before_filter :login_required
   before_filter :load_admin_plugin_nav
-  layout 'admin'
+
+  permit 'admin'
 
   protected
   def load_admin_plugin_nav

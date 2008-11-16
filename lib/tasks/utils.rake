@@ -6,6 +6,8 @@ namespace :utils do
         puts "Initial Admin User doesn't exist. Creating one with login: admin, password: admin, email: admin@example.com"
         u = User.new :login => 'admin', :email => 'admin@example.com', :password => 'admin', :password_confirmation => 'admin'
         u.save
+        u.has_role 'admin'
+        u.save
       else
         puts "Initial user already exists, exiting"
       end    
