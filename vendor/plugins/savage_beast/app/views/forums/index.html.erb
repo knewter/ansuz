@@ -1,8 +1,8 @@
 <% content_for :right do %>
 
 <% if admin? %>
-<h6><%= 'Admin'[:admin_title] %></h6>
-<p><%= link_to 'Create New Forum'[:create_new_forum], new_forum_path, :class => "utility" %></p>
+  <h6><%= 'Admin'[:admin_title] %></h6>
+  <p><%= link_to 'Create New Forum', new_forum_path, :class => "utility" %></p>
 <% end %>
 
 <% end %>
@@ -62,14 +62,16 @@
   <%= link_to 'Recent posts'[:recent_posts], all_posts_path %>
 </p>
 
-<% online_users = User.currently_online -%>
-<% unless !online_users || online_users.empty? %>
-<div class="stats">
-<div class="users">
-<% unless !online_users || online_users.empty? %>
-<%= 'Users online:'[:users_online] %> <%= online_users.map { |u| link_to "<strong>#{h u.display_name}</strong>", user_path(u) } * ", " %><br />
-<% end %>
-</div>
-</div>
+<% if false %>
+  <% online_users = User.currently_online -%>
+  <% unless !online_users || online_users.empty? %>
+    <div class="stats">
+    <div class="users">
+    <% unless !online_users || online_users.empty? %>
+      <%= 'Users online:'[:users_online] %> <%= online_users.map { |u| link_to "<strong>#{h u.display_name}</strong>", user_path(u) } * ", " %><br />
+    <% end %>
+    </div>
+    </div>
+  <% end %>
 <% end %>
 

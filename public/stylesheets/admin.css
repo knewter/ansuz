@@ -217,6 +217,19 @@ ul.grid li.item.active img {
   border-bottom: 1px solid #333;
 }
 
+#admin-menu li span.note{
+  margin: 0;
+  background-color: #555;
+  font-size: 75%;
+  margin-top: -6px;
+  font-style: oblique;
+}
+
+#admin-menu li li:hover span.note,
+#admin-menu li li:hover a{
+  background-color: #333;
+}
+
 .note{
   margin: 10px 0;
   background-color: #ccc;

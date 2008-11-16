@@ -1,7 +1,8 @@
-class Admin::AccountController < Admin::BaseController
+class Admin::AccountController < ApplicationController
   skip_filter :login_required, :only => [:login]
 
-  # say something nice, you goof!  something sweet.
+  permit 'admin', :except => 'login'
+
   def index
     redirect_to(:action => 'login') unless logged_in? || User.count > 0
 		redirect_to(:controller => 'page_admin', :action => 'index')

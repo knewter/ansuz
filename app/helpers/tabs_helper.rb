@@ -1,10 +1,16 @@
 module TabsHelper
   def create_tab(tab_name, url, options={})
-    link_to_unless_current(tab_name, url, options) do
+    span_options = options.delete(:span_options)
+    if !current_page?(url)
+      output = link_to(tab_name, url, options)
+    else
       output = '<span>'
       output << tab_name
       output << '</span>'
-      output
     end
+    if span_options && span_options[:note]
+      output << '<span class="note">' + span_options[:note] + "</span>"
+    end
+    output
   end
 end

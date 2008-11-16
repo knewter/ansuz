@@ -3,7 +3,7 @@
     <li><span><%= top_level_menu_entry -%></span>
       <ul>
       <% Ansuz::PluginManagerInstance.admin_menu[top_level_menu_entry].each do |text, url, options| -%>
-        <li><%= create_tab text, url, options -%></li>
+        <li><%= create_tab text, url, options.clone -%></li>
       <% end -%>
       </ul>
     </li>
