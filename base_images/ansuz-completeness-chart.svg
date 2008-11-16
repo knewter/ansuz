@@ -53,7 +53,7 @@
        xlink:href="#linearGradient3647"
        id="radialGradient3628"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(-0.8659493,0.5001317,-0.6212623,-1.0756799,-1027.4486,-2441.5542)"
+       gradientTransform="matrix(-0.8659493,0.5001317,-0.6212623,-1.0756799,-966.5244,-2518.086)"
        cx="942.85712"
        cy="-2137.6379"
        fx="942.85712"
@@ -80,11 +80,11 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.46833061"
-     inkscape:cx="557.56643"
-     inkscape:cy="564.77997"
+     inkscape:zoom="0.93666122"
+     inkscape:cx="457.63333"
+     inkscape:cy="518.67169"
      inkscape:document-units="px"
-     inkscape:current-layer="g3501"
+     inkscape:current-layer="g3528"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -349,7 +349,7 @@
           <path
              sodipodi:nodetypes="ccccccccc"
              id="path3645"
-             d="M -476.49099,380.8554 L -417.55282,512.68088 L -565.32469,458.04065 L -683.1737,530.38723 L -756.93201,382.19912 L -716.32822,259.00273 L -568.1541,126.90105 L -363.03727,127.28773 L -476.49099,380.8554 z"
+             d="M -415.56679,304.32358 L -356.62862,436.14906 L -504.40049,381.50883 L -622.2495,453.85541 L -696.00781,305.6673 L -655.40402,182.47091 L -507.2299,50.369222 L -302.11307,50.755902 L -415.56679,304.32358 z"
              style="fill:url(#radialGradient3628);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
           <g
              transform="matrix(0.7779121,0.6283731,-0.6283731,0.7779121,473.96031,337.33412)"
