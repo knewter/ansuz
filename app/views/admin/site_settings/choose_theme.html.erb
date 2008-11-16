@@ -1,7 +1,8 @@
 <%= title "Choose a Theme" -%>
 <% content_for :sidebar do -%>
+  <%= link_to "Site Settings", '/admin/site_settings', :class => 'button icon back' %>
   <% if Admin::AnsuzThemesController -%>
-    <%= link_to "Install more themes", '/admin/ansuz_theme_installers', :class => 'button icon add' -%>
+    <%= link_to "Install more themes", '/admin/ansuz_theme_installers', :class => 'button icon add' %>
   <% end -%>
   <div class='note'>
     Just click on a theme to set it as the active theme for the site.  The currently-selected theme is highlighted.<br /><br />

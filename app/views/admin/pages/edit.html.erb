@@ -2,7 +2,7 @@
 
 <% content_for :sidebar do -%>
   <%= link_to "Manage Pages", admin_pages_path, :class => 'button icon back' %>
-  <%= link_to "Edit Metadata", edit_admin_page_page_metadata_path(@page), :class => 'button icon pencil' %>
+  <%= link_to "Edit Metadata", edit_admin_page_page_metadata_path(@page), :class => 'button icon edit' %>
   <br />
   <% form_remote_tag :url => admin_page_path(@page),
     :update => 'main',
