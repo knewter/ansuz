@@ -126,3 +126,9 @@ ol li{
 a{
   color: #0084FF;
 }
+ul.photos.item-list a{
+  opacity: .8;
+}
+ul.photos.item-list a{
+  opacity: 1;
+}
