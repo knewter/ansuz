@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_photo_album
   map.from_plugin :ansuz_blog
-  map.from_plugin :savage_beast
+  map.from_plugin :ansuz_savage_beast
   map.from_plugin :ansuz_content_section
   map.from_plugin :ansuz_user_manager
   map.from_plugin :ansuz_menu_system
@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_testimonials
 
   map.resources :tags
+  map.resources :users
 
   # <admin routes>
   map.namespace :admin do |admin|

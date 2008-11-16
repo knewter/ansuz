@@ -1,5 +1,4 @@
 class ForumsController < ApplicationController
-  layout 'forum'
   before_filter :set_page_title
 
 protected
