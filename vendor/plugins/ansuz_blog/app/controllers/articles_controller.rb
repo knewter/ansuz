@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   unloadable # This is required if you subclass a controller provided by the base rails app
 
-  layout 'page'
   before_filter :load_blog_posts, :only => [:index]
   before_filter :load_blog_post,  :only => [:show]
 
