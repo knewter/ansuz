@@ -1,0 +1,96 @@
+/* from http://www.hedgerwow.com/360/dhtml/css-inline-block-layout.php */
+ul.item-list{
+ width:80%;
+ padding:12px;
+ margin:0 auto;
+ padding:0;
+ list-style-type:none;
+ text-align:left;
+ font-size:0;/*eliminate the extra white-space between .item-list*/
+}
+
+ul.item-list li{
+
+ width:240px;
+ margin:0 0 12px 0;
+ text-align:left;
+ vertical-align:text-bottom;
+ font-size:medium;
+
+ display:-moz-inline-stack;/*Firefox need this to simulate display:inline-block*/
+
+ display:inline-block; /*IE does not apply this to Block Element, and Firefox does not render this, too*/
+
+
+
+ _overflow:hidden;/*fix IE6 to expanded content*/
+ zoom:1;/*trigger hasLayout*/
+ *display:inline;/*once hasLayout is true, set display:inline to block element will make display:inline behave like display:inline-block*/
+}
+
+ul.item-list li div.bd{
+ font-size:75%;
+ position:relative;/*firefox need this unless contents within are not clickable or selectable*/
+ margin:2px 6px 1px 6px;
+ padding:12px;
+
+ zoom:1;/*Ie need this to get the border renderred*/
+}
+
+
+/*
+customized theme style
+*/
+ul.item-list li div.bd{
+ background:url(http://us.i1.yimg.com/us.yimg.com/i/us/sp/ed/mod-thin-btm.png) -12px 100% no-repeat;
+}
+
+ul.item-list li div.bd h5{
+ font:normal normal bold 1.4em/normal Georgia;
+ color:#222;
+ text-align:center;
+ margin:0 0 6px 0;
+}
+
+
+ul.item-list li div.bd p,
+ul.item-list li div.bd em,
+ul.item-list li div.bd strong{
+ display:block;
+ margin:0 0 6px 0;
+ text-decoration:none;
+ font-style:normal;
+}
+
+ul.item-list li div.bd em{
+ margin:0;
+ text-align:center;
+ font-size:90%;
+ font-family:Tahoma;
+ padding:12px 0 16px 0;
+}
+
+ul.item-list li div.bd em a{
+ color:#3366FF;
+ text-decoration:none;
+}
+
+ul.item-list li div.bd em a:hover{
+ color:#FF0099;
+ text-decoration:underline;
+}
+
+
+ul.item-list li div.bd strong a{
+ text-decoration:none;
+ display:block;
+ text-align:center;
+ zoom:1;
+}
+
+ul.item-list li div.bd strong a img{
+
+ display:block;
+ margin:auto;
+ border:solid 2px #222;
+

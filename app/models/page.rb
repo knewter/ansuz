@@ -23,7 +23,7 @@ class Page < ActiveRecord::Base
   acts_as_tree   :order => 'page_order'
   attr_protected :page_number, :pages 
 
-  has_many       :page_plugins
+  has_many       :page_plugins, :order => 'position ASC'
   has_one        :page_metadata
 
   before_save    :check_page_type, :check_page_order

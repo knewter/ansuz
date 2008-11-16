@@ -1,4 +1,6 @@
 class PagePlugin < ActiveRecord::Base
+  acts_as_list :scope => :page_id
+
   belongs_to :page
   after_create :create_module
 

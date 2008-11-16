@@ -1,4 +1,4 @@
-<ul class='photos'>
+<ul class='photos item-list'>
   <% plugin_module.photos.each do |photo| -%>
     <li>
       <%= link_to image_tag(photo.photo_album_photo_image.url(:thumb)),

@@ -21,11 +21,12 @@
     <% @page.page_plugins.each do |plugin| -%>
       <li>
         <%= link_to(plugin.module_type, edit_admin_page_plugin_path(plugin), :class => 'edit_page_plugin') -%> 
+        <%= link_to("[up]",   move_up_admin_page_plugin_path(plugin)) %>
+        <%= link_to("[down]", move_down_admin_page_plugin_path(plugin)) %>
         <%= link_to("[x]", admin_page_plugin_path(plugin), :confirm => 'Are you sure you want to remove this plugin from the page?', :method => :delete) -%> 
       </li>
     <% end -%>
   </ul>
-  <%= link_to "Add Plugin", new_admin_page_plugin_path(:page_id => @page.id) -%>
 <% end -%>
 
 <% if @page.display_title %>
