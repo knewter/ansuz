@@ -36,13 +36,16 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def new
-    @page.linked, @page.published = true, true
+    @page.linked, @page.published = true, false
     @page.parent_id = params[:parent_id] if params[:parent_id]
     @page.page_order = params[:page_order] if params[:page_order]
   end 
  
   def create
     @page.name = @page.name.gsub(' ', '_')
+    unless current_user.can_publish?
+      @page.published = false
+    end
     if @page.save
       attach_page_plugins
       message = 'Page Added Successfully'

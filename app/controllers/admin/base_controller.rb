@@ -4,7 +4,7 @@ class Admin::BaseController < ApplicationController
   before_filter :login_required
   before_filter :load_admin_plugin_nav
 
-  permit 'admin'
+  permit 'admin or initial_reviewer or final_reviewer or author'
 
   protected
   def load_admin_plugin_nav

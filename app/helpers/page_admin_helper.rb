@@ -108,7 +108,12 @@ module PageAdminHelper
   def tree_row item, level=0, &block
     ret  = "<tr class='level-#{level} #{cycle("odd", "even")}'>"
     ret << '  <td class="item">' + yield(item) + '</td>'
-    ret << '  <td class="page-controls">' + render(:partial => 'page_controls', :locals => { :page => item }) + '</td>'
+    if current_user.can_post?
+      controls = render(:partial => 'page_controls', :locals => { :page => item })
+    else
+      controls = ""
+    end
+    ret << '  <td class="page-controls">' + controls + '</td>'
     ret << '</tr>'
     item.children.each do |child|
       ret << tree_row(child, level+1, &block)

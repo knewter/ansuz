@@ -5,7 +5,6 @@
   <%= form_row "Password", f.password_field(:password) %>
   <%= form_row "Confirm Password", f.password_field(:password_confirmation) %>
   <%= form_row "Email",    f.text_field(:email) %>
-  <%= form_row "Admin?",   f.check_box(:admin) %>
   <%= form_row "Roles",    select_tag("roles[]", options_for_select(Role.base_roles, @user.roles.map(&:name)), { :multiple => true, :size => 6 }), :note => "ctrl+click to select multiple." %>
 </table>
 <br />

@@ -17,6 +17,7 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
   include SavageBeast::UserInit
+  include Ansuz::AclRoles
   # acts_as_taggable_redux support
   acts_as_tagger # FIXME: We should switch to http://www.intridea.com/2007/12/4/announcing-acts_as_taggable_on
 
