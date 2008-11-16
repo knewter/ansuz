@@ -1,5 +1,5 @@
-class Ansuz
-  class JAdams
+module Ansuz
+  module JAdams
     class BlogPost < ActiveRecord::Base
       acts_as_taggable
       belongs_to :author, :class_name => "User", :foreign_key => 'created_by'

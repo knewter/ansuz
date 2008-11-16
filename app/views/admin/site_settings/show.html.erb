@@ -5,5 +5,5 @@
 <% end -%>
 <table class='form-table'>
   <%= form_row "Site Title", @settings.site_title -%>
-  <%= form_row "User Theme", @settings.get_theme_setting + " " + link_to("(change)", choose_theme_admin_site_settings_path) -%>
+  <%= form_row "User Theme", "<img src='#{fetch_theme_preview_admin_site_settings_path(:id => @settings.get_theme_setting)}' alt='#{@settings.get_theme_setting}' />" + "<br />" + @settings.get_theme_setting + " " + link_to("(change)", choose_theme_admin_site_settings_path) -%>
 </table>

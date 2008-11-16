@@ -1,5 +1,5 @@
-class Ansuz
-  class JAdams
+module Ansuz
+  module JAdams
     class MenuEntry < ActiveRecord::Base
       acts_as_tree :order => 'position'
       def self.root_entries

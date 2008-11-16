@@ -11,4 +11,8 @@ class Role < ActiveRecord::Base
   STATIC_ROLES = ["admin", "content_owner", "initial_reviewer", "final_reviewer", "author"]
 
   named_scope :root, :conditions => "authorizable_type IS NULL and authorizable_id IS NULL"
+
+  def self.base_roles
+    (root.find(:all).map(&:name) + STATIC_ROLES).uniq
+  end
 end

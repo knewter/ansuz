@@ -1,6 +1,6 @@
 require 'paperclip'
-class Ansuz
-  class JAdams
+module Ansuz
+  module JAdams
     class PhotoAlbumPhoto < ActiveRecord::Base
       belongs_to :photo_album, :class_name => "Ansuz::JAdams::PhotoAlbum"
       has_attached_file :photo_album_photo_image, 

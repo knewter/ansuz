@@ -1,5 +1,5 @@
-class Ansuz
-  class JAdams
+module Ansuz
+  module JAdams
     class Testimonial < ActiveRecord::Base
       def self.random
         if count > 0

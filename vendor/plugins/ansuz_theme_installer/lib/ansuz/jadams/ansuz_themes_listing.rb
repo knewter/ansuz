@@ -1,6 +1,6 @@
 require 'open-uri'
-class Ansuz
-  class JAdams
+module Ansuz
+  module JAdams
     class AnsuzThemesListing
       REPOSITORY = "http://ansuzcms.com/ansuz_themes.xml"
 

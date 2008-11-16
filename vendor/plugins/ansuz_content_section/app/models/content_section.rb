@@ -1,8 +1,6 @@
-class Ansuz
-  class JAdams
+module Ansuz
+  module JAdams
     class ContentSection < ActiveRecord::Base
-      #version_fu :table_name => 'content_section_versions'
-
       def self.admin_partial
         "/content_sections/edit"
       end

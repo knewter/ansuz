@@ -41,6 +41,14 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update_attributes(params[:user])
+      Role.base_roles.each do |role|
+        if params[:roles].include?(role)
+          @user.has_role(role)
+        else
+          @user.has_no_role(role)
+        end
+      end
+
       flash[:notice] = "User was updated successfully."
       redirect_to admin_users_path
     else
