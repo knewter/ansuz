@@ -408,3 +408,24 @@ a.toggle-link{
 }
 a.toggle-link:hover {
   background-color: #444;
+}
+
+#supplemental-nav{
+position:absolute;
+top: 0;
+right: 0;
+}
+#supplemental-nav ul li{
+float: left;
+margin-right: 20px;
+margin-top: 8px;
+}
+#supplemental-nav ul li a{
+background-color: #555;
+color: white;
+text-decoration: none;
+padding: 8px 12px;
+}
+#supplemental-nav ul li a:hover{
+ background-color: #333;
+}

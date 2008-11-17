@@ -34,6 +34,12 @@
   <body>
     <%= display_standard_flashes -%>
     <%= display_site_title %>
+    <div id='supplemental-nav'>
+      <ul>
+        <li><%= link_to "File a Bug Report", "http://ansuz.lighthouseapp.com/projects/15780-ansuz/tickets/new" %></li>
+        <li><%= link_to "Make a Feature Request", "http://ansuzcms.crowdsound.com/suggestions/new" %></li>
+      </ul>
+    </div>
     <div id='wrapper'>
       <div id='toolbar'>
         <%= render :partial => "/admin/tabs" %>
