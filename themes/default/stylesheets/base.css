@@ -132,3 +132,12 @@ ul.photos.item-list a{
 ul.photos.item-list a:hover {
   opacity: 1;
 }
+.wide{
+  width: 100%;
+}
+strong{
+  font-weight: bold;
+}
+em{
+  font-style: oblique;
+}

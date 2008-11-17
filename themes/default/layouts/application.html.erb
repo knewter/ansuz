@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
     <link rel="icon"          href="favicon.ico" type="image/vnd.microsoft.icon" />
     <%= stylesheet_link_tag 'yui-reset-fonts' -%>
-	  <%= theme_stylesheet_link_tag 'base' -%>
+	  <%= theme_stylesheet_link_tag 'base', 'tables' -%>
 	  <%= stylesheet_link_tag 'sprite' -%>
 	  <%= stylesheet_link_tag 'lightbox' -%>
     <%= stylesheet_link_tag 'scrollable-view' %>
@@ -21,6 +21,7 @@
     <%= javascript_include_tag "jquery.lightbox-0.5.js", "jquery.lightbox.handler.js" %>
     <%= javascript_tag "jQuery.noConflict();" -%>
     <%= javascript_include_tag 'jqModal', 'jquery.growl.js', 'ansuz/growls' -%>
+    <%= handle_forum_header %>
     <!--[if lt IE 7.]><%= javascript_include_tag 'pngfix.js' %><![endif]-->
   </head>
   <body>
