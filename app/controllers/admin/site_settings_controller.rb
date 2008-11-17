@@ -29,10 +29,6 @@ class Admin::SiteSettingsController < Admin::BaseController
     end
   end
 
-  def fetch_theme_preview
-    send_file theme_preview_image_for(params[:id]), :type => 'image/png', :disposition => 'inline'
-  end
-
   def choose_theme
     if params[:theme]
       if @themes.include?(params[:theme])

@@ -1,5 +1,7 @@
 class Admin::AnsuzThemeInstallersController < Admin::BaseController
   unloadable # This is required if you subclass a controller provided by the base rails app
+  include ThemesManagementHelper
+  helper :themes_management
 
   layout 'admin'
   before_filter :load_themes,    :only => [:index]

@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :tags
     admin.resources :roles
     admin.resource  :account
-    admin.resource  :site_settings, :collection => [:fetch_theme_preview, :choose_theme]
+    admin.resource  :site_settings, :collection => [:choose_theme]
     admin.connect   'account/:action/:id', :controller => 'account'
   end
   map.connect '/admin', :controller => 'admin/pages' # admin root

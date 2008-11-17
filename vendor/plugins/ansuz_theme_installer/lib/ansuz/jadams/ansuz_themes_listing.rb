@@ -11,7 +11,7 @@ module Ansuz
         xml.elements.each("themes/theme") do |theme|
           name = theme.elements["name"].text
           repository_url = theme.elements["repository_url"].text
-          ary << [name, repository_url]
+          ary << [name, repository_url, install_dir_for_repo(repository_url)]
         end
         ary
       end
@@ -19,6 +19,10 @@ module Ansuz
       def self.xml_document
         uri = URI.parse REPOSITORY
         uri.read
+      end
+
+      def self.install_dir_for_repo repo
+        repo.split("/").last.split(".").first
       end
 
       def self.xml

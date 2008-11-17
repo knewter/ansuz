@@ -12,12 +12,14 @@
 <table class='subdued'>
   <thead>
     <tr>
+      <th>Preview</th>
       <th>Name</th>
     </tr>
   </thead>
   <tbody>
     <% @themes.each do |theme| -%>
       <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= link_to(image_tag(remote_theme_preview_image_for(theme[2])), install_admin_ansuz_theme_installers_path(:repository_url => theme[1])) -%></td>
         <td><%= link_to(theme[0], install_admin_ansuz_theme_installers_path(:repository_url => theme[1])) -%></td>
       </tr>
     <% end -%>

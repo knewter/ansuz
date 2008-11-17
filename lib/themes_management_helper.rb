@@ -10,6 +10,10 @@ module ThemesManagementHelper
   def theme_preview_image_for theme
     "#{themes_root}/#{theme}/preview.png"
   end
+
+  def remote_theme_preview_image_for theme
+    "http://www.ansuzcms.com/ansuz_themes/fetch_theme_preview?id=#{theme}"
+  end
   
   def themes_root
     "#{RAILS_ROOT}/themes"
