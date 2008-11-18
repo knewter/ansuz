@@ -105,39 +105,33 @@ tbody tr th a:link		{
 		}
 		
 tbody tr th a:visited		{
-		font: bold 0.9em tahoma, arial, sans-serif;
 		color: #5E7796;
 		text-decoration: none;
 		
 		}
 		
 tbody tr th a:hover		{
-		font: bold 0.9em tahoma, arial, sans-serif;
 		color: #5E7796;
 		text-decoration: none;
 		
 		}
 		
 tbody tr th a:active		{
-		font: bold 0.9em tahoma, arial, sans-serif;
 		color: #5E7796;
 		text-decoration: line-through;
 		}
 		
 tbody td a:link		{
-		font: normal 0.9em tahoma, arial, sans-serif;
 		color: #0084ff;
 		text-decoration: underline;
 		}
 		
 tbody td a:visited		{
-		font: normal 0.9em tahoma, arial, sans-serif;
 		color: #0084ff;
 		text-decoration: none;
 		}
 		
 tbody td a:hover		{
-		font: normal 0.9em tahoma, arial, sans-serif;
 		color: #0084ff;
 		text-decoration: none;
 		}

@@ -20,3 +20,10 @@ config.action_controller.allow_forgery_protection    = false
 # The :test delivery method accumulates sent emails in the
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
+
+# This is required for ansuz, for now.  It allows me to 
+# monkeypatch rails to work with extensions on classes
+# inside modules.  I'm fixing bug: http://dev.rubyonrails.org/attachment/ticket/6450/modulized_extensions_with_tests_update.diff
+# FIXME: Once that bug is fixed this can all go away. -ja
+# It has to be in every environment.
+require 'isotope11/active_record_extensions'

@@ -20,3 +20,10 @@ config.action_view.cache_template_loading            = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+
+# This is required for ansuz, for now.  It allows me to 
+# monkeypatch rails to work with extensions on classes
+# inside modules.  I'm fixing bug: http://dev.rubyonrails.org/attachment/ticket/6450/modulized_extensions_with_tests_update.diff
+# FIXME: Once that bug is fixed this can all go away. -ja
+# It has to be in every environment.
+require 'isotope11/active_record_extensions'

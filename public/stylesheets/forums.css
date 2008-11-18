@@ -10,9 +10,6 @@ a { color: #24b; }
 #content
 {
 	margin:1em 0;
-	width:70%;
-	border:5px solid #bbb;
-	border-width:0 5px 5px 0;
 	float:left;
 	min-width:425px;
 	min-height:165px;
@@ -91,7 +88,6 @@ p.sections
 	padding:7px 15px;
 	border:1px solid #bd7;
 	margin-top:0;
-	font-size:0.8em;
 }
 
 p.error
@@ -128,7 +124,6 @@ p.subtitle
 	font-size:0.75em;
 	color:#888;
 	font-weight:bold;
-	margin-top:-0.8em;
 }
 p.subtitle img { vertical-align: bottom; }
 
@@ -525,7 +520,6 @@ table tr th
 {
 	background:#333;
 	color:white;
-	font-size:0.8em;
 	padding:3px 10px;
 	border:1px solid #222;
 }
@@ -545,10 +539,6 @@ table tr td
 
 /* specific table styles */
 
-table.forums,
-table.topics
- { font-size:0.8em; }
-table.forums tr th { font-size:0.8em; }
 table.forums tr td .title {
 	font-size:1.4em; 
 	}
@@ -570,7 +560,6 @@ table.forums .posts
 {
 	font-family: 'Lucida Grande', Tahoma, Arial, Helvetica, sans-serif;
 	color:#666;
-	font-size:0.8em;
 }
 
 table tr th.la { 	text-align:left; }
@@ -671,7 +660,6 @@ div.stats .posts { float:right; text-align:right; }
 
 .crumbs
 {
-	font-size:0.75em;
 	font-family: 'Lucida Grande', Tahoma, Arial, Helvetica, sans-serif;
 }
 .crumbs a { color:#468; }
@@ -752,7 +740,6 @@ table.posts tr.spacer td
 .posts .post .body
 {
 	border-top:2px solid #eee;
-	font-size:0.9em;
 	padding:10px 20px;
 }
 

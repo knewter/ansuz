@@ -14,14 +14,15 @@ require File.join(File.dirname(__FILE__), 'boot')
 require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
 
 require 'ansuz'
+
 # Initialize the Ansuz Plugin Manager instance
 Ansuz::PluginManagerInstance = Ansuz::PluginManager.new
 
 # authorization plugin
-AUTHORIZATION_MIXIN = "object roles"
-LOGIN_REQUIRED_REDIRECTION = { :controller => '/admin/account', :action => 'login' }
+AUTHORIZATION_MIXIN           = "object roles"
+LOGIN_REQUIRED_REDIRECTION    = { :controller => '/admin/account', :action => 'login' }
 PERMISSION_DENIED_REDIRECTION = { :controller => '/page', :action => 'indexer', :path => '' }
-STORE_LOCATION_METHOD = :store_location
+STORE_LOCATION_METHOD         = :store_location
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.

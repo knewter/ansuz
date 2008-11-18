@@ -1,6 +1,8 @@
 module Ansuz
   module JAdams
     class ContentSection < ActiveRecord::Base
+      acts_as_versioned
+
       def self.admin_partial
         "/content_sections/edit"
       end
