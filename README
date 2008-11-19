@@ -28,6 +28,17 @@ Ansuz is licensed via the BSD license.
 
  NOTE: SQLite has problems with ansuz, please don't use it for now.
 
+== If you had problems with the above
+
+I was asked to add this to the README.
+
+gem install -v=2.1.0 rails --no-ri --no-rdoc
+rake rails:freeze:edge RELEASE=2.1.0
+gem sources -a http://gems.github.com
+gem install haml --no-ri --no-rdoc
+
+If upgrading to 2.1.2, see:  http://engines.lighthouseapp.com/projects/10178/tickets/37-module-activesupportdependencies
+
 == This software is BSD licensed.  See the COPYING file for details.
 
  For help, feel free to contact the authors at:

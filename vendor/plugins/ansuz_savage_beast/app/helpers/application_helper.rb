@@ -94,7 +94,7 @@ module ApplicationHelper
   end
 
   def admin?
-    current_user.is_admin?
+    logged_in? && current_user.is_admin?
   end
   
 end

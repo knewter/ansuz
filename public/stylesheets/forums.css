@@ -518,7 +518,7 @@ table
 table.wide {	width:100%; }
 table tr th
 {
-	background:#333;
+	background:black;
 	color:white;
 	padding:3px 10px;
 	border:1px solid #222;

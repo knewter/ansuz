@@ -55,7 +55,8 @@
 	z-index: 10;
 }
 #lightbox-container-image-box > #lightbox-nav { left: 0; }
-#lightbox-nav a { outline: none;}
+#lightbox-nav a { outline: none; opacity:0;}
+#lightbox-nav a:hover { opacity:1.0;}
 #lightbox-nav-btnPrev, #lightbox-nav-btnNext {
 	width: 49%;
 	height: 100%;

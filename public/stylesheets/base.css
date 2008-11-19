@@ -132,3 +132,9 @@ ul.photos.item-list a{
 ul.photos.item-list a{
   opacity: 1;
 }
+#lightbox-nav a{
+  display: none;
+}
+#lightbox-nav a:hover {
+  display: inline;
+}

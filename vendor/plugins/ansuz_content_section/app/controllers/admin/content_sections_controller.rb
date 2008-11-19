@@ -1,8 +1,9 @@
-class ContentSectionsController < ApplicationController
+class Admin::ContentSectionsController < Admin::BaseController
   unloadable # This is required if you subclass a controller provided by the base rails app
   layout 'admin'
   before_filter :load_admin_plugin_nav
-  before_filter :load_content_section, :only => [:show, :edit, :update]
+  before_filter :load_content_section, :only => [:show, :edit, :update, :rollback, :get_dropdown]
+  helper :content_section
   
   protected
   # This method duplicated from admin/base_controller
@@ -31,5 +32,14 @@ class ContentSectionsController < ApplicationController
         page << "notify('An error occurred updating the content section');"
       end
     end
+  end
+
+  def rollback
+    @content_section.revert_to(params[:version_number])
+    render :text => @content_section.contents
+  end
+
+  def get_dropdown
+    render :text => render_to_string(:partial => 'get_dropdown')
   end
 end
