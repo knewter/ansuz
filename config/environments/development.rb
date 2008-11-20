@@ -22,3 +22,4 @@ config.action_mailer.raise_delivery_errors = false
 # FIXME: Once that bug is fixed this can all go away. -ja
 # It has to be in every environment.
 require 'isotope11/active_record_extensions'
+require 'ansuz/setup_admin_menu_entries'
