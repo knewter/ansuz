@@ -1,13 +1,15 @@
 <%= error_messages_for 'page' %>
 <!--[form:page]-->
-<div id="cms_form" style="display:block;">
-  <%= form_heading "Name (URL)", text_field('page', 'name', 'onKeyUp' => "document.getElementById('name_preview').innerHTML = this.value.replace(/ /g, '_')") + "<span class='path'><b>#{@page.ancestor_path}<span id=name_preview>#{@page.name}</span></b></span><br/>" %>
-  <%= form_heading "Title", text_field('page', 'title') %>
-  <%= form_heading "Full Title", text_field('page', 'full_title') %>
-  <% if current_user.can_publish? %>
-    <%= form_heading 'Published', '<select id="page_published" name="page[published]">' + options_for_select([true, false], @page.published) + '</select>' %>
-  <% end %>
-	<div class="advanced_options">
+<div class='fullwidth'>
+  <table class='form-table'> 
+    <%= form_row "Name (URL)", text_field('page', 'name', 'onKeyUp' => "document.getElementById('name_preview').innerHTML = this.value.replace(/ /g, '_')") + "<span class='path'><b>#{@page.ancestor_path}<span id=name_preview>#{@page.name}</span></b></span><br/>" %>
+    <%= form_row "Title", text_field('page', 'title') %>
+    <%= form_row "Full Title", text_field('page', 'full_title') %>
+    <% if current_user.can_publish? %>
+      <%= form_row 'Published', '<select id="page_published" name="page[published]">' + options_for_select([true, false], @page.published) + '</select>' %>
+    <% end %>
+  </table>
+  <div class="advanced_options">
     <% toggle_content_box "Advanced Options" do %>
       <table class='form-table'>
         <%= form_row '<label for="page_display_title" class="advanced_options">Displayed on page</label>', '<select id="page_display_title" name="page[display_title]">' + options_for_select([true, false], @page.display_title) + '</select>' %>
@@ -17,5 +19,5 @@
       <br />
     <% end %>
   </div>
-</div><!-- end float left-->
+</div>
 <!--[eoform:page]-->
