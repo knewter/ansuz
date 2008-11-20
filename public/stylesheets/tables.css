@@ -91,7 +91,13 @@ tbody th	{
 		
 tbody td	{
 		background: #fff;
+    color: #333;
+    font-weight: normal;
 		}
+tbody td a{
+  color: #333;
+  text-decoration: none;
+}
 
 tbody tr.odd td		{
 		background: #eee;
@@ -100,46 +106,33 @@ tbody tr.odd td		{
 tbody tr th a:link		{
 		font: bold 0.9em tahoma, arial, sans-serif;
 		color: #5E7796;
-		text-decoration: underline;
-		
 		}
 		
 tbody tr th a:visited		{
 		color: #5E7796;
-		text-decoration: none;
-		
 		}
 		
 tbody tr th a:hover		{
 		color: #5E7796;
-		text-decoration: none;
-		
+		text-decoration: underline;
 		}
 		
 tbody tr th a:active		{
 		color: #5E7796;
-		text-decoration: line-through;
 		}
 		
 tbody td a:link		{
-		color: #0084ff;
-		text-decoration: underline;
 		}
 		
 tbody td a:visited		{
-		color: #0084ff;
-		text-decoration: none;
 		}
 		
 tbody td a:hover		{
-		color: #0084ff;
-		text-decoration: none;
+		text-decoration: underline;
 		}
 		
 tbody td a:active		{
 		font: normal 0.9em tahoma, arial, sans-serif;
-		color: #0084ff;
-		text-decoration: underline;
 		}
 tbody tr.selected td,
 tbody tr.selected:hover td{

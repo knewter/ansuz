@@ -1,9 +1,12 @@
 <%= title "Manage Pages" -%>
+
 <% content_for :sidebar do -%>
+  <%= link_to "Create Page", new_admin_page_path, :class => 'button icon add' %>
   <div class='note'>
     Pages are a central component of ansuz, as they provide the structure onto which the page plugin system latches, as well as providing nice hierarchical urls for your content.
   </div>
 <% end -%>
-<div id='tree2'>
+
+<div id='tree2' class='fullwidth'>
   <%= tree_table(@page_hierarchy) {|item| link_to h(item.name), edit_admin_page_path(item) } %>
 </div>

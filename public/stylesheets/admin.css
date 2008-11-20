@@ -35,7 +35,6 @@ h3{
 #header {
   width:100%;
   text-align: left;
-  background-color: #0084ff;
   color: white;
   padding: 10px;
   height: 40px;
@@ -132,11 +131,10 @@ h3{
 }
 
 #bd h1{
-  font-size: 160%;
-  background-color: #ddd;
-  padding: 4px 10px;
+  font-size: 200%;
+  padding: 0;
   margin-bottom: 10px;
-  color: #444;
+  color: black;
 }
 
 #bd h2{
@@ -168,7 +166,7 @@ ul.grid li.item img:hover {
   border: 10px solid #bbb;
 }
 ul.grid li.item.active img {
-  border-color: #0084FF;
+  border-color: #777;
 }
 #tree li li:hover {
   background-color: #eee;
@@ -189,7 +187,7 @@ ul.grid li.item.active img {
 }
 
 #admin-menu li:hover span{
-  background: #006bcf;
+  background: #333;
 }
 
 #admin-menu li span, #admin-menu li a{
@@ -228,18 +226,13 @@ ul.grid li.item.active img {
 
 #admin-menu li span.note{
   margin: 0;
-  background-color: #555;
   font-size: 75%;
   font-style: oblique;
+  background: transparent;
 }
 
-#admin-menu li li:hover span.note,
 #admin-menu li li:hover a{
   background-color: #333;
-}
-#admin-menu li li span span.note,
-#admin-menu li li:hover span span.note{
-  background-color: #006bcf;
 }
 
 .note{
@@ -258,14 +251,14 @@ ul.grid li.item.active img {
 
 a.button{
   padding: 10px;
-  background-color: #ccc;
-  color: black;
+  color: #444;
   text-decoration: none;
   width: 200px;
   display: block;
+  font-weight: bold;
 }
 a.button:hover {
-  background-color: #bbb !important;
+  color: black;
 }
 a.button.icon{
   padding-left: 30px;
@@ -393,6 +386,10 @@ input, textarea{
   border-width: 1px;
   border-color: #bbb;
 }
+input:focus, textarea:focus {
+  border-color: #888;
+}
+
 .blog-post-form input.title{
   width: 98%;
 }
@@ -426,6 +423,13 @@ color: white;
 text-decoration: none;
 padding: 8px 12px;
 }
-#supplemental-nav ul li a:hover{
+#supplemental-nav ul li a:hover {
  background-color: #333;
+}
+#bd .fullwidth{
+  margin: 0 -5px 0 -5px !important;
+}
+ul.admin_actions li{
+  float: left;
+  padding: 2px 6px;
 }

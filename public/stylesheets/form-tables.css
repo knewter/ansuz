@@ -158,14 +158,17 @@ table.form-table td .updated {
 .form-table input, .form-table textarea {
   border-color: #999 !important;
 }
+.form-table input:focus, .form-table textarea:focus {
+  border-color: #666 !important;
+}
 
 .form-table td, .form-table th {
   border-bottom-color: #fff !important;
 }
 
 .form-heading h3{
-  background-color: #eee;
-  font-size: 14px;
-  padding: 7px;
-  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #777;
+  font-family: "Bitstream Vera Sans", Arial, sans-serif;
 }

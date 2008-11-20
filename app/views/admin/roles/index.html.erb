@@ -6,21 +6,23 @@
   </div>
 <% end %>
 
-<table class='subdued'>
-  <thead>
-    <tr>
-      <th>Role</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @roles.each do |role| -%>
-      <tr class='<%= cycle('odd', 'even') -%>'>
-        <td><%= link_to role.name, admin_role_path(role) -%></td>
-        <td>
-          <%= link_to "Delete", admin_role_path(role), :method => :delete, :confirm => "Are you sure you want to delete this role?" -%>
-        </td>
+<div class='fullwidth'>
+  <table class='subdued'>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th></th>
       </tr>
-    <% end -%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @roles.each do |role| -%>
+        <tr class='<%= cycle('odd', 'even') -%>'>
+          <td><%= link_to role.name, admin_role_path(role) -%></td>
+          <td>
+            <%= link_to famfamfam_icon("delete"), admin_role_path(role), :method => :delete, :confirm => "Are you sure you want to delete this role?" -%>
+          </td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+</div>

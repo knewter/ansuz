@@ -88,7 +88,7 @@ module PageAdminHelper
 
   def tree_table(acts_as_tree_set, init=true, level=0, &block)
     if acts_as_tree_set.size > 0
-      ret =  '<table class=\'tree\'>'
+      ret =  '<table class=\'tree subdued\'>'
       ret << '  <thead>'
       ret << '    <tr>'
       ret << '      <th>Title</th>'

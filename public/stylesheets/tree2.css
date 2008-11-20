@@ -47,7 +47,6 @@ table.tree td{
   padding: 0 4px;
 }
 table.tree td.item a{
-  font-weight: bold;
 }
 table.tree td.page-controls .page_controls{
   display: none;

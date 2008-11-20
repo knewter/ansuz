@@ -1,4 +1,9 @@
-<h1 style="text-align:center;">Create a New Page</h1>
+<%= title "Create a new page" %>
+
+<% content_for :sidebar do %>
+  <%= link_to "Manage Pages", admin_pages_path, :class => "button icon back" %>
+<% end %>
+
 <% form_tag admin_pages_path, :html => { 'name' => 'page_form' } do %>
 	<%= hidden_field 'page', 'parent_id' %>
 	<%= hidden_field 'page', 'page_order' %>
@@ -8,5 +13,5 @@
       <%= hidden_field_tag "page_plugins[]", page_plugin -%>
     <% end -%>
   <% end -%>
-	<%= submit_tag 'Create', :class => 'submit' %>
+  <%= submit_tag 'Create Page' %>
 <% end -%>

@@ -1,7 +1,7 @@
 module Ansuz
   class PluginManager
     attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types
-    ADMIN_MENU_TOP_LEVEL_ENTRIES = ["Content", "Add-ons", "Themes", "Ansuz"]
+    ADMIN_MENU_TOP_LEVEL_ENTRIES = ["Create", "Manage", "Ansuz"]
 
     def initialize
       @plugins = []
