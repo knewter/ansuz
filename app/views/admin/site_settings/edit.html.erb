@@ -7,9 +7,11 @@
 <% end -%>
 
 <% form_for @settings, :url => admin_site_settings_path do |f| %>
-  <table class='form-table'>
-    <%= form_row "Site Title", f.text_field(:site_title) %>
-  </table>
+  <div class='fullwidth'>
+    <table class='form-table'>
+      <%= form_row "Site Title", f.text_field(:site_title) %>
+    </table>
+  </div>
   <br />
   <%= submit_tag "Update Site Settings" %> or <%= link_to "Cancel", admin_site_settings_path %>
 <% end %>

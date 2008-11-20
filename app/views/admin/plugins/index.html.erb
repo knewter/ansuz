@@ -4,17 +4,19 @@
     This is actually a list of the installed page plugins, as I've foolishly not provided a way to register a plugin with the system (Ansuz::PluginManagerInstance.register_plugin is actually used to register a page plugin)
   </div>
 <% end -%>
-<table class='subdued'>
-  <thead>
-    <tr>
-      <th>Plugin Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% Ansuz::PluginManagerInstance.plugins.each do |plugin| -%>
-      <tr class='<%= cycle('odd', 'even') -%>'>
-        <td><%= plugin.to_s -%></td>
+<div class='fullwidth'>
+  <table class='subdued'>
+    <thead>
+      <tr>
+        <th>Plugin Name</th>
       </tr>
-    <% end -%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% Ansuz::PluginManagerInstance.plugins.each do |plugin| -%>
+        <tr class='<%= cycle('odd', 'even') -%>'>
+          <td><%= plugin.to_s -%></td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+</div>

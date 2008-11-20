@@ -132,7 +132,6 @@ tbody td a:hover		{
 		}
 		
 tbody td a:active		{
-		font: normal 0.9em tahoma, arial, sans-serif;
 		}
 tbody tr.selected td,
 tbody tr.selected:hover td{

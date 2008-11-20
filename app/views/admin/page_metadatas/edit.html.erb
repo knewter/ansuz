@@ -5,13 +5,15 @@
 <% end %>
 
 <% form_for [:admin, :page, @page_metadata] do |f| %>
-  <table class='form-table'>
-    <%= form_row "Title",       f.text_field(:title) -%>
-    <%= form_row "Subject",     f.text_field(:subject) -%>
-    <%= form_row "Description", f.text_area(:description) -%>
-    <%= form_row "Publisher",   f.text_field(:publisher) -%>
-    <%= form_row "Rights",      f.text_field(:rights) -%>
-  </table>
+  <div class='fullwidth'>
+    <table class='form-table'>
+      <%= form_row "Title",       f.text_field(:title) -%>
+      <%= form_row "Subject",     f.text_field(:subject) -%>
+      <%= form_row "Description", f.text_area(:description) -%>
+      <%= form_row "Publisher",   f.text_field(:publisher) -%>
+      <%= form_row "Rights",      f.text_field(:rights) -%>
+    </table>
+  </div>
   <br />
   <%= submit_tag "Update Metadata" %>
 <% end %>

@@ -1,11 +1,13 @@
 <% submit_text = "Create User" unless local_assigns.include?(:submit_text) -%>
 <%= error_messages_for :user -%>
-<table class='form-table'>
-  <%= form_row "Login",    f.text_field(:login) %>
-  <%= form_row "Password", f.password_field(:password) %>
-  <%= form_row "Confirm Password", f.password_field(:password_confirmation) %>
-  <%= form_row "Email",    f.text_field(:email) %>
-  <%= form_row "Roles",    select_tag("roles[]", options_for_select(Role.base_roles, @user.roles.map(&:name)), { :multiple => true, :size => 6 }), :note => "ctrl+click to select multiple." %>
-</table>
+<div class='fullwidth'>
+  <table class='form-table'>
+    <%= form_row "Login",    f.text_field(:login) %>
+    <%= form_row "Password", f.password_field(:password) %>
+    <%= form_row "Confirm Password", f.password_field(:password_confirmation) %>
+    <%= form_row "Email",    f.text_field(:email) %>
+    <%= form_row "Roles",    select_tag("roles[]", options_for_select(Role.base_roles, @user.roles.map(&:name)), { :multiple => true, :size => 6 }), :note => "ctrl+click to select multiple." %>
+  </table>
+</div>
 <br />
 <%= submit_tag submit_text -%> or <%= link_to "Cancel", admin_users_path -%>
