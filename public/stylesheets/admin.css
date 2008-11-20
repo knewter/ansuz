@@ -17,11 +17,17 @@ h1{
   padding: 10px;
 }
 
+h1.title{
+  background-color: #222;
+  color: white;
+}
+
 h1 a.button2{
+  font-family: "Bitstream Vera Sans", Arial, sans-serif;
   font-size: 14px;
   position: relative;
   left: 20px;
-  top: -3px;
+  top: -5px;
 }
 
 h3{

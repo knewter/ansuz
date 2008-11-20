@@ -2,7 +2,7 @@ module TitleHelper
   def display_site_title
     visit_link = link_to("Visit site", "/", :class => 'button2')
     if the_title = get_setting('site_title')
-      content_tag "h1", the_title + visit_link
+      content_tag "h1", the_title + visit_link, :class => 'title'
     end
   end
 
