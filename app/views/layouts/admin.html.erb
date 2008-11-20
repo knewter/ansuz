@@ -33,35 +33,39 @@
   </head>
   <body>
     <%= display_standard_flashes -%>
-    <%= display_site_title %>
-    <div id='supplemental-nav'>
-      <ul>
-        <li><%= link_to "File a Bug Report", "http://ansuz.lighthouseapp.com/projects/15780-ansuz/tickets/new" %></li>
-        <li><%= link_to "Make a Feature Request", "http://ansuzcms.crowdsound.com/suggestions/new" %></li>
-      </ul>
-    </div>
-    <div id='wrapper'>
-      <div id='toolbar'>
-        <%= render :partial => "/admin/tabs" %>
+    <div id='outside'>
+      <%= display_site_title %>
+      <div id='supplemental-nav'>
+        <ul>
+      
+          <li><%= link_to("Visit site", "/") %></li>
+          <li><%= link_to "File a Bug Report", "http://ansuz.lighthouseapp.com/projects/15780-ansuz/tickets/new" %></li>
+          <li><%= link_to "Make a Feature Request", "http://ansuzcms.crowdsound.com/suggestions/new" %></li>
+        </ul>
       </div>
-      <div id='content'>
-        <div id="doc2" class="yui-t7">
-          <div id="bd">
-            <div class="yui-g">
-              <%= @content_for_layout %>
-            </div>
-          </div>
-          <div id="ft">
-            [ Currently Editing: <b><%= current_database %></b> ]
-            <div class='credits'>
-              Powered by <%= link_to "Ansuz CMS", "http://www.ansuzcms.com" %>
-            </div>
-          </div>
+      <div id='wrapper'>
+        <div id='toolbar'>
+          <%= render :partial => "/admin/tabs" %>
         </div>
-        <div id='sidebar'>
-          <%= yield :sidebar -%>
-          <br /><br />
-          <script type='text/javascript' src='http://crowdsound.com/widgets/init?&aid=718&width=250'></script>
+        <div id='content'>
+          <div id="doc2" class="yui-t7">
+            <div id="bd">
+              <div class="yui-g">
+                <%= @content_for_layout %>
+              </div>
+            </div>
+            <div id="ft">
+              [ Currently Editing: <b><%= current_database %></b> ]
+              <div class='credits'>
+                Powered by <%= link_to "Ansuz CMS", "http://www.ansuzcms.com" %>
+              </div>
+            </div>
+          </div>
+          <div id='sidebar'>
+            <%= yield :sidebar -%>
+            <br /><br />
+            <script type='text/javascript' src='http://crowdsound.com/widgets/init?&aid=718&width=250'></script>
+          </div>
         </div>
       </div>
     </div>

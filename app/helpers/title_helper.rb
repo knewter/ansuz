@@ -1,9 +1,8 @@
 module TitleHelper
   def display_site_title
-    visit_link = link_to("Visit site", "/", :class => 'button2')
-    if the_title = get_setting('site_title')
-      content_tag "h1", the_title + visit_link, :class => 'title'
-    end
+    the_title = get_setting('site_title')
+    the_title = "&nbsp;" if the_title.blank?
+    content_tag "h1", the_title, :class => 'title'
   end
 
   def title_helper
