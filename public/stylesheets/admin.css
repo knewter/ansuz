@@ -377,13 +377,18 @@ li.clear{
   padding: 0 !important;
 }
 
+#page-plugins-tabs li{
+  padding-right:10px;
+  margin-right:10px;
+}
 #page-plugins-tabs li.top{
   position: relative;
 }
 #page-plugins-tabs li.top a.delete{
   position: absolute;
   right: 0;
-  top: -10px;
+  height: 21px;
+  top: 1px;
   cursor: pointer;
 }
 #page-plugins-tabs li.top a.delete:hover {
