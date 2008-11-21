@@ -2,7 +2,7 @@ class Admin::BlogPostsController < Admin::BaseController
   unloadable # This is required if you subclass a controller provided by the base rails app
 
   layout 'admin'
-  before_filter :load_blog_post,     :only => [:show, :edit, :update]
+  before_filter :load_blog_post,     :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_blog_post, :only => [:new, :create]
   before_filter :load_blog_posts,    :only => [:index]
 
