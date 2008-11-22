@@ -1,7 +1,7 @@
 <%= error_messages_for 'page' %>
 <!--[form:page]-->
 <div class='fullwidth'>
-  <table class='form-table'> 
+  <table class='form-table' id='page-table'> 
     <%= form_row "Name (URL)", text_field('page', 'name', 'onKeyUp' => "document.getElementById('name_preview').innerHTML = this.value.replace(/ /g, '_')") + "<span class='path'><b>#{@page.ancestor_path}<span id=name_preview>#{@page.name}</span></b></span><br/>" %>
     <%= form_row "Title", text_field('page', 'title') %>
     <%= form_row "Full Title", text_field('page', 'full_title') %>
