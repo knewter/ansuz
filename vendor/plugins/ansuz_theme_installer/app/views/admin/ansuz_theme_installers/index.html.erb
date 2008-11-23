@@ -21,7 +21,7 @@
     <tbody>
       <% @themes.each do |theme| -%>
         <tr class="<%= cycle('odd', 'even') %>">
-          <td><%= image_tag(remote_theme_preview_image_for(theme[2])) %></td>
+          <td><%= image_tag(remote_theme_preview_image_for(theme[0])) %></td>
           <td><%= theme[0] %></td>
           <td>
             <% if @themes_util.installed?(theme[0]) %>
