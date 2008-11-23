@@ -30,8 +30,20 @@ module Ansuz
       end
 
       # This method will install a theme, given a repository url
-      def self.install repository_url
-        `cd #{RAILS_ROOT}/themes; git clone #{repository_url}`
+      def self.install repository_url, name
+        `cd #{RAILS_ROOT}/themes; git clone #{repository_url} #{name}`
+      end
+
+      def self.update name
+        `cd #{RAILS_ROOT}/themes/#{name}; git pull`
+      end
+
+      def self.delete name
+        `rm -fr #{RAILS_ROOT}/themes/#{name}`
+      end
+
+      def self.installed?(name)
+        File.exist?("#{RAILS_ROOT}/themes/#{name}")
       end
     end
   end

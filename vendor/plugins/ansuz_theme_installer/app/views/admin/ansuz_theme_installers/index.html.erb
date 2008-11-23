@@ -15,13 +15,22 @@
       <tr>
         <th>Preview</th>
         <th>Name</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @themes.each do |theme| -%>
         <tr class="<%= cycle('odd', 'even') %>">
-          <td><%= link_to(image_tag(remote_theme_preview_image_for(theme[2])), install_admin_ansuz_theme_installers_path(:repository_url => theme[1])) -%></td>
-          <td><%= link_to(theme[0], install_admin_ansuz_theme_installers_path(:repository_url => theme[1])) -%></td>
+          <td><%= image_tag(remote_theme_preview_image_for(theme[2])) %></td>
+          <td><%= theme[0] %></td>
+          <td>
+            <% if @themes_util.installed?(theme[0]) %>
+              <%= link_to("Update", admin_ansuz_theme_installer_path(theme[0]), :method => :put) -%> | 
+              <%= link_to("Uninstall", admin_ansuz_theme_installer_path(theme[0]), :method => :delete, :confirm => "Are you sure?") -%>
+            <% else %>
+              <%= link_to("Install", install_admin_ansuz_theme_installers_path(:repository_url => theme[1], :name => theme[0])) -%>
+            <% end %>
+          </td>
         </tr>
       <% end -%>
     </tbody>
