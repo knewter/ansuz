@@ -5,7 +5,7 @@ class AnsuzMailer < ActionMailer::Base
     from       'knewter@gmail.com'
     sent_on    sent_at
     
-    body       :greeting => 'Hi,'
+    body       :url => edit_admin_page_url(page)
   end
 
 end
