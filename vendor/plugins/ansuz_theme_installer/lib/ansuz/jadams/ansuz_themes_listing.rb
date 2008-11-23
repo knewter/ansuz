@@ -35,15 +35,20 @@ module Ansuz
       end
 
       def self.update name
-        `cd #{RAILS_ROOT}/themes/#{name}; git pull`
+        `cd #{theme_folder_for(name)}; git pull`
+        `cd #{RAILS_ROOT}; rake theme_update_cache`
       end
 
       def self.delete name
-        `rm -fr #{RAILS_ROOT}/themes/#{name}`
+        `rm -fr #{theme_folder_for(name)}`
       end
 
       def self.installed?(name)
-        File.exist?("#{RAILS_ROOT}/themes/#{name}")
+        File.exist?(theme_folder_for(name))
+      end
+
+      def self.theme_folder_for name
+        "#{RAILS_ROOT}/themes/#{name}"
       end
     end
   end
