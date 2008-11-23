@@ -32,7 +32,7 @@ module UrlWriterRetardaseInhibitor
       am.send(:include, ::ActionController::UrlWriter)
       ::ActionController::UrlWriter.module_eval do
         default_url_options[:host] = 'localhost'
-        default_url_options[:port] = 3000
+        #default_url_options[:port] = 3000
         default_url_options[:protocol] = 'http'
       end
     end
