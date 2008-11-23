@@ -286,6 +286,9 @@ a.button.icon.remove{
 a.button.icon.back{
   background-image: url(/images/famfamfam_icons/arrow_left.png)
 }
+a.button.icon.forward{
+  background-image: url(/images/famfamfam_icons/arrow_right.png)
+}
 a.button.icon.edit{
   background-image: url(/images/famfamfam_icons/pencil.png)
 }
