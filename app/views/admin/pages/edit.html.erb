@@ -1,32 +1,7 @@
 <%= title "Edit Page: #{@page}" -%>
 
 <% content_for :sidebar do -%>
-  <%= link_to "Manage Pages", admin_pages_path, :class => 'button icon back' %>
-  <%= link_to "Edit Metadata", edit_admin_page_page_metadata_path(@page), :class => 'button icon edit' %>
-  <br />
-  <% form_remote_tag :url => admin_page_path(@page),
-    :update => 'main',
-    :method => :put,
-    :complete => remote_function(
-      :update => "item#{@page.parent_id}",
-      :url => { :action => 'manage_tree', :parent_id => @page.parent_id, :tree_post_id => @post_id },
-      :complete => 'refresh_visibility()'),
-    :html => { 'name' => 'page_form' } do -%>
-    <%= render :partial => 'form' %>
-    <%= submit_tag 'Update' %>
-  <% end -%>
-
-  <h2>Plugins on this page</h2>
-  <ul id="page_plugins" class='page_plugins'>
-    <% @page.page_plugins.each do |plugin| -%>
-      <li>
-        <%= link_to(plugin.module_type, edit_admin_page_plugin_path(plugin), :class => 'edit_page_plugin') -%> 
-        <%= link_to("[up]",   move_up_admin_page_plugin_path(plugin)) %>
-        <%= link_to("[down]", move_down_admin_page_plugin_path(plugin)) %>
-        <%= link_to("[x]", admin_page_plugin_path(plugin), :confirm => 'Are you sure you want to remove this plugin from the page?', :method => :delete) -%> 
-      </li>
-    <% end -%>
-  </ul>
+  <%= render :partial => 'admin/pages/edit_sidebar' %>
 <% end -%>
 
 <% if @page.display_title %>

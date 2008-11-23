@@ -87,15 +87,23 @@ class User < ActiveRecord::Base
     display_name
   end
 
-  protected
-    # before filter 
-    def encrypt_password
-      return if password.blank?
-      self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
-      self.crypted_password = encrypt(password)
-    end
-    
-    def password_required?
-      crypted_password.blank? || !password.blank?
-    end
+  def can_publish?
+    Role::PUBLISHING_ROLES.detect{|r| has_role? r}
+  end
+
+  def can_view_drafts?
+    Role::DRAFT_VIEWING_ROLES.detect{|r| has_role? r}
+  end
+
+protected
+  # before filter 
+  def encrypt_password
+    return if password.blank?
+    self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
+    self.crypted_password = encrypt(password)
+  end
+  
+  def password_required?
+    crypted_password.blank? || !password.blank?
+  end
 end

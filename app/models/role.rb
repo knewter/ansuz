@@ -9,6 +9,8 @@ class Role < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => [:authorizable_id, :authorizable_type]
 
   STATIC_ROLES = ["admin", "initial_reviewer", "final_reviewer", "author"]
+  PUBLISHING_ROLES = ["admin", "final_reviewer"]
+  DRAFT_VIEWING_ROLES = ["admin", "final_reviewer", "initial_reviewer", "author"]
 
   named_scope :root, :conditions => "authorizable_type IS NULL and authorizable_id IS NULL"
 

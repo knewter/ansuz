@@ -7,7 +7,11 @@ class PageController < ApplicationController
     @breadcrumb = @page.ancestors.reverse.to_a if @page
     @top_page = params[:path][0] || 'root'
     render :template => "404", :status => 404, :layout => false and return unless @page
-    render :template => 'content/page' and return if @page.page_type == "page"
+    if @page.is_published? || (logged_in? && current_user.can_view_drafts?)
+      render :template => 'content/page' and return if @page.page_type == "page"
+    else
+      render :template => 'content/unpublished' and return if @page.page_type == "page"
+    end
     render :template => 'content/multipage'
   end
 end

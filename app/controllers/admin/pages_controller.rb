@@ -26,12 +26,19 @@ class Admin::PagesController < Admin::BaseController
 
   def update
     if @page.update_attributes(params[:page])
+      handle_publishing_workflow
       flash.now[:message] = 'Page Updated Successfully'
       @preview_url = @page.ancestor_path + @page.name
       @page_id = @page.id
-      render :action => 'preview'
+      render :update do |page|
+        page << "notify('Page has been updated');"
+        page[:sidebar].update (render :partial => 'admin/pages/edit_sidebar')
+        page.call "ToggleContentBox.handle_toggle_content_boxes"
+      end
     else
-      render :action => 'edit'
+      render :update do |page|
+        page << "notify('There was a problem updating the page.');"
+      end
     end
   end
 
@@ -128,5 +135,19 @@ class Admin::PagesController < Admin::BaseController
       end
       @page.save
     end
+  end
+
+  def handle_publishing_workflow
+    logger.info "============="
+    case params["_commit"]
+    when /Unpublish|Save as Draft/
+      @page.status = 'draft'
+      logger.info 'saving draft'
+    when 'Publish'
+      @page.publish!
+    when 'Submit for Review'
+      @page.submit_for_review!
+    end
+    @page.save
   end
 end

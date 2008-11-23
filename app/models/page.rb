@@ -20,6 +20,22 @@
 #
 
 class Page < ActiveRecord::Base
+  include AASM
+
+  aasm_column :status
+  aasm_initial_state :draft
+  aasm_state :reviewing, :enter => :inform_reviewers
+  aasm_state :published
+  aasm_state :draft
+  
+  aasm_event :submit_for_review do
+    transitions :to => :reviewing, :from => [:draft]
+  end
+
+  aasm_event :publish do
+    transitions :to => :published, :from => [:reviewing, :draft]
+  end
+
   acts_as_tree   :order => 'page_order'
   attr_protected :page_number, :pages 
 
@@ -32,6 +48,12 @@ class Page < ActiveRecord::Base
   # authorization plugin
   acts_as_authorizable
 
+  protected
+  def inform_reviewers
+    AnsuzMailer.deliver_page_review_notifications(self)
+  end
+
+  public
   def linked_children
     children.select{|x| x.linked? }
   end
@@ -74,7 +96,7 @@ class Page < ActiveRecord::Base
   end
 
   def publishable_children
-    self.children.find :all, :conditions => ["published = ? AND linked = ?", true, true]
+    self.children.find :all, :conditions => ["status=? AND linked = ?", 'published', true]
   end
 
   def ancestor_path
@@ -149,6 +171,14 @@ class Page < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def is_published?
+    status == 'published'
+  end
+
+  def is_draft?
+    status == 'draft'
   end
 
   protected
