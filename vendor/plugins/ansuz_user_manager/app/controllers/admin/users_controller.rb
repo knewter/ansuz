@@ -25,6 +25,7 @@ class Admin::UsersController < Admin::BaseController
 
   def create
     if @user.save
+      handle_roles
       flash[:notice] = "User was created successfully."
       redirect_to admin_users_path
     else
@@ -41,13 +42,7 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update_attributes(params[:user])
-      Role.base_roles.each do |role|
-        if params[:roles].include?(role)
-          @user.has_role(role)
-        else
-          @user.has_no_role(role)
-        end
-      end
+      handle_roles
 
       flash[:notice] = "User was updated successfully."
       redirect_to admin_users_path
@@ -61,5 +56,16 @@ class Admin::UsersController < Admin::BaseController
     @user.destroy
     flash[:notice] = "User was deleted."
     redirect_to admin_users_path
+  end
+
+  protected
+  def handle_roles
+    Role.base_roles.each do |role|
+      if params[:roles].include?(role)
+        @user.has_role(role)
+      else
+        @user.has_no_role(role)
+      end
+    end
   end
 end
