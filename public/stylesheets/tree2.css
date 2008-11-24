@@ -7,7 +7,7 @@ table.tree thead th{
   border: 0;
 }
 table.tree thead th.actions{
-  width: 120px;
+  width: 135px;
 }
 table.tree tbody tr.level-0 td.item{
   padding-left: .5em !important;
