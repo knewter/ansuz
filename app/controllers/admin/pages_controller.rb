@@ -50,9 +50,6 @@ class Admin::PagesController < Admin::BaseController
  
   def create
     @page.name = @page.name.gsub(' ', '_')
-    unless current_user.can_publish?
-      @page.published = false
-    end
     if @page.save
       attach_page_plugins
       message = 'Page Added Successfully'

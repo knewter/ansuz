@@ -162,6 +162,31 @@ class Page < ActiveRecord::Base
     page.split_page!
   end
 
+  def self.find_or_create_page_by_path(path)
+    ary = path.split('/')
+    page = find_page_by_path(ary)
+    return page if page
+    # if it doesn't exist, create the path that it's supposed to exist at
+    page = nil
+    paths = []
+    ary.each_with_index do |entry, i|
+      paths << ary[0..i]
+    end
+    paths.each_with_index do |the_path, i|
+      # get the parent
+      unless i == 0
+        parent = find_page_by_path(paths[i-1])
+      end
+      # create it if it doesn't exist
+      unless page = find_page_by_path(the_path)
+        name = the_path.last
+        page = Page.new(:name => name, :title => name, :full_title => name, :parent_id => (parent ? parent.id : Page.root.id))
+        page.save
+      end
+    end
+    page
+  end
+
   # Get the last page in the tree
   def last_page
     parent_id = self.parent_id.to_s

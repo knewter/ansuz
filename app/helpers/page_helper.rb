@@ -25,4 +25,10 @@ module PageHelper
 		buffer << label.join if label
 		buffer.join(options[:separator])
 	end
+
+  def render_special(name)
+    # TODO: this needs to be cached
+    page = Page.find_or_create_page_by_path("special/#{name}")
+    render :partial => 'content/page', :object => page
+  end
 end
