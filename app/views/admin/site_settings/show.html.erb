@@ -6,6 +6,7 @@
 <div class='fullwidth'>
   <table class='form-table'>
     <%= form_row "Site Title", @settings.site_title -%>
+    <%= form_row "Show in-line edit links?", @settings.show_inline_edit_links? ? 'Yes' : 'No' -%>
     <%= form_row "User Theme", "<img src='#{fetch_theme_preview_ansuz_themes_path(:id => @settings.get_theme_setting)}' alt='#{@settings.get_theme_setting}' />" + "<br />" + @settings.get_theme_setting + " " + link_to("(change)", choose_theme_admin_site_settings_path) -%>
   </table>
 </div>
