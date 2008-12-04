@@ -25,15 +25,15 @@ class Page < ActiveRecord::Base
   aasm_column :status
   aasm_initial_state :draft
   aasm_state :reviewing, :enter => :inform_reviewers
-  aasm_state :published
+  aasm_state :published, :enter => :inform_authors
   aasm_state :draft
   
   aasm_event :submit_for_review do
-    transitions :to => :reviewing, :from => [:draft]
+    transitions :to => :reviewing, :from => [:draft, :reviewing]
   end
 
   aasm_event :publish do
-    transitions :to => :published, :from => [:reviewing, :draft]
+    transitions :to => :published, :from => [:reviewing, :draft, :published]
   end
 
   acts_as_tree   :order => 'page_order'
@@ -51,6 +51,10 @@ class Page < ActiveRecord::Base
   protected
   def inform_reviewers
     AnsuzMailer.deliver_page_review_notifications(self)
+  end
+
+  def inform_authors
+    AnsuzMailer.deliver_page_publication_notifications(self)
   end
 
   public
@@ -99,9 +103,18 @@ class Page < ActiveRecord::Base
     self.children.find :all, :conditions => ["status=? AND linked = ?", 'published', true]
   end
 
+  def path
+    ancestor_pages + [self]
+  end
+
+  def ancestor_pages
+    the_ancestors = self.ancestors.reverse
+    the_ancestors.delete_at 0
+    the_ancestors
+  end
+
   def ancestor_path
-    path = self.ancestors.reverse
-    path.delete_at 0
+    path = ancestor_pages
     return "/pages/" unless path.length > 0
     "/pages/" + path.collect(&:name).join('/') + "/"
   end

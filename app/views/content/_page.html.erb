@@ -4,7 +4,7 @@
     <% if logged_in? && get_setting('show_inline_edit_links') %>
       <% if current_user.can_author_content? %>
         <%= link_to "[Edit]", edit_admin_page_path(:id => page.id, :anchor => "page-plugin-#{plugin.id}") %>
-      <% elsif current_user.can_publish? %>
+      <% elsif current_user.can_approve_content? %>
         <%= link_to "[Manage Content]", edit_admin_page_path(:id => page.id, :anchor => "page-plugin-#{plugin.id}") %>
       <% end %>
     <% end %>

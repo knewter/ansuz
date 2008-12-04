@@ -35,7 +35,11 @@ class User < ActiveRecord::Base
   validates_length_of       :login,    :within => 3..40
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :login, :email, :case_sensitive => false
+
   before_save :encrypt_password
+
+  named_scope :content_approvers, { :include => { :roles => {} }, :conditions => ["roles.name IN (?)", Role::CONTENT_APPROVER_ROLES] }
+  named_scope :authors, { :include => { :roles => {} }, :conditions => ["roles.name IN (?)", Role::AUTHORING_ROLES] }
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
@@ -97,6 +101,10 @@ class User < ActiveRecord::Base
 
   def can_author_content?
     has_a_role_from? Role::AUTHORING_ROLES
+  end
+
+  def can_approve_content?
+    has_a_role_from? Role::CONTENT_APPROVER_ROLES
   end
 
   def has_a_role_from? roles_array
