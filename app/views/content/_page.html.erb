@@ -1,8 +1,12 @@
 <% if page.page_plugins.any? -%>
   <% page.page_plugins.each do |plugin| -%>
     <%= render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
-    <% if logged_in? && current_user.can_author_content? && get_setting('show_inline_edit_links') %>
-      <%= link_to "[Edit]", edit_admin_page_path(:id => page.id, :anchor => "page-plugin-#{plugin.id}") %>
+    <% if logged_in? && get_setting('show_inline_edit_links') %>
+      <% if current_user.can_author_content? %>
+        <%= link_to "[Edit]", edit_admin_page_path(:id => page.id, :anchor => "page-plugin-#{plugin.id}") %>
+      <% elsif current_user.can_publish? %>
+        <%= link_to "[Manage Content]", edit_admin_page_path(:id => page.id, :anchor => "page-plugin-#{plugin.id}") %>
+      <% end %>
     <% end %>
   <% end -%>
 <% end -%>
