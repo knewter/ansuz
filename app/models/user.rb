@@ -88,11 +88,19 @@ class User < ActiveRecord::Base
   end
 
   def can_publish?
-    Role::PUBLISHING_ROLES.detect{|r| has_role? r}
+    has_a_role_from? Role::PUBLISHING_ROLES
   end
 
   def can_view_drafts?
-    Role::DRAFT_VIEWING_ROLES.detect{|r| has_role? r}
+    has_a_role_from? Role::DRAFT_VIEWING_ROLES
+  end
+
+  def can_author_content?
+    has_a_role_from? Role::AUTHORING_ROLES
+  end
+
+  def has_a_role_from? roles_array
+    roles_array.detect{|r| has_role? r}
   end
 
 protected

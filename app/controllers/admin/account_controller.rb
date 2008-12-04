@@ -1,7 +1,7 @@
 class Admin::AccountController < ApplicationController
   skip_filter :login_required, :only => [:login]
 
-  permit 'admin', :except => 'login'
+  permit 'admin or initial_reviewer or final_reviewer or author', :except => ['login']
 
   def index
     redirect_to(:action => 'login') unless logged_in? || User.count > 0
