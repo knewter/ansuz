@@ -4,6 +4,7 @@ class CreatePageSchema < ActiveRecord::Migration
       t.string :name
       t.string :title
       t.string :full_title
+      t.string :status
       t.text   :body
 
       t.datetime :created_at
@@ -19,21 +20,6 @@ class CreatePageSchema < ActiveRecord::Migration
       t.boolean  :linked, :default => true
       t.boolean  :show_sub_menu, :default => false
     end
-
-    Page.create(
-      :name => 'home',
-      :title => 'Home',
-      :full_title => 'Home',
-      :body => '',
-      :page_order => 0,
-      :created_at => 'NOW()',
-      :updated_at => 'NOW()',
-      :display_title => 0,
-      :parent_id => nil,
-      :linked => 1,
-      :published => 1,
-      :page_type => 'page'
-    )
 
   end
 
