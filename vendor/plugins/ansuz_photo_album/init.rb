@@ -1,5 +1,3 @@
 # Include hook code here
-require 'photo_album'
-require 'photo_album_photo'
 Ansuz::PluginManagerInstance.register_plugin(Ansuz::JAdams::PhotoAlbum)
 Ansuz::PluginManagerInstance.register_page_type("Photo Album Page", ["Ansuz::JAdams::PhotoAlbum"])

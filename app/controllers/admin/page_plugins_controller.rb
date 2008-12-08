@@ -31,7 +31,7 @@ class Admin::PagePluginsController < Admin::BaseController
   def create
     if @page_plugin.save
       flash[:notice] = "Successfully saved the Page Plugin"
-      redirect_to edit_admin_page_path(@page)
+      redirect_to edit_admin_page_path(@page, :anchor => "page-plugin-#{@page_plugin.id}")
     else
       flash.now[:error] = "There was a problem saving the Page Plugin"
       render :action => 'new'

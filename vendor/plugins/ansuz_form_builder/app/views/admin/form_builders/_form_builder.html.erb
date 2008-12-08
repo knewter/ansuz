@@ -1,0 +1,9 @@
+<% form_tag submit_form_builder_path(plugin_module) do %>
+  <table class='form-table'>
+    <% plugin_module.form_fields.each do |form_field| %>
+      <%= form_row form_field.label, text_field_tag("form_field_#{form_field.id}") %>
+    <% end %>
+    <%= form_row "", submit_tag(plugin_module.submit_text) %>
+  </table>
+  <%= hidden_field_tag(:refurl, url_for(params)) %>
+<% end %>

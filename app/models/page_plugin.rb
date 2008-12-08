@@ -20,6 +20,7 @@ class PagePlugin < ActiveRecord::Base
 
   def create_module
     the_module = module_class.find_or_create_by_name(module_default_name)
+    the_module.save
     self.module_id = the_module.id
     self.save
   end

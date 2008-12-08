@@ -6,10 +6,15 @@ class Admin::ContentSectionsController < Admin::BaseController
   helper :content_section
   
   protected
+  # This method duplicated from admin/base_controller
+  def load_admin_plugin_nav
+    # The plugin nav comes across as an array of arrays like [text, url]
+    @admin_plugin_nav = Ansuz::PluginManagerInstance.admin_plugin_nav
+  end
+  
   def load_content_section
     @content_section = Ansuz::JAdams::ContentSection.find(params[:id])
   end
-
   public
   def show
   end
