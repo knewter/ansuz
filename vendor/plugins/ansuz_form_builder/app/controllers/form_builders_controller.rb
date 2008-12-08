@@ -1,5 +1,6 @@
 class FormBuildersController < ApplicationController
   unloadable
+  helper :form_builder_helper
 
   before_filter :load_form_builder, :only => [:submit]
   before_filter :load_form_builder_response, :only => [:submit]

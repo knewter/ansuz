@@ -23,9 +23,13 @@ class Admin::FormFieldsController < Admin::BaseController
   def create
     # create the appropriate stuff...
     case params[:type]
-      # TODO: Split this up and provide an API for other plugins to add form field types to the builder
+    # TODO: Split this up and provide an API for other plugins to add form field types to the builder
     when "Text Field"
       @field = Ansuz::JAdams::FormFieldTextField.new
+      @form_field.form_builder_id = @form_builder.id
+      @form_field.field = @field
+    when "Text Area"
+      @field = Ansuz::JAdams::FormFieldTextArea.new
       @form_field.form_builder_id = @form_builder.id
       @form_field.field = @field
     end
@@ -42,6 +46,8 @@ class Admin::FormFieldsController < Admin::BaseController
     case @form_field.field.type.to_s
     when "Ansuz::JAdams::FormFieldTextField"
       redirect_to edit_admin_form_field_text_field_path(@form_field.field)
+    when "Ansuz::JAdams::FormFieldTextArea"
+      redirect_to edit_admin_form_field_text_area_path(@form_field.field)
     end
   end
 

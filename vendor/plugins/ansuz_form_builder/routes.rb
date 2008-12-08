@@ -3,5 +3,6 @@ namespace :admin do |admin|
     form_builder.resources :form_fields
   end
   admin.resources :form_field_text_fields
+  admin.resources :form_field_text_areas
 end
 resources :form_builders, :member => [:submit]

@@ -24,6 +24,11 @@ class AddFormBuilders < ActiveRecord::Migration
       t.string :label
     end
 
+    # FormFieldTextAreas hold any text areas for the form
+    create_table :form_field_text_areas do |t|
+      t.string :label
+    end
+
     # FormBuilderResponses are an individual 'filled out form'
     create_table :form_builder_responses do |t|
       t.integer :form_builder_id
