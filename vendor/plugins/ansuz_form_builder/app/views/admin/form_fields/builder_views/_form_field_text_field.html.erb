@@ -1,1 +1,1 @@
-<%= form_row field.label, text_field_tag(:foo) + " " + admin_links %>
+<%= form_row field.label, text_field_tag(dom_id(field.field)) + " " + admin_links %>

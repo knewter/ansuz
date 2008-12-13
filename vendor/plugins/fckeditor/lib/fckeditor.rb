@@ -19,7 +19,13 @@ module Fckeditor
         instance_variable_set("@#{object}", eval("#{klass}.new()"))
       end
       id = fckeditor_element_id(object, field)
-      
+      name = "#{object}[#{field}]"
+
+      fckeditor_textarea_tag(name, value, options.merge({:id => id}))
+    end
+
+    def fckeditor_textarea_tag(name, value='', options={})
+      options[:id] ||= name
       cols = options[:cols].nil? ? '' : "cols='"+options[:cols]+"'"
       rows = options[:rows].nil? ? '' : "rows='"+options[:rows]+"'"
       
@@ -29,20 +35,21 @@ module Fckeditor
       toolbarSet = options[:toolbarSet].nil? ? 'Default' : options[:toolbarSet]
       
       if options[:ajax]
-        inputs = "<input type='hidden' id='#{id}_hidden' name='#{object}[#{field}]'>\n" <<
-                 "<textarea id='#{id}' #{cols} #{rows} name='#{id}'>#{value}</textarea>\n"
+        inputs = "<input type='hidden' id='#{options[:id]}_hidden' name='#{name}'>\n" <<
+                 "<textarea id='#{options[:id]}' #{cols} #{rows} name='#{options[:id]}'>#{value}</textarea>\n"
       else 
-        inputs = "<textarea id='#{id}' #{cols} #{rows} name='#{object}[#{field}]'>#{value}</textarea>\n"
+        inputs = "<textarea id='#{options[:id]}' #{cols} #{rows} name='#{name}'>#{value}</textarea>\n"
       end
       
       js_path = "#{request.relative_url_root}/javascripts"
       base_path = "#{js_path}/fckeditor/"
       return inputs <<
-        javascript_tag("var oFCKeditor = new FCKeditor('#{id}', '#{width}', '#{height}', '#{toolbarSet}');\n" <<
+        javascript_tag("var oFCKeditor = new FCKeditor('#{options[:id]}', '#{width}', '#{height}', '#{toolbarSet}');\n" <<
                        "oFCKeditor.BasePath = \"#{base_path}\"\n" <<
                        "oFCKeditor.Config['CustomConfigurationsPath'] = '#{js_path}/fckcustom.js';\n" <<
                        "oFCKeditor.ReplaceTextarea();\n")
     end
+
     
     def fckeditor_form_remote_tag(options = {})
       editors = options[:editors]

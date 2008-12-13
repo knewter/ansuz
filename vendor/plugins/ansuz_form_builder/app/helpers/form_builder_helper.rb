@@ -5,7 +5,11 @@ module FormBuilderHelper
                    when "Ansuz::JAdams::FormFieldTextField"
                      text_field_tag(field_id)
                    when "Ansuz::JAdams::FormFieldTextArea"
-                     text_area_tag(field_id)
+                     if form_field.field.settings["has_rich_content_editor"]
+                       fckeditor_textarea_tag("form_field_#{form_field.id}", nil, :toolbarSet => "Basic")
+                     else
+                       text_area_tag(field_id)
+                     end
                    end
     form_row form_field.label, field_itself
   end
@@ -15,7 +19,11 @@ module FormBuilderHelper
                    when "Ansuz::JAdams::FormFieldTextField"
                      'form_field_text_field'
                    when "Ansuz::JAdams::FormFieldTextArea"
-                     'form_field_text_area'
+                     if field.settings["has_rich_content_editor"]
+                       'form_field_rich_text_area'
+                     else
+                       'form_field_text_area'
+                     end
                    else
                      'form_field_text_field'
                    end

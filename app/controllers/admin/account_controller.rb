@@ -18,8 +18,10 @@ class Admin::AccountController < ApplicationController
         end
         flash[:message] = "Logged in successfully"
         redirect_back_or_default(admin_pages_path)
+      else
+        flash.now[:message] = 'Invalid username and password.'
+        render :layout => 'mini'
       end
-      flash.now[:message] = 'Invalid username and password.'
     else
       render :layout => 'mini'
     end

@@ -1,6 +1,6 @@
 class FormBuildersController < ApplicationController
   unloadable
-  helper :form_builder_helper
+  helper :form_builder
 
   before_filter :load_form_builder, :only => [:submit]
   before_filter :load_form_builder_response, :only => [:submit]
@@ -18,7 +18,13 @@ class FormBuildersController < ApplicationController
   def submit
     @form_builder.form_fields.each do |form_field|
       field_response = @form_builder_response.form_field_responses.build(:form_field_id => form_field.id)
-      field_response.string = params["form_field_#{form_field.id}"]
+      field_type = case form_field.field_type
+                   when "Ansuz::JAdams::FormFieldTextField"
+                     "string"
+                   when "Ansuz::JAdams::FormFieldTextArea"
+                     "text"
+                   end
+      field_response.send("#{field_type}=", params["form_field_#{form_field.id}"])
     end
     if @form_builder_response.save
       flash[:notice] = "Form was filled out successfully."

@@ -32,6 +32,11 @@ class Admin::FormFieldsController < Admin::BaseController
       @field = Ansuz::JAdams::FormFieldTextArea.new
       @form_field.form_builder_id = @form_builder.id
       @form_field.field = @field
+    when "Rich Text Area"
+      @field = Ansuz::JAdams::FormFieldTextArea.new
+      @form_field.form_builder_id = @form_builder.id
+      @form_field.field = @field
+      @field.settings["has_rich_content_editor"] = true
     end
     if @form_field.save
       flash[:notice] = "The Form Field was added successfully."
