@@ -1,7 +1,10 @@
 module Ansuz
   module JAdams
     class ContentSection < ActiveRecord::Base
-      acts_as_versioned
+      # Prevent bad things ™ from happening on initial rake db:migrate -james
+      if( ActiveRecord::Base.connection.tables.include?("content_sections"))
+        acts_as_versioned
+      end
 
       def self.admin_partial
         "/admin/content_sections/edit"
