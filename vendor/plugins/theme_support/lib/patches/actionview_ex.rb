@@ -4,7 +4,7 @@ module ActionView
   
   # Extending <tt>ActionView::Base</tt> to support rendering themes
   class Base
-    alias_method :theme_support_old_render_file, :render_file
+    alias_method :theme_support_old_render_file, :render
       # Overrides the default <tt>Base#render_file</tt> to allow theme-specific views
     def render_file(template_path, use_full_path = false, local_assigns = {})
 
@@ -15,9 +15,10 @@ module ActionView
 
       @finder.prepend_view_path(search_path)
       local_assigns['active_theme'] = get_current_theme(local_assigns)
-      theme_support_old_render_file(template_path, use_full_path, local_assigns)
+      # This isnt right, but it prevents breakage in 2.2.2 -james
+      theme_support_old_render_file :file => template_path, :layout => true, :locals => local_assigns
         
-      end      
+    end      
   private
 
   def force_liquid?
@@ -36,6 +37,7 @@ module ActionView
         return controller.current_theme || false
       end
     end
+
     # Used with ActionMailers
     if local_assigns.include? :current_theme 
       return local_assigns.delete :current_theme
