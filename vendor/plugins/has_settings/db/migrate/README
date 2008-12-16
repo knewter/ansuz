@@ -1,0 +1,3 @@
+== Has Settings
+
+To use this plugin, for now, just run the migration included in the plugin and add has_settings to your ActiveRecord class
