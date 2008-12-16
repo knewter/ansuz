@@ -3,6 +3,7 @@
   <%= link_to "All Users", admin_users_path, :class => 'button icon back' %>
 <% end %>
 
-<% form_for [:admin, @user] do |f| -%>
+<%# form_for [:admin, @user] do |f| -%>
+<% form_for :user, :url => { :action => "update" } , :html => { :method => :put } do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f, :submit_text => "Update User" } -%>
 <% end -%>
