@@ -4,21 +4,29 @@ module ActionView
   
   # Extending <tt>ActionView::Base</tt> to support rendering themes
   class Base
-    alias_method :theme_support_old_render_file, :render
-      # Overrides the default <tt>Base#render_file</tt> to allow theme-specific views
-    def render_file(template_path, use_full_path = false, local_assigns = {})
+   if( Rails::VERSION::STRING =~ /\A2\.2\.\d/)
+     alias_method :theme_support_old_render_file, :render
+   else
+     alias_method :theme_support_old_render_file, :render_file
+   end
+     # Overrides the default <tt>Base#render_file</tt> to allow theme-specific views
+   def render_file(template_path, use_full_path = false, local_assigns = {})
 
-      search_path = [
-      "#{RAILS_ROOT}/themes/#{controller.current_theme}/views",       # for components
-      "#{RAILS_ROOT}/themes/#{controller.current_theme}",             # for layouts
-      ]
+     search_path = [
+     "#{RAILS_ROOT}/themes/#{controller.current_theme}/views",       # for components
+     "#{RAILS_ROOT}/themes/#{controller.current_theme}",             # for layouts
+     ]
 
-      @finder.prepend_view_path(search_path)
-      local_assigns['active_theme'] = get_current_theme(local_assigns)
-      # This isnt right, but it prevents breakage in 2.2.2 -james
-      theme_support_old_render_file :file => template_path, :layout => true, :locals => local_assigns
-        
-    end      
+     @finder.prepend_view_path(search_path)
+     local_assigns['active_theme'] = get_current_theme(local_assigns)
+     if( Rails::VERSION::STRING =~ /\A2\.2\.\d/)
+       theme_support_old_render_file :file => template_path, :layout => controller.current_theme, :locals => local_assigns
+     else
+       theme_support_old_render_file(template_path, use_full_path, local_assigns)
+     end
+       
+   end 
+
   private
 
   def force_liquid?
