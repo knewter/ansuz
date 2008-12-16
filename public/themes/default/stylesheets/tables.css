@@ -55,7 +55,7 @@ thead tr th	{
 
 hr{
   border: 0;
-  color: #767359;
+  color: #222;
   background-color: #aca883;
   height: 1px;
 }
@@ -80,11 +80,11 @@ tbody tr	{
 		}
 
 tbody th	{
- background-color: #767359;
+ background-color: #222;
  color: white;
  font-weight: normal;
  padding: 4px;
- border-color: #767359;
+ border-color: #222;
  border-width: 0 4px 0 0;
  border-style: solid;
 		}
