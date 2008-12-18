@@ -23,7 +23,7 @@ class Test::Unit::TestCase
   def with_controller(controller, namespace = nil)
     classname = controller.to_s.classify + 'Controller'
     classname = namespace.to_s.classify + '::' + classname unless namespace.nil?
-    @controller = classname.constantize.new
+    @controller = Kernel.const_get(classname).new
   end
   
   def assert_response_body(expected)

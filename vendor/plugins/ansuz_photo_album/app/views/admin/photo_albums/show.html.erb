@@ -1,6 +1,7 @@
 <%= title "Photo Album" -%>
 <% content_for :sidebar do -%>
-  <%= link_to "Add Photo", new_admin_photo_album_photo_path(@photo_album), :class => 'button icon add' -%>
+  <%= link_to "Add Photo", new_admin_photo_album_photo_path(@photo_album), :class => 'button icon add' %>
+  <%= link_to "Edit Settings", edit_admin_photo_album_path(@photo_album),  :class => 'button icon edit' %>
 <% end -%>
 <h3>Photos</h3>
 <ul class='photos'>

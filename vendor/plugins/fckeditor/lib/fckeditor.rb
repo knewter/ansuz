@@ -15,7 +15,7 @@ module Fckeditor
         value = value.nil? ? "" : value
       else
         value = ""
-        klass = "#{object}".camelcase.constantize
+        klass = Kernel.const_get("#{object}".camelcase)
         instance_variable_set("@#{object}", eval("#{klass}.new()"))
       end
       id = fckeditor_element_id(object, field)

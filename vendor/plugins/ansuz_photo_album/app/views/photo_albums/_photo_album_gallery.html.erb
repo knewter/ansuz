@@ -1,0 +1,13 @@
+<% if plugin_module.photos.any? %>
+  <div id='<%= dom_id(plugin_module) %>' class='galimg'>
+    <div class='imgprin'>
+      <%= image_tag plugin_module.photos.first.photo_album_photo_image.url(:large) %>
+    </div>
+    <ul>
+      <% plugin_module.photos.each do |photo| %>
+        <li><%= link_to image_tag(photo.photo_album_photo_image.url(:thumb)), photo.photo_album_photo_image.url(:large), :title => photo.caption -%></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= javascript_tag "jQuery('##{dom_id(plugin_module)}').galimg();" %>

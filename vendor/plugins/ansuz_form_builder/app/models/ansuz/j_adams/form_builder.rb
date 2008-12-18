@@ -18,6 +18,10 @@ module Ansuz
         "/admin/form_builders/form_builder"
       end
 
+      def view_partial
+        self.class.view_partial
+      end
+
       protected
       def ensure_submit_text
         if self.submit_text.blank?

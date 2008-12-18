@@ -17,6 +17,10 @@ module Ansuz
       def self.view_partial
         "/admin/content_sections/content_section"
       end
+
+      def view_partial
+        self.class.view_partial
+      end
     end
   end
 end

@@ -11,11 +11,29 @@ module Ansuz
       end
 
       def self.view_partial
-        "/photo_albums/photo_album"
+        case display_type
+        when 'Gallery'
+          "/photo_albums/photo_album_gallery"
+        else
+          "/photo_albums/photo_album"
+        end
       end
 
       def self.admin_partial
         "/admin/photo_albums/photo_album"
+      end
+
+      def self.display_types
+        ["Lightbox", "Gallery"]
+      end
+
+      def view_partial
+        case display_type
+        when 'Gallery'
+          "/photo_albums/photo_album_gallery"
+        else
+          "/photo_albums/photo_album"
+        end
       end
     end
   end

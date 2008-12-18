@@ -11,7 +11,7 @@ class PagePlugin < ActiveRecord::Base
   end
 
   def module_class
-    module_type.constantize
+    Object.path2class(module_type)
   end
 
   def module_default_name

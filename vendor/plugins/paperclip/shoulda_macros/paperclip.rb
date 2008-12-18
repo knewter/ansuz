@@ -1,7 +1,7 @@
 module Paperclip
   module Shoulda
     def should_have_attached_file name, options = {}
-      klass = self.name.gsub(/Test$/, '').constantize
+      klass = Object.path2class(self.name.gsub(/Test$/, ''))
       context "Class #{klass.name} with attachment #{name}" do
         should "respond to all the right methods" do
           ["#{name}_file_name", name, "#{name}?"].each do |meth|
