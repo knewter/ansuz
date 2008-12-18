@@ -10,27 +10,20 @@ module Ansuz
         "/admin/photo_albums/#{id}"
       end
 
-      def self.view_partial
-        case display_type
-        when 'Gallery'
-          "/photo_albums/photo_album_gallery"
-        else
-          "/photo_albums/photo_album"
-        end
-      end
-
       def self.admin_partial
         "/admin/photo_albums/photo_album"
       end
 
       def self.display_types
-        ["Lightbox", "Gallery"]
+        ["Lightbox", "Gallery", "Popeye"]
       end
 
       def view_partial
         case display_type
         when 'Gallery'
           "/photo_albums/photo_album_gallery"
+        when 'Popeye'
+          "/photo_albums/photo_album_popeye"
         else
           "/photo_albums/photo_album"
         end

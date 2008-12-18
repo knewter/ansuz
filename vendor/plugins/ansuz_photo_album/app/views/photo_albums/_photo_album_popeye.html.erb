@@ -1,0 +1,18 @@
+<% if plugin_module.photos.any? %>
+  <div id='<%= dom_id(plugin_module) %>' class='popeye'>
+    <ul>
+      <% plugin_module.photos.each do |photo| %>
+        <li><%= link_to image_tag(photo.photo_album_photo_image.url(:medium)), photo.photo_album_photo_image.url(:large), :alt => photo.caption -%></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<script type="text/javascript">
+  jQuery(document).ready(function () {
+    var options1 = {
+      easing: 'easeInOutCirc'
+    }
+   
+    jQuery('#<%= dom_id(plugin_module) -%>').popeye(options1);
+  });
+</script>
