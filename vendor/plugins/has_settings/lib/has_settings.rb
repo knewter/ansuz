@@ -30,8 +30,12 @@ module HasSettings
         @the_has_settings_setting.settings
       end
 
+      define_method "settings=" do |the_settings|
+        self.has_settings_setting.settings = the_settings
+      end
+
       define_method "save_settings" do
-        has_settings_setting.save
+        get_has_settings_setting.save
       end
 
       define_method "get_has_settings_setting" do

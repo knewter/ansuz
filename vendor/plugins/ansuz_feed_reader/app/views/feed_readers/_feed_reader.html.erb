@@ -1,0 +1,4 @@
+<h3><%= plugin_module.settings['title'] %></h3>
+<div id="<%= dom_id(plugin_module) %>">
+</div>
+<%= javascript_tag "jQuery('##{dom_id(plugin_module)}').feedreader({ targeturl: '#{get_feed_feed_readers_url(:targeturl => plugin_module.settings['feed_url'])}'})" %>

@@ -1,7 +1,9 @@
 <%= title "Edit Photo Album" -%>
+
 <% content_for :sidebar do -%>
   <%= link_to "Back", admin_photo_album_path(@photo_album), :class => 'button icon back' %>
 <% end -%>
+
 <% form_for :photo_album, :url => admin_photo_album_path(@photo_album), :html => { :method => :put } do |f| %>
   <div class='fullwidth'>
     <table class='form-table'>

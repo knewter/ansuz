@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_scrollable_content
   map.from_plugin :ansuz_testimonials
   map.from_plugin :ansuz_form_builder
+  map.from_plugin :ansuz_feed_reader
 
   map.resources :tags
   map.resources :users
