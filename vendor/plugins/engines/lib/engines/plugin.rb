@@ -89,11 +89,6 @@ module Engines
       view_path = File.join(directory, 'app', 'views')
       if File.exist?(view_path)
         ActionController::Base.view_paths.insert(1, view_path) # push it just underneath the app
-        if( Rails::VERSION::STRING =~ /\A2\.2\.\d/ )
-          ActionView::Base.process_view_paths(view_path)
-        else
-          ActionView::TemplateFinder.process_view_paths(view_path)
-        end
       end
     end
 
@@ -115,11 +110,15 @@ module Engines
     # Returns the version number of the latest migration for this plugin. Returns
     # nil if this plugin has no migrations.
     def latest_migration
-      migrations = Dir[migration_directory+"/*.rb"]
-      return nil if migrations.empty?
-      migrations.map { |p| File.basename(p) }.sort.last.match(/0*(\d+)\_/)[1].to_i
+      migrations.last
     end
-  
+    
+    # Returns the version numbers of all migrations for this plugin.
+    def migrations
+      migrations = Dir[migration_directory+"/*.rb"]
+      migrations.map { |p| File.basename(p).match(/0*(\d+)\_/)[1].to_i }.sort
+    end
+    
     # Migrate this plugin to the given version. See Engines::Plugin::Migrator for more
     # information.   
     def migrate(version = nil)
