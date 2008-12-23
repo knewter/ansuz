@@ -50,11 +50,15 @@ class Page < ActiveRecord::Base
 
   protected
   def inform_reviewers
-    AnsuzMailer.deliver_page_review_notifications(self)
+    if User.content_approvers.any?
+      AnsuzMailer.deliver_page_review_notifications(self)
+    end
   end
 
   def inform_authors
-    AnsuzMailer.deliver_page_publication_notifications(self)
+    if User.authors.any?
+      AnsuzMailer.deliver_page_publication_notifications(self)
+    end
   end
 
   public
