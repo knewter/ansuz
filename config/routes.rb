@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_form_builder
   map.from_plugin :ansuz_feed_reader
   map.from_plugin :ansuz_jskit
+  map.from_plugin :ansuz_twitterati
 
   map.resources :tags
   map.resources :users
