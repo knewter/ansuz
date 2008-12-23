@@ -22,7 +22,7 @@
         <% if plugin.module_class.respond_to?(:admin_partial) -%>
           <%= render :partial => plugin.module_class.admin_partial, :locals => { :plugin_module => plugin.module } -%>
         <% else -%>
-          <%= render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
+          <%= render :partial => plugin.module.view_partial, :locals => { :plugin_module => plugin.module } -%>
         <% end -%>
       </div>
     <% end -%>
