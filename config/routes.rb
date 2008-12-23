@@ -21,6 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :pages, :member => [:shift_order], :has_one => [:page_metadata]
     admin.resources :page_plugins, :member => [:move_up, :move_down]
+    admin.resources :proto_page_plugins
     admin.resources :plugins
     admin.resources :tags
     admin.resources :roles
