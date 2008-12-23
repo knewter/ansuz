@@ -1,4 +1,6 @@
 class Admin::TwitteratiController < Admin::BaseController
+  unloadable
+
   before_filter :load_twitterati, :only => [:update]
 
   protected

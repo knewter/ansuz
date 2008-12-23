@@ -1,4 +1,6 @@
 class Admin::JskitRatingsController < Admin::BaseController
+  unloadable
+
   before_filter :load_jskit_rating, :only => [:update]
 
   protected
