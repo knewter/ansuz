@@ -1,0 +1,9 @@
+<% remote_form_for :page_plugin, plugin, :url => admin_proto_page_plugin_path(plugin), :html => { :method => :put } do |f| %>
+  <div class='fullwidth'>
+    <table class='form-table'>
+      <%= form_row "Github Username", text_field_tag("settings[github_username]", plugin_module.settings[:github_username]) -%>
+    </table>
+  </div>
+  <br />
+  <%= submit_tag "Update Github Badge" %>
+<% end %>
