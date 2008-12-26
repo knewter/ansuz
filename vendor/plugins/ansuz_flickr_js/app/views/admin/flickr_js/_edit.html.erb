@@ -1,0 +1,9 @@
+<% remote_form_for :page_plugin, plugin, :url => admin_proto_page_plugin_path(plugin), :html => { :method => :put } do |f| %>
+  <div class='fullwidth'>
+    <table class='form-table'>
+      <%= form_row "Feed URL", text_field_tag("settings[feed_url]", plugin_module.settings[:feed_url]) -%>
+    </table>
+  </div>
+  <br />
+  <%= submit_tag "Update Flickr JS Module" %>
+<% end %>

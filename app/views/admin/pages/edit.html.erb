@@ -20,9 +20,9 @@
     <% @page.page_plugins.each do |plugin| -%>
       <div id='page-plugin-<%= plugin.id -%>'>
         <% if plugin.module_class.respond_to?(:admin_partial) -%>
-          <%= render :partial => plugin.module_class.admin_partial, :locals => { :plugin_module => plugin.module } -%>
+          <%= render :partial => plugin.module_class.admin_partial, :locals => { :plugin_module => plugin.module, :plugin => plugin } -%>
         <% else -%>
-          <%= render :partial => plugin.module.view_partial, :locals => { :plugin_module => plugin.module } -%>
+          <%= render :partial => plugin.module.view_partial, :locals => { :plugin_module => plugin.module, :plugin => plugin } -%>
         <% end -%>
       </div>
     <% end -%>

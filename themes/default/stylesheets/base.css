@@ -141,3 +141,15 @@ strong{
 em{
   font-style: oblique;
 }
+
+.flickr-js-images{
+  height: 185px !important;
+  width: 240px !important;
+  padding:0;
+  margin:0;
+  overflow: hidden;
+}
+
+.flickr-js-images img{
+  border: none;
+}
