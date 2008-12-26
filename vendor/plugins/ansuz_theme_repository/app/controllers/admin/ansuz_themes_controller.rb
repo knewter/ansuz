@@ -2,7 +2,7 @@ class Admin::AnsuzThemesController < Admin::BaseController
   unloadable # This is required if you subclass a controller provided by the base rails app
 
   layout 'admin'
-  before_filter :load_ansuz_theme,     :only => [:show, :edit, :update]
+  before_filter :load_ansuz_theme,     :only => [:show, :edit, :update, :destroy]
   before_filter :load_new_ansuz_theme, :only => [:new, :create]
   before_filter :load_ansuz_themes,    :only => [:index]
 

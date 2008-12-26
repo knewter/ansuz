@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def manage_ansuz_javascripts
+    render :partial => 'shared/javascripts'
+  end
+
+  def manage_ansuz_stylesheets
+    render :partial => 'shared/stylesheets'
+  end
+
   def current_database 
     begin
       ActiveRecord::Base.connection().current_database
