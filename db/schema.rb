@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081223022630) do
+ActiveRecord::Schema.define(:version => 20081226000031) do
 
   create_table "ansuz_themes", :force => true do |t|
     t.string   "name"
@@ -177,8 +177,10 @@ ActiveRecord::Schema.define(:version => 20081223022630) do
     t.boolean  "linked",        :default => true
     t.boolean  "show_sub_menu", :default => false
     t.string   "status"
+    t.datetime "publish_at"
   end
 
+  add_index "pages", ["publish_at"], :name => "index_pages_on_publish_at"
   add_index "pages", ["published"], :name => "index_pages_on_published"
   add_index "pages", ["status"], :name => "index_pages_on_status"
 
