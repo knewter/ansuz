@@ -109,7 +109,7 @@ module PageAdminHelper
   def tree_row item, level=0, &block
     ret  = "<tr class='level-#{level} #{cycle("odd", "even")}'>"
     ret << '  <td class="item">' + yield(item) + '</td>'
-    ret << '  <td>' + item.status.to_s + '</td>'
+    ret << '  <td>' + item.status_text.to_s + '</td>'
     if current_user.can_post?
       controls = render(:partial => 'page_controls', :locals => { :page => item })
     else

@@ -1,10 +1,16 @@
 class Admin::PagesController < Admin::BaseController
   include PageAdminHelper
   before_filter :login_required
+  before_filter :set_calendar_format
   before_filter :load_new_page, :only => [:new, :create]
   before_filter :load_page, :only => [:edit, :update, :destroy, :shift_order]
 
   protected
+  def set_calendar_format
+    CalendarDateSelect.format[:date] = "%Y-%m-%d"
+    CalendarDateSelect.format[:time] = "%I:%M %P"
+  end
+
   def load_page
     @page = Page.find params[:id] 
   end

@@ -179,6 +179,7 @@ ActiveRecord::Schema.define(:version => 20081223022630) do
     t.string   "status"
   end
 
+  add_index "pages", ["published"], :name => "index_pages_on_published"
   add_index "pages", ["status"], :name => "index_pages_on_status"
 
   create_table "photo_album_photos", :force => true do |t|
@@ -193,6 +194,11 @@ ActiveRecord::Schema.define(:version => 20081223022630) do
   create_table "photo_albums", :force => true do |t|
     t.string "name"
     t.string "display_type"
+  end
+
+  create_table "plugin_schema_info", :id => false, :force => true do |t|
+    t.string  "plugin_name"
+    t.integer "version"
   end
 
   create_table "posts", :force => true do |t|

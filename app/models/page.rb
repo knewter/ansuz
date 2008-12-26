@@ -21,6 +21,8 @@
 
 class Page < ActiveRecord::Base
   include AASM
+  include ActionView::Helpers::DateHelper
+  named_scope :visible, lambda {|p| { :conditions => ["published = ? AND ( publish_at <= ? OR publish_at IS NULL )", true, Time.now.getgm ] } }
 
   aasm_column :status
   aasm_initial_state :draft
@@ -62,6 +64,14 @@ class Page < ActiveRecord::Base
   end
 
   public
+  def status_text
+    if( self.publish_at && self.publish_at > Time.now )
+      text = self.status + ", visible in #{distance_of_time_in_words( Time.now, (self.publish_at))} "
+    else
+      self.status
+    end
+  end
+
   def linked_children
     children.select{|x| x.linked? }
   end

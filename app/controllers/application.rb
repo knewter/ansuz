@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   theme  :get_theme_setting
 
   def set_layout_variables
-    @root = Page.root
+    @root = Page.root || Page.new
     @topNav = @root.publishable_children
     @topNavChildren = Hash.new
     @topNav.each do |sub|
