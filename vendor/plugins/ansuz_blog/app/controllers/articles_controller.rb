@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
   end
 
   def load_blog_post
-    @blog_post = Ansuz::JAdams::BlogPost.find(params[:id])
+    @blog_post = Ansuz::JAdams::BlogPost.find_by_url(params[:id])
   end
 
   public

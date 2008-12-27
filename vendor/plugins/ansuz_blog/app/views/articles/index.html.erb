@@ -3,10 +3,5 @@
   <%= tag_cloud -%>
 <% end -%>
 <% @blog_posts.each do |blog_post| -%>
-  <div class='blog_post'>
-    <h2><%=h blog_post.title -%></h2>
-    <div class='contents'>
-      <%= blog_post.contents -%>
-    </div>
-  </div>
+  <%= render :partial => 'articles/article', :locals => { :article => blog_post } %>
 <% end -%>

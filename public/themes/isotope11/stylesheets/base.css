@@ -272,6 +272,10 @@ ul#top-nav{
   font-size: 200%;
 }
 
+.blog_post h2.title a{
+  color: #559096;
+}
+
 .blog_post h3.time{
   position: absolute;
   left: -100px;

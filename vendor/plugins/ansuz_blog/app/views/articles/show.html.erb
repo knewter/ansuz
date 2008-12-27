@@ -1,0 +1,5 @@
+<%= render :partial => 'articles/article', :locals => { :article => @blog_post } %>
+<div class='post-blog-post'>
+  <%= render_special "post_blog_post" %>
+</div>
+<%= link_to "All Blog Posts", articles_path -%>

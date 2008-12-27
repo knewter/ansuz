@@ -8,7 +8,7 @@ class Admin::BlogPostsController < Admin::BaseController
 
   protected
   def load_blog_post
-    @blog_post = Ansuz::JAdams::BlogPost.find(params[:id])
+    @blog_post = Ansuz::JAdams::BlogPost.find_by_url(params[:id])
   end
 
   def load_new_blog_post
