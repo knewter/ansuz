@@ -35,6 +35,10 @@ h3{
   font-size: 130%;
 }
 
+em{
+  font-weight: 600;
+}
+
 #outside{
   position: relative;
 }
