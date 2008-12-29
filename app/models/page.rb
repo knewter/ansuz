@@ -23,6 +23,7 @@ class Page < ActiveRecord::Base
   include AASM
   include ActionView::Helpers::DateHelper
   named_scope :visible, lambda {|p| { :conditions => ["published = ? AND ( publish_at <= ? OR publish_at IS NULL )", true, Time.now.getgm ] } }
+  named_scope :self_and_siblings, lambda {|page| {:conditions => ["parent_id = ?", page.parent_id], :order => 'page_order'}}
 
   aasm_column :status
   aasm_initial_state :draft
@@ -85,9 +86,8 @@ class Page < ActiveRecord::Base
     end
   end
 
-  # TODO: Convert to named_scope
   def self_and_siblings
-    Page.find(:all, :conditions => ["parent_id = ?", self.parent_id], :order => 'page_order')
+    Page.self_and_siblings self
   end
 
   def swap!(direction)
