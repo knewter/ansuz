@@ -1,6 +1,9 @@
 require 'spec/interop/test'
 
-ActionView::Base.cache_template_extensions = false
+unless Rails::VERSION::STRING =~ /2\.2\.\d/
+  ActionView::Base.cache_template_extensions = false
+end
+
 
 module Spec
   module Rails
