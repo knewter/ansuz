@@ -22,6 +22,16 @@ describe Page do
 
   end
 
+  describe "#visible" do
+    it "should return pages with publish_at values in the past or nil" do
+       # Rails is setting the publish_at values as nil when I specify the next two records in the fixtures file. What's up with that?  -james
+       @visible_page = Page.create(:name => "Visible", :title => "I am visible", :publish_at => 1.days.ago )
+       @invisible_page = Page.create(:name => "Invisible", :title => "I am invisible", :publish_at => Time.now + 1.days )
+       Page.visible.find_by_name("Visible").should eql(@visible_page)
+       Page.visible.find_by_name("Invisible").should eql(nil)
+    end
+  end
+
   describe '#full_title' do
     it "should override title if it is a different value" do
       @page = Page.find_by_name('home')
