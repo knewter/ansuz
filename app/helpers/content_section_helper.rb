@@ -6,7 +6,7 @@ module ContentSectionHelper
     the_id = content_section.id
     the_select = content_tag("select", the_options, :onchange => "redirect_to_rollback_link(#{the_id}, this.options[this.selectedIndex].value)")
     dropdown = content_tag("div", the_select, :id => options[:id])
-    form_row "Revision", dropdown
+    dropdown
   end
 
   def versions_array content_section
