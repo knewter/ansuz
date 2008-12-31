@@ -1,0 +1,8 @@
+<%= title "Import / Export your data" %>
+<% content_for :sidebar do %>
+  <div class='note'>
+    At present, only mysql is supported.  We should make that not true.
+  </div>
+<% end %>
+
+<%= link_to "Download a dump of your database", mysql_dump_admin_database_dumper_path %>
