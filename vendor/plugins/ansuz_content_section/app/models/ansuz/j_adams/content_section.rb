@@ -2,8 +2,12 @@ module Ansuz
   module JAdams
     class ContentSection < ActiveRecord::Base
       # Prevent bad things ™ from happening on initial rake db:migrate -james
-      if( ActiveRecord::Base.connection.tables.include?("content_sections"))
-        acts_as_versioned
+      begin
+        # It actually caused bad things when running rake db:create:all -josh
+        if( ActiveRecord::Base.connection.tables.include?("content_sections"))
+          acts_as_versioned
+        end
+      rescue
       end
 
       def self.admin_partial
