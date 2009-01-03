@@ -5,8 +5,6 @@ development:
   username: root
   password: 
   host: localhost
-  #socket: /tmp/mysql.sock
-  socket: /var/run/mysqld/mysqld.sock
 
 test:
   database: ansuz_test
@@ -16,25 +14,8 @@ test:
   socket: /var/run/mysqld/mysqld.sock
 
 production:
-  <<: *defaults
   database: ansuz_production
-
-# OS X example follows:
-development:
-  database: ansuz_development
   adapter: mysql
   username: root
-  password:
   host: localhost
-  encoding: utf8
-
-test:
-  database: ansuz_test
-  adapter: mysql
-  username: root
-  password:
-  host: localhost
-  encoding: utf8
-
-production:
-  <<: *defaults
+  socket: /var/run/mysqld/mysqld.sock
