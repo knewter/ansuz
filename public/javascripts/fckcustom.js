@@ -31,3 +31,5 @@ FCKConfig.ToolbarSets["Simple"] = [
 	['TextColor','BGColor'],
 	['-','About']
 ] ;
+
+FCKConfig.EnterMode = 'br';

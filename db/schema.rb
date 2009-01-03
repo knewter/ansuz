@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081226000031) do
+ActiveRecord::Schema.define(:version => 20090103012646) do
 
   create_table "ansuz_themes", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20081226000031) do
     t.integer  "created_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url"
   end
 
   create_table "content_section_versions", :force => true do |t|
@@ -256,6 +257,7 @@ ActiveRecord::Schema.define(:version => 20081226000031) do
     t.datetime "updated_at"
     t.string   "site_title"
     t.boolean  "show_inline_edit_links", :default => false
+    t.text     "custom_css"
   end
 
   create_table "taggings", :force => true do |t|

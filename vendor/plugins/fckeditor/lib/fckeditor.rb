@@ -44,10 +44,10 @@ module Fckeditor
       js_path = "#{ActionController::Base.relative_url_root}/javascripts"
       base_path = "#{js_path}/fckeditor/"
       return inputs <<
-        javascript_tag("var oFCKeditor = new FCKeditor('#{options[:id]}', '#{width}', '#{height}', '#{toolbarSet}');\n" <<
+        javascript_tag("jQuery(document).ready(function(){ var oFCKeditor = new FCKeditor('#{options[:id]}', '#{width}', '#{height}', '#{toolbarSet}');\n" <<
                        "oFCKeditor.BasePath = \"#{base_path}\"\n" <<
                        "oFCKeditor.Config['CustomConfigurationsPath'] = '#{js_path}/fckcustom.js';\n" <<
-                       "oFCKeditor.ReplaceTextarea();\n")
+                       "oFCKeditor.ReplaceTextarea(); });\n")
     end
 
     
