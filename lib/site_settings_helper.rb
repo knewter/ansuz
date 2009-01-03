@@ -7,6 +7,7 @@ module SiteSettingsHelper
     settings.get_theme_setting
   end
 
+  protected
   def settings
     SiteSetting.find_or_create_by_name(:default)
   end
