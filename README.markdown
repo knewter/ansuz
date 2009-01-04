@@ -9,7 +9,7 @@ a best-of-breed technology suitable for production use on a myriad of sites.
 Ansuz is licensed via the BSD license.
  
 # Gem Dependencies
-- mislav-will_paginate
+    mislav-will_paginate
  
 # Quick Start
  
@@ -40,9 +40,9 @@ for the domain specified. So, then if that domain points to the server, Bam! Don
  
 For help, feel free to contact the authors at:
 
-josh at isotope11.com
-james at isotope11.com
-adam at isshen.com
+- josh at isotope11.com
+- james at isotope11.com
+- adam at isshen.com
 
 = Physical Address
 Isotope 11, Inc.
