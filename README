@@ -13,42 +13,38 @@ Ansuz is licensed via the BSD license.
 
 == Quick Start
 
- 1.  clone from github: git clone git://github.com/knewter/ansuz.git
- 2.  create database config in config/database.yml (see config/database.yml.example if you need help)
- 3.  install gems: rake gems:install
- 4.  create databases: rake db:create:all
- 5.  run migrations: rake db:migrate
- 6.  run plugin migrations: rake db:migrate:plugins 
- 7.  run tests: rake spec
- 8.  create a new user (do not use this in production): rake utils:create_admin
- 9.  create the folder at public/uploads (This is for fckeditor's resource browser / uploader)
- 10. start server: script/server -p 3000
- 11. goto: http://localhost:3000/admin
- 12. login with admin/admin
+ 1. clone from github: git clone git://github.com/knewter/ansuz.git
+ 2. create database config in config/database.yml (see config/database.yml.example if you need help)
+ 3. run: gem sources -a http://gems.github.com
+ 4. install gems: rake gems:install
+ 5. run: gem install haml --no-ri --no-rdoc
+ 6. run plugin migrations: rake db:migrate:plugins
+ 7. create databases: rake db:create:all
+ 8. run migrations: rake db:migrate
+ 9. run tests: rake spec
+10. create a new user (do not use this in production): rake utils:create_admin
+11. create the folder at public/uploads (This is for fckeditor's resource browser / uploader)
+12. start server: script/server -p 3000
+13. goto: http://localhost:3000/admin
+14. login with admin/admin
+ 
+NOTE: SQLite has problems with ansuz, please don't use it for now.
 
- NOTE: SQLite has problems with ansuz, please don't use it for now.
-
-== If you had problems with the above
-
-I was asked to add this to the README.
-
-gem install -v=2.1.0 rails --no-ri --no-rdoc
-rake rails:freeze:edge RELEASE=2.1.0
-gem sources -a http://gems.github.com
-gem install haml --no-ri --no-rdoc
-
-If upgrading to 2.1.2, see:  http://engines.lighthouseapp.com/projects/10178/tickets/37-module-activesupportdependencies
+NOTE: See the Ansuz Site Laucher
+If run with sudo on a server with passenger set up and all the gems already installed, 
+it will check out a new ansuz and set up a fresh database for it and set up a vhost 
+for the domain specified. So, then if that domain points to the server, Bam! Done.
 
 == This software is BSD licensed.  See the COPYING file for details.
 
- For help, feel free to contact the authors at:
+For help, feel free to contact the authors at:
 
- josh at isotope11.com
- james at isotope11.com
- adam at isshen.com
+josh at isotope11.com
+james at isotope11.com
+adam at isshen.com
 
- = Physical Address 
- Isotope 11, Inc.
- 600 Beacon Parkway
- Suite 950
- Birmingham, AL 35209
+= Physical Address
+Isotope 11, Inc.
+600 Beacon Parkway
+Suite 950
+Birmingham, AL 35209
