@@ -1,0 +1,24 @@
+In order to launch a new site in the most retarded-simple way possible, it is only necessary to:
+
+- set env var ANSUZ_LAUNCH_DIR
+- Ask name of project: @project_name
+- Ask domain to use
+
+At the end of this operation, if the domain specified points to the server this operation is carried out on, the ansuz installation should appear.
+
+This will require:
+
+- checkout the project
+  - `git clone git://github.com/knewter/ansuz.git #{File.join(ANSUZ_LAUNCH_DIR, @project_name)}`
+- create the databases: #{@project_name}_[development|test|production]
+- rake db:migrate RAILS_ENV=production
+- rake db:migrate:plugins RAILS_ENV=production
+- rake utils:create_admin
+- setup the vhost for the domain
+- restart apache
+- inform the user to visit http://domain/admin and log in as admin/admin
+- add the ability to change your damn password.
+
+ASSUMPTIONS
+===========
+- You've already installed all of the gems necessary.
