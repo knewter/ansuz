@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
     t.string   "name"
     t.string   "title"
     t.string   "full_title"
+    t.string   "status"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -177,7 +178,6 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
     t.boolean  "published",     :default => true
     t.boolean  "linked",        :default => true
     t.boolean  "show_sub_menu", :default => false
-    t.string   "status"
     t.datetime "publish_at"
   end
 
@@ -199,11 +199,6 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
     t.string "display_type"
   end
 
-  create_table "plugin_schema_info", :id => false, :force => true do |t|
-    t.string  "plugin_name"
-    t.integer "version"
-  end
-
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "topic_id"
@@ -218,11 +213,20 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
   add_index "posts", ["topic_id", "created_at"], :name => "index_posts_on_topic_id"
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id"
 
+  create_table "proto_page_plugin_versions", :force => true do |t|
+    t.integer  "content_section_id"
+    t.integer  "version"
+    t.string   "name"
+    t.datetime "updated_at"
+    t.string   "versioned_type"
+  end
+
   create_table "proto_page_plugins", :force => true do |t|
     t.string   "name"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "version"
   end
 
   create_table "roles", :force => true do |t|
