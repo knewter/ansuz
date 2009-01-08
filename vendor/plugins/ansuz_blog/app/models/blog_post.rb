@@ -3,9 +3,11 @@ module Ansuz
     class BlogPost < ActiveRecord::Base
       acts_as_taggable
       acts_as_url :title
+      stampable
+
       validates_uniqueness_of :url
 
-      belongs_to :author, :class_name => "User", :foreign_key => 'created_by'
+      #belongs_to :author, :class_name => "User", :foreign_key => 'created_by'
       has_many :blog_comments, :class_name => "Ansuz::JAdams::BlogComment", :order => "created_at DESC"
 
       def edit_path
