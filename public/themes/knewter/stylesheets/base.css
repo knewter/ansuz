@@ -8,9 +8,12 @@ body{
 #content_wrapper{
   width: 920px;
   margin: 0 auto;
+  line-height: 145%;
 }
 #header h1{
   font-size: 300%;
+  line-height: 100%;
+  margin-top: .25em;
 }
 #navigation{
   width: 850px;
@@ -74,5 +77,9 @@ body{
 .blog_post h2{
   color: black;
   font-size: 150%;
+}
+.blog_post h3.supplemental{
+  font-size: 75%;
   margin-bottom: 10px;
+}
 /* End Blog Posts */

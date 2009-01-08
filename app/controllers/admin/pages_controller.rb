@@ -38,7 +38,7 @@ class Admin::PagesController < Admin::BaseController
       @page_id = @page.id
       render :update do |page|
         page << "notify('Page has been updated');"
-        page[:sidebar].update (render :partial => 'admin/pages/edit_sidebar')
+        page[:sidebar].update(render(:partial => 'admin/pages/edit_sidebar'))
         page.call "ToggleContentBox.handle_toggle_content_boxes"
       end
     else
