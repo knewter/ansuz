@@ -1,8 +1,9 @@
 /* Layout */
 body{
   background: white;
-  color: #333;
+  color: #444;
   font-family: Georgia,sans-serif;
+  font-size: 1.2em;
 }
 #content_wrapper{
   width: 920px;
@@ -33,6 +34,7 @@ body{
   text-decoration: none;
   cursor: pointer;
   color: #555;
+  font-size: 130%;
 }
 #navigation li.active li a:hover {
   cursor: pointer;
@@ -63,4 +65,14 @@ body{
 }
 /* End Utilities */
 /* Blog Posts */
+.blog_post{
+  margin-bottom: 40px;
+}
+.blog_post p{
+  margin-bottom: 10px;
+}
+.blog_post h2{
+  color: black;
+  font-size: 150%;
+  margin-bottom: 10px;
 /* End Blog Posts */
