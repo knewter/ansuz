@@ -51,7 +51,7 @@ Rails::Initializer.run do |config|
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
-  config.plugins = [ :has_settings, :stringex, :all ]
+  config.plugins = [ :has_settings, :stringex, :userstamp, :all ]
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
@@ -63,7 +63,7 @@ Rails::Initializer.run do |config|
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
   # Run "rake -D time" for a list of tasks for finding time zone names. Uncomment to use default local time.
-  config.time_zone = 'UTC'
+  config.active_record.default_timezone = :utc
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!

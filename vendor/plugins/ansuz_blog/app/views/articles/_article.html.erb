@@ -1,5 +1,6 @@
 <div class='blog_post' id='<%= dom_id(article) -%>'>
   <h2><%=h article.title -%></h2>
+  <h3 class='supplemental'>Posted on <%= article.created_at.strftime("%B %e, %Y") %> by <%= article.creator.login %>.</h3>
   <div class='contents'>
     <%= article.contents -%>
   </div>

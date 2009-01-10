@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include SiteSettingsHelper
+  include Userstamp
 
   before_filter :login_from_cookie, :setup_plugin_nav, :set_layout_variables, :load_menu
   around_filter :inhibit_retardase

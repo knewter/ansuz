@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
   # authorization plugin
   acts_as_authorized_user
 
+  # userstamp plugin
+  model_stamper
+  stampable
+
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 

@@ -1,0 +1,85 @@
+/* Layout */
+body{
+  background: white;
+  color: #444;
+  font-family: Georgia,sans-serif;
+  font-size: 1.2em;
+}
+#content_wrapper{
+  width: 920px;
+  margin: 0 auto;
+  line-height: 145%;
+}
+#header h1{
+  font-size: 300%;
+  line-height: 100%;
+  margin-top: .25em;
+}
+#navigation{
+  width: 850px;
+  margin-bottom: 40px;
+}
+#navigation h3{
+  display: none;
+}
+#navigation li{
+  float: left;
+  width: 100px;
+  position: relative;
+  z-index: 80;
+}
+#navigation li.first a{
+  padding-left: 0;
+}
+#navigation li a, #navigation li.active li a{
+  padding: 5px 10px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: #555;
+  font-size: 130%;
+}
+#navigation li.active li a:hover {
+  cursor: pointer;
+}
+#navigation li.active a,
+#navigation li.active a:hover {
+  color: black;
+  cursor: default;
+}
+#navigation li a:hover {
+  color: black;
+}
+#navigation li ul{
+  display: none;
+}
+#navigation li li a{
+}
+#navigation li:hover ul{
+  display: block;
+}
+#footer{
+  margin-top: 40px;
+}
+/* End Layout */
+/* Utilities */
+.clear{
+  clear: both;
+}
+/* End Utilities */
+/* Blog Posts */
+.blog_post{
+  margin-bottom: 40px;
+}
+.blog_post p{
+  margin-bottom: 10px;
+}
+.blog_post h2{
+  color: black;
+  font-size: 150%;
+}
+.blog_post h3.supplemental{
+  font-size: 75%;
+  margin-bottom: 10px;
+}
+/* End Blog Posts */
