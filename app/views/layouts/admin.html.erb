@@ -29,6 +29,7 @@
     <%= javascript_include_tag 'ansuz/tree' %>
     <%= javascript_include_tag 'jquery.clickmenu.pack.js' %>
     <%= javascript_include_tag 'toggle-content-box.jquery.js' %>
+    <%= javascript_include_tag 'admin' %>
     <!--[if lt IE 7.]><%= javascript_include_tag 'pngfix.js' %><![endif]-->
   </head>
   <body>
@@ -65,7 +66,8 @@
           <div id='sidebar'>
             <%= yield :sidebar -%>
             <br /><br />
-            <script type='text/javascript' src='http://crowdsound.com/widgets/init?&aid=718&width=250'></script>
+            <div id='crowdsound_replacement'>
+            </div>
           </div>
         </div>
       </div>

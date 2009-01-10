@@ -16,7 +16,7 @@ class Admin::MenuEntriesController < Admin::BaseController
   end
 
   def load_menu_entries
-    @menu_entries = Ansuz::JAdams::MenuEntry.find(:all, :order => 'created_at DESC')
+    @menu_entries = Ansuz::JAdams::MenuEntry.find(:all, :order => 'position')
   end
   public
   def new
