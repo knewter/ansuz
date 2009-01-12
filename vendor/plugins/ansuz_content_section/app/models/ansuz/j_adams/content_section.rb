@@ -2,7 +2,6 @@ module Ansuz
   module JAdams
     class ContentSection < ActiveRecord::Base
       before_save :set_default_content_section_type
-
       CONTENT_SECTION_TYPES = ["FCKeditor", "Markdown", "Textile"]
       has_settings
       # Prevent bad things ™ from happening on initial rake db:migrate -james
@@ -71,6 +70,5 @@ module Ansuz
         end
       end
     end
-
   end
 end
