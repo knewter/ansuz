@@ -168,7 +168,7 @@ class Page < ActiveRecord::Base
   end
 
   def find_child(child_name)
-    self.children.find(:first, :conditions => ["name = ? and published = true", child_name ])
+    self.children.find(:first, :conditions => ["name = ? and published = ?", child_name, true ])
   end
 	 
   # Accepts params[:path] and returns the page object or nil
