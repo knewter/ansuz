@@ -18,6 +18,8 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   include SavageBeast::UserInit
   include Ansuz::AclRoles
+  attr_accessor :registering
+
   # acts_as_taggable_redux support
   acts_as_tagger # FIXME: We should switch to http://www.intridea.com/2007/12/4/announcing-acts_as_taggable_on
 
@@ -36,6 +38,7 @@ class User < ActiveRecord::Base
   validates_presence_of     :password_confirmation,      :if => :password_required?
   validates_length_of       :password, :within => 4..40, :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
+  validates_confirmation_of :email,                      :if => :registering?
   validates_length_of       :login,    :within => 3..40
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :login, :email, :case_sensitive => false
@@ -125,5 +128,9 @@ protected
   
   def password_required?
     crypted_password.blank? || !password.blank?
+  end
+
+  def registering?
+    @registering
   end
 end

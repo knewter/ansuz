@@ -20,7 +20,7 @@ Ansuz::PluginManagerInstance = Ansuz::PluginManager.new
 
 # authorization plugin
 AUTHORIZATION_MIXIN           = "object roles"
-LOGIN_REQUIRED_REDIRECTION    = { :controller => '/admin/account', :action => 'login' }
+LOGIN_REQUIRED_REDIRECTION    = { :controller => '/sessions', :action => 'login' }
 PERMISSION_DENIED_REDIRECTION = { :controller => '/page', :action => 'indexer', :path => '' }
 STORE_LOCATION_METHOD         = :store_location
 

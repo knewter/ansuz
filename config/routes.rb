@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_jskit
   map.from_plugin :ansuz_twitterati
   map.from_plugin :ansuz_database_dumper
+  map.from_plugin :ansuz_user_system
 
   map.resources :tags
   map.resources :users

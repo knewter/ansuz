@@ -10,6 +10,10 @@ body{
   margin: 0 auto;
   line-height: 145%;
 }
+#sidebar{
+  width:200px;
+  float:right;
+}
 #header h1{
   font-size: 300%;
   line-height: 100%;
@@ -23,6 +27,7 @@ body{
   display: none;
 }
 #navigation li{
+  list-style-type: none;
   float: left;
   width: 100px;
   position: relative;
@@ -83,3 +88,7 @@ body{
   margin-bottom: 10px;
 }
 /* End Blog Posts */
+
+li{
+  list-style-type: square;
+}
