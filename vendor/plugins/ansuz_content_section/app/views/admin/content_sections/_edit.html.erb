@@ -41,20 +41,20 @@
       switch( selected_value )
       {
         case "Markdown":
-         jQuery("iframe").hide();    
+         jQuery("iframe", jQuery(".ui-tabs-panel:visible")).hide();    
          markdown_contents.show();
          // Prevent name overlap.
          markdown_contents.attr("name", "content_section[contents]" );
          fckeditor_contents.attr("name", "__content_section[contents]");
          break;
        case "Textile":
-         jQuery("iframe").hide();    
+         jQuery("iframe", jQuery(".ui-tabs-panel:visible")).hide();    
          markdown_contents.show();
          markdown_contents.attr("name", "content_section[contents]" );
          fckeditor_contents.attr("name", "__content_section[contents]");
          break;
        case "FCKeditor":
-         jQuery("iframe").show();    
+         jQuery("iframe", jQuery(".ui-tabs-panel:visible")).show();    
          markdown_contents.hide();
          markdown_contents.attr("name", "__content_section[contents]" );
          fckeditor_contents.attr("name", "content_section[contents]");
