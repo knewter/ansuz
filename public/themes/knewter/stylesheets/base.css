@@ -18,6 +18,7 @@ body{
   font-size: 300%;
   line-height: 100%;
   margin-top: .25em;
+  margin-bottom: 0;
 }
 #navigation{
   width: 850px;
@@ -76,12 +77,8 @@ body{
 .blog_post{
   margin-bottom: 40px;
 }
-.blog_post p{
-  margin-bottom: 10px;
-}
 .blog_post h2{
-  color: black;
-  font-size: 150%;
+  margin-bottom: 0;
 }
 .blog_post h3.supplemental{
   font-size: 75%;
@@ -92,3 +89,13 @@ body{
 li{
   list-style-type: square;
 }
+
+h1{ font-size: 200%; margin-bottom: 1em; }
+h2{
+  color: black;
+  font-size: 150%;
+  margin-bottom: .75em;
+}
+h3, h4, h5{ font-size: 125%; margin-bottom: .5em; }
+p{ margin-bottom: 10px; }
+blockquote{ padding: 10px 20px; }
