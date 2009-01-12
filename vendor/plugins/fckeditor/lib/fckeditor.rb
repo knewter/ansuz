@@ -18,7 +18,7 @@ module Fckeditor
         klass = Kernel.const_get("#{object}".camelcase)
         instance_variable_set("@#{object}", eval("#{klass}.new()"))
       end
-      id = fckeditor_element_id(object, field)
+      id = options[:id] || fckeditor_element_id(object, field) # Stupid, awful hack for content_section filters
       name = "#{object}[#{field}]"
 
       fckeditor_textarea_tag(name, value, options.merge({:id => id}))
@@ -81,8 +81,8 @@ module Fckeditor
       "div-#{object}-#{id}-#{field}-editor" 
     end
 
-    def fckeditor_before_js(object, field)
-      id = fckeditor_element_id(object, field)
+    def fckeditor_before_js(object, field, options = {})
+      id = options[:id] || fckeditor_element_id(object, field) # I really need to set the ID ..
       "var oEditor = FCKeditorAPI.GetInstance('"+id+"'); document.getElementById('"+id+"_hidden').value = oEditor.GetXHTML();"
     end    
   end

@@ -45,7 +45,6 @@ Rails::Initializer.run do |config|
              :lib => 'will_paginate', 
              :source => 'http://gems.github.com'
 
-  config.gem "RedCloth", :lib => "redcloth"#, :source => "http://code.whytheluckystiff.net"  
   config.gem 'rubyist-aasm', :version => '~> 2.0.2', :lib => 'aasm', :source => "http://gems.github.com"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
