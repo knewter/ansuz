@@ -8,6 +8,9 @@ class Admin::ContentSectionsController < Admin::BaseController
   protected
   def load_content_section
     @content_section = Ansuz::JAdams::ContentSection.find(params[:id])
+    unless @content_section.content_type
+      @content_section.content_type = "FCKeditor"
+    end
   end
 
   public
