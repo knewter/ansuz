@@ -1,7 +1,7 @@
-require "rubygems/gem_runner"
-
+require File.join( RAILS_ROOT, "lib", "ansuz", "plugin_settings.rb" )
 module Ansuz
   class PluginManager
+    include Ansuz::PluginSettings
     attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types
     ADMIN_MENU_TOP_LEVEL_ENTRIES = ["Create", "Manage", "Ansuz"]
 
@@ -18,6 +18,8 @@ module Ansuz
     # A plugin can call register_plugin(ClassName) to add itself to the plugins array
     def register_plugin klass
       self.plugins << klass
+      settings_name = klass.to_s.tableize.gsub(/\//,'_').to_sym
+      create_settings( settings_name )
     end
 
     # A plugin can call register_plugin_nav(title, link) to add itself to the
@@ -60,6 +62,15 @@ module Ansuz
 
     def register_page_type name, modules=[]
       @page_types << [name, modules]
+    end
+
+    protected
+    def create_settings(name)
+      site_setting = SiteSetting.first
+      unless( site_setting.settings[name])
+        site_setting.settings[name] = {}  
+        site_setting.save
+      end
     end
   end
 end

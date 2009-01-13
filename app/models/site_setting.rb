@@ -1,4 +1,5 @@
 class SiteSetting < ActiveRecord::Base
+  has_settings
   include CssSanitize
 
   def get_theme_setting

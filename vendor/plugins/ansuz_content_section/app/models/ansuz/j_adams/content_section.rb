@@ -1,7 +1,10 @@
+require File.join(RAILS_ROOT, "lib", "ansuz", "plugin_settings.rb")
 module Ansuz
   module JAdams
     class ContentSection < ActiveRecord::Base
+      include Ansuz::PluginSettings
       before_save :set_default_content_section_type
+
       CONTENT_SECTION_TYPES = ["FCKeditor", "Markdown", "Textile"]
       has_settings
       # Prevent bad things ™ from happening on initial rake db:migrate -james
@@ -62,11 +65,16 @@ module Ansuz
           return self.contents
         end
       end
+      
+      # Read the global setting or default to FCKeditor
+      def default_content_type
+        ContentSection.plugin_settings[:content_type] || "FCKeditor"
+      end
 
       protected
       def set_default_content_section_type
         if( self.content_type.nil? )
-          self.content_type = "FCKeditor"
+          self.content_type = default_content_type
         end
       end
     end
