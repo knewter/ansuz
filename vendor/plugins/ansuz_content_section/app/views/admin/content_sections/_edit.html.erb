@@ -1,12 +1,12 @@
 <% @content_section = plugin_module if local_assigns.include?(:plugin_module) %>
-<% remote_form_for :content_section, @content_section, :url => admin_content_section_path(@content_section), :html => { :method => :put }, :before => fckeditor_before_js(:content_section, :contents, :id => "fckeditor-contents"), :success => "update_dropdown_for(#{@content_section.id})" do |f| -%>
+<% remote_form_for :content_section, @content_section, :url => admin_content_section_path(@content_section), :html => { :method => :put }, :before => fckeditor_before_js(:content_section, :contents), :success => "update_dropdown_for(#{@content_section.id})" do |f| -%>
   <label>Filter:</label>
   <%= f.select "content_type", Ansuz::JAdams::ContentSection::CONTENT_SECTION_TYPES.collect{|x| [x,x] }, {}, :class => "selected-content-type"  -%>
   <br />
-  <%= f.text_area :contents, :id => "markdown-contents", :style => "display:none" -%><br />
+  <%= f.text_area :contents, :class => "a-markdown-editor", :style => "display:none" -%><br />
 
   <br />
-  <%= fckeditor_textarea(:content_section, :contents, :toolbarSet => 'Simple', :width => '100%', :height => '400px', :ajax => true, :id => "fckeditor-contents") -%><br />
+  <%= fckeditor_textarea(:content_section, :contents, :toolbarSet => 'Simple', :width => '100%', :height => '400px', :ajax => true, :className => "a-fckeditor") -%><br />
   <table class='form-table'>
     <%= form_row "Revision", rollback_dropdown(@content_section) %>
   </table>
@@ -30,45 +30,43 @@
     });
   }
 
+  function handle_selected_content_type()
+  {
+    var selected_value = jQuery(".selected-content-type option:selected", jQuery(".ui-tabs-panel").not(".ui-tabs-hide") ).val();
+    var markdown_contents  = jQuery(".ui-tabs-panel:visible .a-markdown-editor");
+    var fckeditor_contents = jQuery(".ui-tabs-panel:visible .a-fckeditor");
+
+    switch( selected_value )
+    {
+      case "Markdown":
+       jQuery("iframe", jQuery(".ui-tabs-panel:visible")).hide();    
+       markdown_contents.show();
+       // Prevent name overlap.
+       markdown_contents.attr("name", "content_section[contents]" );
+       fckeditor_contents.attr("name", "__content_section[contents]");
+       break;
+     case "Textile":
+       jQuery("iframe", jQuery(".ui-tabs-panel:visible")).hide();    
+       markdown_contents.show();
+       markdown_contents.attr("name", "content_section[contents]" );
+       fckeditor_contents.attr("name", "__content_section[contents]");
+       break;
+     case "FCKeditor":
+       jQuery("iframe", jQuery(".ui-tabs-panel:visible")).show();    
+       markdown_contents.hide();
+       markdown_contents.attr("name", "__content_section[contents]" );
+       fckeditor_contents.attr("name", "content_section[contents]");
+       break;
+    }
+  }
+
   jQuery(document).ready( function()
   {
-    function handle_selected_content_type( selected_type)
-    {
-      var selected_value = selected_type.val();
-      var markdown_contents  = jQuery("#markdown-contents");
-      var fckeditor_contents = jQuery("#fckeditor-contents");
-
-      switch( selected_value )
-      {
-        case "Markdown":
-         jQuery("iframe", jQuery(".ui-tabs-panel:visible")).hide();    
-         markdown_contents.show();
-         // Prevent name overlap.
-         markdown_contents.attr("name", "content_section[contents]" );
-         fckeditor_contents.attr("name", "__content_section[contents]");
-         break;
-       case "Textile":
-         jQuery("iframe", jQuery(".ui-tabs-panel:visible")).hide();    
-         markdown_contents.show();
-         markdown_contents.attr("name", "content_section[contents]" );
-         fckeditor_contents.attr("name", "__content_section[contents]");
-         break;
-       case "FCKeditor":
-         jQuery("iframe", jQuery(".ui-tabs-panel:visible")).show();    
-         markdown_contents.hide();
-         markdown_contents.attr("name", "__content_section[contents]" );
-         fckeditor_contents.attr("name", "content_section[contents]");
-         break;
-      }
-    }
-
-    var selected_content_type = jQuery(".selected-content-type option:selected");
-
-    handle_selected_content_type( selected_content_type );
+    handle_selected_content_type();
    
     jQuery(".selected-content-type").change( function() 
     {
-      handle_selected_content_type( jQuery(".selected-content-type option:selected") );  
+      handle_selected_content_type();  
     });
   });
 </script>
