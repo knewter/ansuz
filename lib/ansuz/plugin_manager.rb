@@ -1,3 +1,5 @@
+require "rubygems/gem_runner"
+
 module Ansuz
   class PluginManager
     attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types
@@ -22,6 +24,12 @@ module Ansuz
     # user-facing navigation menu
     def register_plugin_nav title, link
       self.plugin_nav << [title, link]
+    end
+
+    # Plugins may have external gem depdencies, such as ansuz_content_section (RedCloth/BlueCloth)
+    # The arguments are the same as the gem examples in config/environment.rb
+    def add_gem_dependency(name, options = {})
+      Rails.configuration.gem(name, options)
     end
 
     # A plugin can call register_admin_plugin_nav(title, link) to add itself to the

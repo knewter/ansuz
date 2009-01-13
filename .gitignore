@@ -12,6 +12,7 @@ tmp/*
 coverage
 coverage/**/*
 db/data/legacy/log/*
+db/*.sqlite
 log/*
 log/*.log
 public/stylesheets/scaffold.css
@@ -22,3 +23,5 @@ public/uploads/*/*
 themes/*
 config/deploy.rb
 public/ansuz_themes.xml
+vendor/gems
+vendor/gems/*
