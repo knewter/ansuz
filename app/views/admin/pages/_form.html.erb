@@ -6,6 +6,7 @@
     <%= form_row "Title", text_field('page', 'title') %>
     <%= form_row "Full Title", text_field('page', 'full_title') %>
     <%= form_row "Publish On", calendar_date_select_tag('page[publish_at]', Time.now.strftime("%Y-%m-%d %I:%M %P"), :time => true, :minute_interval => 5) %>
+    <%= form_row "Expires On", calendar_date_select_tag('page[expires_on]', @page.expires_on, :time => true, :minute_interval => 5) %>
     <%= form_row "Status", @page.status, :field_options => { :id => 'status' } %>
   </table>
   <div class="advanced_options">

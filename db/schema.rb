@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090103012646) do
+ActiveRecord::Schema.define(:version => 20090114005523) do
 
   create_table "ansuz_themes", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.integer  "deleter_id"
   end
 
   create_table "content_section_versions", :force => true do |t|
@@ -179,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
     t.boolean  "linked",        :default => true
     t.boolean  "show_sub_menu", :default => false
     t.datetime "publish_at"
+    t.datetime "expires_on"
   end
 
   add_index "pages", ["publish_at"], :name => "index_pages_on_publish_at"
@@ -213,20 +217,11 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
   add_index "posts", ["topic_id", "created_at"], :name => "index_posts_on_topic_id"
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id"
 
-  create_table "proto_page_plugin_versions", :force => true do |t|
-    t.integer  "content_section_id"
-    t.integer  "version"
-    t.string   "name"
-    t.datetime "updated_at"
-    t.string   "versioned_type"
-  end
-
   create_table "proto_page_plugins", :force => true do |t|
     t.string   "name"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "version"
   end
 
   create_table "roles", :force => true do |t|
