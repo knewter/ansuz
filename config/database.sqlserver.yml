@@ -1,0 +1,20 @@
+development:
+  adapter: sqlserver
+  database: ansuz_development
+  username:
+  password:
+  host:
+
+test:
+  adapter: sqlserver
+  database: ansuz_test
+  username:
+  password:
+  host:
+
+production:
+  adapter: sqlserver
+  database: ansuz_production
+  username:
+  password:
+  host:

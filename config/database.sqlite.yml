@@ -1,0 +1,16 @@
+#
+# This is only an example configuration. Please see the Rails
+# documentation for more details.
+#
+
+development:
+  adapter: sqlite3
+  database: db/ansuz_development.db
+  
+test:
+  adapter: sqlite3
+  database: db/ansuz_test.db
+
+production:
+  adapter: sqlite3
+  database: db/ansuz_production.db
