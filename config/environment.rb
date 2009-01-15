@@ -46,6 +46,7 @@ Rails::Initializer.run do |config|
              :source => 'http://gems.github.com'
 
   config.gem 'rubyist-aasm', :version => '~> 2.0.2', :lib => 'aasm', :source => "http://gems.github.com"
+  config.gem 'mocha'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

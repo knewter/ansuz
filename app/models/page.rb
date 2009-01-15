@@ -22,7 +22,7 @@
 class Page < ActiveRecord::Base
   include AASM
   include ActionView::Helpers::DateHelper
-  named_scope :visible, lambda {|p| { :conditions => ["published = ? AND (publish_at <= ? OR publish_at IS NULL )", true, Time.now.getgm] } }
+  named_scope :visible, { :conditions => ["published = ? AND (publish_at <= ? OR publish_at IS NULL )", true, Time.now.getgm] }
   named_scope :self_and_siblings, lambda {|page| {:conditions => ["parent_id = ?", page.parent_id], :order => 'page_order'}}
 
   aasm_column :status
