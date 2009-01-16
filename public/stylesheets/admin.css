@@ -457,3 +457,16 @@ ul.admin_actions li{
 .blog_post p{
   margin-bottom: 1em;
 }
+/* --  tree ---*/
+table.tree tr{
+  border: 0 !important;
+  font-size: 1.4em;
+  height: 35px;
+  min-height: 35px;
+}
+table.tree tr a{
+  font-weight: 600;
+}
+th.status{
+  width: 135px;
+}
