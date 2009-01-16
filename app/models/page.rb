@@ -22,7 +22,7 @@
 class Page < ActiveRecord::Base
   include AASM
   include ActionView::Helpers::DateHelper
-  named_scope :visible, lambda {|p| { :conditions => ["(expires_on > ? OR expires_on IS NULL) AND published = ? AND (publish_at <= ? OR publish_at IS NULL )", Time.now.getgm, true, Time.now.getgm] } }
+  named_scope :visible, :conditions => ["(expires_on > ? OR expires_on IS NULL) AND published = ? AND (publish_at <= ? OR publish_at IS NULL )", Time.now.getgm, true, Time.now.getgm]
   named_scope :self_and_siblings, lambda {|page| {:conditions => ["parent_id = ?", page.parent_id], :order => 'page_order'}}
   named_scope :expired,      lambda {|p| { :conditions => ["expires_on < ?", Time.now.getgm] } }
   named_scope :expires_soon, lambda {|p| { :conditions => ["expires_on < ?", Time.now.getgm + 5.days ] } }
