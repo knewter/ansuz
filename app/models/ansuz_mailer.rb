@@ -16,4 +16,13 @@ class AnsuzMailer < ActionMailer::Base
     
     body       :page => page, :url => url_for(:controller => "page", :action => "indexer", :path => page.path.collect(&:name))
   end
+
+  def page_expiring_soon_notification(page, sent_at = Time.now)
+    subject    "[#{page}] will expire soon."
+    recipients User.authors.map(&:email)
+    from       OUTGOING_ADMIN_EMAIL
+    sent_on    sent_at
+    body       :page => page, :url => url_for(:controller => "page", :action => "indexer", :path => page.path.collect(&:name))
+  end
 end
+

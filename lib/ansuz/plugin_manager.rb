@@ -1,5 +1,7 @@
+require File.join( RAILS_ROOT, "lib", "ansuz", "plugin_settings.rb" )
 module Ansuz
   class PluginManager
+    include Ansuz::PluginSettings
     attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types
     ADMIN_MENU_TOP_LEVEL_ENTRIES = ["Create", "Manage", "Ansuz"]
 
@@ -16,12 +18,20 @@ module Ansuz
     # A plugin can call register_plugin(ClassName) to add itself to the plugins array
     def register_plugin klass
       self.plugins << klass
+      settings_name = klass.to_s.tableize.gsub(/\//,'_').to_sym
+      create_settings( settings_name )
     end
 
     # A plugin can call register_plugin_nav(title, link) to add itself to the
     # user-facing navigation menu
     def register_plugin_nav title, link
       self.plugin_nav << [title, link]
+    end
+
+    # Plugins may have external gem depdencies, such as ansuz_content_section (RedCloth/BlueCloth)
+    # The arguments are the same as the gem examples in config/environment.rb
+    def add_gem_dependency(name, options = {})
+      Rails.configuration.gem(name, options)
     end
 
     # A plugin can call register_admin_plugin_nav(title, link) to add itself to the
@@ -52,6 +62,21 @@ module Ansuz
 
     def register_page_type name, modules=[]
       @page_types << [name, modules]
+    end
+
+    protected
+    def create_settings(name)
+      begin
+        # This method gets run before the rake ansuz:install task. Naturally, things break if the database doesn't exist.
+        ActiveRecord::Base.connection
+        return false if SiteSetting.count == 0 # Stupid, mean hack. There's some test that clears site settings and breaks things.
+        site_setting = SiteSetting.first
+        unless( site_setting.nil? && site_setting.first.settings[name])
+          site_setting.settings[name] = {}  
+          site_setting.save
+        end
+      rescue
+      end
     end
   end
 end

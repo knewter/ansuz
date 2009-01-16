@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Page do
-  fixtures :pages
+  fixtures :pages, :site_settings
 
   describe '#ancestor_path' do
     it "should return / for the home page" do
@@ -29,6 +29,10 @@ describe Page do
        @invisible_page = Page.create(:name => "Invisible", :title => "I am invisible", :publish_at => Time.now + 1.days )
        Page.visible.find_by_name("Visible").should eql(@visible_page)
        Page.visible.find_by_name("Invisible").should eql(nil)
+    end
+
+    it "should not include expired pages" do
+      Page.visible.find_by_name("Expired").should eql(nil)  
     end
   end
 

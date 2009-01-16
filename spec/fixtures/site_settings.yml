@@ -1,0 +1,7 @@
+default:
+  name: "Default Site"
+  user_theme_name: "Default Theme"
+  site_title: "My Default Site"
+  show_inline_edit_links: true
+
+

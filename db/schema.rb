@@ -9,33 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090103012646) do
-
-  create_table "ansuz_themes", :force => true do |t|
-    t.string   "name"
-    t.string   "repository_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "blog_comments", :force => true do |t|
-    t.string   "author"
-    t.string   "email"
-    t.string   "website"
-    t.text     "text"
-    t.integer  "blog_post_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "blog_posts", :force => true do |t|
-    t.string   "title"
-    t.text     "contents"
-    t.integer  "created_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "url"
-  end
+ActiveRecord::Schema.define(:version => 20090114005523) do
 
   create_table "content_section_versions", :force => true do |t|
     t.integer  "content_section_id"
@@ -54,12 +28,6 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
     t.datetime "updated_at"
     t.integer  "version",    :default => 1
   end
-
-  create_table "feed_readers", :force => true do |t|
-    t.string "name"
-  end
-
-  add_index "feed_readers", ["name"], :name => "index_feed_readers_on_name"
 
   create_table "form_builder_responses", :force => true do |t|
     t.integer  "form_builder_id"
@@ -106,28 +74,6 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
     t.integer "posts_count",      :default => 0
     t.integer "position"
     t.text    "description_html"
-  end
-
-  create_table "fyles", :force => true do |t|
-    t.string   "mime_type"
-    t.string   "file_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "has_settings_settings", :force => true do |t|
-    t.text    "settings"
-    t.integer "configurable_id"
-    t.string  "configurable_type"
-  end
-
-  create_table "menu_entries", :force => true do |t|
-    t.string   "name"
-    t.string   "link"
-    t.integer  "position"
-    t.integer  "parent_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "moderatorships", :force => true do |t|
@@ -179,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
     t.boolean  "linked",        :default => true
     t.boolean  "show_sub_menu", :default => false
     t.datetime "publish_at"
+    t.datetime "expires_on"
   end
 
   add_index "pages", ["publish_at"], :name => "index_pages_on_publish_at"
@@ -196,7 +143,6 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
 
   create_table "photo_albums", :force => true do |t|
     t.string "name"
-    t.string "display_type"
   end
 
   create_table "posts", :force => true do |t|
@@ -213,20 +159,11 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
   add_index "posts", ["topic_id", "created_at"], :name => "index_posts_on_topic_id"
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id"
 
-  create_table "proto_page_plugin_versions", :force => true do |t|
-    t.integer  "content_section_id"
-    t.integer  "version"
-    t.string   "name"
-    t.datetime "updated_at"
-    t.string   "versioned_type"
-  end
-
   create_table "proto_page_plugins", :force => true do |t|
     t.string   "name"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "version"
   end
 
   create_table "roles", :force => true do |t|
@@ -242,16 +179,6 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
     t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "scrollable_content_sections", :force => true do |t|
-    t.integer "scrollable_content_id"
-    t.string  "title"
-    t.text    "contents"
-  end
-
-  create_table "scrollable_contents", :force => true do |t|
-    t.string "name"
   end
 
   create_table "site_settings", :force => true do |t|
@@ -283,13 +210,6 @@ ActiveRecord::Schema.define(:version => 20090103012646) do
 
   add_index "tags", ["name"], :name => "index_tags_on_name"
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
-
-  create_table "testimonials", :force => true do |t|
-    t.text     "content"
-    t.string   "attributed_to"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "topics", :force => true do |t|
     t.integer  "forum_id"
