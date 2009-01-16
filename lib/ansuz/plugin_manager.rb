@@ -66,11 +66,16 @@ module Ansuz
 
     protected
     def create_settings(name)
-      return false if SiteSetting.count == 0 # Stupid, mean hack. There's some test that clears site settings and breaks things.
-      site_setting = SiteSetting.first
-      unless( site_setting.nil? && site_setting.first.settings[name])
-        site_setting.settings[name] = {}  
-        site_setting.save
+      begin
+        # This method gets run before the rake ansuz:install task. Naturally, things break if the database doesn't exist.
+        ActiveRecord::Base.connection
+        return false if SiteSetting.count == 0 # Stupid, mean hack. There's some test that clears site settings and breaks things.
+        site_setting = SiteSetting.first
+        unless( site_setting.nil? && site_setting.first.settings[name])
+          site_setting.settings[name] = {}  
+          site_setting.save
+        end
+      rescue
       end
     end
   end

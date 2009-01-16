@@ -10,6 +10,12 @@ RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+# Create log directory if it doesn't exist
+unless( File.directory?( File.join(RAILS_ROOT, "log") ) )
+  STDOUT.puts "Creating log directory.."
+  FileUtils.mkdir( File.join(RAILS_ROOT, "log") )
+end
+
 # engines
 require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
 
@@ -23,6 +29,22 @@ AUTHORIZATION_MIXIN           = "object roles"
 LOGIN_REQUIRED_REDIRECTION    = { :controller => '/sessions', :action => 'login' }
 PERMISSION_DENIED_REDIRECTION = { :controller => '/page', :action => 'indexer', :path => '' }
 STORE_LOCATION_METHOD         = :store_location
+
+
+# FIXME
+# Check if haml is installed. If not, it breaks rake gems:install in the install task
+# Also, why do we have haml? I see a bunch of ERB. -james
+begin
+  Gem.activate("haml") 
+rescue Gem::LoadError
+  STDOUT.puts "Installing haml.. (sudo may prompt you)"
+  if( Gem.win_platform? )
+    `gem install haml --no-ri --no-rdoc`
+  else
+    `sudo gem install haml --no-ri --no-rdoc`
+    `sudo -k` # Prevent any further file/dir modifications in the RAILS_ROOT to be owned by root
+  end
+end
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
