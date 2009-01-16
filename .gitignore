@@ -21,6 +21,8 @@ public/photo_album_photo_images/
 public/photo_album_photo_images/*
 public/uploads/*/*
 themes/*
+public/themes
+public/themes/*
 config/deploy.rb
 public/ansuz_themes.xml
 vendor/gems
