@@ -19,6 +19,9 @@ tmp/**/*
 public/photo_album_photo_images/
 public/photo_album_photo_images/*
 public/uploads/*/*
+public/themes
+public/themes/*
+public/themes/*/*
 themes/*
 config/deploy.rb
 public/ansuz_themes.xml
