@@ -36,7 +36,8 @@ Ansuz is licensed via the BSD license.
  
 NOTE: SQLite has problems with ansuz, please don't use it for now.
 
-NOTE: See the Ansuz Site Laucher
+NOTE: See the [Ansuz Site Laucher](http://github.com/knewter/ansuz_launcher/tree/master)
+
 If run with sudo on a server with passenger set up and all the gems already installed, 
 it will check out a new ansuz and set up a fresh database for it and set up a vhost 
 for the domain specified. So, then if that domain points to the server, Bam! Done.
