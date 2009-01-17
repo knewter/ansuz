@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090114005523) do
+ActiveRecord::Schema.define(:version => 20090103012646) do
 
   create_table "ansuz_themes", :force => true do |t|
     t.string   "name"
@@ -35,9 +35,6 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
-    t.integer  "creator_id"
-    t.integer  "updater_id"
-    t.integer  "deleter_id"
   end
 
   create_table "content_section_versions", :force => true do |t|
@@ -170,6 +167,7 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.string   "name"
     t.string   "title"
     t.string   "full_title"
+    t.string   "status"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -180,9 +178,7 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.boolean  "published",     :default => true
     t.boolean  "linked",        :default => true
     t.boolean  "show_sub_menu", :default => false
-    t.string   "status"
     t.datetime "publish_at"
-    t.datetime "expires_on"
   end
 
   add_index "pages", ["publish_at"], :name => "index_pages_on_publish_at"
@@ -201,11 +197,6 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
   create_table "photo_albums", :force => true do |t|
     t.string "name"
     t.string "display_type"
-  end
-
-  create_table "plugin_schema_info", :id => false, :force => true do |t|
-    t.string  "plugin_name"
-    t.integer "version"
   end
 
   create_table "posts", :force => true do |t|

@@ -457,3 +457,22 @@ ul.admin_actions li{
 .blog_post p{
   margin-bottom: 1em;
 }
+/* --  tree ---*/
+table.tree tr{
+  border: 0 !important;
+  font-size: 1.4em;
+  height: 35px !important;
+  min-height: 35px !important;
+}
+table.tree tr a{
+  font-weight: 600;
+}
+th.status{
+  width: 135px;
+}
+table.tree tr.even:hover td {
+  background-color:#fbfbfb !important;
+}
+table.tree tr.odd:hover td {
+  background-color:#ebebeb !important;
+}
