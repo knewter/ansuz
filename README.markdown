@@ -1,10 +1,11 @@
 # Ansuz
 
 - [Homepage](http://www.ansuzcms.com)
-- [ansuz-cms Google Group](http://groups.google.com/group/ansuz-cms/members)
+- [ansuz-cms Google Group](http://groups.google.com/group/ansuz-cms)
 - [ansuz on github](http://www.github.com/knewter/ansuz)
 - [track bugs on lighthouse](http://ansuz.lighthouseapp.com/projects/15780-ansuz/overview)
 - On IRC at Freenode #ansuz
+- [ansuz-commit-log Google Group](http://groups.google.com/group/ansuz-commit-log)
  
 Ansuz is an open source Content Management System built in Ruby on Rails.
 It aims for a modular / plugin-based design, and should have more features
