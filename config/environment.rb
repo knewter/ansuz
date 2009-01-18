@@ -30,22 +30,6 @@ LOGIN_REQUIRED_REDIRECTION    = { :controller => '/sessions', :action => 'login'
 PERMISSION_DENIED_REDIRECTION = { :controller => '/page', :action => 'indexer', :path => '' }
 STORE_LOCATION_METHOD         = :store_location
 
-
-# FIXME
-# Check if haml is installed. If not, it breaks rake gems:install in the install task
-# Also, why do we have haml? I see a bunch of ERB. -james
-begin
-  Gem.activate("haml", true) 
-rescue Gem::LoadError
-  STDOUT.puts "Installing haml.. (sudo may prompt you)"
-  if( Gem.win_platform? )
-    `gem install haml --no-ri --no-rdoc`
-  else
-    `sudo gem install haml --no-ri --no-rdoc`
-    `sudo -k` # Prevent any further file/dir modifications in the RAILS_ROOT to be owned by root
-  end
-end
-
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
