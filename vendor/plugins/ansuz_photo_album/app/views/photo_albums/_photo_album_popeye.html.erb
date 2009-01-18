@@ -2,7 +2,7 @@
   <div id='<%= dom_id(plugin_module) %>' class='popeye'>
     <ul>
       <% plugin_module.photos.each do |photo| %>
-        <li><%= link_to image_tag(photo.photo_album_photo_image.url(:medium)), photo.photo_album_photo_image.url(:large), :alt => photo.caption -%></li>
+        <li><%= link_to image_tag(photo.photo_album_photo_image.url(:medium), :alt => photo.caption), photo.photo_album_photo_image.url(:large) -%></li>
       <% end %>
     </ul>
   </div>
