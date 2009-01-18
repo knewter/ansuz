@@ -51,7 +51,7 @@ For help, feel free to contact the authors at:
 - james at isotope11.com
 - adam at isshen.com
 
-= Physical Address
+## Physical Address
 Isotope 11, Inc.
 600 Beacon Parkway
 Suite 950

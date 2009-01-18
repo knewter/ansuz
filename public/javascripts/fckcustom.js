@@ -17,19 +17,21 @@ FCKConfig.SpellChecker = 'SpellerPages';
 FCKConfig.SkinPath = FCKConfig.BasePath + 'skins/silver/';
 
 FCKConfig.ToolbarSets["Simple"] = [
-	['Source','-','-','Templates'],
-	['Cut','Copy','Paste','PasteWord','-','Print','SpellCheck'],
-	['Undo','Redo','-','Find','Replace','-','SelectAll'],
-	'/',
-	['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
-	['OrderedList','UnorderedList','-','Outdent','Indent'],
-	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
-	['Link','Unlink'],
-	'/',
-	['Image','Table','Rule','Smiley'],
-	['FontName','FontSize'],
-	['TextColor','BGColor'],
-	['-','About']
+  ['Source','-','Save','NewPage','Preview','-','Templates'],
+  ['Cut','Copy','Paste','PasteText','PasteWord'],
+  ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+  ['Form','Checkbox','Radio','TextField','Textarea','Select','Button','ImageButton','HiddenField'],
+  '/',
+  ['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
+  ['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote'],
+  ['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
+  ['Link','Unlink','Anchor'],
+  ['Image','Flash','Table','Rule','Smiley','SpecialChar','PageBreak'],
+  '/',
+  ['Style','FontFormat','FontName','FontSize'],
+  ['TextColor','BGColor'],
+  ['Print','SpellCheck','-','FitWindow','ShowBlocks','-','About']   // No comma for the last row.
 ] ;
+
 
 FCKConfig.EnterMode = 'br';
