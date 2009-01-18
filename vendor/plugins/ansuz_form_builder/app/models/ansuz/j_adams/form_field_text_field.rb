@@ -1,3 +1,4 @@
+# FIXME: The whole form builder should be built with inheritance, what the heck happened here?
 module Ansuz
   module JAdams
     class FormFieldTextField < ActiveRecord::Base

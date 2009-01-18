@@ -21,19 +21,20 @@ class Admin::FormFieldsController < Admin::BaseController
   end
 
   def create
+    options = {:label => params[:label]}
     # create the appropriate stuff...
     case params[:type]
     # TODO: Split this up and provide an API for other plugins to add form field types to the builder
     when "Text Field"
-      @field = Ansuz::JAdams::FormFieldTextField.new
+      @field = Ansuz::JAdams::FormFieldTextField.new(options)
       @form_field.form_builder_id = @form_builder.id
       @form_field.field = @field
     when "Text Area"
-      @field = Ansuz::JAdams::FormFieldTextArea.new
+      @field = Ansuz::JAdams::FormFieldTextArea.new(options)
       @form_field.form_builder_id = @form_builder.id
       @form_field.field = @field
     when "Rich Text Area"
-      @field = Ansuz::JAdams::FormFieldTextArea.new
+      @field = Ansuz::JAdams::FormFieldTextArea.new(options)
       @form_field.form_builder_id = @form_builder.id
       @form_field.field = @field
       @field.settings["has_rich_content_editor"] = true

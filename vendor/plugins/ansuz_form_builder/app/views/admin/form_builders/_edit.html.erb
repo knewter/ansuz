@@ -1,6 +1,3 @@
-<%= link_to famfamfam_icon("add") + " Add a field", new_admin_form_builder_form_field_path(plugin_module) %>
-<br />
-
 <table class='form-table'>
   <% plugin_module.form_fields.each do |form_field| %>
     <%
@@ -11,3 +8,5 @@
     <%= render_form_field_builder_view(form_field, :locals => { :field => form_field, :admin_links => admin_links.join(" ") }) %>
   <% end %>
 </table>
+<br />
+<%= link_to "Add a field", new_admin_form_builder_form_field_path(plugin_module), :class => "icon button add" %>
