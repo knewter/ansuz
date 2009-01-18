@@ -35,7 +35,7 @@ STORE_LOCATION_METHOD         = :store_location
 # Check if haml is installed. If not, it breaks rake gems:install in the install task
 # Also, why do we have haml? I see a bunch of ERB. -james
 begin
-  Gem.activate("haml") 
+  Gem.activate("haml", true) 
 rescue Gem::LoadError
   STDOUT.puts "Installing haml.. (sudo may prompt you)"
   if( Gem.win_platform? )

@@ -21,7 +21,7 @@ div.galimg, div.imgprin, .galimg a, .galimg img, .galimg ul, .galimg li {
 .imgprin {
   /* es necesario para evitar un parpadero al quitar la imagen */
   width: 710px;
-  height: 510px;
+  height: 535px;
 }
 
 .imgprin img {
