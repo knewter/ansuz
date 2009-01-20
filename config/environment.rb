@@ -31,6 +31,7 @@ PERMISSION_DENIED_REDIRECTION = { :controller => '/page', :action => 'indexer', 
 STORE_LOCATION_METHOD         = :store_location
 
 Rails::Initializer.run do |config|
+  Rake::Task["ansuz:create_db_config"].invoke
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
