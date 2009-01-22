@@ -10,6 +10,7 @@ RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+
 # Create log directory if it doesn't exist
 unless( File.directory?( File.join(RAILS_ROOT, "log") ) )
   STDOUT.puts "Creating log directory.."
@@ -18,6 +19,10 @@ end
 
 # engines
 require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
+
+require "rake"
+load "#{RAILS_ROOT}/lib/tasks/ansuz.rake"
+Rake::Task["ansuz:create_db_config"].invoke
 
 require 'ansuz'
 
@@ -31,7 +36,6 @@ PERMISSION_DENIED_REDIRECTION = { :controller => '/page', :action => 'indexer', 
 STORE_LOCATION_METHOD         = :store_location
 
 Rails::Initializer.run do |config|
-  Rake::Task["ansuz:create_db_config"].invoke
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

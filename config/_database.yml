@@ -1,0 +1,22 @@
+ 
+production: 
+  adapter: mysql
+  database: ansuz_production
+  host: localhost
+  user: root
+  password: 
+  socket: /var/run/mysqld/mysqld.sock
+development: 
+  adapter: mysql
+  database: ansuz_development
+  host: localhost
+  user: root
+  password: 
+  socket: /var/run/mysqld/mysqld.sock
+test: 
+  adapter: mysql
+  database: ansuz_test
+  host: localhost
+  user: root
+  password: 
+  socket: /var/run/mysqld/mysqld.sock

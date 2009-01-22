@@ -7,7 +7,7 @@ namespace :ansuz do
     if( themes.any? )
       STDOUT.puts "[ansuz] Themes:\n" + themes.join("\n")
       STDOUT.puts "[ansuz] Enter a selection above, or leave blank for default"
-      theme_choice = STDIN.gets.chomp
+      theme_choice = $stdin.gets.chomp
       unless( theme_choice.blank? )
         theme = theme_choice.detect{|t| t == theme_choice}
         if( theme )
@@ -26,43 +26,43 @@ namespace :ansuz do
   task(:create_db_config) do
     unless( File.exists?( File.join(RAILS_ROOT, "config", "database.yml") ) )
       STDOUT.puts "[ansuz] Database config does not exist? Would you like one created for you? (Rails will not boot until it has a valid db config)"
-      response = STDIN.gets.chomp
+      response = $stdin.gets.chomp
       if( response =~ /^y|^yes/i )
         config = { }
         STDOUT.puts "[ansuz] Database Wizard: Which adapter will the CMS use? ( mysql, sqlite, etc) "
-        database_adapter = STDIN.gets.chomp.strip
+        database_adapter = $stdin.gets.chomp.strip
         database_adapter = "mysql" if database_adapter.blank?
         config["adapter"] = database_adapter.downcase
         if( database_adapter != "sqlite" )
           STDOUT.puts "[ansuz] Host (localhost):"
-          database_host = STDIN.gets.chomp.strip
+          database_host = $stdin.gets.chomp.strip
           database_host = "localhost" if database_host.blank?
           config["host"] = database_host
 
           STDOUT.puts "[ansuz] Username (root):"
-          database_username = STDIN.gets.chomp.strip
+          database_username = $stdin.gets.chomp.strip
           database_username = "root" if database_username.blank?
           config["user"] = database_username
 
           STDOUT.puts "[ansuz] Password:"
-          database_password = STDIN.gets.chomp.strip
+          database_password = $stdin.gets.chomp.strip
           database_password = nil if database_password.blank?
           config["password"] = database_password
 
           STDOUT.puts "[ansuz] Socket (/var/run/mysqld/mysqld.sock): "
-          database_socket = STDIN.gets.chomp.strip
+          database_socket = $stdin.gets.chomp.strip
           database_socket = "/var/run/mysqld/mysqld.sock" if database_socket.blank?
           config["socket"] = database_socket 
 
           STDOUT.puts "[ansuz] Database Name Prefix (ansuz):"
-          database_prefix = STDIN.gets.chomp.strip
+          database_prefix = $stdin.gets.chomp.strip
           database_prefix = "ansuz" if database_prefix.blank?
           config["database"] = database_prefix
         else
           STDOUT.puts "[ansuz] Database Location (db/development.sqlite):"
-          database_location = STDIN.gets.chomp.strip
+          database_location = $stdin.gets.chomp.strip
           database_location = "db" if database_location.blank?
-          config["location"] = database_location 
+          config["database"] = database_location 
         end
 
         database_config = {}
@@ -120,7 +120,7 @@ namespace :ansuz do
     if( User.find(:all, :conditions => ["login = 'admin'"]).empty? )
       STDOUT.puts "[ansuz] Enter a password for the default admin user:"
       STDOUT.flush
-      password = STDIN.gets.chomp
+      password = $stdin.gets.chomp
       u = User.new :login => 'admin', :email => 'admin@example.com', :password => password, :password_confirmation => password
       u.save
       u.has_role 'admin'
