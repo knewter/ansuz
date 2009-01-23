@@ -34,6 +34,16 @@ module Ansuz
       end
     end
 
+    def get_user_response_for(question, default_response="")
+      @stdout.puts question
+      response = @stdin.gets.chomp.strip
+      if( response.nil? || response.blank? )
+        return default_response
+      else
+        return response
+      end
+    end
+
     def create_db_config(database_yaml_path = File.join(RAILS_ROOT, "config", "database.yml") )
       unless( File.exists?( database_yaml_path ) )
         @stdout.puts "[ansuz] Database config does not exist? Would you like one created for you? (Rails will not boot until it has a valid db config)"
@@ -41,40 +51,15 @@ module Ansuz
         response = @stdin.gets.chomp
         if( response =~ /^y|^yes/i )
           config = { }
-          @stdout.puts "[ansuz] Database Wizard: Which adapter will the CMS use? ( mysql, sqlite, etc) "
-          database_adapter = @stdin.gets.chomp.strip
-          database_adapter = "mysql" if database_adapter.blank?
-          config["adapter"] = database_adapter.downcase
-          if( database_adapter != "sqlite" )
-            @stdout.puts "[ansuz] Host (localhost):"
-            database_host = @stdin.gets.chomp.strip
-            database_host = "localhost" if database_host.blank?
-            config["host"] = database_host
-
-            @stdout.puts "[ansuz] Username (root):"
-            database_username = @stdin.gets.chomp.strip
-            database_username = "root" if database_username.blank?
-            config["user"] = database_username
-
-            @stdout.puts "[ansuz] Password:"
-            database_password = @stdin.gets.chomp.strip
-            database_password = nil if database_password.blank?
-            config["password"] = database_password
-
-            @stdout.puts "[ansuz] Socket (/var/run/mysqld/mysqld.sock): "
-            database_socket = @stdin.gets.chomp.strip
-            database_socket = "/var/run/mysqld/mysqld.sock" if database_socket.blank?
-            config["socket"] = database_socket 
-
-            @stdout.puts "[ansuz] Database Name Prefix (ansuz):"
-            database_prefix = @stdin.gets.chomp.strip
-            database_prefix = "ansuz" if database_prefix.blank?
-            config["database"] = database_prefix
+          config["adapter"] = get_user_response_for("[ansuz] Database Wizard: Which adapter will the CMS use? ( mysql, sqlite, etc) ", "mysql").downcase
+          if( config["adapter"] != "sqlite" )
+            config["host"]     = get_user_response_for("[ansuz] Host (localhost):", "localhost").downcase
+            config["user"]     = get_user_response_for("[ansuz] Username (root):", "root")
+            config["password"] = get_user_response_for("[ansuz] Password:", nil)
+            config["socket"]   = get_user_response_for("[ansuz] Socket (/var/run/mysqld/mysqld.sock): ", "/var/run/mysqld/mysqld.sock")
+            config["database"] = get_user_response_for("[ansuz] Database Name Prefix (ansuz):", "ansuz")
           else
-            @stdout.puts "[ansuz] Database Location (db/development.sqlite):"
-            database_location = @stdin.gets.chomp.strip
-            database_location = "db" if database_location.blank?
-            config["database"] = database_location 
+            config["database"] = get_user_response_for("[ansuz] Database Location (db/development.sqlite):", "db")
           end
 
           database_config = {}
@@ -117,19 +102,17 @@ module Ansuz
         # FIXME
         # Invoking db tasks causes a rollback of some kind during testing -james
         #Rake::Task['db:create:all'].invoke 
-        `rake db:create:all`
+        create_database
       end
 
       @stdout.puts "[ansuz] Migrating tables .."
       Kernel.silence_stream(@stdout) do
-        #Rake::Task['db:migrate'].invoke
-        `rake db:migrate`
+        migrate_database
       end
 
       @stdout.puts "[ansuz] Migrating plugins .."
       Kernel.silence_stream(@stdout) do
-        #Rake::Task['db:migrate:plugins'].invoke
-        `rake db:migrate:plugins`
+        migrate_plugins
       end
 
       if( User.find(:all, :conditions => ["login = 'admin'"]).empty? )
@@ -151,7 +134,6 @@ module Ansuz
         FileUtils.mkdir( File.join(RAILS_ROOT, "public", "uploads") )
       end
 
-      #Rake::Task["ansuz:choose_theme"].invoke
       self.choose_theme
 
       @stdout.puts "[ansuz] Finished! Start Ansuz with `script/server` on Linux or `ruby script/server` on Windows."
@@ -159,4 +141,18 @@ module Ansuz
 
 
   end
+
+  protected
+  def create_database
+    system "rake db:create:all" 
+  end
+
+  def migrate_database
+    system "rake db:migrate"
+  end
+
+  def migrate_plugins
+    system "rake db:migrate:plugins"
+  end
+
 end
