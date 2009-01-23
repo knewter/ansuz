@@ -7,7 +7,7 @@ module Ansuz
       @themes      = []
       @stdin       = stdin
       @stdout      = stdout
-      @state       = :started
+      @state       = :started # this helps with the tests
     end
 
     def choose_theme(theme_directory = File.join(RAILS_ROOT, "public", "themes")) 
@@ -35,8 +35,10 @@ module Ansuz
     end
 
     def get_user_response_for(question, default_response="")
+      @state = :getting_user_response
       @stdout.puts question
       response = @stdin.gets.chomp.strip
+      @state = :got_user_response
       if( response.nil? || response.blank? )
         return default_response
       else
@@ -62,25 +64,7 @@ module Ansuz
             config["database"] = get_user_response_for("[ansuz] Database Location (db/development.sqlite):", "db")
           end
 
-          database_config = {}
-          ["production","development","test"].each do |env|
-            database_config[env] = {}
-            config.each_pair do |key,val|
-              case key
-              when "database":
-                database_config[env][key] = val + "_" + env
-              when "location":
-                database_config[env][key] = val + "/#{env}.sqlite"
-              else
-                database_config[env][key] = val
-              end
-            end
-          end
-
-          database_yaml = YAML::dump( database_config ).gsub(/^---/,'')
-          handle = File.open( File.join(RAILS_ROOT, "config", "database.yml"),"w" )
-          handle.puts( database_yaml )
-          handle.close
+          create_config_for_environment(["production","development","test"], config)
           @state = :database_yaml_created_successfully
           @stdout.puts "[ansuz] Database configuration created successfully"
         else
@@ -99,7 +83,7 @@ module Ansuz
       
       @stdout.puts "[ansuz] Creating database .."
       Kernel.silence_stream(@stdout) do
-        # FIXME
+        # TRY TO FIXME
         # Invoking db tasks causes a rollback of some kind during testing -james
         #Rake::Task['db:create:all'].invoke 
         create_database
@@ -116,43 +100,77 @@ module Ansuz
       end
 
       if( User.find(:all, :conditions => ["login = 'admin'"]).empty? )
-        @stdout.puts "[ansuz] Enter a password for the default admin user:"
-        @stdout.flush
-        password = @stdin.gets.chomp
-        u = User.new :login => 'admin', :email => 'admin@example.com', :password => password, :password_confirmation => password
-        u.save
-        u.has_role 'admin'
-        u.save # Not sure why we save twice. Josh?
-        @stdout.puts "[ansuz] Admin user created with login 'admin' and the password you entered."
+        password = get_user_response_for("[ansuz] Enter a password for the default admin user:","")
+        create_default_admin_user( password )
       else
         @stdout.puts "[ansuz] Admin user already exists."
       end
 
       # Create public/uploads directory for FCKeditor 
-      unless( File.directory?( File.join(RAILS_ROOT, "public", "uploads") ) )
-        @stdout.puts "[ansuz] Creating public/uploads directory for FCKeditor.."
-        FileUtils.mkdir( File.join(RAILS_ROOT, "public", "uploads") )
-      end
+      create_fckeditor_uploads_dir
 
       self.choose_theme
 
       @stdout.puts "[ansuz] Finished! Start Ansuz with `script/server` on Linux or `ruby script/server` on Windows."
     end
 
+    protected
 
+    def create_config_for_environment( environments, config )
+      @state = :creating_config
+      database_config = {}
+      environments.each do |environment|
+        database_config[environment] = {}
+        config.each_pair do |key,val|
+          case key
+          when "database":
+            database_config[environment][key] = val + "_" + environment
+          when "location":
+            database_config[environment][key] = val + "/#{environment}.sqlite"
+          else
+            database_config[environment][key] = val
+          end
+        end
+      end
+
+      database_yaml = YAML::dump( database_config ).gsub(/^---/,'')
+      handle = File.open( File.join(RAILS_ROOT, "config", "database.yml"),"w" )
+      handle.puts( database_yaml )
+      handle.close
+    end
+
+    def create_default_admin_user(password)
+      u = User.new :login => 'admin', :email => 'admin@example.com', :password => password, :password_confirmation => password
+      u.save
+      u.has_role 'admin'
+      u.save
+      @stdout.puts "[ansuz] Admin user created with login 'admin' and the password you entered."
+    end
+
+    def create_fckeditor_uploads_dir
+      @state = :creating_fckeditor_uploads_dir
+      unless( File.directory?( File.join(RAILS_ROOT, "public", "uploads") ) )
+        @stdout.puts "[ansuz] Creating public/uploads directory for FCKeditor.."
+        FileUtils.mkdir( File.join(RAILS_ROOT, "public", "uploads") )
+        @state = :created_fckeditor_uploads_dir
+      else
+        @state = :fckeditor_uploads_dir_already_exists
+      end
+    end
+
+    def create_database
+      @state = :creating_databases
+      system "rake db:create:all" 
+    end
+
+    def migrate_database
+      @state = :migrating_database
+      system "rake db:migrate"
+    end
+
+    def migrate_plugins
+      @state = :migrating_plugins
+      system "rake db:migrate:plugins"
+    end
   end
-
-  protected
-  def create_database
-    system "rake db:create:all" 
-  end
-
-  def migrate_database
-    system "rake db:migrate"
-  end
-
-  def migrate_plugins
-    system "rake db:migrate:plugins"
-  end
-
 end
