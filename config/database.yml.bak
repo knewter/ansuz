@@ -1,0 +1,23 @@
+# Linux example follows:
+development:
+  adapter: mysql
+  database: ansuz_development
+  username: root
+  password: 
+  host: localhost
+  #socket: /tmp/mysql.sock
+  socket: /var/run/mysqld/mysqld.sock
+
+test:
+  database: ansuz_test
+  adapter: mysql
+  username: root
+  host: localhost
+  socket: /var/run/mysqld/mysqld.sock
+
+production:
+  adapter: mysql
+  database: ansuz_production
+  username: root
+  password: 
+  host: localhost

@@ -13,11 +13,11 @@ namespace :ansuz do
         if( theme )
           SiteSetting.find_or_create_by_name(:default).update_attribute(:user_theme_name, theme)
         else
-          STDOUT.puts "[ansuz] nvalid theme."
+          STDOUT.puts "[ansuz] invalid theme."
         end
       end
     else
-      STDOUT.puts "[ansuz]No themes available!"
+      STDOUT.puts "[ansuz] No themes available!"
     end
   end
 
