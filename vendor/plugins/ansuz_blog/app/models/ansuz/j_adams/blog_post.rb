@@ -11,6 +11,8 @@ module Ansuz
       #belongs_to :author, :class_name => "User", :foreign_key => 'created_by'
       has_many :blog_comments, :class_name => "Ansuz::JAdams::BlogComment", :order => "created_at DESC"
 
+      named_scope :recent, :limit => 5, :order => "created_at DESC" # FIXME: These should have publication dates, not just created_at
+
       def edit_path
         "/blog_posts/#{id}/edit"
       end
