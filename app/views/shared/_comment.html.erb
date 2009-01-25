@@ -1,0 +1,14 @@
+<div class='comment <%= cycle('odd', 'even') -%>'>
+  <div class='grav'>
+    <%= content_tag(:div, gravatar_tag(comment.email)) if comment.email %>
+  </div>
+  <div class='contents'>
+    <div class='supplemental'>
+      <cite><strong><%= comment.website.blank? ? comment.name : link_to(comment.name, comment.website) -%></cite></strong>
+      said <%= distance_of_time_in_words(Time.now, comment.created_at) %>
+    </div>
+    <%= sanitize(comment.comments) %>
+  </div>
+  <div class='clear'></div>
+</div>
+<div class='clear'></div>

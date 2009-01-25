@@ -22,6 +22,8 @@
 class Page < ActiveRecord::Base
   include AASM
   include ActionView::Helpers::DateHelper
+  acts_as_commentable
+
   named_scope :visible, :conditions => ["(expires_on > ? OR expires_on IS NULL) AND published = ? AND (publish_at <= ? OR publish_at IS NULL )", Time.now.getgm, true, Time.now.getgm]
   named_scope :self_and_siblings, lambda {|page| {:conditions => ["parent_id = ?", page.parent_id], :order => 'page_order'}}
   named_scope :expired,      lambda {|p| { :conditions => ["expires_on < ?", Time.now.getgm] } }
@@ -177,7 +179,7 @@ class Page < ActiveRecord::Base
   def self.find_page_by_path(path)
     #logger.error("==> find_page_by_path: path = [ #{path.join("/")} ]")
     page = Page.root
-    return nil if Page.root.nil?
+    return nil if page.nil?
 
     # Not DRY. This piece of code handles multipage root
     return page.split_page! if path.length < 1 or page.name == path[0]

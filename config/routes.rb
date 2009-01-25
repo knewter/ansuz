@@ -15,9 +15,11 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_twitterati
   map.from_plugin :ansuz_database_dumper
   map.from_plugin :ansuz_user_system
+  map.from_plugin :ansuz_plugin_media_player
 
   map.resources :tags
   map.resources :users
+  map.resources :comments
 
   # <admin routes>
   map.namespace :admin do |admin|

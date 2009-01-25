@@ -1,4 +1,7 @@
 <%= render :partial => 'articles/article', :locals => { :article => @blog_post } %>
+<%= show_comments_for(@blog_post) %>
+<%= show_comment_form_for(@blog_post, :return_path => article_path(@blog_post))  %>
+
 <div class='post-blog-post'>
   <%= render_special "post_blog_post" %>
 </div>

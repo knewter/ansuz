@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090114005523) do
+ActiveRecord::Schema.define(:version => 20090125222830) do
 
   create_table "ansuz_themes", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.integer  "creator_id"
     t.integer  "updater_id"
     t.integer  "deleter_id"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "website"
+    t.text     "comments"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "content_section_versions", :force => true do |t|
@@ -124,6 +135,19 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.string  "configurable_type"
   end
 
+  create_table "media_player_playlist_items", :force => true do |t|
+    t.integer "media_player_id"
+    t.string  "playlist_item_song_file_name"
+    t.string  "playlist_item_song_content_type"
+    t.integer "playlist_item_song_file_size"
+  end
+
+  add_index "media_player_playlist_items", ["media_player_id"], :name => "index_media_player_playlist_items_on_media_player_id"
+
+  create_table "media_players", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "menu_entries", :force => true do |t|
     t.string   "name"
     t.string   "link"
@@ -170,7 +194,6 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.string   "name"
     t.string   "title"
     t.string   "full_title"
-    t.string   "status"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -181,6 +204,7 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.boolean  "published",     :default => true
     t.boolean  "linked",        :default => true
     t.boolean  "show_sub_menu", :default => false
+    t.string   "status"
     t.datetime "publish_at"
     t.datetime "expires_on"
   end
@@ -201,6 +225,11 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
   create_table "photo_albums", :force => true do |t|
     t.string "name"
     t.string "display_type"
+  end
+
+  create_table "plugin_schema_info", :id => false, :force => true do |t|
+    t.string  "plugin_name"
+    t.integer "version"
   end
 
   create_table "posts", :force => true do |t|

@@ -2,3 +2,5 @@
   <h2><%= @page.full_title %></h2>
 <% end %>
 <%= render :partial => 'content/page', :object => @page %>
+<%= show_comments_for(@page) %>
+<%= show_comment_form_for(@page, :return_path => @page.ancestor_path)  %>

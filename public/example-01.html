@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+</head>
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.mediaplayer.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.fdslider.js"></script>
+<script type="text/javascript">
+
+// Add your example files metadata here.
+
+var metadata = {
+	asset_id		: 0,
+	title				: 'Torches Together',
+	description	: 'by mewithoutYou',
+	duration		: 153,
+	url					: '/playlist_item_songs/3/original/Song.mp3',
+	length			: 0,
+	media_type 	: 'mp3'
+}
+
+function sliderseek(e){
+	jQuery.mediaPlayer.seekTo(e.value);
+}
+
+jQuery(document).ready(function(){
+
+	// events must always come first as DOM elements could be updated from the initialise function
+	// e.g. the time and volume DOM containers
+
+	jQuery(document).bind('mediaVolumeChange', function(e, m){
+		jQuery('#volume').html( m.volume + '%' );
+	});
+
+	jQuery(document).bind('mediaStop mediaPause', function(e, m){
+		jQuery('#play').removeClass( 'playing');
+	});
+
+	jQuery(document).bind('mediaPlay', function(e, m){
+		jQuery('#play').addClass( 'playing');
+	});
+
+	jQuery(document).bind('mediaMessage', function(e, m){
+		alert(m.message);
+	});
+
+	jQuery(document).bind('mediaTimerChange', function(e, m){
+		jQuery(".seconds").html( m.position );
+	});
+
+	jQuery(document).bind('mediaSliderChange', function(e, m){
+		jQuery("#percentage").attr( 'value', m.position)
+		fdSliderController.refresh();
+	});
+
+	jQuery(document).bind('mediaLoaded', function(e, m){
+		// wait until the player has accurate information
+		fdSliderController.setMax('percentage', Math.floor(jQuery.mediaPlayer.getDuration()) );
+	});
+
+	jQuery.mediaPlayer.initialise( {
+			mp3Player			: "audioplayer.swf",
+			expressPlayer	: "expressInstall.swf",
+	});
+
+	jQuery.mediaPlayer.load( metadata );
+
+	jQuery('#play').click( function(){
+		if( jQuery.mediaPlayer.isPlaying()){
+			jQuery.mediaPlayer.pause();
+		}
+		else{
+			jQuery.mediaPlayer.play(0);
+		}
+	});
+
+	jQuery('#stop').click( function(){
+		jQuery.mediaPlayer.stop();
+	});
+
+   jQuery('#quieter').click( function(){
+		jQuery.mediaPlayer.quieter();
+	});
+
+   jQuery('#louder').click( function(){
+		jQuery.mediaPlayer.louder();
+	});
+
+
+})
+
+</script>
+
+<div id="player-wrapper">
+  <!-- Section for displaying data about the item -->
+  <div id="playlist">
+    <h2 class="hide">Current Item</h2>
+    <ul class="items">
+      <li>
+        <h3>This is the title of the item up to 64 characters in width  XXXX</h3>
+        <p>This is the description of the item and can be up to 128 chars, which is a lot longer than the title and would extent out to here X.</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section for showing the current clip time -->
+  <div id="controls-wrapper">
+    <div id="time-wrapper">
+      <h2 class="hide">Current time</h2>
+      <div id="counter">
+        <div class="seconds">0:00</div>
+      </div>
+    </div>
+
+    <div id="player">
+      <h2 class="hide">Player Controls</h2>
+      <ul id="controls">
+        <!-- li><input width="50" type="image" height="50" alt="Last" src="0.gif" id="last"/></li -->
+        <li><input type="image" alt="Stop" src="0.gif" id="stop"/></li>
+        <li><input type="image" alt="Play/Pause" src="0.gif" id="play" class="play"/></li>
+        <!-- li><input type="image" alt="Pause" src="0.gif" id="pause"/></li -->
+        <!-- li><input type="image" alt="Next" src="0.gif" id="next"/></li -->
+        <li><input type="image" height="50" alt="Quieter" src="0.gif" id="quieter"/></li>
+        <li><input type="image" alt="Louder" src="0.gif" id="louder"/></li>
+      </ul>
+    </div>
+
+    <div id="slider-wrapper">
+      <label for="percentage" id="percentageLabel" class="hide">Position Sider Range: 0 - 100</label>
+      <input name="percentage" id="percentage" type="text" title="Range: 0 - 100" class="fd_slider fd_tween fd_range_0_180 fd_kbinc_5 fd_kbhop_30 fd_hide_input fd_slider_cb_update_sliderseek" value="0"  maxlength="3" />
+    </div>
+
+    <div id="volume">
+
+    </div>
+  </div>
+</div>
+	<h1>Audio Player</h1>
+	<div id="player-wrapper">
+		<!-- Section for displaying data about the item -->
+		<div id="playlist">
+			<h2 class="hide">Current Item</h2>
+			<ul class="items">
+				<li>
+					<h3>This is the title of the item up to 64 characters in width  XXXX</h3>
+					<p>This is the description of the item and can be up to 128 chars, which is a lot longer than the title and would extent out to here X.</p>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Section for showing the current clip time -->
+		<div id="controls-wrapper">
+			<div id="time-wrapper">
+				<h2 class="hide">Current time</h2>
+				<div id="counter">
+		  		<div class="seconds">0:00</div>
+				</div>
+			</div>
+
+			<div id="player">
+		  	<h2 class="hide">Player Controls</h2>
+		  	<ul id="controls">
+			  	<!-- li><input width="50" type="image" height="50" alt="Last" src="0.gif" id="last"/></li -->
+			  	<li><input type="image" alt="Stop" src="0.gif" id="stop"/></li>
+			  	<li><input type="image" alt="Play/Pause" src="0.gif" id="play" class="play"/></li>
+			  	<!-- li><input type="image" alt="Pause" src="0.gif" id="pause"/></li -->
+			  	<!-- li><input type="image" alt="Next" src="0.gif" id="next"/></li -->
+			  	<li><input type="image" height="50" alt="Quieter" src="0.gif" id="quieter"/></li>
+			  	<li><input type="image" alt="Louder" src="0.gif" id="louder"/></li>
+		  	</ul>
+			</div>
+
+			<div id="slider-wrapper">
+		    <label for="percentage" id="percentageLabel" class="hide">Position Sider Range: 0 - 100</label>
+		    <input name="percentage" id="percentage" type="text" title="Range: 0 - 100" class="fd_slider fd_tween fd_range_0_180 fd_kbinc_5 fd_kbhop_30 fd_hide_input fd_slider_cb_update_sliderseek" value="0"  maxlength="3" />
+			</div>
+
+			<div id="volume">
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

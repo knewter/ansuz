@@ -4,6 +4,7 @@ module Ansuz
       acts_as_taggable
       acts_as_url :title
       stampable
+      acts_as_commentable
 
       validates_uniqueness_of :url
 
