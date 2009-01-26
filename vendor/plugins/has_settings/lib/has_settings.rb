@@ -27,7 +27,7 @@ module HasSettings
 
       define_method "settings" do |*args|
         @the_has_settings_setting ||= get_has_settings_setting
-        @the_has_settings_setting.settings
+        @the_has_settings_setting.settings || {}
       end
 
       define_method "settings=" do |the_settings|

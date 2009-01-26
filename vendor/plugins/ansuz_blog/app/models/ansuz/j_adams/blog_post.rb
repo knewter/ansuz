@@ -5,6 +5,7 @@ module Ansuz
       acts_as_url :title
       stampable
       acts_as_commentable
+      has_settings
 
       validates_uniqueness_of :url
 

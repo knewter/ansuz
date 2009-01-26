@@ -23,6 +23,7 @@ class Admin::BlogPostsController < Admin::BaseController
   end
 
   def create
+    @blog_post.settings = params[:settings]
     if @blog_post.save
       flash[:notice] = "Blog Post was created successfully."
       redirect_to admin_blog_posts_path
@@ -39,6 +40,7 @@ class Admin::BlogPostsController < Admin::BaseController
   end
 
   def update
+    @blog_post.settings = params[:settings]
     if @blog_post.update_attributes(params[:blog_post])
       flash[:notice] = "Blog Post has been updated."
       redirect_to admin_blog_post_path(@blog_post)
