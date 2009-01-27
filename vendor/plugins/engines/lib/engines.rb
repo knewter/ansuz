@@ -87,7 +87,8 @@ module Engines
     end
     
     def logger
-      RAILS_DEFAULT_LOGGER
+      #RAILS_DEFAULT_LOGGER
+      Logger.new(File.join(RAILS_ROOT, "log", "engines.log"))
     end
     
     def load_extensions

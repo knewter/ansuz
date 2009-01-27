@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_database_dumper
   map.from_plugin :ansuz_user_system
   map.from_plugin :ansuz_plugin_media_player
+  map.from_plugin :ansuz_mephisto_xmlrpc
 
   map.resources :tags
   map.resources :users

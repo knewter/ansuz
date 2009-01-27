@@ -13,6 +13,7 @@ module Ansuz
       has_many :blog_comments, :class_name => "Ansuz::JAdams::BlogComment", :order => "created_at DESC"
 
       named_scope :recent, :limit => 5, :order => "created_at DESC" # FIXME: These should have publication dates, not just created_at
+      named_scope :created_by, lambda{ |user| { :conditions => ["creator_id = ?", user.id] } }
 
       def edit_path
         "/blog_posts/#{id}/edit"
