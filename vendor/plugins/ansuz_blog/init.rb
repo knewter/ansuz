@@ -10,7 +10,7 @@ Ansuz::PluginManagerInstance.register_plugin(Ansuz::JAdams::Blog::RecentPostsWid
 Ansuz::PluginManagerInstance.register_admin_dashboard_box("Recent Comments", 'articles/recent_comments_admin_dashboard_box')
 
 # Add a statistic to the admin "At a Glance" box for Comments, Posts
-Ansuz::PluginManagerInstance.register_at_a_glance_statistic "Blog Posts" do
+Ansuz::PluginManagerInstance.register_at_a_glance_statistic "Blog Posts", :url => "/admin/blog_posts" do
   Ansuz::JAdams::BlogPost.count
 end
 Ansuz::PluginManagerInstance.register_at_a_glance_statistic "Blog Comments" do

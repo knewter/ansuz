@@ -43,8 +43,8 @@ module Ansuz
     #     register_at_a_glance_statistic "Posts" do
     #       Post.count
     #     end
-    def register_at_a_glance_statistic title, &block
-      @at_a_glance_entries << [title, block]
+    def register_at_a_glance_statistic title, options={}, &block
+      @at_a_glance_entries << [title, options[:url], block]
     end
 
     # Plugins may have external gem depdencies, such as ansuz_content_section (RedCloth/BlueCloth)
