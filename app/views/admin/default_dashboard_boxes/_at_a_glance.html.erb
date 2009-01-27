@@ -1,0 +1,8 @@
+<ul class='at-a-glance'>
+  <% Ansuz::PluginManagerInstance.at_a_glance_entries.each do |entry| %>
+    <li>
+      <em><%= entry[1].call %></em>
+      <%= entry[0] %>
+    </li>
+  <% end %>
+</ul>

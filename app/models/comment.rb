@@ -10,6 +10,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   named_scope :recent, :limit => 5, :order => "created_at DESC"
+  named_scope :for, lambda{ |klass| { :conditions => ["commentable_type = ?", klass] } }
   
   # Helper class method to lookup all comments assigned
   # to all commentable types for a given user.

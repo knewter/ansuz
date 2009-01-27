@@ -8,3 +8,11 @@ Ansuz::PluginManagerInstance.register_plugin(Ansuz::JAdams::Blog::RecentPostsWid
 
 # Add a box to the admin dashboard to see most recent comments
 Ansuz::PluginManagerInstance.register_admin_dashboard_box("Recent Comments", 'articles/recent_comments_admin_dashboard_box')
+
+# Add a statistic to the admin "At a Glance" box for Comments, Posts
+Ansuz::PluginManagerInstance.register_at_a_glance_statistic "Blog Posts" do
+  Ansuz::JAdams::BlogPost.count
+end
+Ansuz::PluginManagerInstance.register_at_a_glance_statistic "Blog Comments" do
+  Comment.for("Ansuz::JAdams::BlogPost").count
+end

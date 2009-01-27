@@ -2,7 +2,7 @@ require File.join( RAILS_ROOT, "lib", "ansuz", "plugin_settings.rb" )
 module Ansuz
   class PluginManager
     include Ansuz::PluginSettings
-    attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types, :admin_dashboard_boxes
+    attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types, :admin_dashboard_boxes, :at_a_glance_entries
     ADMIN_MENU_TOP_LEVEL_ENTRIES = ["Create", "Manage", "Ansuz"]
 
     def initialize
@@ -13,6 +13,7 @@ module Ansuz
       @admin_menu_top_level_entries = ADMIN_MENU_TOP_LEVEL_ENTRIES.clone
       @admin_dashboard_boxes = []
       @page_types = []
+      @at_a_glance_entries = []
       setup_admin_menu
     end
 
@@ -34,6 +35,16 @@ module Ansuz
     # render the box.
     def register_admin_dashboard_box title, partial_path
       @admin_dashboard_boxes << [title, partial_path]
+    end
+
+    # At-a-Glance is a way to see what's going on in your website in one
+    # box on the admin dashboard.  This method may be used to register a new
+    # statistic.  You should call it with:
+    #     register_at_a_glance_statistic "Posts" do
+    #       Post.count
+    #     end
+    def register_at_a_glance_statistic title, &block
+      @at_a_glance_entries << [title, block]
     end
 
     # Plugins may have external gem depdencies, such as ansuz_content_section (RedCloth/BlueCloth)

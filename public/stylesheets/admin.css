@@ -477,6 +477,9 @@ table.tree tr.odd:hover td {
   background-color:#ebebeb !important;
 }
 
+.dashboard_box{
+  margin-bottom: 10px;
+}
 .dashboard_box h3{
   background-color: #222;
   color: white;
