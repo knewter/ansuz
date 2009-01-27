@@ -15,7 +15,7 @@ class BloggerService < XmlRpcService
     blog_post = Ansuz::JAdams::BlogPost.new
     blog_post.contents = body || content || ''
     blog_post.title = title || content.split.slice(0..5).join(" ") || ""
-    blog_post.user = User.find_by_login(user)
+    blog_post.creator = User.find_by_login(user)
     blog_post.save
     blog_post.id
   end
