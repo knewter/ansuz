@@ -1,0 +1,7 @@
+<%= title "Dashboard" %>
+
+<% Ansuz::PluginManagerInstance.admin_dashboard_boxes.each do |dashboard_box| %>
+  <% render :layout => 'shared/dashboard_box', :locals => { :title => dashboard_box[0] } do %>
+    <%= render :partial => dashboard_box[1] %>
+  <% end %>
+<% end %>

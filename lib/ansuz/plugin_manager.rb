@@ -2,7 +2,7 @@ require File.join( RAILS_ROOT, "lib", "ansuz", "plugin_settings.rb" )
 module Ansuz
   class PluginManager
     include Ansuz::PluginSettings
-    attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types
+    attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types, :admin_dashboard_boxes
     ADMIN_MENU_TOP_LEVEL_ENTRIES = ["Create", "Manage", "Ansuz"]
 
     def initialize
@@ -11,6 +11,7 @@ module Ansuz
       @admin_plugin_nav = []
       @admin_menu = {}
       @admin_menu_top_level_entries = ADMIN_MENU_TOP_LEVEL_ENTRIES.clone
+      @admin_dashboard_boxes = []
       @page_types = []
       setup_admin_menu
     end
@@ -26,6 +27,13 @@ module Ansuz
     # user-facing navigation menu
     def register_plugin_nav title, link
       self.plugin_nav << [title, link]
+    end
+
+    # A plugin can register a box to be shown in the admin dashboard
+    # The partial is expected to contain everything necessary to
+    # render the box.
+    def register_admin_dashboard_box title, partial_path
+      @admin_dashboard_boxes << [title, partial_path]
     end
 
     # Plugins may have external gem depdencies, such as ansuz_content_section (RedCloth/BlueCloth)

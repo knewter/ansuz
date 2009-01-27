@@ -30,6 +30,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :tags
     admin.resources :roles
     admin.resource  :account
+    admin.resource  :dashboard
     admin.resource  :site_settings, :collection => [:choose_theme]
     admin.connect   'account/:action/:id', :controller => 'account'
   end

@@ -476,3 +476,9 @@ table.tree tr.even:hover td {
 table.tree tr.odd:hover td {
   background-color:#ebebeb !important;
 }
+
+.dashboard_box h3{
+  background-color: #222;
+  color: white;
+  padding: 6px;
+}
