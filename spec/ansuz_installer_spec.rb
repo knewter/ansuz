@@ -14,7 +14,7 @@ describe Ansuz::Installer do
     end
 
     it "should show a list of themes available" do
-      @stdin.write "a_test_theme\n" # We gotta write and rewind, or the method won't see anything
+      @stdin.write "a_test_theme\n"
       @stdin.rewind
 
       @installer.choose_theme( @theme_dir )
@@ -63,10 +63,10 @@ describe Ansuz::Installer do
     end
 
     it "should not continue if the user enters a newline or anything other than y/yes" do
-    #  @stdin.write "banjo\n"
-    #  @stdin.rewind
-    #  @installer.create_db_config
-    #  @installer.state.should == :user_doesnt_want_database_yaml
+      @stdin.write "banjo\n"
+      @stdin.rewind
+      @installer.create_db_config
+      @installer.state.should == :user_doesnt_want_database_yaml
     end
 
     it "should prompt the user if he/she wants a database.yml created for them" do
@@ -88,7 +88,6 @@ describe Ansuz::Installer do
     after(:each) do 
       @stdout.truncate(0)
       @stdin.close_write
-      @stdin.reopen("","r+")
       if( File.exists?( @database_yaml_backup_path ) && !File.exists?( @database_yaml_path ) )
         FileUtils.cp( @database_yaml_backup_path , @database_yaml_path )
       end
