@@ -11,6 +11,7 @@ module Ansuz
     end
 
     def choose_theme(theme_directory = File.join(RAILS_ROOT, "public", "themes")) 
+       FileUtils.mkdir_p( theme_directory ) unless File.directory?( theme_directory )
       @themes =   Dir.entries(theme_directory).select{|d| d =~ /^\w|^\d/}.collect{|theme| theme="- #{theme}"}
       if( @themes.any? )
         @stdout.puts "[ansuz] Themes:\n" + @themes.join("\n")
@@ -37,6 +38,7 @@ module Ansuz
     def get_user_response_for(question, default_response="")
       @state = :getting_user_response
       @stdout.puts question
+      @stdin = rewind(@stdin)
       response = @stdin.gets.chomp.strip
       @state = :got_user_response
       if( response.nil? || response.blank? )
@@ -48,10 +50,9 @@ module Ansuz
 
     def create_db_config(database_yaml_path = File.join(RAILS_ROOT, "config", "database.yml") )
       unless( File.exists?( database_yaml_path ) )
-        @stdout.puts "[ansuz] Database config does not exist? Would you like one created for you? (Rails will not boot until it has a valid db config)"
-        @state = :user_wants_database_yaml
-        response = @stdin.gets.chomp
+        response = get_user_response_for("[ansuz] Database config does not exist? Would you like one created for you? (Rails will not boot until it has a valid db config)")
         if( response =~ /^y|^yes/i )
+          @state = :user_wants_database_yaml
           config = { }
           config["adapter"] = get_user_response_for("[ansuz] Database Wizard: Which adapter will the CMS use? ( mysql, sqlite, etc) ", "mysql").downcase
           if( config["adapter"] != "sqlite" )
@@ -83,9 +84,6 @@ module Ansuz
       
       @stdout.puts "[ansuz] Creating database .."
       Kernel.silence_stream(@stdout) do
-        # TRY TO FIXME
-        # Invoking db tasks causes a rollback of some kind during testing -james
-        #Rake::Task['db:create:all'].invoke 
         create_database
       end
 
@@ -110,6 +108,7 @@ module Ansuz
       create_fckeditor_uploads_dir
 
       self.choose_theme
+      @state = :installation_complete
 
       @stdout.puts "[ansuz] Finished! Start Ansuz with `script/server` on Linux or `ruby script/server` on Windows."
     end
@@ -151,7 +150,7 @@ module Ansuz
       @state = :creating_fckeditor_uploads_dir
       unless( File.directory?( File.join(RAILS_ROOT, "public", "uploads") ) )
         @stdout.puts "[ansuz] Creating public/uploads directory for FCKeditor.."
-        FileUtils.mkdir( File.join(RAILS_ROOT, "public", "uploads") )
+        FileUtils.mkdir_p( File.join(RAILS_ROOT, "public", "uploads") )
         @state = :created_fckeditor_uploads_dir
       else
         @state = :fckeditor_uploads_dir_already_exists
@@ -171,6 +170,13 @@ module Ansuz
     def migrate_plugins
       @state = :migrating_plugins
       system "rake db:migrate:plugins"
+    end
+
+    def rewind(io)
+      if( io.is_a?(StringIO) ) # In non-test environment, we can't seek through STDIN, it gets rewound for us I suppose -james
+        io.rewind
+      end
+      io
     end
   end
 end

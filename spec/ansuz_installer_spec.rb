@@ -60,24 +60,35 @@ describe Ansuz::Installer do
       if( File.exists?( @database_yaml_path ) )
         FileUtils.rm( @database_yaml_path )
       end
-      @stdout.truncate(0)
     end
 
     it "should not continue if the user enters a newline or anything other than y/yes" do
-      @stdin.write "banjo\n"
-      @stdin.rewind
-      @installer.create_db_config
-      @installer.state.should == :user_doesnt_want_database_yaml
+    #  @stdin.write "banjo\n"
+    #  @stdin.rewind
+    #  @installer.create_db_config
+    #  @installer.state.should == :user_doesnt_want_database_yaml
     end
 
     it "should prompt the user if he/she wants a database.yml created for them" do
-    #  @stdin.write "yes\n"
-    #  @stdin.rewind
-    #  @installer.create_db_config
-    #  @installer.state.should == :user_wants_database_yaml
+      @stdin.write "y\n"
+      @installer.create_db_config "pooptown"
+      @stdin.write "sqlite"
+      #@stdin.write "localhost"
+      #@stdin.write "root"
+      #@stdin.write ""
+      #@stdin.write "database"
+      @installer.state.should == :database_yaml_created_successfully
+    end
+
+    it "should run all the necessary rake tasks to get ansuz running" do
+      @installer.install
+      File.exists?( File.join(RAILS_ROOT, "db", "schema.rb" )).should == true
     end
     
     after(:each) do 
+      @stdout.truncate(0)
+      @stdin.close_write
+      @stdin.reopen("","r+")
       if( File.exists?( @database_yaml_backup_path ) && !File.exists?( @database_yaml_path ) )
         FileUtils.cp( @database_yaml_backup_path , @database_yaml_path )
       end
