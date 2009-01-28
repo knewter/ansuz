@@ -459,7 +459,6 @@ ul.admin_actions li{
 }
 /* --  tree ---*/
 table.tree tr{
-  border: 0 !important;
   font-size: 1.4em;
   height: 35px !important;
   min-height: 35px !important;

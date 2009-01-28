@@ -238,6 +238,10 @@ class Page < ActiveRecord::Base
     status == 'draft'
   end
 
+  def permalinkable_title
+    title.downcase.gsub(/ /, '-')
+  end
+
   protected
   def check_page_type
     self.page_type = "page" and return if self.body.blank? || (@split_pages = self.body.split(/\{pagebreak\}/i)).length == 1 

@@ -30,4 +30,13 @@ module FormBuilderHelper
     render :partial => "/admin/form_fields/builder_views/#{partial_name}",
       :locals => { :form_field => field }.merge(options[:locals] || {})
   end
+
+  def form_field_response_for(form_field, form_response)
+    res = form_response.form_field_responses.find_by_form_field_id(form_field.id)
+    if res
+      res.value
+    else
+      'N/A'
+    end
+  end
 end
