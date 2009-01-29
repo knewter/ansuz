@@ -35,7 +35,7 @@ module HasSettings
       end
 
       define_method "save_settings" do
-        get_has_settings_setting.save
+        get_has_settings_setting.save unless new_record?
       end
 
       define_method "get_has_settings_setting" do
