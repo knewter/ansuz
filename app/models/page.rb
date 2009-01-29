@@ -25,6 +25,8 @@ class Page < ActiveRecord::Base
   acts_as_commentable
   has_settings
 
+  validates_presence_of :name, :title
+
   named_scope :visible, :conditions => ["(expires_on > ? OR expires_on IS NULL) AND published = ? AND (publish_at <= ? OR publish_at IS NULL )", Time.now.getgm, true, Time.now.getgm]
   named_scope :self_and_siblings, lambda {|page| {:conditions => ["parent_id = ?", page.parent_id], :order => 'page_order'}}
   named_scope :expired,      lambda {|p| { :conditions => ["expires_on < ?", Time.now.getgm] } }
