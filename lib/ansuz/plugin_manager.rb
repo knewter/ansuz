@@ -2,7 +2,10 @@ require File.join( RAILS_ROOT, "lib", "ansuz", "plugin_settings.rb" )
 module Ansuz
   class PluginManager
     include Ansuz::PluginSettings
-    attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, :admin_menu, :admin_menu_top_level_entries, :page_types, :admin_dashboard_boxes, :at_a_glance_entries
+    attr_accessor :plugins, :plugin_nav, :admin_plugin_nav, 
+                  :admin_menu, :admin_menu_top_level_entries, 
+                  :page_types, :admin_dashboard_boxes, 
+                  :at_a_glance_entries
     ADMIN_MENU_TOP_LEVEL_ENTRIES = ["Create", "Manage", "Ansuz"]
 
     def initialize

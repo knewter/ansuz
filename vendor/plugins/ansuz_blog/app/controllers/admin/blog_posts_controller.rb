@@ -23,10 +23,16 @@ class Admin::BlogPostsController < Admin::BaseController
   end
 
   def create
-    @blog_post.settings = params[:settings]
     if @blog_post.save
+      @blog_post.settings = params[:settings]
+      @blog_post.save # has_settings doesn't work like you might want on new records yet, so we save twice.
       flash[:notice] = "Blog Post was created successfully."
-      redirect_to admin_blog_posts_path
+      # Weak, baked-in support for quick-post plugin.
+      if params[:quick_post]
+        redirect_to admin_dashboard_path
+      else
+        redirect_to admin_blog_posts_path
+      end
     else
       flash.now[:error] = "There was a problem creating the blog post."
       render :action => 'new'

@@ -476,6 +476,7 @@ table.tree tr.odd:hover td {
   background-color:#ebebeb !important;
 }
 
+/* dashboard */
 .dashboard_box{
   margin-bottom: 10px;
 }
@@ -483,4 +484,13 @@ table.tree tr.odd:hover td {
   background-color: #222;
   color: white;
   padding: 6px;
+}
+
+/* twocol */
+.twocol .col{
+  width: 47%;
+  float: left;
+}
+.twocol .left.col{
+  margin-right:20px;
 }
