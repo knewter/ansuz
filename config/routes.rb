@@ -15,9 +15,12 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_twitterati
   map.from_plugin :ansuz_database_dumper
   map.from_plugin :ansuz_user_system
+  #map.from_plugin :ansuz_plugin_media_player
+  map.from_plugin :ansuz_mephisto_xmlrpc
 
   map.resources :tags
   map.resources :users
+  map.resources :comments
 
   # <admin routes>
   map.namespace :admin do |admin|
@@ -28,6 +31,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :tags
     admin.resources :roles
     admin.resource  :account
+    admin.resource  :dashboard
     admin.resource  :site_settings, :collection => [:choose_theme]
     admin.connect   'account/:action/:id', :controller => 'account'
   end

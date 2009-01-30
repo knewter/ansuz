@@ -1,0 +1,13 @@
+<% form_for comment do |f| %>
+  <h3>Post a Comment</h3>
+  <table class='subdued'>
+    <%= f.hidden_field(:commentable_type) %>
+    <%= f.hidden_field(:commentable_id) %>
+    <%= hidden_field_tag(:return_path, return_path) %>
+    <%= form_row "Name:",     f.text_field(:name) %>
+    <%= form_row "Email:",    f.text_field(:email) %>
+    <%= form_row "Website:",  f.text_field(:website) %>
+    <%= form_row "Comments:", f.text_area(:comments) %>
+    <%= form_row "",          submit_tag("Post Comment") %>
+  </table>
+<% end %>

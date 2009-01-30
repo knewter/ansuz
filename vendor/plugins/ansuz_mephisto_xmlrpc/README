@@ -1,0 +1,35 @@
+= MephistoXmlrpc
+
+
+== Configuration
+ install the plugin using script/pugin
+
+follow these steps
+
+1:  edit file app/controllers/application/error.rb
+
+locate these lines 
+
+rescue_from ActiveRecord::RecordNotFound,        :with =&gt; :render_admin_not_found
+rescue_from ActionController::UnknownController, :with =&gt; :render_admin_not_found
+rescue_from ActionController::UnknownAction,     :with =&gt; :render_admin_not_found
+
+change these lines to
+
+rescue_from ::ActiveRecord::RecordNotFound,        :with =&gt; :render_admin_not_found
+rescue_from ::ActionController::UnknownController, :with =&gt; :render_admin_not_found
+rescue_from ::ActionController::UnknownAction,     :with =&gt; :render_admin_not_found
+
+save the file .
+
+2:  checkout action web service from svn repo. into vendor/rails folder.     
+
+svn co    http://svn.rubyonrails.org/rails/ousted/actionwebservice/
+
+3.  restart your server 
+
+Now you have working xmlrpc service at your server .
+
+==BUGS
+
+Please report all bugs and/or submit patches to: jeet at railshacks dot com

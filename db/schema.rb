@@ -9,7 +9,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090114005523) do
+ActiveRecord::Schema.define(:version => 20090125222830) do
+
+  create_table "ansuz_themes", :force => true do |t|
+    t.string   "name"
+    t.string   "repository_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blog_comments", :force => true do |t|
+    t.string   "author"
+    t.string   "email"
+    t.string   "website"
+    t.text     "text"
+    t.integer  "blog_post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blog_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "contents"
+    t.integer  "created_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "url"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.integer  "deleter_id"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "website"
+    t.text     "comments"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "content_section_versions", :force => true do |t|
     t.integer  "content_section_id"
@@ -28,6 +68,12 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.datetime "updated_at"
     t.integer  "version",    :default => 1
   end
+
+  create_table "feed_readers", :force => true do |t|
+    t.string "name"
+  end
+
+  add_index "feed_readers", ["name"], :name => "index_feed_readers_on_name"
 
   create_table "form_builder_responses", :force => true do |t|
     t.integer  "form_builder_id"
@@ -76,6 +122,41 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.text    "description_html"
   end
 
+  create_table "fyles", :force => true do |t|
+    t.string   "mime_type"
+    t.string   "file_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "has_settings_settings", :force => true do |t|
+    t.text    "settings"
+    t.integer "configurable_id"
+    t.string  "configurable_type"
+  end
+
+  create_table "media_player_playlist_items", :force => true do |t|
+    t.integer "media_player_id"
+    t.string  "playlist_item_song_file_name"
+    t.string  "playlist_item_song_content_type"
+    t.integer "playlist_item_song_file_size"
+  end
+
+  add_index "media_player_playlist_items", ["media_player_id"], :name => "index_media_player_playlist_items_on_media_player_id"
+
+  create_table "media_players", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "menu_entries", :force => true do |t|
+    t.string   "name"
+    t.string   "link"
+    t.integer  "position"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "moderatorships", :force => true do |t|
     t.integer "forum_id"
     t.integer "user_id"
@@ -113,7 +194,6 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.string   "name"
     t.string   "title"
     t.string   "full_title"
-    t.string   "status"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -124,6 +204,7 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.boolean  "published",     :default => true
     t.boolean  "linked",        :default => true
     t.boolean  "show_sub_menu", :default => false
+    t.string   "status"
     t.datetime "publish_at"
     t.datetime "expires_on"
   end
@@ -143,6 +224,12 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
 
   create_table "photo_albums", :force => true do |t|
     t.string "name"
+    t.string "display_type"
+  end
+
+  create_table "plugin_schema_info", :id => false, :force => true do |t|
+    t.string  "plugin_name"
+    t.integer "version"
   end
 
   create_table "posts", :force => true do |t|
@@ -181,6 +268,16 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
     t.datetime "updated_at"
   end
 
+  create_table "scrollable_content_sections", :force => true do |t|
+    t.integer "scrollable_content_id"
+    t.string  "title"
+    t.text    "contents"
+  end
+
+  create_table "scrollable_contents", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "site_settings", :force => true do |t|
     t.string   "name"
     t.string   "user_theme_name"
@@ -210,6 +307,13 @@ ActiveRecord::Schema.define(:version => 20090114005523) do
 
   add_index "tags", ["name"], :name => "index_tags_on_name"
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
+
+  create_table "testimonials", :force => true do |t|
+    t.text     "content"
+    t.string   "attributed_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "topics", :force => true do |t|
     t.integer  "forum_id"

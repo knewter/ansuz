@@ -2,4 +2,6 @@
 <%= form_heading "Post", fckeditor_textarea(:blog_post, :contents, :toolbarSet => 'Simple', :width => '100%', :height => '400px') -%>
 <br />
 <%= form_heading "Tags", f.text_field(:tag_list) -%>
+<%= form_heading "Allow Comments?", check_box_tag("settings[allow_comments]", "on", @blog_post.settings["allow_comments"] == "on") -%>
+<%= hidden_field_tag "settings[ignoreme]" %>
 <br />

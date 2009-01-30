@@ -10,7 +10,6 @@ RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-
 # Create log directory if it doesn't exist
 unless( File.directory?( File.join(RAILS_ROOT, "log") ) )
   STDOUT.puts "Creating log directory.."
@@ -60,12 +59,13 @@ Rails::Initializer.run do |config|
              :source => 'http://gems.github.com'
 
   config.gem 'rubyist-aasm', :version => '~> 2.0.2', :lib => 'aasm', :source => "http://gems.github.com"
+  config.gem 'datanoise-actionwebservice', :lib => 'actionwebservice', :source => "http://gems.github.com"
   config.gem 'mocha'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
-  config.plugins = [ :has_settings, :stringex, :userstamp, :all ]
+  config.plugins = [ :has_settings, :stringex, :userstamp, :paperclip, :all ]
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )

@@ -31,6 +31,7 @@ class Admin::PagesController < Admin::BaseController
   end 
 
   def update
+    @page.settings = params[:settings]
     if @page.update_attributes(params[:page])
       handle_publishing_workflow
       flash.now[:message] = 'Page Updated Successfully'
@@ -56,6 +57,7 @@ class Admin::PagesController < Admin::BaseController
  
   def create
     @page.name = @page.name.gsub(' ', '_')
+    @page.settings = params[:settings]
     if @page.save
       attach_page_plugins
       message = 'Page Added Successfully'

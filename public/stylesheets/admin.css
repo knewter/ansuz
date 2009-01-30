@@ -459,7 +459,6 @@ ul.admin_actions li{
 }
 /* --  tree ---*/
 table.tree tr{
-  border: 0 !important;
   font-size: 1.4em;
   height: 35px !important;
   min-height: 35px !important;
@@ -475,4 +474,23 @@ table.tree tr.even:hover td {
 }
 table.tree tr.odd:hover td {
   background-color:#ebebeb !important;
+}
+
+/* dashboard */
+.dashboard_box{
+  margin-bottom: 10px;
+}
+.dashboard_box h3{
+  background-color: #222;
+  color: white;
+  padding: 6px;
+}
+
+/* twocol */
+.twocol .col{
+  width: 47%;
+  float: left;
+}
+.twocol .left.col{
+  margin-right:20px;
 }

@@ -1,0 +1,14 @@
+.comments .comment{
+  margin-bottom: 1em;
+  padding: 1em;
+}
+.comments .comment .grav{
+  width: 80px;
+  float: left;
+}
+.comments .comment .contents{
+  margin-left: 80px;
+}
+.comments .comment.odd{
+  background-color: #eee;
+}

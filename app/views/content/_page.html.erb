@@ -1,16 +1,18 @@
-<% if page.page_plugins.any? -%>
-  <% page.page_plugins.each_with_index do |plugin, i| -%>
-    <%# render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
-    <div class='page-plugin page-plugin-<%= i -%>'>
-      <%= render :partial => plugin.module.view_partial, :locals => { :plugin_module => plugin.module } -%>
-      <% if logged_in? && get_setting('show_inline_edit_links') %>
-        <div class='clear'></div>
-        <% if current_user.can_author_content? %>
-          <%= link_to "[Edit]", edit_admin_page_path(:id => page.id, :anchor => "page-plugin-#{plugin.id}") %>
-        <% elsif current_user.can_approve_content? %>
-          <%= link_to "[Manage Content]", edit_admin_page_path(:id => page.id, :anchor => "page-plugin-#{plugin.id}") %>
+<div class='page <%= page.permalinkable_title %>'>
+  <% if page.page_plugins.any? -%>
+    <% page.page_plugins.each_with_index do |plugin, i| -%>
+      <%# render :partial => plugin.module_class.view_partial, :locals => { :plugin_module => plugin.module } -%>
+      <div class='page-plugin page-plugin-<%= i -%>'>
+        <%= render :partial => plugin.module.view_partial, :locals => { :plugin_module => plugin.module } -%>
+        <% if logged_in? && get_setting('show_inline_edit_links') %>
+          <div class='clear'></div>
+          <% if current_user.can_author_content? %>
+            <%= link_to "[Edit]", edit_admin_page_path(:id => page.id, :anchor => "page-plugin-#{plugin.id}") %>
+          <% elsif current_user.can_approve_content? %>
+            <%= link_to "[Manage Content]", edit_admin_page_path(:id => page.id, :anchor => "page-plugin-#{plugin.id}") %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end -%>
   <% end -%>
-<% end -%>
+</div>

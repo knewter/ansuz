@@ -1,0 +1,13 @@
+<ul class='at-a-glance'>
+  <% Ansuz::PluginManagerInstance.at_a_glance_entries.each do |entry| %>
+    <li>
+      <em><%= entry[2].call %></em>
+      <% if entry[1] # they provided an url 
+      %>
+        <%= link_to entry[0], entry[1] %>
+      <% else %>
+        <%= entry[0] %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

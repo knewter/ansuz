@@ -8,6 +8,7 @@
     <%= form_row "Publish On", calendar_date_select_tag('page[publish_at]', Time.now.strftime("%Y-%m-%d %I:%M %P"), :time => true, :minute_interval => 5) %>
     <%= form_row "Expires On", calendar_date_select_tag('page[expires_on]', @page.expires_on, :time => true, :minute_interval => 5) %>
     <%= form_row "Status", @page.status, :field_options => { :id => 'status' } %>
+    <%= form_row "Allow Comments", check_box_tag("settings[allow_comments]", "on", @page.settings["allow_comments"] == "on") %>
   </table>
   <div class="advanced_options">
     <% toggle_content_box "Advanced Options" do %>

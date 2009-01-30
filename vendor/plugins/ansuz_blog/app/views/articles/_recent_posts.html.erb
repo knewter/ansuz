@@ -1,0 +1,7 @@
+<div class='recent-posts'>
+  <% Ansuz::JAdams::BlogPost.recent.each do |post| %>
+    <div class='post'>
+      <%= link_to post.title, article_path(post) %>
+    </div>
+  <% end %>
+</div>

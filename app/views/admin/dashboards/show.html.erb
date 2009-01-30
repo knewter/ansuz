@@ -1,0 +1,12 @@
+<%= title "Dashboard" %>
+
+<div class='twocol'>
+  <% Ansuz::PluginManagerInstance.admin_dashboard_boxes.in_groups(2).each_with_index do |half, i| %>
+    <div class='col <%= "left" if i==0 %>'>
+      <% half.compact.each do |dashboard_box| %>
+        <%= render_dashboard_box dashboard_box %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class='clear'></div>
+</div>

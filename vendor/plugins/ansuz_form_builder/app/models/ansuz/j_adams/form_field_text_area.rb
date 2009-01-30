@@ -5,6 +5,12 @@ module Ansuz
       before_create :ensure_label
       has_settings
 
+      # This is the field that this form field's value should be stored in 
+      # on the form field response
+      def value_field
+        "text"
+      end
+
       protected
       def ensure_label
         self.label = "Field Label" unless self.label
