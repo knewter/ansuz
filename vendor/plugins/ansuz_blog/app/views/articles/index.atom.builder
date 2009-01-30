@@ -8,7 +8,7 @@ atom_feed do |feed|
       entry.content post.contents
 
       entry.author do |author|
-        author.name post.author.login if post.author
+        author.name post.creator.login if post.creator
       end
     end
   end
