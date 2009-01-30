@@ -23,7 +23,11 @@ module Ansuz
           theme = @themes.detect{|t| t == theme_choice}
           if( theme )
             @state = :theme_installed
-            return SiteSetting.find_or_create_by_name(:default).update_attribute(:user_theme_name, theme)
+            begin
+              return SiteSetting.find_or_create_by_name(:default).update_attribute(:user_theme_name, theme)
+            rescue
+              STDERR.puts "Badness happened trying to set the default theme. SQLite does this a lot."
+            end
           else
             @state = :invalid_theme
             @stdout.puts "[ansuz] invalid theme."
@@ -62,7 +66,7 @@ module Ansuz
             config["socket"]   = get_user_response_for("[ansuz] Socket (/var/run/mysqld/mysqld.sock): ", "/var/run/mysqld/mysqld.sock")
             config["database"] = get_user_response_for("[ansuz] Database Name Prefix (ansuz):", "ansuz")
           else
-            config["database"] = get_user_response_for("[ansuz] Database Location (db/development.sqlite):", "db")
+            config["database"] = get_user_response_for("[ansuz] Database Location (db/development.sqlite):", "db/")
           end
 
           create_config_for_environment(["production","development","test"], config)
@@ -88,15 +92,16 @@ module Ansuz
         create_database
       end
 
+      @stdout.puts "[ansuz] Migrating plugins .."
+      Kernel.silence_stream(@stdout) do
+        migrate_plugins
+      end
+
       @stdout.puts "[ansuz] Migrating tables .."
       Kernel.silence_stream(@stdout) do
         migrate_database
       end
 
-      @stdout.puts "[ansuz] Migrating plugins .."
-      Kernel.silence_stream(@stdout) do
-        migrate_plugins
-      end
 
       # Create public/uploads directory for FCKeditor 
       create_fckeditor_uploads_dir

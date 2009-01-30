@@ -29,18 +29,20 @@ describe Ansuz::Installer do
       @installer.state.should == :user_doesnt_want_database_yaml
     end
 
+    # You may be tempted to use sqlite for tests, but then you'd be in a world of pain. SQLite - is - the - devil
     it "should prompt the user if he/she wants a database.yml created for them" do
       @stdin.write "y\n"
       @installer.create_db_config "pooptown"
-      @stdin.write "sqlite"
-      #@stdin.write "localhost"
-      #@stdin.write "root"
-      #@stdin.write ""
-      #@stdin.write "database"
+      @stdin.write "mysql\n"
+      @stdin.write "localhost"
+      @stdin.write "root"
+      @stdin.write ""
+      @stdin.write "\n"
       @installer.state.should == :database_yaml_created_successfully
     end
 
     it "should run all the necessary rake tasks to get ansuz running" do
+      @stdin.write "y\n"
       @installer.install
       @installer.state.should == :installation_complete
       File.exists?( File.join(RAILS_ROOT, "db", "schema.rb" )).should == true
