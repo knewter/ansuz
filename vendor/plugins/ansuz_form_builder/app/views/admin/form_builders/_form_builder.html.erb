@@ -1,5 +1,5 @@
 <% form_tag submit_form_builder_path(plugin_module) do %>
-  <table class='form-table'>
+  <table class='form-table subdued'>
     <% plugin_module.form_fields.each do |form_field| %>
       <%= form_field_display_for(form_field) %>
     <% end %>

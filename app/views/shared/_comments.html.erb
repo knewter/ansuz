@@ -1,6 +1,7 @@
 <div class='comments' id='comments'>
   <% if commentable.comments.any? %>
     <h3>Comments</h3>
+    <h4><%= link_to "Post a comment", "#new_comment" %></h4>
     <% commentable.comments.find(:all, :order => 'created_at DESC').each do |comment| %>
       <%= show_comment(comment) %>
     <% end %>
