@@ -92,22 +92,23 @@ module Ansuz
         create_database
       end
 
-      @stdout.puts "[ansuz] Migrating plugins .."
-      Kernel.silence_stream(@stdout) do
-        migrate_plugins
-      end
-
       @stdout.puts "[ansuz] Migrating tables .."
       Kernel.silence_stream(@stdout) do
         migrate_database
       end
 
+      @stdout.puts "[ansuz] Migrating plugins .."
+      Kernel.silence_stream(@stdout) do
+        migrate_plugins
+      end
 
       # Create public/uploads directory for FCKeditor 
       create_fckeditor_uploads_dir
 
       choose_theme
       @state = :installation_complete
+
+
 
       @stdout.puts "[ansuz] Finished! Start Ansuz with `script/server` on Linux or `ruby script/server` on Windows."
     end

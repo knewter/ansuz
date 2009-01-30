@@ -21,13 +21,6 @@ require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
 
 require 'ansuz'
 
-# All this stuff needs to run before the initializer block, else rails will barf if there is no database.yml
-unless( File.exists?( File.join(RAILS_ROOT, "config", "database.yml") ) )
-  require File.join(RAILS_ROOT, "lib", "ansuz", "installer")
-  installer = Ansuz::Installer.new( RAILS_ENV )
-  installer.install
-end
-
 # Initialize the Ansuz Plugin Manager instance
 Ansuz::PluginManagerInstance = Ansuz::PluginManager.new
 

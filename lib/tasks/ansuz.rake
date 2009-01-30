@@ -18,7 +18,7 @@ namespace :ansuz do
   task(:install) do
     @installer.create_db_config
     @installer.install
-    Rake::Task["utils:create_admin"].invoke # We can't see the ActiveRecord stuff in the installer. What's up with that? 
+    system("rake utils:create_admin")
 
     STDOUT.puts "[ansuz] Finished! Start Ansuz with `script/server` on Linux or `ruby script/server` on Windows."
   end
