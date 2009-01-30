@@ -15,10 +15,10 @@ namespace :ansuz do
   end
 
   desc "Run all the necessary tasks to install Ansuz"
-  task(:install => :environment) do
+  task(:install) do
     @installer.create_db_config
     @installer.install
-    @installer.state.should = :installation_complete
+    Rake::Task["utils:create_admin"].invoke # We can't see the ActiveRecord stuff in the installer. What's up with that? 
 
     STDOUT.puts "[ansuz] Finished! Start Ansuz with `script/server` on Linux or `ruby script/server` on Windows."
   end

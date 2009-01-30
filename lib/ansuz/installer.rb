@@ -11,7 +11,7 @@ module Ansuz
     end
 
     def choose_theme(theme_directory = File.join(RAILS_ROOT, "public", "themes")) 
-       FileUtils.mkdir_p( theme_directory ) unless File.directory?( theme_directory )
+      FileUtils.mkdir_p( theme_directory ) unless File.directory?( theme_directory )
       @themes =   Dir.entries(theme_directory).select{|d| d =~ /^\w|^\d/}.collect{|theme| theme="- #{theme}"}
       if( @themes.any? )
         @stdout.puts "[ansuz] Themes:\n" + @themes.join("\n")
@@ -78,8 +78,9 @@ module Ansuz
 
     def install
       unless( File.exists?( File.join(RAILS_ROOT, "config", "database.yml") ) )
-        @stdout.puts "[ansuz]Please create a config/database.yml file before running this task."
-        return false
+        #@stdout.puts "[ansuz]Please create a config/database.yml file before running this task."
+        #return false
+        create_db_config
       end
       
       @stdout.puts "[ansuz] Creating database .."
@@ -97,17 +98,10 @@ module Ansuz
         migrate_plugins
       end
 
-      if( User.find(:all, :conditions => ["login = 'admin'"]).empty? )
-        password = get_user_response_for("[ansuz] Enter a password for the default admin user:","")
-        create_default_admin_user( password )
-      else
-        @stdout.puts "[ansuz] Admin user already exists."
-      end
-
       # Create public/uploads directory for FCKeditor 
       create_fckeditor_uploads_dir
 
-      self.choose_theme
+      choose_theme
       @state = :installation_complete
 
       @stdout.puts "[ansuz] Finished! Start Ansuz with `script/server` on Linux or `ruby script/server` on Windows."
