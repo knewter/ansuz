@@ -5,7 +5,7 @@
   <div class='contents'>
     <div class='supplemental'>
       <cite><strong><%= comment.website.blank? ? comment.name : link_to(comment.name, comment.website) -%></cite></strong>
-      said <%= distance_of_time_in_words(Time.now, comment.created_at) %>
+      said <%= time_ago_in_words(comment.created_at) %>
     </div>
     <%= sanitize(comment.comments) %>
   </div>
