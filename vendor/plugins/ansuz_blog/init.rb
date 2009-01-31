@@ -1,4 +1,8 @@
 # Include hook code here
+#
+# add a blog_posts association to the user model
+require 'extend_users_with_blog_posts'
+
 Ansuz::PluginManagerInstance.register_plugin_nav('Blog', '/articles')
 Ansuz::PluginManagerInstance.register_admin_menu_entry('Manage', 'Blog Entries', '/admin/blog_posts')
 Ansuz::PluginManagerInstance.register_admin_menu_entry('Create', 'Blog Entry',  '/admin/blog_posts/new')

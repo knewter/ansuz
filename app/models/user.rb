@@ -16,7 +16,6 @@
 
 require 'digest/sha1'
 class User < ActiveRecord::Base
-  include SavageBeast::UserInit
   include Ansuz::AclRoles
   attr_accessor :registering
 
@@ -24,7 +23,7 @@ class User < ActiveRecord::Base
   acts_as_tagger # FIXME: We should switch to http://www.intridea.com/2007/12/4/announcing-acts_as_taggable_on
 
   # authorization plugin
-  acts_as_authorized_user
+  # acts_as_authorized_user
 
   # userstamp plugin
   model_stamper

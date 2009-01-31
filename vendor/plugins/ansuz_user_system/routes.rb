@@ -5,3 +5,5 @@ with_options :controller => 'sessions' do |session|
   session.logout   'logout', :action => 'destroy'
   session.create_user 'create_user', :action => 'create_user'
 end
+
+resource  :users

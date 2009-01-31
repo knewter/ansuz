@@ -12,12 +12,12 @@ class SessionsController < ApplicationController
         current_user.remember_me unless current_user.remember_token?
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
+      flash[:notice] = "Logged in successfully"
       if current_user.is_admin?
         redirect_back_or_default('/admin')
       else
         redirect_back_or_default('/')
       end
-      flash[:notice] = "Logged in successfully"
     else
       flash.now[:error] = "There was an error logging you in.  Make sure your username and password are correct."
       render :action => 'new'
