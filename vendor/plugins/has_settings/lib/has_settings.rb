@@ -22,28 +22,30 @@ module HasSettings
     # >> w.reload
     # >> w.settings["foo"] #=> "bar
     def has_settings
-      has_one :has_settings_setting, :as => "configurable"
-      after_save :save_settings
+      if ActiveRecord::Base.connection.table_exists?('has_settings_settings')
+        has_one :has_settings_setting, :as => "configurable"
+        after_save :save_settings
 
-      define_method "settings" do |*args|
-        @the_has_settings_setting ||= get_has_settings_setting
-        @the_has_settings_setting.settings || {}
-      end
+        define_method "settings" do |*args|
+          @the_has_settings_setting ||= get_has_settings_setting
+          @the_has_settings_setting.settings || {}
+        end
 
-      define_method "settings=" do |the_settings|
-        self.has_settings_setting.settings = the_settings
-      end
+        define_method "settings=" do |the_settings|
+          self.has_settings_setting.settings = the_settings
+        end
 
-      define_method "save_settings" do
-        get_has_settings_setting.save unless new_record?
-      end
+        define_method "save_settings" do
+          get_has_settings_setting.save unless new_record?
+        end
 
-      define_method "get_has_settings_setting" do
-        if self.has_settings_setting
-          self.has_settings_setting
-        else
-          self.has_settings_setting = HasSettingsSetting.new :settings => {}
-          self.has_settings_setting
+        define_method "get_has_settings_setting" do
+          if self.has_settings_setting
+            self.has_settings_setting
+          else
+            self.has_settings_setting = HasSettingsSetting.new :settings => {}
+            self.has_settings_setting
+          end
         end
       end
     end
