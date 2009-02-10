@@ -82,7 +82,7 @@ module Ansuz
 
     def install
       unless( File.exists?( File.join(RAILS_ROOT, "config", "database.yml") ) )
-        #@stdout.puts "[ansuz]Please create a config/database.yml file before running this task."
+        #@stdout.puts "[ansuz] Please create a config/database.yml file before running this task."
         #return false
         create_db_config
       end
@@ -152,6 +152,7 @@ module Ansuz
       end
     end
 
+    # FIXME: Somthing is causing this to be currently broken, should be fixed!
     def create_database
       @state = :creating_databases
       system "rake db:create:all" 
