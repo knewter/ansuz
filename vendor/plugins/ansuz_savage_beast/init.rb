@@ -1,4 +1,9 @@
-require 'extend_users'
+require 'dispatcher'
+
+# This should avoid the problem where methods go missing between reloads
+Dispatcher.to_prepare {
+  User.send :include, SavageBeast::UserInit
+}
 
 ActionView::Base.send :include, SavageBeast::AuthenticationSystem
 ActionController::Base.send :include, SavageBeast::AuthenticationSystem

@@ -10,4 +10,9 @@ module Ansuz
   end
 end
 
-User.send :include, Ansuz::JAdams::UserExtensions
+require 'dispatcher'
+
+# This should avoid the problem where methods go missing between reloads
+Dispatcher.to_prepare {
+  User.send :include, Ansuz::JAdams::UserExtensions
+}

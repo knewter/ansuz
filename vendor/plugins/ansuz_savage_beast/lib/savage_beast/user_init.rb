@@ -1,8 +1,5 @@
-
 module SavageBeast
-
   module UserInit
-
     def self.included(base)
       base.class_eval do
 
@@ -13,35 +10,24 @@ module SavageBeast
 				has_many :topics
 				has_many :monitorships
 				has_many :monitored_topics, :through => :monitorships, :conditions => ["#{Monitorship.table_name}.active = ?", true], :order => "#{Topic.table_name}.replied_at desc", :source => :topic
-
-				#implement in your user model 
-				def display_name
-					"implement display_name in your user model"
-				end
-				
-				#implement in your user model 
-				def admin?
-					false
-				end
-				
-        def moderator_of?(forum)
-          moderatorships.count(:all, :conditions => ['forum_id = ?', (forum.is_a?(Forum) ? forum.id : forum)]) == 1
-        end
-
-        def to_xml(options = {})
-          options[:except] ||= []
-          super
-        end
       end
       base.extend(ClassMethods)
+      base.send :include, InstanceMethods
     end
 
-    module ClassMethods			
+    module InstanceMethods			
 			#implement in your user model 
 			def currently_online
 				false
 			end
+
+      def moderator_of?(forum)
+        moderatorships.count(:all, :conditions => ['forum_id = ?', (forum.is_a?(Forum) ? forum.id : forum)]) == 1
+      end
 			
+    end
+
+    module ClassMethods
 			def search(query, options = {})
 				with_scope :find => { :conditions => build_search_conditions(query) } do
 					options[:page] ||= nil
@@ -55,13 +41,9 @@ module SavageBeast
 				query
 			end
 			
-			def moderator_of?(forum)
-				moderatorships.count("#{Moderatorship.table_name}.id", :conditions => ['forum_id = ?', (forum.is_a?(Forum) ? forum.id : forum)]) == 1
-			end
-			
 			def to_xml(options = {})
 				options[:except] ||= []
-				options[:except] << :email << :login_key << :login_key_expires_at << :password_hash << :openid_url << :activated << :admin
+				options[:except] << :email << :login_key << :login_key_expires_at << :password_hash << :openid_url << :activated << :admin << :crypted_password
 				super
 			end
 			
@@ -72,8 +54,6 @@ module SavageBeast
 			def update_posts_count(id)
 				User.update_all ['posts_count = ?', Post.count(:id, :conditions => {:user_id => id})],   ['id = ?', id]
 			end
-			
     end
-      
   end
 end
