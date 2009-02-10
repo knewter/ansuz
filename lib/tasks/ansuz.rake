@@ -122,9 +122,8 @@ namespace :ansuz do
       STDOUT.flush
       password = $stdin.gets.chomp
       u = User.new :login => 'admin', :email => 'admin@example.com', :password => password, :password_confirmation => password
-      u.save
       u.has_role 'admin'
-      u.save # Not sure why we save twice. Josh?
+      u.save
       STDOUT.puts "[ansuz] Admin user created with login 'admin' and the password you entered."
     else
       STDOUT.puts "[ansuz] Admin user already exists."
@@ -134,6 +133,8 @@ namespace :ansuz do
     unless( File.directory?( File.join(RAILS_ROOT, "public", "uploads") ) )
       STDOUT.puts "[ansuz] Creating public/uploads directory for FCKeditor.."
       FileUtils.mkdir( File.join(RAILS_ROOT, "public", "uploads") )
+    else
+      STDOUT.puts "[ansuz] public/uploads directory for FCKeditor already exists."
     end
 
     Rake::Task["ansuz:choose_theme"].invoke
