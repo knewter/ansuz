@@ -3,7 +3,7 @@ require "yaml"
 namespace :ansuz do
   desc "Set the CMS theme"
   task(:choose_theme => :environment) do
-    themes =   Dir.entries( File.join(RAILS_ROOT, "public", "themes")).select{|d| d =~ /^\w|^\d/}.collect{|theme| theme="- #{theme}"}
+    themes =   Dir.entries( File.join(RAILS_ROOT, "themes")).select{|d| d =~ /^\w|^\d/}.collect{|theme| theme="- #{theme}"}
     if( themes.any? )
       STDOUT.puts "[ansuz] Themes:\n" + themes.join("\n")
       STDOUT.puts "[ansuz] Enter a selection above, or leave blank for default"
@@ -19,6 +19,7 @@ namespace :ansuz do
     else
       STDOUT.puts "[ansuz] No themes available!"
     end
+  
   end
 
   # Called at the beginning of the initializer in config/environment.rb before Rails complains about not having a db"
@@ -122,9 +123,8 @@ namespace :ansuz do
       STDOUT.flush
       password = $stdin.gets.chomp
       u = User.new :login => 'admin', :email => 'admin@example.com', :password => password, :password_confirmation => password
-      u.save
       u.has_role 'admin'
-      u.save # Not sure why we save twice. Josh?
+      u.save
       STDOUT.puts "[ansuz] Admin user created with login 'admin' and the password you entered."
     else
       STDOUT.puts "[ansuz] Admin user already exists."
@@ -134,6 +134,8 @@ namespace :ansuz do
     unless( File.directory?( File.join(RAILS_ROOT, "public", "uploads") ) )
       STDOUT.puts "[ansuz] Creating public/uploads directory for FCKeditor.."
       FileUtils.mkdir( File.join(RAILS_ROOT, "public", "uploads") )
+    else
+      STDOUT.puts "[ansuz] public/uploads directory for FCKeditor already exists."
     end
 
     Rake::Task["ansuz:choose_theme"].invoke

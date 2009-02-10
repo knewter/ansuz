@@ -1,6 +1,6 @@
 class AddStatusToPages < ActiveRecord::Migration
   def self.up
-    add_index :pages, :status
+    #add_index :pages, :status
     # TODO: This needs to be moved to an 'initial setup' rake task
     Page.create(
       :name => 'home',
@@ -19,6 +19,6 @@ class AddStatusToPages < ActiveRecord::Migration
   end
 
   def self.down
-    remove_index :pages, :column => :status
+    #remove_index :pages, :column => :status
   end
 end

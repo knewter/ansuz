@@ -18,6 +18,7 @@ Ansuz is licensed via the BSD license.
 ## Quick Start
  
  1. clone from github: git clone git://github.com/knewter/ansuz.git
+ 2. install gems: sudo rake gems:install
  2. rake ansuz:install
  
 NOTE: SQLite has problems with ansuz, please don't use it for now.
@@ -31,7 +32,7 @@ for the domain specified. So, then if that domain points to the server, Bam! Don
  
 ## This software is BSD licensed. See the COPYING file for details.
  
-For help, feel free to contact the authors at:
+For help, feel free to contact the authors at [Our Google Gorup](http://groups.google.com/group/ansuz-cms), or individually:
 
 - josh at isotope11.com
 - james at isotope11.com
