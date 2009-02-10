@@ -1,4 +1,5 @@
 config/database.yml
+config/database.yml.bak
 log/
 log/*
 *.swp
