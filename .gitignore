@@ -13,6 +13,7 @@ log/*
 public/stylesheets/scaffold.css
 public/photo_album_photo_images/*
 public/uploads/*
+public/themes/*
 themes/*
 tmp/*
 vendor/gems/*
