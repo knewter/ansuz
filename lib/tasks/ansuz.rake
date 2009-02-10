@@ -3,7 +3,7 @@ require "yaml"
 namespace :ansuz do
   desc "Set the CMS theme"
   task(:choose_theme => :environment) do
-    themes =   Dir.entries( File.join(RAILS_ROOT, "public", "themes")).select{|d| d =~ /^\w|^\d/}.collect{|theme| theme="- #{theme}"}
+    themes =   Dir.entries( File.join(RAILS_ROOT, "themes")).select{|d| d =~ /^\w|^\d/}.collect{|theme| theme="- #{theme}"}
     if( themes.any? )
       STDOUT.puts "[ansuz] Themes:\n" + themes.join("\n")
       STDOUT.puts "[ansuz] Enter a selection above, or leave blank for default"
@@ -19,6 +19,7 @@ namespace :ansuz do
     else
       STDOUT.puts "[ansuz] No themes available!"
     end
+  
   end
 
   # Called at the beginning of the initializer in config/environment.rb before Rails complains about not having a db"
