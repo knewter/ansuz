@@ -19,11 +19,13 @@ Ansuz is licensed via the BSD license.
  
  1. clone from github: git clone git://github.com/knewter/ansuz.git
  2. install gems: sudo rake gems:install
- 2. rake ansuz:install
+ 3. create proper config/database.yml (note: install script supports this, but db script creation is bugged, so should be done externally from the script)
+ 3. create databases for development & test environments (note: install script is currently bugged for this)
+ 4. rake ansuz:install
  
 NOTE: SQLite has problems with ansuz, please don't use it for now.
 
-NOTE: See the [Ansuz Site Laucher](http://github.com/knewter/ansuz_launcher/tree/master)
+NOTE: See the [Ansuz Site Launcher](http://github.com/knewter/ansuz_launcher/tree/master)
 
 If run with sudo on a server with passenger set up and all the gems already installed, 
 it will check out a new ansuz and set up a fresh database for it and set up a vhost 

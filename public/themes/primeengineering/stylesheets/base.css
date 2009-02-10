@@ -1,0 +1,128 @@
+html, body{
+  background-color: #5e0000;
+  background-image: url(/themes/primeengineering/images/dropshadow_bg.png);
+  background-repeat: repeat-y;
+  background-position: center top;
+}
+#content_wrapper{
+  width: 950px;
+  margin: 0 auto;
+}
+#header{
+  height: 122px;
+  background-image: url(/themes/primeengineering/images/header_bg_1.png);
+  background-color: #0f0000;
+  position: relative;
+}
+#header h1{
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  background-image: url(/themes/primeengineering/images/prime_logo.png);
+  width: 357px;
+  height: 90px;
+}
+#header h1 span{
+  display: none;
+}
+#header h2{
+  font-family: Georgia, serif;
+  font-size: 2em;
+  left: 354px;
+  top: 82px;
+  position: absolute;
+  color: #ddd;
+  font-style: oblique;
+}
+h2{
+  font-size: 150%;
+}
+h3{
+  font-size: 130%;
+}
+#navigation{
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+#navigation h3{
+  display: none;
+}
+#navigation li{
+  float: left;
+  position: relative;
+}
+#navigation li a{
+  color: #ddd;
+  text-decoration: none;
+  margin: 10px;
+  text-transform: uppercase;
+  font-size: 125%;
+}
+#navigation li a:hover {
+  color: white;
+}
+#navigation li.active a{
+  color: white;
+  font-weight: bold;
+}
+#navigation li ul{
+  position: absolute;
+  left: -9999%;
+}
+#navigation li li a{
+}
+#navigation li:hover ul{
+  left: auto;
+}
+#content{
+  background-color: white;
+  min-height: 500px;
+  padding: 10px;
+}
+#subfooter{
+  background-color: #0f0000;
+  min-height: 60px;
+}
+#footer{
+  background-color: #270000;
+  padding: 10px;
+  min-height: 20px;
+}
+#footer h3{
+  background-color: black;
+  color: white;
+  margin: -10px -10px 10px -10px;
+  padding: 10px;
+}
+.clear{
+  clear: both;
+}
+.fourcol .col{
+  width: 25%;
+  float: left;
+  color: #ddd;
+}
+.fourcol .col .innards{
+  padding: 10px;
+}
+.fourcol .col h4{
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+}
+.fourcol .col li{
+  margin-bottom: 10px;
+}
+.imgprin{
+  height: 535px;
+}
+table.form-table tbody th{
+  background-color: #ddd;
+  text-align: right;
+  padding: 10px;
+  vertical-align: top;
+}
+table.form-table tbody td{
+  padding: 10px;
+}
