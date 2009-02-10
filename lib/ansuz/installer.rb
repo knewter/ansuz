@@ -10,7 +10,7 @@ module Ansuz
       @state       = :started # this helps with the tests
     end
 
-    def choose_theme(theme_directory = File.join(RAILS_ROOT, "public", "themes")) 
+    def choose_theme(theme_directory = File.join(RAILS_ROOT, "themes")) 
       FileUtils.mkdir_p( theme_directory ) unless File.directory?( theme_directory )
       @themes =   Dir.entries(theme_directory).select{|d| d =~ /^\w|^\d/}.collect{|theme| theme="- #{theme}"}
       if( @themes.any? )
@@ -35,7 +35,7 @@ module Ansuz
         end
       else
         @state = :no_themes_available
-        @stdout.puts "[ansuz]No themes available!"
+        @stdout.puts "[ansuz] No themes available!"
       end
     end
 
@@ -107,10 +107,6 @@ module Ansuz
 
       choose_theme
       @state = :installation_complete
-
-
-
-      @stdout.puts "[ansuz] Finished! Start Ansuz with `script/server` on Linux or `ruby script/server` on Windows."
     end
 
     protected
@@ -140,7 +136,6 @@ module Ansuz
 
     def create_default_admin_user(password)
       u = User.new :login => 'admin', :email => 'admin@example.com', :password => password, :password_confirmation => password
-      u.save
       u.has_role 'admin'
       u.save
       @stdout.puts "[ansuz] Admin user created with login 'admin' and the password you entered."
