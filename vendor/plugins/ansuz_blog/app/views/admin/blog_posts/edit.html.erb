@@ -1,9 +1,0 @@
-<%= title "Edit Blog Post: #{@blog_post}" -%>
-<% content_for :sidebar do -%>
-  <%= link_to "View On Site", article_path(@blog_post), :class => 'button icon forward' -%>
-  <%= link_to "All Blog Posts", admin_blog_posts_path, :class => 'button icon back' -%>
-<% end -%>
-<% form_for :blog_post, :url => admin_blog_post_path(@blog_post), :html => { :method => :put, :class => 'blog-post-form' } do |f| -%>
-  <%= render :partial => 'form', :locals => { :f => f } -%>
-  <%= submit_tag("Update Post") -%> or <%= link_to "Cancel", admin_blog_posts_path -%>
-<% end -%>

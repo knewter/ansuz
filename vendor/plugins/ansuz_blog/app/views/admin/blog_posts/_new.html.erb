@@ -1,7 +1,0 @@
-<% form_for :blog_post, :url => admin_blog_posts_path, :html => { :class => 'blog-post-form' } do |f| -%>
-  <%= render :partial => '/admin/blog_posts/form', :locals => { :f => f } -%>
-  <% if local_assigns.include?(:is_quickpost) && is_quickpost %>
-    <%= hidden_field_tag :quick_post, true %>
-  <% end %>
-  <%= submit_tag("Create Post") -%> or <%= link_to "Cancel", admin_blog_posts_path -%>
-<% end -%>

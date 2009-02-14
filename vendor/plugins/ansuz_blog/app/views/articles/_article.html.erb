@@ -1,8 +1,0 @@
-<div class='blog_post' id='<%= dom_id(article) -%>'>
-  <h2><%= link_to(h(article.title), article_path(article)) -%></h2>
-  <h3 class='supplemental'>Posted on <%= article.created_at.strftime("%B %e, %Y") %><% if article.creator %> by <%= article.creator.login %><% end %>.</h3>
-  <div class='contents'>
-    <%= article.contents -%>
-  </div>
-  <%= show_comment_info_link_for(article, :path => article_path(article)) %>
-</div>

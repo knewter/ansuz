@@ -1,8 +1,0 @@
-<ul class='recent-posts widget'>
-  <h3>Recent Posts</h3>
-  <% Ansuz::JAdams::BlogPost.recent.each do |post| %>
-    <li class='post'>
-      <%= link_to post.title, article_path(post) %>
-    </li>
-  <% end %>
-</ul>
