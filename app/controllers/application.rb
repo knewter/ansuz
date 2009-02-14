@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :login_from_cookie, :setup_plugin_nav, :set_layout_variables, :load_menu
   around_filter :inhibit_retardase
 
-  helper :all, :testimonials, :site_settings, :form_builder
+  helper :all, :site_settings
 
   theme  :get_theme_setting
 

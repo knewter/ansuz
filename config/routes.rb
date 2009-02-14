@@ -1,22 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_photo_album
-  map.from_plugin :ansuz_blog
-  map.from_plugin :ansuz_savage_beast
   map.from_plugin :ansuz_content_section
   map.from_plugin :ansuz_user_manager
-  map.from_plugin :ansuz_menu_system
   map.from_plugin :ansuz_theme_repository
   map.from_plugin :ansuz_theme_installer
-  map.from_plugin :ansuz_scrollable_content
-  map.from_plugin :ansuz_testimonials
-  map.from_plugin :ansuz_form_builder
-  map.from_plugin :ansuz_feed_reader
-  map.from_plugin :ansuz_jskit
-  map.from_plugin :ansuz_twitterati
-  map.from_plugin :ansuz_database_dumper
-  map.from_plugin :ansuz_user_system
-  #map.from_plugin :ansuz_plugin_media_player
-  map.from_plugin :ansuz_mephisto_xmlrpc
+  map.from_plugin :ansuz_menu_system
 
   map.resources :tags
   map.resources :users
