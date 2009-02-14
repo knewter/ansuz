@@ -1,9 +1,0 @@
-<%= title "New Form Field" %>
-
-<% form_for :form_builder, :url => admin_form_builder_form_fields_path(@form_builder) do |f| %>
-  <table class='form-table'> 
-    <%= form_row "Label", text_field_tag(:label) %>
-    <%= form_row "Type", select_tag(:type, options_for_select(["Text Field", "Text Area", "Rich Text Area"])) %>
-    <%= form_row "", submit_tag %>
-  </table>
-<% end %>

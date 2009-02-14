@@ -1,9 +1,0 @@
-<% remote_form_for :twitterati, plugin_module, :url => admin_twitterati_path(plugin_module), :html => { :method => :put } do |f| %>
-  <div class='fullwidth'>
-    <table class='form-table'>
-      <%= form_row "Username", text_field_tag("settings[username]", plugin_module.settings[:username]) -%>
-    </table>
-  </div>
-  <br />
-  <%= submit_tag "Update Twitterati" %>
-<% end %>

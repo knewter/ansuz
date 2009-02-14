@@ -1,5 +1,0 @@
-<%= title "Edit Scrollable Content Section" -%>
-<% form_for :scrollable_content_section, :url => admin_scrollable_content_scrollable_content_section_path(@scrollable_content, @scrollable_content_section), :html => { :method => :put } do |f| -%>
-  <%= render :partial => 'form', :locals => { :f => f } -%>
-  <%= submit_tag "Update scrollable content section" -%> or <%= link_to "Cancel", admin_scrollable_content_path(@scrollable_content) -%>
-<% end -%>

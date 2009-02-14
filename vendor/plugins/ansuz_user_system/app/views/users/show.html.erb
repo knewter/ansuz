@@ -1,5 +1,0 @@
-<h2><%=h @user.login -%></h2>
-<h3>Recent Blog Posts</h3>
-<% @user.blog_posts.recent.each do |blog_post| %>
-  <%= render :partial => "articles/article", :locals => { :article => blog_post } %>
-<% end %>

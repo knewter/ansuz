@@ -1,5 +1,0 @@
-Ansuz::PluginManagerInstance.register_plugin(Ansuz::JAdams::JskitComment)
-Ansuz::PluginManagerInstance.register_plugin(Ansuz::JAdams::JskitRating)
-Ansuz::PluginManagerInstance.register_plugin(Ansuz::JAdams::JskitReview)
-Ansuz::PluginManagerInstance.register_plugin(Ansuz::JAdams::JskitPoll)
-Ansuz::PluginManagerInstance.register_plugin(Ansuz::JAdams::JskitNavigator)

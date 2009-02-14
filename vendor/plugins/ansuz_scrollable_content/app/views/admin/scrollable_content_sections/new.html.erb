@@ -1,5 +1,0 @@
-<%= title "New Section" -%>
-<% form_for :scrollable_content_section, :url => admin_scrollable_content_scrollable_content_sections_path(@scrollable_content) do |f| -%>
-  <%= render :partial => 'form', :locals => { :f => f } -%>
-  <%= submit_tag "Add section" -%> or <%= link_to "Cancel", admin_scrollable_content_path(@scrollable_content) -%>
-<% end -%>

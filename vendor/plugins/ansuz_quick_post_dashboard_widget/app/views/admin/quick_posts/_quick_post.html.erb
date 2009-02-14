@@ -1,5 +1,0 @@
-<%
-  # nasty, required because of fckeditor_textarea's failings or my lack of understanding
-  @blog_post = Ansuz::JAdams::BlogPost.new
-%>
-<%= render :partial => 'admin/blog_posts/new', :locals => { :is_quickpost => true } %>

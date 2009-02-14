@@ -1,9 +1,0 @@
-<% remote_form_for :jskit_rating, plugin_module, :url => admin_jskit_rating_path(plugin_module), :html => { :method => :put } do |f| %>
-  <div class='fullwidth'>
-    <table class='form-table'>
-      <%= form_row "Rating Type", select_tag("settings[rating_type]", options_for_select(["Rated", "Scored"], :selected => plugin_module.settings[:rating_type])) -%>
-    </table>
-  </div>
-  <br />
-  <%= submit_tag "Update JSKit Rating" %>
-<% end %>
