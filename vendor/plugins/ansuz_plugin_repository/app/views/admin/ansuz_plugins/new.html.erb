@@ -1,0 +1,8 @@
+<%= title "New Ansuz Plugin" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "All Ansuz Plugins", admin_ansuz_plugins_path, :class => 'button icon back' -%>
+<% end -%>
+<% form_for :ansuz_plugin, :url => admin_ansuz_plugins_path do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } -%>
+  <%= submit_tag("Create Ansuz Plugin") -%> or <%= link_to "Cancel", admin_ansuz_plugins_path -%>
+<% end -%>

@@ -1,0 +1,1 @@
+Ansuz::PluginManagerInstance.register_admin_menu_entry('Manage', "Plugin Repository", '/admin/ansuz_plugins', { :span_options => { :note => "Administer this Ansuz installation's Plugin Repository" } })

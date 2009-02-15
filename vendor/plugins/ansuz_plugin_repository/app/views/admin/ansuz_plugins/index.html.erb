@@ -1,0 +1,33 @@
+<%= title "Ansuz Plugins" -%>
+<% content_for :sidebar do -%>
+  <%= link_to "New Ansuz Plugin", new_admin_ansuz_plugin_path, :class => 'button icon add' -%><br />
+  <%= link_to "Plugins Feed",     ansuz_plugins_path(:format => 'xml'), :class => 'button icon rss' -%>
+  <div class='note'>
+    An Ansuz Plugin consists of a name and a public git repository url (a private repository would work if you set up the appropriate ssh keys, etc.).<br /><br />
+  </div>
+<% end -%>
+<div class='fullwidth'>
+  <table class='subdued'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Repository URL</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ansuz_plugins.each do |ansuz_plugin| -%>
+        <tr class='<%= cycle('odd', 'even') -%>'>
+          <td><%= link_to h(ansuz_plugin.name), admin_ansuz_plugin_path(ansuz_plugin) -%></td>
+          <td><%= ansuz_plugin.repository_url -%></td>
+          <td>
+            <ul class='admin_actions'>
+              <li><%= link_to famfamfam_icon("pencil"), edit_admin_ansuz_plugin_path(ansuz_plugin) -%></li>
+              <li><%= link_to famfamfam_icon("delete"), admin_ansuz_plugin_path(ansuz_plugin), :method => :delete, :confirm => "Are you sure you want to delete this ansuz plugin?" -%></li>
+            </ul>
+          </td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+</div>
