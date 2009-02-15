@@ -14,6 +14,8 @@ public/stylesheets/scaffold.css
 public/photo_album_photo_images/*
 public/uploads/*
 public/themes/*
+public/ansuz_plugins.xml
+public/ansuz_themes.xml
 themes/*
 tmp/*
 vendor/gems/*

@@ -1,0 +1,38 @@
+<%= title "Install Plugins" -%>
+<% content_for :sidebar do -%>
+  <div class='note'>
+    To install a plugin, just click on its "Install" link.<br /><br />
+
+    At the moment, the only repository available to you is the master plugin repository at www.ansuzcms.com.  This is hard coded in, and there's currently no interface for adding new plugin repositories (but one's coming!).  If you're adventurous and desperate, ansuz's main repository is the same code you've got, so you could easily change the hardcoded value to your own instance of ansuz and be off and running.<br /><br />
+  </div>
+<% end -%>
+<div class='fullwidth'>
+  <table class='subdued'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @plugins.each do |plugin| -%>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <td><%= plugin[0] %></td>
+          <td>
+            <% if @plugins_util.installed?(plugin[0]) %>
+              <% if @plugins_util.enabled?(plugin[0]) %>
+                <%= link_to("Disable", disable_admin_ansuz_plugin_installers_path(:name => plugin[0])) -%> | 
+              <% else %>
+                <%= link_to("Enable", enable_admin_ansuz_plugin_installers_path(:name => plugin[0])) -%> | 
+              <% end %>
+              <%= link_to("Update", admin_ansuz_plugin_installer_path(plugin[0]), :method => :put) -%> | 
+              <%= link_to("Uninstall", admin_ansuz_plugin_installer_path(plugin[0]), :method => :delete, :confirm => "Are you sure?") -%>
+            <% else %>
+              <%= link_to("Install", install_admin_ansuz_plugin_installers_path(:repository_url => plugin[1], :name => plugin[0])) -%>
+            <% end %>
+          </td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+</div>

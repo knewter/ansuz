@@ -5,7 +5,12 @@ ActionController::Routing::Routes.draw do |map|
   map.from_plugin :ansuz_theme_repository
   map.from_plugin :ansuz_theme_installer
   map.from_plugin :ansuz_plugin_repository
+  map.from_plugin :ansuz_plugin_installer
   map.from_plugin :ansuz_menu_system
+
+  Ansuz::PluginManagerInstance.plugins_for_routes.each do |plugin|
+    map.from_plugin plugin
+  end
 
   map.resources :tags
   map.resources :users

@@ -1,0 +1,1 @@
+This directory is used as a holding directory for ansuz plugins.  When you install a plugin, it is placed here.  When you enable a plugin, it is copied from here to vendor/plugins

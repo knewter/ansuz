@@ -86,6 +86,17 @@ module Ansuz
       @page_types << [name, modules]
     end
 
+    # Determine all of the installed plugins
+    def plugins_for_routes
+      # plugins installed into the holding directory
+      installed_plugins = Dir.glob(File.join(RAILS_ROOT, 'ansuz_installed_plugins', '*')).map{|d| d.split("/").split("\\").last.last}
+      # plugins in vendor/plugins
+      enabled_plugins = Dir.glob(File.join(RAILS_ROOT, 'vendor', 'plugins', '*')).map{|d| d.split("/").split("\\").last.last}
+
+      # Find the intersection of the two directories, and return them as syms
+      (installed_plugins & enabled_plugins).map(&:to_sym)
+    end
+
     protected
     def create_settings(name)
       begin
