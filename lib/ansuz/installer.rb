@@ -92,25 +92,25 @@ module Ansuz
 
     def install
       unless( File.exists?( File.join(RAILS_ROOT, "config", "database.yml") ) )
-        #@stdout.puts "[ansuz] Please create a config/database.yml file before running this task."
-        #return false
         create_db_config
       end
-      
+
       @stdout.puts "[ansuz] Creating database .."
       Kernel.silence_stream(@stdout) do
         create_database
       end
 
+# FIXME: The Silence_stream call is causing sql errors, who knows why.      
       @stdout.puts "[ansuz] Migrating tables .."
-      Kernel.silence_stream(@stdout) do
+#      Kernel.silence_stream(@stdout) do
         migrate_database
-      end
+#      end
 
+# FIXME: /Users/altrux/isshen/ansuz/ansuz/app/helpers/plugins_helper.rb when the silence streams are uncommented
       @stdout.puts "[ansuz] Migrating plugins .."
-      Kernel.silence_stream(@stdout) do
+#      Kernel.silence_stream(@stdout) do
         migrate_plugins
-      end
+#      end
 
       # Create public/uploads directory for FCKeditor 
       create_fckeditor_uploads_dir
@@ -162,7 +162,6 @@ module Ansuz
       end
     end
 
-    # FIXME: Somthing is causing this to be currently broken, should be fixed!
     def create_database
       @state = :creating_databases
       system "rake db:create:all" 
