@@ -106,7 +106,7 @@ module Ansuz
         migrate_database
 #      end
 
-# FIXME: /Users/altrux/isshen/ansuz/ansuz/app/helpers/plugins_helper.rb when the silence streams are uncommented
+# FIXME: no such file to load -- [..]/helpers/plugins_helper.rb when the silence streams are uncommented
       @stdout.puts "[ansuz] Migrating plugins .."
 #      Kernel.silence_stream(@stdout) do
         migrate_plugins
