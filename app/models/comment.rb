@@ -1,3 +1,19 @@
+# == Schema Information
+# Schema version: 20090125222830
+#
+# Table name: comments
+#
+#  id               :integer(4)      not null, primary key
+#  name             :string(255)
+#  email            :string(255)
+#  website          :string(255)
+#  comments         :text
+#  commentable_type :string(255)
+#  commentable_id   :integer(4)
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+
 # This was copied from the acts_as_commentable plugin, and I'm changing it a bit - JA
 class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true

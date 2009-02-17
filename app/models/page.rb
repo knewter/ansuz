@@ -1,22 +1,25 @@
 # == Schema Information
-# Schema version: 2
+# Schema version: 20090125222830
 #
 # Table name: pages
 #
-#  id            :integer(11)     not null, primary key
+#  id            :integer(4)      not null, primary key
 #  name          :string(255)
 #  title         :string(255)
 #  full_title    :string(255)
+#  status        :string(255)
 #  body          :text
 #  created_at    :datetime
 #  updated_at    :datetime
-#  page_order    :integer(11)     default(0)
-#  parent_id     :integer(11)
+#  page_order    :integer(4)      default(0)
+#  parent_id     :integer(4)
 #  page_type     :string(255)     default("page")
 #  display_title :boolean(1)      default(TRUE)
 #  published     :boolean(1)      default(TRUE)
 #  linked        :boolean(1)      default(TRUE)
 #  show_sub_menu :boolean(1)
+#  publish_at    :datetime
+#  expires_on    :datetime
 #
 
 class Page < ActiveRecord::Base
