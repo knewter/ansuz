@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20090125222830
+#
+# Table name: page_plugins
+#
+#  id          :integer(4)      not null, primary key
+#  page_id     :integer(4)
+#  module_type :string(255)
+#  module_id   :integer(4)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  position    :integer(4)
+#
+
 class PagePlugin < ActiveRecord::Base
   acts_as_list :scope => :page_id
 

@@ -1,9 +1,9 @@
 # == Schema Information
-# Schema version: 2
+# Schema version: 20090125222830
 #
 # Table name: users
 #
-#  id                        :integer(11)     not null, primary key
+#  id                        :integer(4)      not null, primary key
 #  login                     :string(255)
 #  email                     :string(255)
 #  crypted_password          :string(40)
@@ -12,6 +12,9 @@
 #  updated_at                :datetime
 #  remember_token            :string(255)
 #  remember_token_expires_at :datetime
+#  posts_count               :integer(4)      default(0)
+#  last_seen_at              :datetime
+#  admin                     :boolean(1)
 #
 
 require 'digest/sha1'
