@@ -61,7 +61,7 @@ class Admin::UsersController < Admin::BaseController
   protected
   def handle_roles
     Role.base_roles.each do |role|
-      if params[:roles].include?(role)
+      if (params[:roles] || []).include?(role)
         @user.has_role(role)
       else
         @user.has_no_role(role)
