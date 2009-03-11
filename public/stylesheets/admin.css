@@ -1,10 +1,10 @@
 html{
-  background-color: #ddd;
+  background: #ddd url('/images/admin_bg_pattern_3.jpg');
 }
 
 body{
   font-family: "Bitstream Vera Sans", Arial, sans-serif;
-  background-color: #ddd;
+  background: #ddd url('/images/admin_bg_pattern_3.jpg');
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -76,7 +76,6 @@ em{
 #sidebar{
   float: left;
   width: 25%;
-  background-color: #ddd;
   text-align: left;
 }
 
