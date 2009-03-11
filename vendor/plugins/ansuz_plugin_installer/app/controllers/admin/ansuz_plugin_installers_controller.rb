@@ -28,6 +28,10 @@ class Admin::AnsuzPluginInstallersController < Admin::BaseController
     redirect_to admin_ansuz_plugin_installers_path
   end
 
+  # This will just provide a form to push data into the install action. 
+  def manual_install
+  end
+
   # expects a params[:name]
   def enable
     @plugins_util.enable(params[:name])
