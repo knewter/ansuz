@@ -1,8 +1,10 @@
-<div id="breadcrumb">
-  <% @breadcrumb.each do |crumb| %>
-    <a href="/<%= crumb[0] -%>"><%= crumb[1] -%></a>&nbsp;&gt;&nbsp;
-  <% end %>
-  <% if @page -%>
-    <b><%= (@pageNum!=nil)? link_to(@page.title, './') + " &gt; page " + @pageNum.to_s : @page.title %></b>
-  <% end -%>
-</div>
+<% if @breadcrumb %>
+  <div id="breadcrumb">
+    <% @breadcrumb.each do |crumb| %>
+      <a href="<%= crumb[0] -%>"><%= crumb[1] -%></a>&nbsp;&gt;&nbsp;
+    <% end %>
+    <% if @page -%>
+      <b><%= (@pageNum!=nil)? link_to(@page.title, './') + " &gt; page " + @pageNum.to_s : @page.title %></b>
+    <% end -%>
+  </div>
+<% end %>

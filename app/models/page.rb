@@ -143,6 +143,10 @@ class Page < ActiveRecord::Base
     "/pages/" + path.collect(&:name).join('/') + "/"
   end
 
+  def full_path
+    ancestor_path + self.name
+  end
+
   # Returns page_body from cache
   # defaults to the current page_number
   def page_body(page = self.page_number)

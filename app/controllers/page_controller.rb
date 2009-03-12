@@ -4,7 +4,7 @@ class PageController < ApplicationController
   # Currently in need of some serious refactoring
   def indexer
     @page = Page.visible.find_page_by_path params['path']
-    @breadcrumb = @page.ancestors.reverse.collect { |x| [x.name, x.title] } if @page
+    @breadcrumb = @page.ancestors.reverse.collect { |x| [x.full_path, x.title] } if @page
     @top_page = params[:path][0] || 'root'
     render :template => "404", :status => 404, :layout => false and return unless @page
     if @page.is_published? || (logged_in? && current_user.can_view_drafts?)

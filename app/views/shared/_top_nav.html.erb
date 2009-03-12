@@ -3,10 +3,9 @@
   klasses  = []
   klasses << "active" if isActive
   klasses << "first"  if i == 0
-  klasses << "last"   if i == (entries.length - 1)
-  url = page.ancestor_path + page.name + "/" %> 
+  klasses << "last"   if i == (entries.length - 1) %>
     <li class="<%= klasses.join(" ") -%>">
-      <a href='<%= url -%>'><%= page.title -%></a>
+      <a href='<%= page.full_path -%>'><%= page.title -%></a>
       <% if page.linked_children.any? && page.parent_id -%>
         <ul>
           <%= render :partial => 'shared/top_nav', :locals => { :entries => page.linked_children } -%>
