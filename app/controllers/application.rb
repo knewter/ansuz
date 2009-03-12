@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
       @topNavChildren[sub] = temp if temp.length > 0
     end
     @topNav.unshift @root
-    @breadcrumb = []
   end
 
   def load_menu
