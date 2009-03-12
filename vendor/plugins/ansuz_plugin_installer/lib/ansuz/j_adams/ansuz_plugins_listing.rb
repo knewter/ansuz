@@ -2,8 +2,8 @@ require 'open-uri'
 module Ansuz
   module JAdams
     class AnsuzPluginsListing
-      #REPOSITORY = "http://ansuzcms.com/ansuz_plugins.xml"
-      REPOSITORY = "http://localhost:3000/ansuz_plugins.xml"
+      PRODUCTION_REPOSITORY = "http://beta.ansuzcms.com/ansuz_plugins.xml"
+      DEVELOPMENT_REPOSITORY = "http://localhost:3001/ansuz_plugins.xml"
 
       PLUGIN_HOLDING_DIR = 'ansuz_installed_plugins'
 
@@ -20,7 +20,7 @@ module Ansuz
       end
 
       def self.xml_document
-        uri = URI.parse REPOSITORY
+        uri = URI.parse repository
         uri.read
       end
 
@@ -76,6 +76,10 @@ module Ansuz
 
       def self.restart_ansuz
         FileUtils.touch(File.join(RAILS_ROOT, 'tmp', 'restart.txt'))
+      end
+
+      def repository
+        PRODUCTION_REPOSITORY
       end
     end
   end
