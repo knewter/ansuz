@@ -78,7 +78,7 @@ module Ansuz
         FileUtils.touch(File.join(RAILS_ROOT, 'tmp', 'restart.txt'))
       end
 
-      def repository
+      def self.repository
         PRODUCTION_REPOSITORY
       end
     end
