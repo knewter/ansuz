@@ -22,7 +22,7 @@ module HasSettings
     # >> w.reload
     # >> w.settings["foo"] #=> "bar
     def has_settings
-      if ActiveRecord::Base.connection.table_exists?('has_settings_settings')
+      if database_setup?
         has_one :has_settings_setting, :as => "configurable"
         after_save :save_settings
 
@@ -48,6 +48,15 @@ module HasSettings
             self.has_settings_setting
           end
         end
+      end
+    end
+
+    protected
+    def database_setup?
+      begin
+        connection = ActiveRecord::Base.connection
+        connection.table_exists?('has_settings_settings') ? true : false
+      rescue Mysql::Error
       end
     end
   end
