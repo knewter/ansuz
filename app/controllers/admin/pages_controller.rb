@@ -59,6 +59,11 @@ class Admin::PagesController < Admin::BaseController
     @page.name = @page.name.gsub(' ', '_')
     @page.settings = params[:settings]
     if @page.save
+      if @page.parent_id.nil?
+        # If there is no parent, find first page and attach it there
+        @page.parent_id = Page.first.id if Page.first
+        @page.save
+      end
       attach_page_plugins
       message = 'Page Added Successfully'
       @preview_url = @page.ancestor_path + @page.name
