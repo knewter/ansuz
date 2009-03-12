@@ -54,8 +54,8 @@ module Ansuz
       end
 
       def self.delete name
-        FileUtil.rm_r plugin_folder_for(name)
-        FileUtil.rm_r installed_plugin_folder_for(name)
+        FileUtils.rm_r plugin_folder_for(name)
+        FileUtils.rm_r installed_plugin_folder_for(name)
       end
 
       def self.installed?(name)
