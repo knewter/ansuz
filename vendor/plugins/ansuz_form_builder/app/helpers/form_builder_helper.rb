@@ -1,4 +1,4 @@
-module FormBuilderHelper
+module Ansuz::JAdams::FormBuilderHelper
   def form_field_display_for form_field
     field_id = "form_field_#{form_field.id}"
     field_itself = case form_field.field_type
