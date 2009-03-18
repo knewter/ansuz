@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
 
   theme  :get_theme_setting
 
+  Ansuz::PluginManagerInstance.load_helpers(self)
+
   def set_layout_variables
     @root = Page.root || Page.new
     @topNav = @root.publishable_children

@@ -11,6 +11,7 @@ module Ansuz
     def initialize
       @plugins = []
       @plugin_nav = []
+      @helpers    = []
       @admin_plugin_nav = []
       @admin_menu = {}
       @admin_menu_top_level_entries = ADMIN_MENU_TOP_LEVEL_ENTRIES.clone
@@ -25,6 +26,7 @@ module Ansuz
       self.plugins << klass
       settings_name = klass.to_s.tableize.gsub(/\//,'_').to_sym
       create_settings( settings_name )
+      require_helpers( klass.to_s )
     end
 
     # A plugin can call register_plugin_nav(title, link) to add itself to the
@@ -95,6 +97,24 @@ module Ansuz
 
       # Find the intersection of the two directories, and return them as syms
       (installed_plugins & enabled_plugins).map(&:to_sym)
+    end
+
+    def require_helpers(name)
+      path = "#{RAILS_ROOT}/ansuz_installed_plugins/**/*#{helper_plugin_name(name)}*/**/*_helper.rb"
+      Dir[path].each do |f|
+        @helpers << name
+        require f
+      end
+    end
+
+    def load_helpers(controller)
+      @helpers.each do |helper|
+        controller.send(:helper, "#{helper}Helper".constantize)
+      end
+    end
+
+    def helper_plugin_name(klass_name)
+      klass_name.tableize.singularize.split("\/").last
     end
 
     protected
