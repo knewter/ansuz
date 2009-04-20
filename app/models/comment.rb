@@ -16,26 +16,19 @@
 
 # This was copied from the acts_as_commentable plugin, and I'm changing it a bit - JA
 class Comment < ActiveRecord::Base
+  validates_presence_of :commentable_type, :commentable_id, :comments
+
   belongs_to :commentable, :polymorphic => true
+
+  # NOTE: Comments belong to a user
+  belongs_to :user
   
   # NOTE: install the acts_as_votable plugin if you 
   # want user to vote on the quality of comments.
   #acts_as_voteable
-  
-  # NOTE: Comments belong to a user
-  belongs_to :user
 
   named_scope :recent, :limit => 5, :order => "created_at DESC"
   named_scope :for, lambda{ |klass| { :conditions => ["commentable_type = ?", klass] } }
-  
-  # Helper class method to lookup all comments assigned
-  # to all commentable types for a given user.
-  def self.find_comments_by_user(user)
-    find(:all,
-      :conditions => ["user_id = ?", user.id],
-      :order => "created_at DESC"
-    )
-  end
   
   # Helper class method to look up all comments for 
   # commentable class name and commentable id.

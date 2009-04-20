@@ -52,8 +52,15 @@ Rails::Initializer.run do |config|
              :source => 'http://gems.github.com'
 
   config.gem 'rubyist-aasm', :version => '~> 2.0.2', :lib => 'aasm', :source => "http://gems.github.com"
-  config.gem 'datanoise-actionwebservice', :lib => 'actionwebservice', :source => "http://gems.github.com"
+  config.gem 'datanoise-actionwebservice', :lib => 'actionwebservice', :source => "http://gems.github.com", :version => '~> 2.2.2'
   config.gem 'mocha'
+
+  config.gem 'thoughtbot-shoulda',      :lib => 'shoulda',       :source => 'http://gems.github.com'
+  config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl',  :source => 'http://gems.github.com'
+  config.gem 'flexmock'
+
+  config.gem 'spicycode-rcov',          :lib => 'rcov',          :source => 'http://gems.github.com'
+  config.gem 'jgre-monkeyspecdoc',      :lib => 'monkeyspecdoc', :source => 'http://gems.github.com'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

@@ -54,6 +54,6 @@ class Admin::PagePluginsController < Admin::BaseController
   def move_down
     @page_plugin.move_lower
     flash[:notice] = "Plugin was moved down by one"
-    redirect_to edit_admin_page_path @page_plugin.page
+    redirect_to edit_admin_page_path(@page_plugin.page)
   end
 end
