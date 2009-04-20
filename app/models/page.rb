@@ -30,7 +30,7 @@ class Page < ActiveRecord::Base
 
   validates_presence_of :name, :title
 
-  named_scope :visible, lambda{ { :conditions => ["(expires_on > ? OR expires_on IS NULL) AND published = ? AND (publish_at <= ? OR publish_at IS NULL )", Time.now.getgm, true, Time.now.getgm] } }
+  named_scope :visible, lambda{ { :conditions => ["(expires_on > ? OR expires_on IS NULL) AND status = 'published' AND (publish_at <= ? OR publish_at IS NULL )", Time.now.getgm, Time.now.getgm] } }
   named_scope :self_and_siblings, lambda {|page| {:conditions => ["parent_id = ?", page.parent_id], :order => 'page_order'}}
   named_scope :expired,      lambda {|p| { :conditions => ["expires_on < ?", Time.now.getgm] } }
   named_scope :expires_soon, lambda {|p| { :conditions => ["expires_on < ?", Time.now.getgm + 5.days ] } }
@@ -187,8 +187,10 @@ class Page < ActiveRecord::Base
 	 
   # Accepts params[:path] and returns the page object or nil
   def self.find_page_by_path(path)
+    logger.info path.inspect
     #logger.error("==> find_page_by_path: path = [ #{path.join("/")} ]")
     page = Page.root
+    return page if path == ['home'] # hack to make calling the home page path easier
     return nil if page.nil?
 
     # Not DRY. This piece of code handles multipage root
@@ -249,6 +251,20 @@ class Page < ActiveRecord::Base
 
   def permalinkable_title
     title.downcase.gsub(/ /, '-')
+  end
+
+  def to_xml(options = {})
+    options[:indent] ||= 2
+    xml = options[:builder] ||= Builder::XmlMarkup.new(:indent => options[:indent])
+    xml.instruct! unless options[:skip_instruct]
+    xml.page do
+      attributes.to_xml(:builder => xml, :skip_instruct => true, :root => "attributes")
+      xml.tag!("page-plugins") do
+        self.page_plugins.each do |page_plugin|
+          page_plugin.module.attributes.to_xml(:builder => xml, :skip_instruct => true, :root => 'page-plugin')
+        end
+      end
+    end
   end
 
   protected

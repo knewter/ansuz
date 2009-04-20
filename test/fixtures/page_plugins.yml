@@ -1,25 +1,6 @@
-# == Schema Information
-# Schema version: 20090125222830
-#
-# Table name: page_plugins
-#
-#  id          :integer(4)      not null, primary key
-#  page_id     :integer(4)
-#  module_type :string(255)
-#  module_id   :integer(4)
-#  created_at  :datetime
-#  updated_at  :datetime
-#  position    :integer(4)
-#
-
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
+home_content:
+  id: 1
   page_id: 1
-  module_type: MyString
-  module_id: 
-
-two:
-  page_id: 1
-  module_type: MyString
-  module_id: 
+  module_type: "Ansuz::JAdams::ContentSection"
+  module_id: 1
+  position: 1

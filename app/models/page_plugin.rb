@@ -24,6 +24,10 @@ class PagePlugin < ActiveRecord::Base
     end
   end
 
+  def module_xml
+    self.module.to_xml(:skip_instruct => true)
+  end
+
   def module_class
     Object.path2class(module_type)
   end

@@ -4,10 +4,13 @@ require 'test_help'
 require 'test/role_requirement_test_helper'
 require 'flexmock/test_unit'
 require 'exception_macros'
+require 'hpricot_test_helper'
 
 class Test::Unit::TestCase
   # RoleRequirementTestHelper must be included to test RoleRequirement
   include RoleRequirementTestHelper
+
+  include HpricotTestHelper
 
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the

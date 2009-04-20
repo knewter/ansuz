@@ -1,5 +1,5 @@
 Factory.sequence :page_name do |pn|
-  "Page #{pn}"
+  "home#{pn}"
 end
 
 Factory.sequence :user_login do |n|
