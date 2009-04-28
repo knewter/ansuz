@@ -50,3 +50,4 @@ Factory.define :site_setting do |ss|
   ss.show_inline_edit_links false
   ss.custom_css ""
 end
+
